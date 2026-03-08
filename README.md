@@ -6,8 +6,8 @@
 >
 > 🎥 [@patrickwiloak](https://youtube.com/@patrickwiloak) | 💼 [LinkedIn](https://www.linkedin.com/in/patricklukewilson/)
 
-[![Certifications](https://img.shields.io/badge/Certifications-56-blue.svg)]()
-[![Documentation Links](https://img.shields.io/badge/Documentation%20Links-5000+-green.svg)]()
+[![Certifications](https://img.shields.io/badge/Certifications-60+-blue.svg)]()
+[![Documentation Links](https://img.shields.io/badge/Documentation%20Links-6000+-green.svg)]()
 [![Cloud Providers](https://img.shields.io/badge/Cloud%20Providers-5-orange.svg)]()
 [![Free to Use](https://img.shields.io/badge/Free%20to%20Use-Educational-green.svg)]()
 
@@ -17,7 +17,7 @@
 
 This repository contains **the most comprehensive, multi-cloud certification study materials available**, featuring:
 
-- ✅ **56 certification fact sheets** with 6,000+ embedded documentation links
+- ✅ **60+ certification fact sheets** with 6,000+ embedded documentation links
 - ✅ **Detailed study notes** for every major certification
 - ✅ **Cross-cloud service comparison guides** (AWS vs GCP vs Azure)
 - ✅ **CLI command references** for hands-on practice
@@ -40,8 +40,8 @@ Jump directly to your certification:
 
 | Cloud Provider | Certifications Available | Status |
 |----------------|-------------------------|---------|
-| [☁️ AWS](./exams/aws/) | 9 certifications (Associate, Professional, Specialty) | ✅ Complete |
-| [☁️ Microsoft Azure](./exams/azure/) | 17 certifications (Fundamentals, Associate, Expert) | ✅ Complete |
+| [☁️ AWS](./exams/aws/) | 12 certifications (Foundational, Associate, Professional, Specialty) | ✅ Complete |
+| [☁️ Microsoft Azure](./exams/azure/) | 18 certifications (Fundamentals, Associate, Expert) | ✅ Complete |
 | [☁️ Google Cloud](./exams/gcp/) | 10 certifications (Associate, Professional) | ✅ Complete |
 | [☁️ Oracle Cloud](./exams/oracle/) | 6 certifications (Foundations, Associate, Professional) | ✅ Complete |
 | [☁️ IBM Cloud](./exams/ibm/) | 6 certifications (Advocate, Developer, Architect, SRE) | ✅ Complete |
@@ -51,14 +51,15 @@ Jump directly to your certification:
 ## 📊 Coverage Overview
 
 ### **Amazon Web Services (AWS)**
-- **Associate:** Solutions Architect, Developer, SysOps Administrator
-- **Professional:** Solutions Architect, DevOps Engineer
-- **Specialty:** Security, Data Analytics, Database, Machine Learning, Advanced Networking
+- **Foundational:** Cloud Practitioner, AI Practitioner
+- **Associate:** Solutions Architect, Developer, CloudOps Engineer, Data Engineer, ML Engineer
+- **Professional:** Solutions Architect, DevOps Engineer, Generative AI Developer
+- **Specialty:** Security, Advanced Networking (+ retired: Data Analytics, Database, ML, SAP)
 
 **[→ Browse AWS Certifications](./exams/aws/)**
 
 ### **Microsoft Azure**
-- **Fundamentals:** AZ-900, AI-900, DP-900, SC-900, PL-900
+- **Fundamentals:** AZ-900, AI-900, DP-900, SC-900, PL-900, AB-900 (NEW)
 - **Associate:** AZ-104, AZ-204, AI-102, DP-100, DP-203, DP-300, DP-420, PL-200
 - **Expert:** AZ-305, AZ-400
 - **Specialty:** AZ-500, DP-600

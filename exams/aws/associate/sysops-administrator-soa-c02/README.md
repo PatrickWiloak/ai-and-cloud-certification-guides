@@ -1,7 +1,6 @@
-# AWS Certified SysOps Administrator - Associate (SOA-C02) Exam Guide
+# AWS Certified SysOps Administrator - Associate (SOA-C02) - RETIRED
 
-## Important Update
-The AWS Certified SysOps Administrator - Associate exam will transition to **AWS Certified CloudOps Engineer - Associate (SOA-C03)** on September 29, 2025. The SOA-C02 exam will be available until that date.
+> **This certification was retired on September 29, 2025** and replaced by the **[AWS Certified CloudOps Engineer - Associate (SOA-C03)](../cloudops-engineer-soa-c03/)**. The study materials below are preserved for reference, but new candidates should pursue SOA-C03.
 
 ## Exam Overview
 

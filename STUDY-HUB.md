@@ -1,10 +1,10 @@
 # 📚 Study Hub - Your Cloud Certification Navigation Center
 
-> **Your comprehensive guide to navigating 56 cloud certifications across AWS, Azure, GCP, Oracle, and IBM**
+> **Your comprehensive guide to navigating 60+ cloud certifications across AWS, Azure, GCP, Oracle, and IBM**
 
 <div align="center">
 
-[![Total Certifications](https://img.shields.io/badge/Certifications-56-blue.svg)]()
+[![Total Certifications](https://img.shields.io/badge/Certifications-60+-blue.svg)]()
 [![Documentation Links](https://img.shields.io/badge/Docs%20Links-6000+-green.svg)]()
 [![Cloud Providers](https://img.shields.io/badge/Cloud%20Providers-5-orange.svg)]()
 [![Study Paths](https://img.shields.io/badge/Study%20Paths-6-purple.svg)]()
@@ -78,11 +78,17 @@ START HERE
 FUNDAMENTALS
     |
     ├─── AWS
-    |    └─── [AWS Cloud Practitioner (CLF-C02)](./exams/aws/foundational/cloud-practitioner-clf-c02/)
+    |    ├─── [AWS Cloud Practitioner (CLF-C02)](./exams/aws/foundational/cloud-practitioner-clf-c02/)
+    |    |    📊 Difficulty: ⭐☆☆☆☆
+    |    |    ⏱️ Study Time: 2-4 weeks (30-60 hours)
+    |    |    💰 Cost: $100 exam fee
+    |    |    ✅ Best for: Complete beginners, business roles, technical prerequisites
+    |    |
+    |    └─── [AWS AI Practitioner (AIF-C01)](./exams/aws/genai/)
     |         📊 Difficulty: ⭐☆☆☆☆
     |         ⏱️ Study Time: 2-4 weeks (30-60 hours)
-    |         💰 Cost: $100 exam fee
-    |         ✅ Best for: Complete beginners, business roles, technical prerequisites
+    |         💰 Cost: $150 exam fee
+    |         ✅ Best for: AI/ML enthusiasts, anyone exploring generative AI
     |
     ├─── Microsoft Azure
     |    ├─── [Azure Fundamentals (AZ-900)](./exams/azure/az-900/)
@@ -106,10 +112,15 @@ FUNDAMENTALS
     |    |    ⏱️ Study Time: 1-2 weeks (15-30 hours)
     |    |    ✅ Best for: Security professionals, compliance roles
     |    |
-    |    └─── [Power Platform Fundamentals (PL-900)](./exams/azure/pl-900/)
+    |    ├─── [Power Platform Fundamentals (PL-900)](./exams/azure/pl-900/)
+    |    |    📊 Difficulty: ⭐☆☆☆☆
+    |    |    ⏱️ Study Time: 1-2 weeks (15-30 hours)
+    |    |    ✅ Best for: Business analysts, low-code developers
+    |    |
+    |    └─── [Copilot & Agent Admin Fundamentals (AB-900)](./exams/azure/ab-900/) 🆕
     |         📊 Difficulty: ⭐☆☆☆☆
     |         ⏱️ Study Time: 1-2 weeks (15-30 hours)
-    |         ✅ Best for: Business analysts, low-code developers
+    |         ✅ Best for: IT admins managing Copilot, AI agent professionals
     |
     ├─── Google Cloud Platform
     |    ├─── [Cloud Digital Leader](./exams/gcp/cloud-digital-leader/)
@@ -219,14 +230,14 @@ ASSOCIATE LEVEL
     |              📊 Difficulty: ⭐⭐⭐☆☆
     |              ⏱️ Study Time: 6-8 weeks (80-120 hours)
     |
-    ├─── ⚙️ SYSOPS / OPERATIONS
+    ├─── ⚙️ CLOUDOPS / OPERATIONS
     |    |
     |    ├─── AWS
-    |    |    └─── [SysOps Administrator (SOA-C02)](./exams/aws/associate/sysops-administrator-soa-c02/)
+    |    |    └─── [CloudOps Engineer (SOA-C03)](./exams/aws/associate/cloudops-engineer-soa-c03/) 🆕
     |    |         📊 Difficulty: ⭐⭐⭐☆☆
     |    |         ⏱️ Study Time: 8-10 weeks (100-150 hours)
     |    |         💰 Cost: $150 exam fee
-    |    |         ✅ Focus: Monitoring, troubleshooting, automation
+    |    |         ✅ Focus: Monitoring, automation, reliability (replaces SOA-C02)
     |    |
     |    ├─── Azure
     |    |    └─── [Azure Administrator (AZ-104)](./exams/azure/az-104/)
@@ -243,9 +254,16 @@ ASSOCIATE LEVEL
     |              📊 Difficulty: ⭐⭐⭐☆☆
     |              ⏱️ Study Time: 6-8 weeks (80-120 hours)
     |
-    └─── 📊 DATA ENGINEER / ANALYTICS
-         |
-         ├─── Azure
+    ├─── 📊 DATA ENGINEER / ANALYTICS
+    |    |
+    |    ├─── AWS
+    |    |    └─── [Data Engineer Associate (DEA-C01)](./exams/aws/associate/data-engineer-dea-c01/) 🆕
+    |    |         📊 Difficulty: ⭐⭐⭐☆☆
+    |    |         ⏱️ Study Time: 8-10 weeks (100-150 hours)
+    |    |         💰 Cost: $150 exam fee
+    |    |         ✅ Focus: Data pipelines, Glue, Redshift, Lake Formation
+    |    |
+    |    ├─── Azure
          |    ├─── [Data Engineer (DP-203)](./exams/azure/dp-203/)
          |    |    📊 Difficulty: ⭐⭐⭐⭐☆
          |    |    ⏱️ Study Time: 10-12 weeks (150-200 hours)
@@ -261,11 +279,30 @@ ASSOCIATE LEVEL
          |         ⏱️ Study Time: 6-8 weeks (80-120 hours)
          |         ✅ Focus: NoSQL, Cosmos DB
          |
+    |    └─── GCP
+    |         └─── [Professional Data Engineer](./exams/gcp/data-engineer/)
+    |              📊 Difficulty: ⭐⭐⭐⭐☆
+    |              ⏱️ Study Time: 10-12 weeks (150-200 hours)
+    |              🏆 Popular GCP Certification
+    |
+    └─── 🤖 ML ENGINEER / AI
+         |
+         ├─── AWS
+         |    └─── [ML Engineer Associate (MLA-C01)](./exams/aws/associate/ml-engineer-mla-c01/) 🆕
+         |         📊 Difficulty: ⭐⭐⭐☆☆
+         |         ⏱️ Study Time: 8-10 weeks (100-150 hours)
+         |         💰 Cost: $150 exam fee
+         |         ✅ Focus: SageMaker, model deployment, MLOps
+         |
+         ├─── Azure
+         |    └─── [Data Scientist (DP-100)](./exams/azure/dp-100/)
+         |         📊 Difficulty: ⭐⭐⭐☆☆
+         |         ⏱️ Study Time: 8-10 weeks (100-150 hours)
+         |
          └─── GCP
-              └─── [Professional Data Engineer](./exams/gcp/data-engineer/)
+              └─── [Professional ML Engineer](./exams/gcp/machine-learning-engineer/)
                    📊 Difficulty: ⭐⭐⭐⭐☆
-                   ⏱️ Study Time: 10-12 weeks (150-200 hours)
-                   🏆 Popular GCP Certification
+                   ⏱️ Study Time: 10-14 weeks (150-200 hours)
 ```
 
 ---
@@ -368,15 +405,14 @@ PROFESSIONAL / EXPERT LEVEL
     ├─── 📊 DATA SPECIALIST
     |    |
     |    ├─── AWS
-    |    |    ├─── [Data Analytics Specialty (DAS-C01)](./exams/aws/specialty/data-analytics-das-c01/)
-    |    |    |    📊 Difficulty: ⭐⭐⭐⭐☆
-    |    |    |    ⏱️ Study Time: 10-12 weeks (150-200 hours)
-    |    |    |    ✅ Focus: Data lakes, analytics services, visualization
+    |    |    ├─── [Data Engineer Associate (DEA-C01)](./exams/aws/associate/data-engineer-dea-c01/) 🆕
+    |    |    |    📊 Difficulty: ⭐⭐⭐☆☆
+    |    |    |    ⏱️ Study Time: 8-10 weeks (100-150 hours)
+    |    |    |    ✅ Focus: Data pipelines, Glue, Redshift, Lake Formation
     |    |    |
-    |    |    └─── [Database Specialty (DBS-C01)](./exams/aws/specialty/database-dbs-c01/)
-    |    |         📊 Difficulty: ⭐⭐⭐⭐☆
-    |    |         ⏱️ Study Time: 10-12 weeks (150-200 hours)
-    |    |         ✅ Focus: RDS, DynamoDB, Aurora, database migration
+    |    |    ├─── ~~[Data Analytics Specialty (DAS-C01)](./exams/aws/specialty/data-analytics-das-c01/)~~ ❌ RETIRED
+    |    |    |
+    |    |    └─── ~~[Database Specialty (DBS-C01)](./exams/aws/specialty/database-dbs-c01/)~~ ❌ RETIRED
     |    |
     |    ├─── Azure
     |    |    ├─── [Data Engineer (DP-203)](./exams/azure/dp-203/)
@@ -405,11 +441,13 @@ PROFESSIONAL / EXPERT LEVEL
     ├─── 🤖 AI/ML SPECIALIST
     |    |
     |    ├─── AWS
-    |    |    └─── [Machine Learning Specialty (MLS-C01)](./exams/aws/specialty/machine-learning-mls-c01/)
-    |    |         📊 Difficulty: ⭐⭐⭐⭐⭐
-    |    |         ⏱️ Study Time: 12-16 weeks (200-300 hours)
-    |    |         💰 Cost: $300 exam fee
-    |    |         ✅ Focus: SageMaker, model training, deployment
+    |    |    ├─── [GenAI Developer Professional (AIP-C01)](./exams/aws/professional/genai-developer-aip-c01/) 🆕
+    |    |    |    📊 Difficulty: ⭐⭐⭐⭐⭐
+    |    |    |    ⏱️ Study Time: 10-14 weeks (150-250 hours)
+    |    |    |    💰 Cost: $300 exam fee
+    |    |    |    ✅ Focus: Amazon Bedrock, RAG, agents, GenAI applications
+    |    |    |
+    |    |    └─── ~~[Machine Learning Specialty (MLS-C01)](./exams/aws/specialty/machine-learning-mls-c01/)~~ ⚠️ RETIRING March 2026
     |    |
     |    ├─── Azure
     |    |    ├─── [AI Engineer (AI-102)](./exams/azure/ai-102/)
@@ -522,7 +560,7 @@ PROFESSIONAL / EXPERT LEVEL
 **Total Time:** 6-10 weeks | **Cost:** ~$400 in exam fees
 
 #### Intermediate Track (6-18 months)
-1. **[AWS SysOps Administrator](./exams/aws/associate/sysops-administrator-soa-c02/)** (8-10 weeks)
+1. **[AWS CloudOps Engineer](./exams/aws/associate/cloudops-engineer-soa-c03/)** (8-10 weeks)
 2. **[Azure Administrator (AZ-104)](./exams/azure/az-104/)** (8-10 weeks)
 3. **[GCP Associate Cloud Engineer](./exams/gcp/cloud-engineer/)** (6-8 weeks)
 
@@ -554,19 +592,18 @@ PROFESSIONAL / EXPERT LEVEL
 **Total Time:** 3-6 weeks | **Cost:** ~$200 in exam fees
 
 #### Intermediate Track (6-18 months)
-1. **[Azure Data Engineer (DP-203)](./exams/azure/dp-203/)** (10-12 weeks)
-2. **[GCP Associate Cloud Engineer](./exams/gcp/cloud-engineer/)** (6-8 weeks)
+1. **[AWS Data Engineer Associate (DEA-C01)](./exams/aws/associate/data-engineer-dea-c01/)** (8-10 weeks)
+2. **[Azure Data Engineer (DP-203)](./exams/azure/dp-203/)** (10-12 weeks)
 3. **[Azure Database Administrator (DP-300)](./exams/azure/dp-300/)** (8-10 weeks)
 
-**Total Time:** 24-30 weeks | **Cost:** ~$495 in exam fees
+**Total Time:** 26-32 weeks | **Cost:** ~$480 in exam fees
 
 #### Advanced Track (18+ months)
 1. **[GCP Professional Data Engineer](./exams/gcp/data-engineer/)** (10-12 weeks)
-2. **[AWS Data Analytics Specialty](./exams/aws/specialty/data-analytics-das-c01/)** (10-12 weeks)
-3. **[AWS Database Specialty](./exams/aws/specialty/database-dbs-c01/)** (10-12 weeks)
-4. **[Azure Fabric Analytics Engineer (DP-600)](./exams/azure/dp-600/)** (10-12 weeks)
+2. **[Azure Fabric Analytics Engineer (DP-600)](./exams/azure/dp-600/)** (10-12 weeks)
+3. **[GCP Professional Cloud Database Engineer](./exams/gcp/cloud-database-engineer/)** (10-12 weeks)
 
-**Total Time:** 40-48 weeks | **Cost:** ~$1,065 in exam fees
+**Total Time:** 30-36 weeks | **Cost:** ~$625 in exam fees
 
 **📚 Additional Resources:**
 - [Data Engineer Roadmap](./resources/certification-roadmap-data-engineer.md)
@@ -750,27 +787,29 @@ Week 17-18: Final preparation and exam
 
 ### Multi-Certification Timeline Planning
 
-#### Example: AWS Associate Track (All 3 Certifications)
+#### Example: AWS Associate Track (All 5 Certifications)
 
 **Sequential Approach** (One at a time)
 ```
-Months 1-3:  Solutions Architect Associate (SAA-C03)
-Months 4-6:  Developer Associate (DVA-C02)
-Months 7-9:  SysOps Administrator (SOA-C02)
+Months 1-3:   Solutions Architect Associate (SAA-C03)
+Months 4-6:   Developer Associate (DVA-C02)
+Months 7-9:   CloudOps Engineer (SOA-C03)
+Months 10-12: Data Engineer (DEA-C01)
+Months 13-15: ML Engineer (MLA-C01)
 
-Total: 9 months
+Total: 15 months (pick 3 for a focused track)
 ```
 
-**Parallel Approach** (Overlap studies)
+**Parallel Approach** (Overlap studies — pick your top 3)
 ```
 Months 1-2:  SAA-C03 primary focus
 Month 3:     SAA-C03 final prep + DVA-C02 start
 Months 4-5:  DVA-C02 primary focus
-Month 6:     DVA-C02 final prep + SOA-C02 start
-Months 7-8:  SOA-C02 primary focus
-Month 9:     SOA-C02 final prep
+Month 6:     DVA-C02 final prep + SOA-C03 start
+Months 7-8:  SOA-C03 primary focus
+Month 9:     SOA-C03 final prep
 
-Total: 9 months (more intense but efficient)
+Total: 9 months for top 3 (more intense but efficient)
 ```
 
 ---

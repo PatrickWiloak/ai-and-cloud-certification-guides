@@ -1,4 +1,6 @@
-# AWS Certified SAP on AWS - Specialty (PAS-C01) Exam Guide
+# AWS Certified SAP on AWS - Specialty (PAS-C01) - RETIRED
+
+> **This certification was retired on April 8, 2024.** It is no longer available for new candidates. If you hold this certification, your credential remains valid for three years from the date earned. The study materials below are preserved for reference.
 
 ## Exam Overview
 

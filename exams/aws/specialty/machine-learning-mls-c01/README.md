@@ -1,4 +1,6 @@
-# AWS Certified Machine Learning - Specialty (MLS-C01) Exam Guide
+# AWS Certified Machine Learning - Specialty (MLS-C01) - RETIRING
+
+> **This certification retires on March 31, 2026.** After this date, it will no longer be available. Consider the **AWS Certified Machine Learning Engineer - Associate (MLA-C01)** or the **AWS Certified AI Practitioner (AIF-C01)** as replacement certifications. The study materials below remain available for those taking the exam before the retirement date.
 
 ## Exam Overview
 

@@ -2,9 +2,9 @@
 
 ## 📋 Overview
 
-This domain covers the observability pillar of cloud operations: monitoring infrastructure and application health, collecting and analyzing logs, tracing distributed systems, and optimizing performance. It is the largest domain by question count and represents the core competency of a CloudOps engineer.
+This domain covers the observability tools and techniques needed to monitor, log, and optimize AWS workloads. It is the foundation of cloud operations, ensuring you can detect issues, analyze root causes, and maintain performance across your infrastructure.
 
-## 🎯 Key Services
+## 🎯 Key Services and Concepts
 
 ### Amazon CloudWatch
 
@@ -12,26 +12,30 @@ This domain covers the observability pillar of cloud operations: monitoring infr
 
 #### CloudWatch Metrics
 
-- **Standard Metrics**: Automatically collected for AWS services (EC2 CPU, ELB request count, RDS connections)
-- **Custom Metrics**: Published via API, CLI, or CloudWatch agent (application-level data)
-- **High-Resolution Metrics**: 1-second granularity (standard is 5-minute for EC2, 1-minute for detailed monitoring)
-- **Metric Dimensions**: Name/value pairs that identify a metric (e.g., InstanceId, AutoScalingGroupName)
-- **Namespaces**: Containers for metrics (e.g., AWS/EC2, AWS/RDS, Custom/MyApp)
-- **Metric Math**: Perform calculations across metrics (e.g., error rate = errors / total requests)
+- **Standard Metrics**: Automatically collected for AWS services (EC2 CPU, EBS I/O, ELB requests)
+- **Custom Metrics**: Published via PutMetricData API or CloudWatch agent
+- **High-Resolution Metrics**: 1-second granularity (vs standard 1-minute or 5-minute)
+- **Namespaces**: Logical groupings (e.g., `AWS/EC2`, `AWS/RDS`, custom namespaces)
+- **Dimensions**: Name-value pairs that identify a metric (e.g., InstanceId, AutoScalingGroupName)
+- **Metric Math**: Combine metrics using mathematical expressions for derived insights
+- **Cross-Account Metrics**: Share metrics across accounts using CloudWatch cross-account observability
 
 **📖 [CloudWatch Metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/working_with_metrics.html)** - Working with metrics
 **📖 [Custom Metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html)** - Publishing custom metrics
 **📖 [Metric Math](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html)** - Metric calculations
 
-**Key EC2 Metrics to Know:**
-| Metric | Type | Notes |
-|--------|------|-------|
-| CPUUtilization | Standard | Percentage of allocated CPU |
-| NetworkIn/Out | Standard | Bytes transferred |
-| DiskReadOps/WriteOps | Standard | I/O operations count |
-| StatusCheckFailed | Standard | Instance and system status |
-| MemoryUtilization | Custom | Requires CloudWatch agent |
-| DiskSpaceUtilization | Custom | Requires CloudWatch agent |
+#### Key EC2 Metrics to Know
+
+| Metric | Type | Description |
+|--------|------|-------------|
+| CPUUtilization | Standard | Percentage of allocated CPU used |
+| NetworkIn/Out | Standard | Bytes transferred in/out |
+| DiskReadOps | Standard | Completed read operations (instance store) |
+| StatusCheckFailed | Standard | Instance and system status checks |
+| MemoryUtilization | **Custom** | Requires CloudWatch agent |
+| DiskSpaceUsed | **Custom** | Requires CloudWatch agent |
+
+> **Exam Tip:** Memory and disk space metrics are NOT standard EC2 metrics. They require the CloudWatch unified agent.
 
 #### CloudWatch Alarms
 
@@ -39,107 +43,123 @@ This domain covers the observability pillar of cloud operations: monitoring infr
 - **Composite Alarms**: Combine multiple alarms with AND/OR logic
 - **Alarm States**: OK, ALARM, INSUFFICIENT_DATA
 - **Alarm Actions**: SNS notifications, Auto Scaling actions, EC2 actions (stop, terminate, reboot, recover)
-- **Evaluation Periods**: Number of consecutive periods a metric must breach threshold
-- **Datapoints to Alarm**: Minimum breaching datapoints within evaluation window
+- **Evaluation Periods**: Number of consecutive periods the threshold must be breached
+- **Treat Missing Data**: Options include missing, notBreaching, breaching, ignore
 
 **📖 [CloudWatch Alarms](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html)** - Creating alarms
 **📖 [Composite Alarms](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Create_Composite_Alarm.html)** - Complex alarm logic
 
 #### CloudWatch Logs
 
-- **Log Groups**: Collection of log streams with shared retention and access settings
-- **Log Streams**: Sequence of log events from a single source
-- **Retention Policies**: 1 day to 10 years, or never expire
+- **Log Groups**: Logical containers for log streams (e.g., one per application)
+- **Log Streams**: Individual sequences of log events (e.g., one per instance)
+- **Retention Policies**: Configure from 1 day to 10 years or never expire
 - **Metric Filters**: Extract metric data from log events using filter patterns
-- **Subscription Filters**: Real-time feed to Lambda, Kinesis, or Firehose
+- **Subscription Filters**: Stream logs to Lambda, Kinesis, or Firehose in real time
+- **Log Insights**: SQL-like query language for interactive log analysis
 - **Cross-Account Log Aggregation**: Centralize logs from multiple accounts
 
-**📖 [CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html)** - Log management
+**📖 [CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html)** - Log service
+**📖 [Logs Insights](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html)** - Query and analyze logs
 **📖 [Metric Filters](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/MonitoringLogData.html)** - Extract metrics from logs
-**📖 [Subscription Filters](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/SubscriptionFilters.html)** - Real-time log processing
 
-#### CloudWatch Logs Insights
+#### CloudWatch Logs Insights - Key Query Syntax
 
-- Query language for interactive log analysis
-- Common query patterns:
-  - Filter by field values
-  - Parse unstructured log data
-  - Aggregate statistics (count, sum, avg, min, max)
-  - Sort and limit results
-  - Visualize with time-series graphs
+```
+# Find top 20 most recent error messages
+fields @timestamp, @message
+| filter @message like /ERROR/
+| sort @timestamp desc
+| limit 20
 
-**📖 [CloudWatch Logs Insights](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html)** - Query and analyze logs
-**📖 [Logs Insights Query Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html)** - Query language reference
+# Count errors per hour
+fields @timestamp
+| filter @message like /ERROR/
+| stats count() as errorCount by bin(1h)
 
-#### CloudWatch Agent
+# Parse and aggregate structured logs
+fields @timestamp, @message
+| parse @message "StatusCode: *" as statusCode
+| stats count() by statusCode
+```
 
-- **Unified Agent**: Collects both metrics and logs from EC2 and on-premises servers
-- Collects OS-level metrics not available by default (memory, disk, swap)
-- Sends application and system logs to CloudWatch Logs
-- Configuration via JSON file or Systems Manager Parameter Store
+#### CloudWatch Unified Agent
+
+- Collects both metrics and logs from EC2 instances and on-premises servers
+- Configured via JSON configuration file or Systems Manager Parameter Store
+- Collects OS-level metrics (memory, disk, swap, netstat, processes)
 - Supports StatsD and collectd protocols for custom metrics
+- Runs on Linux and Windows
 
 **📖 [CloudWatch Agent](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html)** - Agent installation
-**📖 [Agent Configuration](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html)** - Configuration reference
+**📖 [Agent Configuration](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html)** - Configuration file
+
+#### CloudWatch Dashboards
+
+- Custom visualizations of metrics and logs
+- Cross-account and cross-region dashboards
+- Automatic dashboards for AWS services
+- Shareable via dashboard sharing or CloudWatch console
 
 ---
 
 ### AWS CloudTrail
 
-**📖 [AWS CloudTrail](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html)** - API activity logging
+**📖 [AWS CloudTrail](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html)** - API logging and auditing
 
 #### Event Types
 
-- **Management Events**: Control plane operations (CreateBucket, RunInstances, CreateUser)
-  - Read events: Describe*, List*, Get*
-  - Write events: Create*, Delete*, Put*, Update*
-- **Data Events**: Data plane operations (S3 GetObject/PutObject, Lambda Invoke, DynamoDB GetItem)
-  - Must be explicitly enabled (not logged by default)
-  - Higher volume, additional cost
-- **Insights Events**: Detect unusual API activity patterns (call rate anomalies, error rate anomalies)
-
-**📖 [CloudTrail Events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-events-with-cloudtrail.html)** - Event types
-**📖 [CloudTrail Insights](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-insights-events-with-cloudtrail.html)** - Anomaly detection
+| Event Type | Description | Example |
+|-----------|-------------|---------|
+| **Management Events** | Control plane operations | CreateBucket, RunInstances, CreateUser |
+| **Data Events** | Data plane operations | GetObject, PutItem, InvokeFunction |
+| **Insights Events** | Anomalous API activity | Unusual volume of API calls |
 
 #### Trail Configuration
 
-- **Organization Trail**: Logs events for all accounts in AWS Organizations
-- **Multi-Region Trail**: Applies to all regions (recommended)
-- **Log File Integrity**: SHA-256 digest files for tamper detection
-- **S3 Delivery**: Logs delivered to S3 bucket with configurable prefix
-- **CloudWatch Logs Integration**: Stream events to CloudWatch for real-time alerting
-- **EventBridge Integration**: Trigger automated responses to API events
+- **Single-Region Trail**: Logs events in one region
+- **Multi-Region Trail**: Logs events across all regions (recommended)
+- **Organization Trail**: Logs events for all accounts in an organization
+- **Log File Integrity Validation**: SHA-256 hashing to detect tampering
+- **Log File Encryption**: SSE-KMS encryption for trail logs in S3
 
 **📖 [Creating Trails](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html)** - Trail setup
-**📖 [Log File Integrity](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-log-file-validation-intro.html)** - Tamper detection
+**📖 [CloudTrail Insights](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-insights-events-with-cloudtrail.html)** - Anomaly detection
+
+#### CloudTrail Integration
+
+- **CloudWatch Logs**: Stream trail events for real-time analysis and alarming
+- **EventBridge**: Trigger automated responses to specific API calls
+- **S3**: Store trail logs for long-term retention and analysis
+- **Athena**: Query trail logs using standard SQL
 
 ---
 
 ### AWS X-Ray
 
-**📖 [AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html)** - Distributed tracing
+**📖 [AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html)** - Distributed tracing service
 
 #### Core Concepts
 
-- **Traces**: End-to-end request tracking across services
+- **Traces**: End-to-end request path through distributed application
 - **Segments**: Work done by a single service for a request
-- **Subsegments**: Granular timing for downstream calls (AWS SDK, HTTP, SQL)
+- **Subsegments**: Downstream calls made within a segment (e.g., DB queries, HTTP calls)
 - **Annotations**: Indexed key-value pairs for filtering traces
-- **Metadata**: Non-indexed data for additional context
-- **Service Map**: Visual representation of application architecture and latencies
-
-**📖 [X-Ray Concepts](https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html)** - Core concepts
-**📖 [Service Maps](https://docs.aws.amazon.com/xray/latest/devguide/xray-console.html#xray-console-servicemap)** - Visualizing architecture
+- **Metadata**: Non-indexed data attached to segments
+- **Service Map**: Visual representation of application architecture and dependencies
 
 #### X-Ray Configuration
 
-- **X-Ray Daemon**: Listens on UDP port 2000, batches and sends trace data
-- **X-Ray SDK**: Instrument code to create segments and subsegments
-- **Sampling Rules**: Control trace volume (default: first request each second + 5% thereafter)
-- **Groups**: Filter traces by expression for focused analysis
+- **X-Ray Daemon**: Listens on UDP port 2000, batches and sends trace data to X-Ray API
+- **X-Ray SDK**: Instrument application code to generate trace data
+- **Sampling Rules**: Control the volume of traces collected (reservoir + fixed rate)
+- **Groups**: Filter and organize traces by criteria
 
+**📖 [X-Ray Concepts](https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html)** - Tracing concepts
 **📖 [X-Ray Daemon](https://docs.aws.amazon.com/xray/latest/devguide/xray-daemon.html)** - Daemon setup
-**📖 [Sampling Rules](https://docs.aws.amazon.com/xray/latest/devguide/xray-console-sampling.html)** - Control trace volume
+**📖 [Service Maps](https://docs.aws.amazon.com/xray/latest/devguide/xray-console.html#xray-console-servicemap)** - Visualizing services
+
+> **Exam Tip:** X-Ray integrates natively with Lambda (enable Active Tracing), API Gateway (enable X-Ray tracing in stage settings), and ECS (sidecar container pattern).
 
 ---
 
@@ -147,83 +167,110 @@ This domain covers the observability pillar of cloud operations: monitoring infr
 
 **📖 [VPC Flow Logs](https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html)** - Network traffic logging
 
-#### Flow Log Configuration
+#### Flow Log Levels
 
-- **Capture Points**: VPC level, subnet level, or ENI level
-- **Destinations**: CloudWatch Logs, S3, or Kinesis Data Firehose
-- **Record Format**: Default or custom fields
-- **Filter**: ALL traffic, ACCEPT only, or REJECT only
-- **Key Fields**: Source/destination IP, ports, protocol, action (ACCEPT/REJECT), bytes, packets
+- **VPC Level**: Capture all traffic in the VPC
+- **Subnet Level**: Capture traffic for specific subnets
+- **ENI Level**: Capture traffic for specific network interfaces
 
-#### Common Troubleshooting Patterns
+#### Key Fields
 
-| Symptom | Flow Log Shows | Likely Cause |
-|---------|----------------|--------------|
-| Cannot reach instance | REJECT on inbound | Security group or NACL blocking |
-| Instance cannot reach internet | REJECT on outbound | No NAT Gateway or route |
-| Intermittent connectivity | Mix of ACCEPT/REJECT | NACL rules (stateless) |
-| No flow log entries | N/A | Flow logs not enabled or wrong level |
+- Source/destination IP addresses and ports
+- Protocol number
+- Packets and bytes transferred
+- Action (ACCEPT or REJECT)
+- Log status
+
+#### Destinations
+
+- CloudWatch Logs
+- S3 bucket
+- Kinesis Data Firehose
+
+> **Exam Tip:** Flow Logs do NOT capture DNS traffic to Route 53 Resolver, DHCP traffic, or traffic to the instance metadata service (169.254.169.254).
 
 ---
 
 ### AWS Config
 
-**📖 [AWS Config](https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html)** - Configuration tracking and compliance
+**📖 [AWS Config](https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html)** - Configuration management and compliance
 
-#### Key Features
+#### Core Features
 
-- **Configuration Recorder**: Records resource configuration changes
-- **Configuration History**: Timeline of resource configuration states
-- **Config Rules**: Evaluate resource configurations against desired state
-  - **Managed Rules**: Pre-built rules (e.g., s3-bucket-versioning-enabled, ec2-instance-no-public-ip)
-  - **Custom Rules**: Lambda-based evaluation logic
-- **Conformance Packs**: Collection of Config rules and remediation actions as a single entity
-- **Remediation Actions**: Automatic fixes via SSM Automation documents
-- **Aggregator**: Multi-account, multi-region compliance view
+- **Configuration Recorder**: Records resource configurations and changes
+- **Configuration History**: Timeline of configuration changes per resource
+- **Config Rules**: Evaluate resource configurations against desired settings
+  - **Managed Rules**: Pre-built rules maintained by AWS (100+ available)
+  - **Custom Rules**: Lambda-backed rules for organization-specific requirements
+- **Conformance Packs**: Collections of Config rules and remediation actions
+- **Aggregator**: Aggregate Config data across accounts and regions
+- **Remediation Actions**: Automatic remediation using SSM Automation documents
 
-**📖 [Config Rules](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html)** - Compliance evaluation
+**📖 [Config Rules](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html)** - Compliance checks
 **📖 [Conformance Packs](https://docs.aws.amazon.com/config/latest/developerguide/conformance-packs.html)** - Compliance frameworks
 **📖 [Remediation](https://docs.aws.amazon.com/config/latest/developerguide/remediation.html)** - Auto-remediation
 
 ---
 
-## 📚 Performance Optimization
+### AWS Systems Manager
 
-### EC2 Performance
+**📖 [AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html)** - Operations hub
 
-- **Right-Sizing**: Use Compute Optimizer to match instance type to workload
-- **Enhanced Networking**: ENA for up to 100 Gbps, EFA for HPC
-- **Placement Groups**: Cluster (low latency), spread (fault tolerance), partition (large distributed systems)
-- **EBS Optimization**: Choose appropriate volume type (gp3, io2, st1, sc1)
+#### Key Components
 
-**📖 [Compute Optimizer](https://docs.aws.amazon.com/compute-optimizer/latest/ug/what-is-compute-optimizer.html)** - Right-sizing
-**📖 [Placement Groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)** - Instance placement
+| Component | Purpose |
+|-----------|---------|
+| **Session Manager** | Secure shell access without SSH keys or bastion hosts |
+| **Run Command** | Execute commands across fleet of instances remotely |
+| **Patch Manager** | Automate OS and software patching with patch baselines |
+| **Parameter Store** | Centralized configuration and secrets management |
+| **State Manager** | Maintain desired state configuration |
+| **Inventory** | Collect metadata about instances and installed software |
+| **OpsCenter** | Centralized operational issue management |
+| **Automation** | Runbooks for common operational tasks |
 
-### Database Performance
+**📖 [Session Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html)** - Secure shell access
+**📖 [Run Command](https://docs.aws.amazon.com/systems-manager/latest/userguide/execute-remote-commands.html)** - Remote commands
+**📖 [Patch Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager.html)** - Patch management
+**📖 [Parameter Store](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html)** - Configuration management
 
-- **RDS Proxy**: Connection pooling for Lambda and applications with many connections
-- **DynamoDB DAX**: In-memory cache, microsecond read latency
-- **Aurora Serverless v2**: Auto-scales capacity based on demand
-- **Read Replicas**: Offload read traffic from primary database
+#### Parameter Store vs Secrets Manager
 
-**📖 [RDS Proxy](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-proxy.html)** - Connection pooling
-**📖 [DynamoDB DAX](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.html)** - In-memory cache
+| Feature | Parameter Store | Secrets Manager |
+|---------|----------------|-----------------|
+| Cost | Free (standard) | $0.40/secret/month |
+| Rotation | Manual | Automatic with Lambda |
+| Max Size | 8 KB (advanced) | 64 KB |
+| Cross-Account | Via IAM policies | Native support |
+| Best For | Configuration data | Database credentials, API keys |
 
-### Storage Performance
-
-- **S3 Transfer Acceleration**: Speed up uploads using CloudFront edge locations
-- **S3 Multipart Upload**: Parallel upload of large objects
-- **EBS Volume Types**: gp3 (balanced), io2 (high IOPS), st1 (throughput), sc1 (cold)
-- **Instance Store**: Highest I/O performance but ephemeral
+> **Exam Tip:** Systems Manager requires the SSM Agent installed on instances and an IAM instance profile with the `AmazonSSMManagedInstanceCore` policy.
 
 ---
 
-## 🎯 Exam Tips for Domain 1
+## 📚 Performance Optimization
 
-1. **Know which metrics require the CloudWatch agent** (memory, disk space)
-2. **Understand alarm evaluation**: periods, datapoints to alarm, missing data treatment
-3. **CloudTrail**: Know the difference between management events, data events, and insights
-4. **X-Ray**: Understand when to use annotations (indexed, searchable) vs metadata (not indexed)
-5. **Config vs CloudTrail**: Config tracks resource configurations; CloudTrail tracks API calls
-6. **VPC Flow Logs**: Cannot capture actual packet content, only metadata
-7. **Systems Manager**: Know Session Manager (no SSH needed), Run Command (remote execution), Patch Manager (OS patching)
+### Compute Optimizer
+
+**📖 [Compute Optimizer](https://docs.aws.amazon.com/compute-optimizer/latest/ug/what-is-compute-optimizer.html)** - Right-sizing recommendations
+
+- Analyzes CloudWatch metrics to recommend optimal instance types
+- Covers EC2, Auto Scaling groups, EBS volumes, Lambda functions, ECS on Fargate
+- Provides savings estimates for over-provisioned resources
+
+### Trusted Advisor
+
+**📖 [AWS Trusted Advisor](https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor.html)** - Best practice checks
+
+- Cost optimization, performance, security, fault tolerance, service limits
+- Basic checks available to all accounts; full checks require Business or Enterprise Support
+
+---
+
+## Key Exam Scenarios
+
+1. **EC2 instance running out of memory** - Install CloudWatch unified agent to collect memory metrics; create CloudWatch alarm with Auto Scaling action
+2. **Tracking API changes for compliance** - Enable CloudTrail with multi-region trail; enable log file integrity validation; deliver to S3 with KMS encryption
+3. **Diagnosing slow API responses** - Enable X-Ray tracing on API Gateway and Lambda; use service map to identify bottlenecks
+4. **Ensuring resources meet compliance standards** - Use AWS Config rules with automatic remediation via SSM Automation
+5. **Centralizing logs from multiple accounts** - Use CloudWatch cross-account observability or CloudTrail organization trail

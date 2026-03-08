@@ -1,286 +1,305 @@
-# AI Agents - AB-900
+# AI Agents - Study Notes (AB-900 Domain 3: 20-25%)
 
 ## What are AI Agents?
 
-AI agents are autonomous or semi-autonomous software entities that can perceive their environment, reason about information, and take actions to achieve specific goals. Unlike traditional chatbots that follow scripted paths, agents can adapt their behavior, chain multiple steps together, and operate with varying degrees of independence.
+AI agents are autonomous or semi-autonomous software entities that can perceive their environment, reason about information, and take actions to achieve specific goals. Unlike traditional automation that follows rigid, pre-defined rules, AI agents use large language models and other AI capabilities to make decisions dynamically based on context.
 
-**[📖 Introduction to AI Agents](https://learn.microsoft.com/en-us/microsoft-copilot-studio/concept-agents)** - Understanding AI agent concepts in the Microsoft ecosystem.
+In the Microsoft ecosystem, agents combine AI models with business logic, data access, and automation capabilities to perform work on behalf of users and organizations.
 
-**[📖 AI Agents in Microsoft 365](https://learn.microsoft.com/en-us/copilot/microsoft-365/microsoft-365-copilot-agents-overview)** - Overview of agent capabilities in Microsoft 365.
+**[Introduction to AI Agents](https://learn.microsoft.com/en-us/microsoft-copilot-studio/concept-agents)** - Agent concepts in the Microsoft ecosystem.
 
-## Agent Fundamentals
+**[AI Agents in Microsoft 365](https://learn.microsoft.com/en-us/copilot/microsoft-365/microsoft-365-copilot-agents-overview)** - Overview of agent capabilities in Microsoft 365.
 
-### Key Characteristics of AI Agents
+---
 
-#### Autonomy
-- **Definition:** The ability to operate independently without constant human direction
-- **Spectrum:** Ranges from fully guided (human approves every action) to fully autonomous (acts independently)
-- **In Practice:** Most enterprise agents operate with bounded autonomy, where guardrails limit what they can do
+## Agent Concepts and Characteristics
 
-#### Perception
-- **Definition:** The ability to observe and interpret inputs from the environment
-- **Sources:** User messages, system events, data changes, sensor readings, API responses
-- **Processing:** Agents use AI models to understand and contextualize what they perceive
+### Five Key Characteristics of AI Agents
 
-#### Reasoning
-- **Definition:** Using AI models to analyze information and make decisions
-- **Capabilities:** Intent understanding, context evaluation, plan generation, risk assessment
-- **Models:** Leverages large language models and other AI systems for decision-making
+1. **Autonomy** - Ability to operate independently without constant human intervention. Agents can initiate actions, make decisions, and execute multi-step tasks with varying degrees of independence.
 
-#### Action
-- **Definition:** The ability to execute tasks and interact with systems
-- **Types:** Sending messages, calling APIs, creating records, triggering workflows, generating content
-- **Scope:** Actions are bounded by the agent's permissions and configured capabilities
+2. **Perception** - Capacity to observe and interpret inputs from their environment. This includes reading data from systems, monitoring events, processing user messages, and interpreting context.
 
-#### Memory
-- **Definition:** Maintaining context and learning from past interactions
-- **Short-term:** Conversation context within a single session
-- **Long-term:** Stored preferences, past interactions, and accumulated knowledge
-- **Organizational:** Access to shared knowledge bases and organizational data
+3. **Reasoning** - Using AI models to analyze information, evaluate options, and make decisions. Agents apply logic and AI inference to determine the best course of action.
 
-### Agent vs Copilot
+4. **Action** - Executing tasks and interacting with systems to achieve goals. Agents can call APIs, update records, send messages, trigger workflows, and perform other operations.
 
-Understanding the distinction is important for the AB-900 exam:
+5. **Memory** - Maintaining context across interactions and learning from past experiences. Agents retain conversation history, user preferences, and previous outcomes to improve future responses.
+
+### Agents vs Copilots
+
+Understanding the distinction between agents and copilots is critical for the AB-900 exam:
 
 | Aspect | Copilot | Agent |
 |--------|---------|-------|
-| **Primary Mode** | Assists humans; augments productivity | Can operate independently on tasks |
-| **Human Involvement** | Human-in-the-loop; user drives the interaction | Can be human-on-the-loop or fully autonomous |
-| **Interaction** | Responds to explicit user prompts | Can be proactive; responds to events and triggers |
-| **Decision Making** | Suggests; human decides | Can decide and act within defined boundaries |
-| **Scope** | Typically single-task focused per prompt | Can handle multi-step, complex workflows |
-| **Example** | Copilot drafts an email for you to review | Agent monitors inbox and auto-responds to routine inquiries |
+| **Human involvement** | Human-in-the-loop; user reviews and approves | Can operate with minimal human oversight |
+| **Autonomy level** | Assistive -- augments human work | Semi-autonomous to fully autonomous |
+| **Interaction model** | User initiates requests | Can be event-driven or proactive |
+| **Decision making** | Suggests; human decides | Can decide and act independently |
+| **Scope** | Typically single-task assistance | Can chain multiple steps and decisions |
+| **Example** | Copilot drafts an email for user review | Agent monitors inbox and auto-responds to routine queries |
 
-**Important:** Copilots and agents exist on a continuum. A copilot can be enhanced with agent-like capabilities, and agents often include copilot-like conversational features.
+Key exam point: Agents and copilots exist on a **continuum** -- not a binary distinction. Some solutions blend both patterns depending on the task complexity and risk level.
 
-## Types of Agents
+---
+
+## Types of AI Agents
 
 ### Conversational Agents
 
-#### Description
-- Interact with users through natural language conversation
-- Answer questions, provide guidance, and fulfill requests
-- Rely on AI language understanding and generation
+Conversational agents interact with users through natural language dialogue.
 
-#### Characteristics
-- **User-Initiated:** Typically activated by a user asking a question or making a request
-- **Interactive:** Engage in back-and-forth dialogue to clarify and assist
-- **Knowledge-Driven:** Draw from knowledge bases, documents, and data to respond
+**Characteristics:**
+- Respond to user messages in real time
+- Maintain conversation context across multiple turns
+- Can answer questions, provide guidance, and complete requests
+- Typically human-in-the-loop (users guide the interaction)
 
-#### Examples
-- Customer service agents answering product questions
-- IT helpdesk agents guiding users through troubleshooting
-- HR agents answering policy and benefits questions
-- Internal knowledge agents for employee onboarding
+**Examples:**
+- Customer service chatbots handling product inquiries
+- IT helpdesk assistants that troubleshoot common issues
+- HR FAQ bots answering employee policy questions
+- Sales assistants providing product recommendations
 
-#### Building Conversational Agents
-- **Copilot Studio:** Low-code platform with topics, actions, and generative answers
-- **Bot Framework:** Code-first approach for complex conversational experiences
-- **Power Virtual Agents:** Now part of Copilot Studio
-
-**[📖 Build Conversational Agents](https://learn.microsoft.com/en-us/microsoft-copilot-studio/fundamentals-what-is-copilot-studio)** - Creating agents with Copilot Studio.
+**Built with:** Copilot Studio, Bot Framework, or Azure AI Bot Service
 
 ### Task-Based Agents
 
-#### Description
-- Execute specific workflows and business processes
-- Focus on completing defined tasks efficiently
-- Often triggered by events rather than user conversations
+Task-based agents execute specific workflows and business processes.
 
-#### Characteristics
-- **Event-Driven:** Triggered by data changes, schedules, or system events
-- **Process-Oriented:** Follow defined workflows with branching logic
-- **System-Integrated:** Connect to multiple business systems via APIs and connectors
-- **Measurable:** Track task completion rates and efficiency metrics
+**Characteristics:**
+- Focused on completing defined tasks or workflows
+- Triggered by events, schedules, or user requests
+- Integrate with business systems via connectors and APIs
+- Follow structured processes with decision points
 
-#### Examples
-- Invoice processing: Receive invoice, extract data, validate, route for approval
-- Order fulfillment: Monitor orders, check inventory, initiate shipping
-- Employee onboarding: Create accounts, assign licenses, send welcome materials
-- Data entry: Extract information from documents and populate business systems
+**Examples:**
+- Invoice processing agent that extracts data and routes for approval
+- Order fulfillment agent that tracks inventory and updates shipping
+- Data entry automation that validates and imports records
+- Report generation agent that compiles data from multiple sources
 
 ### Autonomous Agents
 
-#### Description
-- Operate with minimal human oversight once configured
+Autonomous agents operate with minimal human oversight, proactively monitoring and acting.
+
+**Characteristics:**
+- Operate independently once configured
 - Monitor conditions and take proactive action
-- Chain multiple decisions and steps together independently
+- Chain multiple steps and decisions together
+- Handle exceptions and edge cases using AI reasoning
+- May request human input only for high-risk decisions
 
-#### Characteristics
-- **Proactive:** Initiate actions based on conditions without waiting for user input
-- **Self-Directing:** Determine the best course of action based on context
-- **Multi-Step:** Execute complex sequences of actions to achieve goals
-- **Adaptive:** Adjust behavior based on outcomes and changing conditions
+**Examples:**
+- Incident response agent that detects, diagnoses, and remediates IT issues
+- Supply chain optimization agent that adjusts orders based on demand signals
+- Security monitoring agent that identifies and responds to threats
+- Customer retention agent that identifies at-risk accounts and initiates outreach
 
-#### Examples
-- Incident response: Detect anomalies, diagnose issues, apply remediation, notify stakeholders
-- Supply chain optimization: Monitor inventory, predict demand, reorder supplies
-- Security monitoring: Detect threats, assess severity, initiate containment, alert security team
-- Content moderation: Monitor submissions, classify content, apply policies, escalate when needed
+### The Autonomy Spectrum
 
-#### Guardrails for Autonomous Agents
-- **Scope Limitations:** Define what the agent can and cannot do
-- **Approval Gates:** Require human approval for high-impact actions
-- **Monitoring:** Track agent actions and outcomes in audit logs
-- **Kill Switch:** Ability to disable or pause agents immediately
-- **Ethical Boundaries:** Responsible AI principles embedded in agent behavior
+Agents operate on a continuum from fully guided to fully autonomous:
 
-## Agent Orchestration
-
-### What is Orchestration?
-
-Orchestration is the process of coordinating multiple agents or agent capabilities to complete complex tasks. It involves managing the flow of information, sequencing of actions, error handling, and ensuring that the overall goal is achieved.
-
-**[📖 Agent Orchestration Concepts](https://learn.microsoft.com/en-us/microsoft-copilot-studio/concept-agent-orchestration)** - Understanding agent coordination and management.
-
-### Orchestration Patterns
-
-#### Sequential Orchestration
 ```
-Agent A → Agent B → Agent C → Result
+Guided          Assistive         Semi-Autonomous      Autonomous
+|----------------|-----------------|---------------------|
+Human controls   Human reviews     Human oversees        Minimal human
+every step       AI suggestions    AI executes with      involvement;
+                                   checkpoints           AI decides and acts
 ```
-- **How It Works:** Agents execute tasks in a defined order, each passing output to the next
-- **When to Use:** When tasks have clear dependencies and must happen in sequence
-- **Example:** Customer refund process: Validate request → Check eligibility → Process refund → Send confirmation
 
-#### Parallel Orchestration
-```
-         ┌→ Agent A ─┐
-Input ───┼→ Agent B ──┼→ Aggregate → Result
-         └→ Agent C ─┘
-```
-- **How It Works:** Multiple agents work simultaneously on different aspects of a task
-- **When to Use:** When tasks are independent and can be performed concurrently
-- **Example:** New hire setup: Create email account + Provision laptop + Schedule orientation (all in parallel)
+The appropriate autonomy level depends on:
+- **Risk level** of the tasks being performed
+- **Complexity** of the decisions required
+- **Regulatory requirements** for human oversight
+- **Organizational trust** in the AI system
+- **Impact** of errors or incorrect actions
 
-#### Hierarchical Orchestration
-```
-         Primary Agent
-        /      |      \
-   Agent A  Agent B  Agent C
-```
-- **How It Works:** A primary (orchestrator) agent delegates tasks to specialized sub-agents
-- **When to Use:** When a complex task requires different specialized capabilities
-- **Example:** Customer inquiry: Orchestrator routes to billing agent, technical support agent, or sales agent based on intent
+---
 
-#### Event-Driven Orchestration
-```
-Event → Trigger → Agent responds → May trigger other agents
-```
-- **How It Works:** Agents respond to triggers and events independently, and their actions may trigger other agents
-- **When to Use:** When workflows are driven by real-time events and conditions
-- **Example:** System alert triggers monitoring agent → escalates to remediation agent → notifies operations agent
+## Agent Orchestration Patterns
 
-### Orchestration Considerations
-- **Error Handling:** Define what happens when an agent fails or produces unexpected results
-- **Timeout Management:** Set time limits for agent responses and actions
-- **Conflict Resolution:** Handle situations where agents produce conflicting recommendations
-- **Logging and Auditing:** Track the full orchestration chain for troubleshooting and compliance
-- **Human Escalation:** Define when and how to involve humans in the orchestration flow
+### What is Agent Orchestration?
 
-## Agents in Microsoft 365
+Orchestration is the coordination of multiple agents or agent capabilities to complete complex tasks. It involves managing the flow of information, sequencing of actions, error handling, and balancing autonomy with human oversight.
 
-### Declarative Agents
+**[Agent Orchestration Concepts](https://learn.microsoft.com/en-us/microsoft-copilot-studio/concept-agent-orchestration)** - How agents are coordinated and managed.
 
-#### What are Declarative Agents?
-Declarative agents are custom agents defined through configuration rather than code. They extend Microsoft 365 Copilot with specific instructions, knowledge sources, and actions tailored to particular business domains or tasks.
+### Four Orchestration Patterns
 
-**[📖 Declarative Agents for Microsoft 365 Copilot](https://learn.microsoft.com/en-us/copilot/microsoft-365/copilot-declarative-agents)** - Building declarative agents to extend Copilot.
+#### 1. Sequential Orchestration
+- Agents execute tasks in a **defined order**, one after another
+- Output of one agent becomes input for the next
+- Simplest pattern, suitable for linear workflows
+- Example: Data collection agent > Validation agent > Processing agent > Notification agent
 
-#### Key Components
-- **Instructions:** Custom system prompts that define the agent's personality, scope, and behavior
-- **Knowledge:** Specific data sources the agent can access (SharePoint sites, files, Graph connectors)
-- **Actions:** Capabilities the agent can perform (API calls, plugins, connectors)
-- **Scoping:** Limits on what data and actions the agent can access
+#### 2. Parallel Orchestration
+- Multiple agents work **simultaneously** on different aspects of a task
+- Results are aggregated when all agents complete
+- Improves performance for independent sub-tasks
+- Example: Simultaneously querying multiple data sources, then combining results
 
-#### How to Build Declarative Agents
-- **Copilot Studio:** Visual, low-code approach for building declarative agents
-- **Teams Toolkit:** Developer-focused approach using JSON manifests and code
-- **Microsoft 365 Admin Center:** Configure and manage agents at the organizational level
+#### 3. Hierarchical Orchestration
+- A **primary (orchestrator) agent** delegates tasks to specialized sub-agents
+- The orchestrator manages coordination, aggregation, and decision-making
+- Sub-agents report results back to the orchestrator
+- Example: A project management agent delegates to scheduling, resource, and budget sub-agents
 
-#### Use Cases
-- **Department-Specific Agent:** An HR agent that knows company policies and can answer HR questions
-- **Project Agent:** A project management agent with access to specific project documents and data
-- **IT Support Agent:** An agent that can troubleshoot common IT issues using knowledge base articles
-- **Sales Assistant:** An agent that accesses CRM data and helps with customer preparation
+#### 4. Event-Driven Orchestration
+- Agents respond to **triggers and events** independently
+- No centralized controller; agents react to conditions in their environment
+- Loose coupling between agents
+- Example: A file upload event triggers a document analysis agent, which triggers a compliance check agent, which triggers a notification agent
+
+### Multi-Agent Coordination
+
+When multiple agents work together:
+- **Shared context:** Agents need access to common data and conversation state
+- **Conflict resolution:** Handling contradictory outputs from different agents
+- **Error propagation:** Managing failures that affect downstream agents
+- **Resource management:** Avoiding duplication of effort or data conflicts
+
+### Human Oversight in Orchestration
+
+Even in automated multi-agent systems, human oversight remains important:
+- **Approval gates:** Human review required before high-impact actions
+- **Escalation paths:** Agents can hand off to humans when confidence is low
+- **Audit trails:** All agent actions are logged for review
+- **Kill switches:** Administrators can pause or stop agent execution
+- **Boundary setting:** Define what agents can and cannot do
+
+---
+
+## Microsoft Copilot Studio Agents
+
+### Building Agents with Copilot Studio
+
+Copilot Studio is Microsoft's primary platform for building agents in the M365 ecosystem.
+
+**Agent authoring capabilities:**
+- Define agent instructions and persona
+- Configure knowledge sources (SharePoint, websites, Dataverse, files)
+- Create topics for structured conversation flows
+- Add actions via Power Automate, connectors, and APIs
+- Enable generative AI for dynamic responses and action selection
+- Set up triggers for autonomous activation
+
+**[Build Agents with Copilot Studio](https://learn.microsoft.com/en-us/microsoft-copilot-studio/concept-agent-building)** - Creating agents using the platform.
+
+### Declarative Agents for Microsoft 365 Copilot
+
+Declarative agents are a specific type of agent that extends Microsoft 365 Copilot:
+
+- **Configuration-based:** Defined through declarations (instructions, knowledge, actions) rather than code
+- **Extend M365 Copilot:** Appear within the Copilot experience as specialized assistants
+- **Domain-scoped:** Focused on specific business areas (e.g., "HR Policy Agent," "IT Support Agent")
+- **Created using:** Copilot Studio or Teams Toolkit
+
+**Key components of a declarative agent:**
+1. **Instructions:** Natural language description of the agent's role and behavior
+2. **Knowledge:** Data sources the agent can access (SharePoint, Graph connectors, etc.)
+3. **Actions:** Capabilities the agent can perform (API plugins, Power Automate flows)
+
+**[Declarative Agents for Microsoft 365 Copilot](https://learn.microsoft.com/en-us/copilot/microsoft-365/copilot-declarative-agents)** - Building declarative agents.
 
 ### Agents in Microsoft Teams
 
-#### Capabilities
-- Deploy agents directly within Teams for easy access
-- Access team conversations, files, and contextual data
-- Respond to @mentions in channels and group chats
-- Support adaptive cards for rich interactive responses
-- Integrate with Teams workflows and approvals
+Agents can be deployed directly within Microsoft Teams:
 
-**[📖 Agents in Microsoft Teams](https://learn.microsoft.com/en-us/microsoftteams/platform/bots/what-are-bots)** - Building and deploying agents in Teams.
+- Access team conversations, files, and data
+- Automate team workflows and send notifications
+- Provide contextual assistance within channels
+- Respond to @mentions and direct messages
+- Participate in meetings and channels as a team member
 
-#### Teams Agent Scenarios
-- Team-level FAQ agent for new member onboarding
-- Project status agent that pulls data from Planner and DevOps
-- Meeting assistant agent that tracks action items and follow-ups
-- Channel moderation agent that enforces community guidelines
+**[Agents in Microsoft Teams](https://learn.microsoft.com/en-us/microsoftteams/platform/bots/what-are-bots)** - Building and deploying agents in Teams.
 
-## Building Agents with Microsoft Tools
+---
 
-### Tool Selection Guide
+## Governance and Security for AI Agents
 
-| Need | Recommended Tool | Audience |
-|------|-----------------|----------|
-| Simple FAQ or conversation agent | Copilot Studio (topics + generative answers) | Citizen developers |
-| Custom M365 Copilot extension | Declarative agents (Copilot Studio or Teams Toolkit) | All skill levels |
-| Complex workflow automation | Copilot Studio + Power Automate actions | Citizen/pro developers |
-| Advanced custom agent | Bot Framework SDK + Azure AI Services | Professional developers |
-| Multi-channel enterprise agent | Copilot Studio (multi-channel publishing) | All skill levels |
+### Why Agent Governance Matters
 
-### Microsoft Copilot Studio for Agents
+As agents gain more autonomy, governance becomes critical:
+- Agents can take actions that affect business data and processes
+- Autonomous agents operate without real-time human review
+- Multi-agent systems can have compounding effects from errors
+- Regulatory and compliance requirements may mandate oversight
 
-Copilot Studio is the primary platform for building agents in the Microsoft ecosystem:
-- Low-code visual authoring for conversation and task flows
-- Generative AI for dynamic answers and action orchestration
-- Power Platform integration for enterprise connectivity
-- Built-in analytics and lifecycle management
-- Enterprise governance and compliance controls
+### Agent Governance Controls
 
-**[📖 Build Agents with Copilot Studio](https://learn.microsoft.com/en-us/microsoft-copilot-studio/concept-agent-building)** - Creating agents using Copilot Studio.
+- **Scope limitations:** Define what data and systems each agent can access
+- **Action boundaries:** Restrict which operations agents can perform
+- **Authentication and authorization:** Ensure agents operate with appropriate credentials
+- **Monitoring and logging:** Track all agent activities for audit purposes
+- **Testing and validation:** Rigorous testing before deploying autonomous agents
+- **Versioning:** Maintain version control for agent configurations
 
-### Azure AI Services for Agents
+### Data Loss Prevention for Agents
+- DLP policies from Power Platform apply to Copilot Studio agents
+- Control which connectors agents can use
+- Prevent agents from accessing or sharing sensitive data
+- Classify connectors as Business, Non-Business, or Blocked
 
-For advanced agent scenarios, Azure AI Services provide additional capabilities:
-- **Azure OpenAI Service:** Advanced language models for reasoning and generation
-- **Azure AI Search:** Knowledge retrieval and semantic search
-- **Azure AI Document Intelligence:** Extract structured data from documents
-- **Azure AI Language:** Entity recognition, sentiment analysis, and language understanding
+### Environment Isolation
+- Use separate environments for development, testing, and production
+- Apply different governance policies per environment
+- Promote agents through environments using solutions
+- Maintain clear separation between experimental and production agents
 
-**[📖 Azure AI Services](https://learn.microsoft.com/en-us/azure/ai-services/what-are-ai-services)** - Suite of AI services for building intelligent agents.
+---
 
-## Responsible AI for Agents
+## Responsible AI Principles for Agents
 
-### Principles Applied to Agents
-- **Transparency:** Users should know when they are interacting with an agent, not a human
-- **Accountability:** Organizations are responsible for their agents' actions and outcomes
-- **Fairness:** Agents should treat all users equitably and avoid biased behavior
-- **Safety:** Agents must have guardrails to prevent harmful actions
-- **Privacy:** Agents should only access data they are authorized to use
-- **Human Oversight:** Critical decisions should include human review and approval
+Microsoft's six Responsible AI principles apply directly to AI agents:
 
-### Agent Safety Best Practices
-- Define clear boundaries for what agents can and cannot do
-- Implement approval workflows for high-impact actions
-- Monitor agent behavior through audit logs and analytics
-- Provide users with the ability to escalate to human support
-- Regularly review and update agent behavior and knowledge
-- Test agents thoroughly before production deployment
+### 1. Fairness
+- Agents should treat all users equitably
+- Monitor for bias in agent responses and decisions
+- Ensure diverse testing scenarios
 
-**[📖 Responsible AI Principles](https://www.microsoft.com/en-us/ai/responsible-ai)** - Microsoft's AI ethics framework.
+### 2. Reliability and Safety
+- Agents should perform consistently and predictably
+- Implement safeguards for edge cases and failures
+- Test thoroughly across varied scenarios
 
-## Key Takeaways for AB-900
+### 3. Privacy and Security
+- Agents must protect user and organizational data
+- Apply principle of least privilege for data access
+- Encrypt data in transit and at rest
 
-1. **Agent Definition:** Autonomous or semi-autonomous software entities that perceive, reason, and act
-2. **Agent vs Copilot:** Copilots assist with human-in-the-loop; agents can operate more independently
-3. **Three Agent Types:** Conversational (Q&A), task-based (workflow), autonomous (proactive)
-4. **Orchestration Patterns:** Sequential, parallel, hierarchical, and event-driven
-5. **Declarative Agents:** Configuration-based agents that extend Microsoft 365 Copilot
-6. **Building Tools:** Copilot Studio (primary), Bot Framework (advanced), Teams Toolkit (developers)
-7. **Guardrails:** Scope limitations, approval gates, monitoring, and human escalation
-8. **Responsible AI:** Transparency, accountability, fairness, safety, privacy, and human oversight
+### 4. Inclusiveness
+- Design agents to be accessible to users with diverse abilities
+- Support multiple languages and communication styles
+- Consider varying levels of technical literacy
+
+### 5. Transparency
+- Users should know when they are interacting with an AI agent
+- Agent-generated content should be clearly identified
+- Provide explanations for agent decisions when possible
+- Include citations and source attribution
+
+### 6. Accountability
+- Maintain human oversight of agent behavior
+- Establish clear ownership and responsibility for each agent
+- Regular review and audit of agent actions
+- Defined escalation paths for issues
+
+**[Microsoft Responsible AI Principles](https://www.microsoft.com/en-us/ai/responsible-ai)** - Microsoft's AI ethics framework.
+
+**[Responsible AI for Microsoft 365 Copilot](https://learn.microsoft.com/en-us/copilot/microsoft-365/responsible-ai-microsoft-365-copilot)** - Applied responsible AI practices.
+
+---
+
+## Key Exam Points to Remember
+
+1. **Agent definition:** Autonomous or semi-autonomous software entities that perceive, reason, and act
+2. **Copilot vs Agent:** Copilot = human-in-the-loop; Agent = more autonomous. They exist on a continuum.
+3. **Three agent types:** Conversational, task-based, and autonomous
+4. **Five characteristics:** Autonomy, perception, reasoning, action, memory
+5. **Four orchestration patterns:** Sequential, parallel, hierarchical, event-driven
+6. **Declarative agents:** Configuration-based agents that extend M365 Copilot (no code required)
+7. **Human oversight:** Even autonomous agents need approval gates, escalation paths, and audit trails
+8. **Copilot Studio:** Primary platform for building agents in the Microsoft ecosystem
+9. **Governance:** DLP policies, environment isolation, scope limitations, and action boundaries
+10. **Responsible AI:** Six principles -- fairness, reliability/safety, privacy/security, inclusiveness, transparency, accountability

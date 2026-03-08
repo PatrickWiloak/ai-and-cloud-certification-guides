@@ -1,27 +1,66 @@
 # Domain 4: Data Security and Governance (18%)
 
 ## Overview
-This domain covers implementing authentication and authorization for data services, configuring data encryption, managing data governance and compliance, and implementing fine-grained access control. While it is the smallest domain at 18%, security questions appear throughout all domains.
 
-## Key AWS Services for Data Security
+Domain 4 covers implementing authentication and authorization for data services, configuring encryption at rest and in transit, managing data governance and compliance, and implementing fine-grained access control. While the smallest domain at 18%, security concepts appear throughout all exam domains.
 
-### AWS Lake Formation
+This document covers Lake Formation permissions, column-level and row-level security, encryption with KMS, IAM policies for data services, Glue Data Catalog security, and data quality and validation.
 
-**[📖 AWS Lake Formation Developer Guide](https://docs.aws.amazon.com/lake-formation/latest/dg/what-is-lake-formation.html)** - Build, secure, and manage data lakes
+---
 
-#### Core Concepts
-- **Data Lake Administrator**: Manages Lake Formation settings and permissions
-- **Data Catalog**: Central metadata repository (shared with Glue)
-- **Permissions**: Fine-grained access control at table, column, and row level
-- **LF-Tags**: Tag-based access control for scalable permissions
-- **Data Filters**: Row and column-level security definitions
-- **Governed Tables**: ACID transaction support for data lakes
+## AWS Lake Formation Permissions
 
-**[📖 Lake Formation Concepts](https://docs.aws.amazon.com/lake-formation/latest/dg/how-it-works.html)** - Architecture and key concepts
+Lake Formation provides centralized, fine-grained access control for data lakes, replacing the need to manage complex combinations of S3 bucket policies and IAM policies.
 
-#### Permission Model
+**📖 [AWS Lake Formation Developer Guide](https://docs.aws.amazon.com/lake-formation/latest/dg/what-is-lake-formation.html)**
 
-##### Table-Level Permissions
+### How Lake Formation Permissions Work
+
+Lake Formation sits between analytics services (Athena, Redshift Spectrum, EMR, Glue) and the underlying data in S3:
+
+```
+┌─────────┐  ┌──────────┐  ┌─────────┐  ┌─────────┐
+│ Athena  │  │ Redshift │  │  EMR    │  │  Glue   │
+│         │  │ Spectrum │  │ (Spark) │  │  ETL    │
+└────┬────┘  └────┬─────┘  └────┬────┘  └────┬────┘
+     │            │             │             │
+     └────────────┴──────┬──────┴─────────────┘
+                         │
+              ┌──────────▼──────────┐
+              │   Lake Formation    │  <-- Permission checks
+              │   (GRANT/REVOKE)    │
+              └──────────┬──────────┘
+                         │
+              ┌──────────▼──────────┐
+              │   Glue Data Catalog │  <-- Metadata
+              └──────────┬──────────┘
+                         │
+              ┌──────────▼──────────┐
+              │     Amazon S3       │  <-- Data storage
+              │   (Encrypted)       │
+              └─────────────────────┘
+```
+
+When a user runs an Athena query, Lake Formation checks whether the user's IAM role has been granted permission on the specific database, table, columns, and rows being accessed.
+
+**📖 [Lake Formation Permissions Model](https://docs.aws.amazon.com/lake-formation/latest/dg/lake-formation-permissions.html)**
+
+### Permission Types
+
+| Permission | Applies To | Description |
+|------------|-----------|-------------|
+| **CREATE_DATABASE** | Catalog | Create new databases |
+| **CREATE_TABLE** | Database | Create new tables in a database |
+| **ALTER** | Database, Table | Modify properties |
+| **DROP** | Database, Table | Delete resources |
+| **SELECT** | Table, Columns | Read data (query access) |
+| **INSERT** | Table | Write new data |
+| **DELETE** | Table | Remove data |
+| **DESCRIBE** | Database, Table | View metadata |
+| **SUPER** | All | Full administrative access |
+
+### Granting Table-Level Permissions
+
 ```json
 {
     "Principal": {
@@ -33,16 +72,19 @@ This domain covers implementing authentication and authorization for data servic
             "Name": "customer_orders"
         }
     },
-    "Permissions": ["SELECT"],
+    "Permissions": ["SELECT", "DESCRIBE"],
     "PermissionsWithGrantOption": []
 }
 ```
 
-##### Column-Level Permissions
+### Granting Column-Level Permissions
+
+Restrict access to specific columns, hiding sensitive data from unauthorized users:
+
 ```json
 {
     "Principal": {
-        "DataLakePrincipalIdentifier": "arn:aws:iam::123456789012:role/DataAnalystRole"
+        "DataLakePrincipalIdentifier": "arn:aws:iam::123456789012:role/LimitedAnalystRole"
     },
     "Resource": {
         "TableWithColumns": {
@@ -56,229 +98,332 @@ This domain covers implementing authentication and authorization for data servic
 }
 ```
 
-**[📖 Lake Formation Permissions](https://docs.aws.amazon.com/lake-formation/latest/dg/lake-formation-permissions.html)** - Grant and revoke data permissions
+In this example, the `LimitedAnalystRole` can query only the four listed columns. Columns like `customer_ssn`, `email`, or `address` are not accessible.
 
-##### Row-Level Security with Data Filters
+**📖 [Lake Formation Column-Level Security](https://docs.aws.amazon.com/lake-formation/latest/dg/lake-formation-permissions.html)**
+
+### Lake Formation vs IAM S3 Policies
+
+| Feature | Lake Formation | IAM + S3 Policies |
+|---------|---------------|-------------------|
+| **Granularity** | Table, column, row, cell-level | Bucket, prefix, object-level |
+| **Management** | Centralized GRANT/REVOKE model | Distributed across multiple policies |
+| **Column security** | Native support | Not possible with IAM/S3 alone |
+| **Row security** | Data filters | Not possible with IAM/S3 alone |
+| **Cross-account** | Built-in with RAM integration | Complex bucket policies + IAM roles |
+| **Audit** | Integrated with CloudTrail | CloudTrail + S3 access logs |
+| **Compatibility** | Works with Athena, Spectrum, EMR, Glue | Works with all S3 access methods |
+
+**Exam tip**: Lake Formation is the recommended approach for data lake access control. However, you may need to transition from IAM/S3 policies to Lake Formation. During transition, both models coexist, and permissions from both are evaluated.
+
+---
+
+## Column-Level and Row-Level Security
+
+### Column-Level Security
+
+Column-level security restricts which columns a principal can access. This is critical for protecting PII (names, SSNs, emails) while allowing access to non-sensitive analytical columns.
+
+**Implementation options**:
+
+1. **Lake Formation column permissions**: Grant SELECT on specific columns only
+2. **Redshift column-level GRANT**: Native SQL GRANT on specific columns
+3. **Views**: Create views that expose only allowed columns
+
+**Redshift column-level example**:
+```sql
+-- Grant access to specific columns only
+GRANT SELECT (order_id, product_id, amount, order_date)
+ON TABLE analytics.customer_orders
+TO analyst_group;
+
+-- Revoke access to sensitive columns
+REVOKE SELECT (customer_ssn, customer_email)
+ON TABLE analytics.customer_orders
+FROM analyst_group;
+```
+
+### Row-Level Security
+
+Row-level security restricts which rows a principal can access based on filter conditions. This is essential for multi-tenant data lakes where different teams should only see their own data.
+
+**Implementation options**:
+
+1. **Lake Formation data filters**: Named filters with row conditions and column lists
+2. **Redshift RLS policies**: Native row-level security policies
+3. **Views with WHERE clauses**: Simple but less flexible
+
+### Lake Formation Data Filters
+
+Data filters combine row-level and column-level security into named, reusable definitions:
+
 ```json
 {
     "TableCatalogId": "123456789012",
     "DatabaseName": "analytics_db",
-    "TableName": "customer_orders",
-    "Name": "us_only_filter",
+    "TableName": "sales_data",
+    "Name": "us_region_limited_columns",
     "RowFilter": {
         "FilterExpression": "region = 'US'"
     },
-    "ColumnWildcard": {}
+    "ColumnNames": ["order_id", "amount", "product", "order_date", "region"]
 }
 ```
 
-**[📖 Lake Formation Data Filters](https://docs.aws.amazon.com/lake-formation/latest/dg/data-filters-about.html)** - Row and column-level security
-
-#### LF-Tags (Tag-Based Access Control)
-
-**[📖 Lake Formation Tag-Based Access Control](https://docs.aws.amazon.com/lake-formation/latest/dg/tag-based-access-control.html)** - Scalable attribute-based permissions
+After creating the filter, grant it to a principal:
 
 ```bash
-# Create LF-Tag
+aws lakeformation grant-permissions \
+    --principal '{"DataLakePrincipalIdentifier":"arn:aws:iam::123456789012:role/USAnalystRole"}' \
+    --resource '{"DataCellsFilter":{
+        "DatabaseName":"analytics_db",
+        "TableName":"sales_data",
+        "Name":"us_region_limited_columns"
+    }}' \
+    --permissions '["SELECT"]'
+```
+
+The `USAnalystRole` can only see the five listed columns, and only for rows where `region = 'US'`.
+
+**📖 [Lake Formation Data Filters](https://docs.aws.amazon.com/lake-formation/latest/dg/data-filters-about.html)**
+
+### LF-Tags (Tag-Based Access Control)
+
+LF-Tags provide scalable, attribute-based permissions that automatically apply to new resources when tagged:
+
+#### Step 1: Define Tags
+```bash
 aws lakeformation create-lf-tag \
     --tag-key "sensitivity" \
     --tag-values '["public", "internal", "confidential", "restricted"]'
 
-# Assign LF-Tag to table
-aws lakeformation add-lf-tags-to-resource \
-    --resource '{"Table":{"DatabaseName":"analytics_db","Name":"customer_orders"}}' \
-    --lf-tags '[{"TagKey":"sensitivity","TagValues":["confidential"]}]'
+aws lakeformation create-lf-tag \
+    --tag-key "department" \
+    --tag-values '["finance", "marketing", "engineering", "hr"]'
+```
 
-# Grant permissions based on LF-Tag
+#### Step 2: Assign Tags to Resources
+```bash
+# Tag a table
+aws lakeformation add-lf-tags-to-resource \
+    --resource '{"Table":{"DatabaseName":"hr_db","Name":"employee_salary"}}' \
+    --lf-tags '[
+        {"TagKey":"sensitivity","TagValues":["restricted"]},
+        {"TagKey":"department","TagValues":["hr"]}
+    ]'
+
+# Tag specific columns
+aws lakeformation add-lf-tags-to-resource \
+    --resource '{"TableWithColumns":{
+        "DatabaseName":"hr_db",
+        "Name":"employee_salary",
+        "ColumnNames":["ssn","salary"]
+    }}' \
+    --lf-tags '[{"TagKey":"sensitivity","TagValues":["restricted"]}]'
+```
+
+#### Step 3: Grant Permissions on Tags
+```bash
 aws lakeformation grant-permissions \
-    --principal '{"DataLakePrincipalIdentifier":"arn:aws:iam::123456789012:role/DataAnalystRole"}' \
-    --resource '{"LFTagPolicy":{"ResourceType":"TABLE","Expression":[{"TagKey":"sensitivity","TagValues":["public","internal"]}]}}' \
+    --principal '{"DataLakePrincipalIdentifier":"arn:aws:iam::123456789012:role/HRAnalystRole"}' \
+    --resource '{"LFTagPolicy":{
+        "ResourceType":"TABLE",
+        "Expression":[
+            {"TagKey":"department","TagValues":["hr"]},
+            {"TagKey":"sensitivity","TagValues":["internal","confidential"]}
+        ]
+    }}' \
     --permissions '["SELECT"]'
 ```
 
-#### Cross-Account Data Sharing
+Now any current or future table tagged with `department=hr` AND `sensitivity=internal` or `sensitivity=confidential` is automatically accessible to `HRAnalystRole`. No individual grants needed per table.
 
-**[📖 Lake Formation Cross-Account](https://docs.aws.amazon.com/lake-formation/latest/dg/cross-account.html)** - Share data across AWS accounts
+**📖 [Lake Formation Tag-Based Access Control](https://docs.aws.amazon.com/lake-formation/latest/dg/tag-based-access-control.html)**
 
-- **Named Resource Method**: Grant permissions to specific external accounts
-- **LF-Tag Method**: Share based on tag policies across accounts
-- **AWS RAM Integration**: Use AWS Resource Access Manager for sharing
-- **Central Governance**: Maintain permissions from producer account
+### Cross-Account Data Sharing
+
+Lake Formation supports sharing data across AWS accounts:
+
+1. **Named Resource Method**: Grant permissions directly to an external account ID
+2. **LF-Tag Method**: Share based on tag-based policies across accounts
+3. **AWS RAM Integration**: Use Resource Access Manager to manage shares
 
 ```bash
 # Grant cross-account access
 aws lakeformation grant-permissions \
-    --principal '{"DataLakePrincipalIdentifier":"123456789012"}' \
+    --principal '{"DataLakePrincipalIdentifier":"987654321098"}' \
     --resource '{"Table":{"DatabaseName":"shared_db","Name":"shared_table"}}' \
     --permissions '["SELECT","DESCRIBE"]'
 ```
 
-#### Lake Formation vs IAM S3 Policies
+The consumer account creates a resource link in their Glue Data Catalog pointing to the shared database/table.
 
-| Feature | Lake Formation | IAM S3 Policies |
-|---------|---------------|-----------------|
-| **Granularity** | Table, column, row | Bucket, prefix, object |
-| **Management** | Centralized | Distributed |
-| **Column Security** | Built-in | Not available |
-| **Row Security** | Data filters | Not available |
-| **Tag-Based** | LF-Tags | IAM tags (limited) |
-| **Cross-Account** | Built-in | Bucket policies |
-| **Audit** | CloudTrail integration | CloudTrail + S3 access logs |
+**📖 [Lake Formation Cross-Account Sharing](https://docs.aws.amazon.com/lake-formation/latest/dg/cross-account.html)**
 
-### AWS KMS - Encryption for Data Services
+---
 
-**[📖 AWS KMS Developer Guide](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html)** - Create and manage encryption keys
+## Encryption (KMS, S3, Redshift)
 
-#### Encryption at Rest by Service
+### AWS KMS (Key Management Service)
 
-| Service | Encryption | Key Options | Default |
-|---------|-----------|-------------|---------|
-| **S3** | SSE-S3, SSE-KMS, SSE-C | AWS managed, customer managed | SSE-S3 |
-| **Redshift** | AES-256 | AWS managed, customer managed | AWS managed |
-| **DynamoDB** | AES-256 | AWS owned, AWS managed, customer managed | AWS owned |
-| **Glue Data Catalog** | AES-256 | AWS managed, customer managed | Optional |
-| **Kinesis Data Streams** | AES-256 | AWS managed, customer managed | Optional |
-| **EMR** | EBS encryption, EMRFS encryption | AWS managed, customer managed | Optional |
-| **Athena** | Query result encryption | SSE-S3, SSE-KMS, CSE-KMS | Optional |
-| **RDS/Aurora** | AES-256 | AWS managed, customer managed | Optional |
+KMS is the central encryption key management service used by all AWS data services.
 
-**[📖 S3 Encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingEncryption.html)** - Server-side encryption options
-**[📖 Redshift Encryption](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html)** - Database encryption configuration
+**📖 [AWS KMS Developer Guide](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html)**
 
-#### S3 Encryption Types
+#### Key Types
 
-##### Server-Side Encryption (SSE)
-```bash
-# SSE-S3 (Amazon managed keys)
-aws s3 cp file.parquet s3://data-lake/data/ --sse AES256
+| Key Type | Management | Rotation | Cost | Use Case |
+|----------|-----------|----------|------|----------|
+| **AWS Owned Keys** | AWS manages entirely | Automatic | Free | Default encryption (DynamoDB default) |
+| **AWS Managed Keys** | AWS manages, you see in console | Automatic (yearly) | Per API call | S3 (aws/s3), Redshift (aws/redshift) |
+| **Customer Managed Keys (CMK)** | You create, manage, control policies | Optional (configurable) | Monthly + per API call | Full control, audit, cross-account |
 
-# SSE-KMS (KMS managed keys)
-aws s3 cp file.parquet s3://data-lake/data/ --sse aws:kms --sse-kms-key-id arn:aws:kms:...
+**Exam tip**: Use customer managed keys when you need key rotation control, cross-account access via key policies, or detailed CloudTrail audit of key usage.
 
-# SSE-C (Customer-provided keys)
-aws s3 cp file.parquet s3://data-lake/data/ --sse-c --sse-c-key fileb://key.bin
+#### Envelope Encryption
+
+Envelope encryption is the pattern used by most AWS services to encrypt large datasets efficiently:
+
+```
+1. Application requests a data key from KMS
+2. KMS returns:
+   - Plaintext data key (used immediately to encrypt data)
+   - Encrypted data key (stored alongside the encrypted data)
+3. Application encrypts data with plaintext data key
+4. Application discards plaintext data key from memory
+5. Stores: encrypted data + encrypted data key
+
+To decrypt:
+1. Send encrypted data key to KMS
+2. KMS decrypts it using the CMK, returns plaintext data key
+3. Use plaintext data key to decrypt the data
 ```
 
-##### S3 Bucket Default Encryption
+This avoids sending large data volumes to KMS (which has a 4 KB limit per Encrypt/Decrypt call).
+
+**📖 [Envelope Encryption](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#enveloping)**
+
+### S3 Encryption Options
+
+| Method | Key Management | Key Storage | Use Case |
+|--------|---------------|-------------|----------|
+| **SSE-S3** | AWS manages entirely | S3 internal | Default encryption, simplest setup |
+| **SSE-KMS** | KMS manages (AWS or customer key) | KMS | Audit trail, key rotation, cross-account |
+| **SSE-C** | Customer provides key per request | Customer | Full key control outside AWS |
+| **Client-Side** | Client encrypts before upload | Customer | End-to-end encryption, AWS never sees plaintext |
+
+**S3 Bucket Keys**: Reduce KMS API costs by caching a bucket-level data key. Instead of calling KMS for every object, S3 uses a bucket key to generate per-object keys locally. Can reduce KMS costs by up to 99%.
+
 ```json
 {
-    "Rules": [
-        {
-            "ApplyServerSideEncryptionByDefault": {
-                "SSEAlgorithm": "aws:kms",
-                "KMSMasterKeyID": "arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012"
-            },
-            "BucketKeyEnabled": true
-        }
-    ]
-}
-```
-
-**[📖 S3 Bucket Keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-key.html)** - Reduce KMS costs with S3 Bucket Keys
-
-#### Envelope Encryption Pattern
-```
-1. KMS generates data key (plaintext + encrypted)
-2. Use plaintext data key to encrypt data
-3. Store encrypted data + encrypted data key
-4. Discard plaintext data key from memory
-5. To decrypt: KMS decrypts data key, then decrypt data
-```
-
-**[📖 Envelope Encryption](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#enveloping)** - Encrypt large datasets efficiently
-
-#### KMS Key Policies for Data Services
-```json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "AllowGlueToUseKey",
-            "Effect": "Allow",
-            "Principal": {
-                "AWS": "arn:aws:iam::123456789012:role/GlueETLRole"
-            },
-            "Action": [
-                "kms:Decrypt",
-                "kms:Encrypt",
-                "kms:GenerateDataKey"
-            ],
-            "Resource": "*"
+    "Rules": [{
+        "ApplyServerSideEncryptionByDefault": {
+            "SSEAlgorithm": "aws:kms",
+            "KMSMasterKeyID": "arn:aws:kms:us-east-1:123456789012:key/key-id"
         },
-        {
-            "Sid": "AllowRedshiftToUseKey",
-            "Effect": "Allow",
-            "Principal": {
-                "AWS": "arn:aws:iam::123456789012:role/RedshiftRole"
-            },
-            "Action": [
-                "kms:Decrypt",
-                "kms:GenerateDataKey"
-            ],
-            "Resource": "*"
-        }
-    ]
+        "BucketKeyEnabled": true
+    }]
 }
 ```
 
-**[📖 KMS Key Policies](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html)** - Control access to encryption keys
+**📖 [S3 Encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingEncryption.html)**
+**📖 [S3 Bucket Keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-key.html)**
 
-### AWS IAM for Data Services
+### Redshift Encryption
 
-**[📖 IAM User Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html)** - Identity and access management
+| Encryption Type | Description |
+|----------------|-------------|
+| **At rest (KMS)** | AES-256 encryption of data blocks, system metadata, and backups. Uses KMS customer or AWS managed keys. |
+| **At rest (HSM)** | Hardware Security Module for key management (on-premises HSM via CloudHSM) |
+| **In transit** | SSL/TLS connections between clients and Redshift. Enforced via parameter group `require_ssl = true`. |
+| **Cluster encryption** | Enabled at cluster creation (cannot be changed after). Encrypts all data, temp files, and snapshots. |
 
-#### IAM Roles for Data Services
+```sql
+-- Force SSL connections to Redshift
+-- Set in cluster parameter group:
+-- require_ssl = true
+```
 
-| Service | IAM Role Purpose |
-|---------|-----------------|
-| **Glue** | Access S3, Data Catalog, JDBC sources |
-| **EMR** | EC2 instance profile, service role |
-| **Redshift** | COPY/UNLOAD from S3, Spectrum access |
-| **Lambda** | Execution role for data processing |
-| **Kinesis** | Cross-account access, enhanced fan-out |
-| **Step Functions** | Invoke Glue, Lambda, Redshift actions |
-| **MWAA** | Execution role for Airflow operators |
-| **Athena** | Query execution and results storage |
+**📖 [Redshift Encryption](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html)**
 
-**[📖 IAM Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html)** - Role-based access for AWS services
+### Encryption Across All Data Services
 
-#### Glue IAM Policy Example
+| Service | Encryption at Rest | Encryption in Transit | Key Options |
+|---------|-------------------|----------------------|-------------|
+| **Amazon S3** | SSE-S3, SSE-KMS, SSE-C, client-side | HTTPS (enforce via bucket policy) | AWS managed, customer managed |
+| **Amazon Redshift** | AES-256 (KMS or HSM) | SSL/TLS | AWS managed, customer managed |
+| **Amazon DynamoDB** | AES-256 | HTTPS (always) | AWS owned, AWS managed, customer managed |
+| **Amazon Athena** | Query results encryption | HTTPS | SSE-S3, SSE-KMS, CSE-KMS |
+| **Amazon Kinesis** | Server-side encryption | TLS 1.2 | AWS managed, customer managed |
+| **AWS Glue** | Data Catalog encryption, job bookmark encryption | HTTPS | AWS managed, customer managed |
+| **Amazon EMR** | EBS encryption, EMRFS S3 encryption, local disk encryption | TLS for in-transit (HDFS, Spark shuffle) | AWS managed, customer managed |
+| **Amazon RDS/Aurora** | AES-256 (storage, backups, snapshots, replicas) | SSL/TLS | AWS managed, customer managed |
+
+**Exam tip**: Encryption at rest should be enabled for all data stores. For S3 data lakes, SSE-KMS with customer managed keys is the recommended approach for compliance workloads.
+
+---
+
+## IAM Policies for Data Access
+
+### IAM Roles for Data Services
+
+Each AWS data service requires specific IAM roles to function:
+
+| Service | Role Type | What It Needs Access To |
+|---------|-----------|------------------------|
+| **AWS Glue** | Service role | S3 (read/write), Glue Data Catalog, KMS (decrypt/encrypt), CloudWatch Logs |
+| **Amazon EMR** | EC2 instance profile + service role | S3, Glue Data Catalog, KMS, CloudWatch |
+| **Amazon Redshift** | Cluster IAM role | S3 (COPY/UNLOAD), Glue Data Catalog (Spectrum), KMS |
+| **AWS Lambda** | Execution role | S3, Kinesis, DynamoDB, SQS, CloudWatch Logs, KMS |
+| **Step Functions** | Execution role | Glue, Lambda, Athena, Redshift Data API, S3, SNS, SQS |
+| **Amazon MWAA** | Execution role | S3 (DAGs, logs), Glue, EMR, Athena, Redshift, KMS |
+| **Amazon Athena** | (uses caller's role) | S3 (data + results), Glue Data Catalog, KMS |
+
+### Glue IAM Policy Example
+
 ```json
 {
     "Version": "2012-10-17",
     "Statement": [
         {
+            "Sid": "GlueAndCatalogAccess",
             "Effect": "Allow",
             "Action": [
-                "glue:*",
-                "s3:GetBucketLocation",
-                "s3:ListBucket",
-                "s3:GetObject",
-                "s3:PutObject",
-                "s3:DeleteObject"
+                "glue:GetDatabase", "glue:GetTable", "glue:GetPartitions",
+                "glue:CreateTable", "glue:UpdateTable",
+                "glue:BatchCreatePartition"
             ],
             "Resource": [
-                "arn:aws:s3:::data-lake-*",
-                "arn:aws:s3:::data-lake-*/*",
-                "arn:aws:glue:*:*:catalog",
-                "arn:aws:glue:*:*:database/*",
-                "arn:aws:glue:*:*:table/*"
+                "arn:aws:glue:us-east-1:123456789012:catalog",
+                "arn:aws:glue:us-east-1:123456789012:database/analytics_db",
+                "arn:aws:glue:us-east-1:123456789012:table/analytics_db/*"
             ]
         },
         {
+            "Sid": "S3DataAccess",
             "Effect": "Allow",
             "Action": [
-                "kms:Decrypt",
-                "kms:GenerateDataKey"
+                "s3:GetObject", "s3:PutObject", "s3:DeleteObject",
+                "s3:ListBucket", "s3:GetBucketLocation"
             ],
-            "Resource": "arn:aws:kms:us-east-1:123456789012:key/*"
+            "Resource": [
+                "arn:aws:s3:::data-lake-bucket",
+                "arn:aws:s3:::data-lake-bucket/*"
+            ]
         },
         {
+            "Sid": "KMSAccess",
             "Effect": "Allow",
             "Action": [
-                "logs:CreateLogGroup",
-                "logs:CreateLogStream",
-                "logs:PutLogEvents"
+                "kms:Decrypt", "kms:Encrypt", "kms:GenerateDataKey"
+            ],
+            "Resource": "arn:aws:kms:us-east-1:123456789012:key/key-id"
+        },
+        {
+            "Sid": "CloudWatchLogs",
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup", "logs:CreateLogStream", "logs:PutLogEvents"
             ],
             "Resource": "arn:aws:logs:*:*:/aws-glue/*"
         }
@@ -286,237 +431,317 @@ aws s3 cp file.parquet s3://data-lake/data/ --sse-c --sse-c-key fileb://key.bin
 }
 ```
 
-**[📖 IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html)** - Policy syntax and best practices
-**[📖 IAM Best Practices](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)** - Security guidelines
+**📖 [IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html)**
+**📖 [IAM Best Practices](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)**
 
-#### VPC Endpoints for Private Data Access
-- **S3 Gateway Endpoint**: Private access to S3 without internet
-- **Glue Interface Endpoint**: Private access to Glue APIs
-- **KMS Interface Endpoint**: Private access to KMS
-- **Kinesis Interface Endpoint**: Private stream access
-- **Redshift VPC**: Cluster runs within VPC
+### Resource-Based Policies
 
-**[📖 VPC Endpoints](https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints.html)** - Private connectivity to AWS services
+Some data services support resource-based policies in addition to identity-based IAM policies:
 
-### Amazon Macie - Sensitive Data Discovery
+| Resource | Policy Type | Common Use |
+|----------|------------|------------|
+| **S3 Bucket** | Bucket policy | Cross-account access, enforce encryption, require HTTPS |
+| **KMS Key** | Key policy | Grant specific roles access to encrypt/decrypt |
+| **Lambda Function** | Function policy | Allow S3, Kinesis, or other services to invoke |
+| **Glue Data Catalog** | Resource policy | Cross-account catalog access |
+| **SQS Queue** | Queue policy | Allow services to send/receive messages |
 
-**[📖 Amazon Macie User Guide](https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html)** - Automated sensitive data discovery
+### Enforcing HTTPS on S3
 
-#### Capabilities
-- **Automated discovery**: Scan S3 buckets for sensitive data
-- **Data classification**: PII, PHI, financial data, credentials
-- **Managed data identifiers**: Pre-built patterns for common sensitive data
-- **Custom data identifiers**: Regex-based custom patterns
-- **Findings**: Severity-rated findings with remediation guidance
-- **S3 bucket inventory**: Security posture assessment
-
-**[📖 Macie Findings](https://docs.aws.amazon.com/macie/latest/user/findings.html)** - Understand and manage findings
-
-#### Macie Integration with Data Pipelines
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [{
+        "Sid": "DenyUnencryptedTransport",
+        "Effect": "Deny",
+        "Principal": "*",
+        "Action": "s3:*",
+        "Resource": [
+            "arn:aws:s3:::data-lake-bucket",
+            "arn:aws:s3:::data-lake-bucket/*"
+        ],
+        "Condition": {
+            "Bool": {"aws:SecureTransport": "false"}
+        }
+    }]
+}
 ```
-S3 Data Lake → Macie Discovery Job → Findings → EventBridge → SNS/Lambda
-                                                             → Security Hub
-                                                             → Automated Remediation
-```
+
+**📖 [S3 Security Best Practices](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-best-practices.html)**
+
+### VPC Endpoints for Private Data Access
+
+VPC endpoints enable private connectivity to AWS services without traversing the public internet:
+
+| Endpoint Type | Services | Cost |
+|--------------|----------|------|
+| **Gateway Endpoint** | S3, DynamoDB | Free |
+| **Interface Endpoint** | Glue, KMS, Kinesis, Redshift, Athena, Step Functions, CloudWatch | Per hour + per GB |
+
+**Exam tip**: Use gateway endpoints for S3 and DynamoDB (free). Use interface endpoints for other data services when security requirements prohibit internet access.
+
+**📖 [VPC Endpoints](https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints.html)**
+
+---
+
+## AWS Glue Data Catalog Security
+
+The Glue Data Catalog stores metadata about your data lake. Securing it is critical because catalog access determines what data users can discover and query.
+
+**📖 [Glue Data Catalog Security](https://docs.aws.amazon.com/glue/latest/dg/glue-security.html)**
+
+### Catalog Encryption
+
+| Setting | Description |
+|---------|-------------|
+| **Metadata encryption** | Encrypt all objects in the Data Catalog with KMS |
+| **Connection password encryption** | Encrypt passwords stored in JDBC connections |
+| **Encryption settings** | Configured at the catalog level, applies to all databases/tables |
 
 ```bash
-# Create Macie classification job
-aws macie2 create-classification-job \
-    --job-type ONE_TIME \
-    --name "scan-data-lake" \
-    --s3-job-definition '{
-        "bucketDefinitions": [{
-            "accountId": "123456789012",
-            "buckets": ["data-lake-raw", "data-lake-processed"]
-        }]
+aws glue put-data-catalog-encryption-settings \
+    --data-catalog-encryption-settings '{
+        "EncryptionAtRest": {
+            "CatalogEncryptionMode": "SSE-KMS",
+            "SseAwsKmsKeyId": "arn:aws:kms:us-east-1:123456789012:key/key-id"
+        },
+        "ConnectionPasswordEncryption": {
+            "ReturnConnectionPasswordEncrypted": true,
+            "AwsKmsKeyId": "arn:aws:kms:us-east-1:123456789012:key/key-id"
+        }
     }'
 ```
 
-**[📖 Macie Classification Jobs](https://docs.aws.amazon.com/macie/latest/user/discovery-jobs.html)** - Configure sensitive data scanning
+### Catalog Resource Policy
 
-### AWS CloudTrail - Audit and Compliance
+The Data Catalog resource policy controls cross-account access to the catalog:
 
-**[📖 AWS CloudTrail User Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html)** - API activity logging for governance
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [{
+        "Effect": "Allow",
+        "Principal": {
+            "AWS": "arn:aws:iam::987654321098:root"
+        },
+        "Action": [
+            "glue:GetDatabase", "glue:GetTable",
+            "glue:GetPartitions", "glue:GetTableVersions"
+        ],
+        "Resource": [
+            "arn:aws:glue:us-east-1:123456789012:catalog",
+            "arn:aws:glue:us-east-1:123456789012:database/shared_db",
+            "arn:aws:glue:us-east-1:123456789012:table/shared_db/*"
+        ]
+    }]
+}
+```
 
-#### CloudTrail for Data Services
-- **Management Events**: API calls to create, modify, delete resources
-- **Data Events**: S3 object operations, Lambda invocations, DynamoDB operations
-- **Insights Events**: Unusual API activity detection
-- **CloudTrail Lake**: SQL-based query and analysis of events
+### Lake Formation Integration
 
-**[📖 CloudTrail Data Events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html)** - Log data-level operations
+When Lake Formation is enabled, it adds a permissions layer on top of the Data Catalog:
+- Users need both IAM permissions AND Lake Formation grants to access data
+- Lake Formation can override IAM-only access (hybrid mode vs Lake Formation-only mode)
+- During migration, you can run both permission models simultaneously
+
+**📖 [Lake Formation and IAM Integration](https://docs.aws.amazon.com/lake-formation/latest/dg/hybrid-access-mode.html)**
+
+---
+
+## Data Quality and Validation
+
+Data quality is tested across multiple exam domains, particularly in the context of data pipelines and governance.
+
+### AWS Glue Data Quality
+
+Glue Data Quality lets you define, measure, and enforce quality rules using DQDL (Data Quality Definition Language).
+
+**📖 [AWS Glue Data Quality](https://docs.aws.amazon.com/glue/latest/dg/glue-data-quality.html)**
+
+#### DQDL Rule Categories
+
+| Category | Rule Examples | What It Checks |
+|----------|--------------|----------------|
+| **Completeness** | `IsComplete "column"`, `Completeness "col" > 0.95` | Missing values, null percentage |
+| **Uniqueness** | `IsUnique "column"`, `Uniqueness "col" > 0.99` | Duplicate values |
+| **Accuracy** | `ColumnValues "col" between 0 and 1000` | Value within expected range |
+| **Consistency** | `ColumnValues "status" in ["A","B","C"]` | Values match expected set |
+| **Freshness** | `DataFreshness "updated_at" <= 24 hours` | Data recency |
+| **Volume** | `RowCount between 1000 and 1000000` | Expected row count range |
+| **Schema** | `ColumnExists "column_name"` | Expected columns present |
+
+#### DQDL Rule Examples
+
+```
+Rules = [
+    -- Schema checks
+    ColumnExists "user_id",
+    ColumnExists "email",
+    ColumnExists "created_at",
+
+    -- Completeness checks
+    IsComplete "user_id",
+    Completeness "email" > 0.95,
+
+    -- Uniqueness checks
+    IsUnique "user_id",
+
+    -- Value range checks
+    ColumnValues "amount" > 0,
+    ColumnValues "age" between 0 and 150,
+    ColumnValues "status" in ["active", "inactive", "pending"],
+
+    -- Freshness check
+    DataFreshness "updated_at" <= 24 hours,
+
+    -- Volume check
+    RowCount between 10000 and 5000000
+]
+```
+
+#### Data Quality in Pipelines
+
+| Integration Point | How | Action on Failure |
+|-------------------|-----|-------------------|
+| **Glue ETL job** | Embed quality evaluation in ETL script | Fail job, quarantine bad records, or continue with warning |
+| **Step Functions** | Run quality check as a Task state, branch on results | Route to error handling or retry |
+| **MWAA** | Quality check as a DAG task with downstream dependencies | Block downstream tasks, send alerts |
+| **CloudWatch** | Publish quality metrics to CloudWatch | Trigger alarms and notifications |
+
+#### Data Quality Recommendations
+
+Glue Data Quality can automatically suggest rules based on data profiling:
+1. Run a profiling job on your dataset
+2. Glue analyzes statistical properties of each column
+3. Glue recommends DQDL rules (e.g., "Completeness > 0.98" based on observed completeness)
+4. Review, customize, and save the recommended rules
+
+**📖 [Glue Data Quality Recommendations](https://docs.aws.amazon.com/glue/latest/dg/glue-data-quality.html)**
+
+### Additional Data Validation Approaches
+
+| Approach | Tool | Use Case |
+|----------|------|----------|
+| **SQL-based checks** | Athena or Redshift | Row counts, null checks, range validation after loading |
+| **Lambda validation** | Lambda + S3 trigger | Validate file format and schema before processing |
+| **Schema Registry** | Glue Schema Registry | Validate Avro/JSON schemas in streaming pipelines |
+| **Great Expectations** | Open-source on EMR/MWAA | Comprehensive data validation framework |
+| **DataBrew profiling** | Glue DataBrew | Visual data quality assessment and statistics |
+
+---
+
+## Auditing and Compliance
+
+### AWS CloudTrail
+
+CloudTrail logs API activity across all AWS services, providing an audit trail for data access and modifications.
+
+**📖 [AWS CloudTrail User Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html)**
+
+#### Event Types
+
+| Event Type | What It Logs | Examples |
+|------------|-------------|---------|
+| **Management Events** | Control plane API calls | CreateBucket, CreateTable, CreateCluster |
+| **Data Events** | Data plane API calls | S3 GetObject/PutObject, Lambda Invoke, DynamoDB GetItem |
+| **Insights Events** | Unusual API activity patterns | Spike in S3 deletions, unusual Glue API calls |
+
+**Exam tip**: Management events are logged by default. Data events must be explicitly enabled and incur additional cost. Enable S3 data events for audit trails of who accessed what data.
+
+**📖 [CloudTrail Data Events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html)**
 
 #### CloudTrail Lake
+
+CloudTrail Lake enables SQL-based querying of audit events:
+
 ```sql
--- Query CloudTrail Lake for S3 data access
 SELECT
-    userIdentity.arn,
+    userIdentity.arn AS principal,
     eventName,
     requestParameters,
     eventTime
 FROM cloudtrail_events
 WHERE eventSource = 's3.amazonaws.com'
     AND eventName IN ('GetObject', 'PutObject', 'DeleteObject')
-    AND eventTime > '2024-01-01 00:00:00'
+    AND eventTime > '2024-01-01'
 ORDER BY eventTime DESC
 LIMIT 100;
 ```
 
-**[📖 CloudTrail Lake](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake.html)** - Query and analyze CloudTrail events
+**📖 [CloudTrail Lake](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake.html)**
 
-### Encryption in Transit
+### Amazon Macie
 
-#### TLS/SSL Configuration
-- **S3**: HTTPS enforcement via bucket policy
-- **Redshift**: SSL connections enforced via parameter group
-- **RDS/Aurora**: SSL/TLS connections
-- **Kinesis**: HTTPS API endpoints
-- **EMR**: In-transit encryption for HDFS and Spark shuffle
+Macie uses machine learning to automatically discover and classify sensitive data in S3:
 
-```json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "EnforceHTTPS",
-            "Effect": "Deny",
-            "Principal": "*",
-            "Action": "s3:*",
-            "Resource": [
-                "arn:aws:s3:::data-lake",
-                "arn:aws:s3:::data-lake/*"
-            ],
-            "Condition": {
-                "Bool": {
-                    "aws:SecureTransport": "false"
-                }
-            }
-        }
-    ]
-}
+- **Managed data identifiers**: Pre-built patterns for PII (SSN, credit cards, emails, addresses), PHI, financial data, and credentials
+- **Custom data identifiers**: Regex-based patterns for organization-specific sensitive data
+- **Classification jobs**: One-time or scheduled scans of S3 buckets
+- **Findings**: Severity-rated results with remediation guidance
+- **Integration**: Findings sent to EventBridge for automated remediation
+
+```
+S3 Data Lake --> Macie Discovery Job --> Findings --> EventBridge --> Lambda (remediate)
+                                                                  --> SNS (alert team)
+                                                                  --> Security Hub (centralize)
 ```
 
-**[📖 S3 Security Best Practices](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-best-practices.html)** - Comprehensive security guidelines
+**📖 [Amazon Macie User Guide](https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html)**
+**📖 [Macie Classification Jobs](https://docs.aws.amazon.com/macie/latest/user/discovery-jobs.html)**
 
-## Data Governance Patterns
+---
 
-### Data Classification Framework
-```
-Level 1: Public          → No restrictions, open datasets
-Level 2: Internal        → Organization-wide access
-Level 3: Confidential    → Team-specific access, encryption required
-Level 4: Restricted      → Individual access, full audit trail
-```
-
-### Governance Architecture
-```
-                    ┌─────────────────┐
-                    │  Lake Formation │ ← Centralized Permissions
-                    │   (Governance)  │
-                    └────────┬────────┘
-                             │
-              ┌──────────────┼──────────────┐
-              │              │              │
-        ┌─────┴─────┐ ┌─────┴─────┐ ┌─────┴─────┐
-        │   Athena   │ │  Redshift │ │    EMR    │
-        │  (Query)   │ │ (Spectrum)│ │  (Spark)  │
-        └─────┬─────┘ └─────┬─────┘ └─────┬─────┘
-              │              │              │
-              └──────────────┼──────────────┘
-                             │
-                    ┌────────┴────────┐
-                    │   Glue Data     │ ← Metadata Catalog
-                    │    Catalog      │
-                    └────────┬────────┘
-                             │
-                    ┌────────┴────────┐
-                    │    Amazon S3    │ ← Data Lake Storage
-                    │  (Encrypted)   │
-                    └─────────────────┘
-```
-
-### Compliance Considerations
-- **Data retention**: S3 lifecycle policies and Glacier vault lock
-- **Data residency**: Region-specific data storage
-- **Access logging**: CloudTrail + S3 access logs
-- **Encryption requirements**: KMS for regulated data
-- **PII handling**: Macie for discovery, Lake Formation for access control
-
-**[📖 AWS Compliance](https://aws.amazon.com/compliance/)** - AWS compliance programs and certifications
-**[📖 S3 Object Lock](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html)** - WORM compliance for data retention
-
-## Security Best Practices for Data Engineers
+## Security Best Practices Summary
 
 ### Data at Rest
-1. Enable default encryption on all S3 buckets (SSE-KMS recommended)
-2. Use customer-managed KMS keys for sensitive data
-3. Enable S3 Bucket Keys to reduce KMS costs
-4. Encrypt Redshift clusters, DynamoDB tables, and EBS volumes
-5. Encrypt Glue Data Catalog metadata
+
+1. Enable default encryption on all S3 buckets (SSE-KMS recommended for compliance)
+2. Use customer managed KMS keys for sensitive data (audit trail, rotation control)
+3. Enable S3 Bucket Keys to reduce KMS API costs
+4. Encrypt Redshift clusters (enabled at creation, encrypts data + backups + snapshots)
+5. Encrypt DynamoDB tables with customer managed keys for sensitive data
+6. Encrypt Glue Data Catalog metadata and connection passwords
 
 ### Data in Transit
-1. Enforce HTTPS on S3 bucket policies
-2. Enable SSL for Redshift and RDS connections
-3. Use VPC endpoints for private access to AWS services
-4. Enable in-transit encryption for EMR clusters
+
+1. Enforce HTTPS on S3 bucket policies (`aws:SecureTransport` condition)
+2. Enable SSL for Redshift connections (`require_ssl = true`)
+3. Enable SSL/TLS for RDS/Aurora connections
+4. Use VPC endpoints for private access (gateway for S3/DynamoDB, interface for others)
+5. Enable in-transit encryption for EMR clusters (HDFS, Spark shuffle, Tez)
 
 ### Access Control
-1. Use Lake Formation for centralized data lake permissions
-2. Implement least privilege with IAM policies
-3. Use LF-Tags for scalable permission management
-4. Implement column-level security for sensitive columns
-5. Use row-level security for multi-tenant data
+
+1. Use Lake Formation for centralized data lake permissions (prefer over S3/IAM policies)
+2. Implement least privilege: grant minimum permissions needed
+3. Use LF-Tags for scalable, automatic permission management
+4. Implement column-level security for PII and sensitive columns
+5. Use data filters for row-level security in multi-tenant environments
+6. Use IAM roles (not users) for service-to-service access
+7. Avoid long-lived access keys; use IAM roles with temporary credentials
 
 ### Auditing and Monitoring
-1. Enable CloudTrail for all API activity
-2. Enable S3 data events for object-level logging
-3. Use Macie for continuous sensitive data discovery
-4. Monitor with CloudWatch alarms for security events
-5. Integrate with AWS Security Hub for centralized findings
+
+1. Enable CloudTrail in all regions with S3 data events enabled
+2. Use CloudTrail Lake for SQL-based audit queries
+3. Run Macie classification jobs on S3 data lake buckets regularly
+4. Set up CloudWatch alarms for security-relevant metrics
+5. Integrate with AWS Security Hub for centralized security findings
+6. Enable S3 access logging for detailed object-level access records
+
+---
 
 ## Common Exam Scenarios
 
-1. **"Restrict column access in data lake"** - Lake Formation column-level permissions
-2. **"Encrypt data at rest in S3"** - SSE-KMS with customer-managed keys
-3. **"Discover PII in S3 buckets"** - Amazon Macie classification jobs
-4. **"Audit data access"** - CloudTrail data events + CloudTrail Lake
-5. **"Share data across accounts"** - Lake Formation cross-account with LF-Tags
-6. **"Enforce HTTPS on S3"** - Bucket policy with aws:SecureTransport condition
-7. **"Fine-grained access control"** - Lake Formation data filters (row + column)
-8. **"Manage encryption keys"** - KMS customer-managed keys with key rotation
-
-## Study Tips
-
-1. **Lake Formation mastery**: Understand permissions model, LF-Tags, data filters
-2. **Encryption options**: Know SSE-S3 vs SSE-KMS vs SSE-C differences
-3. **IAM for data services**: Service roles for Glue, EMR, Redshift, Lambda
-4. **Macie capabilities**: Sensitive data discovery and classification
-5. **CloudTrail**: Management events vs data events vs insights
-6. **VPC security**: Endpoints, security groups, network ACLs
-
-## CLI Quick Reference
-
-```bash
-# Lake Formation
-aws lakeformation grant-permissions --principal '{"DataLakePrincipalIdentifier":"arn:aws:iam::123456789012:role/AnalystRole"}' --resource '{"Table":{"DatabaseName":"db","Name":"table"}}' --permissions '["SELECT"]'
-aws lakeformation create-lf-tag --tag-key "classification" --tag-values '["public","confidential"]'
-aws lakeformation get-data-lake-settings
-
-# KMS
-aws kms create-key --description "Data lake encryption key"
-aws kms create-alias --alias-name alias/data-lake-key --target-key-id key-id
-aws kms enable-key-rotation --key-id key-id
-
-# Macie
-aws macie2 enable-macie
-aws macie2 create-classification-job --job-type ONE_TIME --name "scan-job" --s3-job-definition '...'
-aws macie2 list-findings
-
-# CloudTrail
-aws cloudtrail create-trail --name data-audit-trail --s3-bucket-name audit-logs
-aws cloudtrail put-event-selectors --trail-name data-audit-trail --event-selectors '[{"ReadWriteType":"All","IncludeManagementEvents":true,"DataResources":[{"Type":"AWS::S3::Object","Values":["arn:aws:s3:::data-lake/"]}]}]'
-
-# IAM
-aws iam create-role --role-name GlueETLRole --assume-role-policy-document file://trust-policy.json
-aws iam attach-role-policy --role-name GlueETLRole --policy-arn arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole
-```
+1. **"Restrict column access in data lake"** --> Lake Formation column-level permissions or TableWithColumns grant
+2. **"Encrypt data at rest in S3 with audit trail"** --> SSE-KMS with customer managed key
+3. **"Discover PII in S3 data lake"** --> Amazon Macie classification jobs
+4. **"Audit who accessed what data in S3"** --> CloudTrail with S3 data events enabled
+5. **"Share data lake across accounts with governance"** --> Lake Formation cross-account sharing with LF-Tags
+6. **"Enforce HTTPS for all S3 access"** --> S3 bucket policy with `aws:SecureTransport` = false deny
+7. **"Fine-grained row + column access control"** --> Lake Formation data filters
+8. **"Manage encryption keys with rotation"** --> KMS customer managed keys with automatic rotation enabled
+9. **"Scalable permissions for growing data lake"** --> LF-Tags (permissions apply automatically when resources are tagged)
+10. **"Validate data quality before loading to warehouse"** --> Glue Data Quality DQDL rules in ETL pipeline
+11. **"Private S3 access from VPC"** --> S3 gateway VPC endpoint (free)
+12. **"Encrypt Redshift cluster and connections"** --> KMS encryption at rest + `require_ssl` for in transit

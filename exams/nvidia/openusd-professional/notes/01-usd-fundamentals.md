@@ -1,198 +1,173 @@
 # USD Fundamentals
 
-**[📖 OpenUSD Documentation](https://openusd.org/release/index.html)** - Official USD specification
+**[📖 OpenUSD Documentation](https://openusd.org/release/index.html)** - Official USD reference
 
-## USD Data Model
+## Core Data Model
 
 ### Prims (Primitives)
 
-Prims are the fundamental building blocks of a USD scene. They form a hierarchical tree structure.
+Prims are the fundamental building blocks of a USD scene:
 
-**Prim Types:**
-- **Xform** - Transform node (translate, rotate, scale)
-- **Mesh** - Polygon mesh geometry
+- Organized in a hierarchical tree (like a filesystem)
+- Each prim has a unique path: `/World/Characters/Hero`
+- Prims have a type (Mesh, Xform, Camera, Light, etc.)
+- Can contain child prims, properties, and metadata
+- Root prim is implicitly at `/`
+
+**Common Prim Types:**
+- **Xform** - Transform node (translation, rotation, scale)
+- **Mesh** - Polygon geometry
 - **Camera** - Virtual camera
-- **Light** - Light sources (distant, sphere, rect, dome)
-- **Material** - Surface material definition
-- **Scope** - Organizational grouping (no transform)
-- **Shader** - Shader node within a material
+- **Scope** - Grouping node (no transform)
+- **Material** - Shading material definition
+- **Light types** - DistantLight, SphereLight, RectLight, DomeLight
 
-**Prim Paths:**
-- Absolute: `/World/Character/Body`
-- Root prim: `/`
-- Hierarchical namespace with `/` separator
-- Must be unique within a stage
+### Properties
 
-**Prim Specifiers:**
-- **def** - Defines a concrete prim (most common)
-- **over** - Override opinions on an existing prim
-- **class** - Abstract class prim (not rendered, used for inheritance)
+**Attributes:**
+- Typed data values attached to prims
+- Can be time-sampled for animation
+- Examples: `points`, `normals`, `faceVertexCounts`, `visibility`
+- Custom attributes with namespace prefixes
 
-### Attributes
-
-**Properties:**
-- Named, typed data values on prims
-- Can be time-varying (animated)
-- Have a type (float, double, int, string, vector, matrix, etc.)
-- Common: `xformOp:translate`, `points`, `normals`, `faceVertexCounts`
-
-**Time Samples:**
-```python
-# Set default value
-attr.Set(value)
-
-# Set time-sampled value
-attr.Set(value, time=1.0)
-attr.Set(value, time=2.0)
-```
-
-**Interpolation:**
-- Default value used when no time samples exist
-- Linear interpolation between time samples
-- Held interpolation for discrete values
-
-### Relationships
-
+**Relationships:**
 - Named connections between prims
-- Target one or more prim paths
-- Common uses:
-  - `material:binding` - bind material to geometry
-  - Collection membership
-  - Light linking
+- Used for material bindings, target references
+- Example: `material:binding` links mesh to material
+- Can be time-varying
 
 ### Metadata
 
-**Stage Metadata:**
-- `defaultPrim` - entry point for references
-- `upAxis` - Y or Z up orientation
-- `metersPerUnit` - scene scale
-- `framesPerSecond` - animation frame rate
+Key-value data on prims, properties, or layers:
 
-**Prim Metadata:**
-- `kind` - assembly, group, component, subcomponent
-- `purpose` - default, render, proxy, guide
-- `active` - whether prim is included in stage
-- `hidden` - visibility hint for UI
-- `documentation` - human-readable description
+- **kind** - Classification (component, assembly, group, subcomponent)
+- **purpose** - Rendering purpose (default, render, proxy, guide)
+- **active** - Whether prim is active (true/false)
+- **hidden** - UI visibility hint
+- **documentation** - Human-readable description
 
-## File Formats
-
-### .usda (ASCII)
-```
-#usda 1.0
-(
-    defaultPrim = "World"
-    upAxis = "Y"
-)
-
-def Xform "World"
-{
-    def Mesh "Cube"
-    {
-        float3[] points = [(-1,-1,-1), (1,-1,-1), (1,1,-1), ...]
-        int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
-        int[] faceVertexIndices = [0, 1, 2, 3, ...]
-    }
-}
-```
-- Human-readable text format
-- Good for debugging and version control
-- Larger file size than binary
-- Slower to load than .usdc
-
-### .usdc (Crate Binary)
-- Binary format optimized for fast loading
-- Smaller file size than .usda
-- Memory-mapped file access
-- Random access to data within file
-- Preferred for production assets
-
-### .usdz (Package)
-- Zip archive containing .usdc and textures
-- Self-contained for distribution
-- Used by Apple AR Quick Look
-- Single file for asset delivery
-- Read-only (cannot be edited in place)
-
-## USD API Basics
-
-### Python API
+### USD Python API
 
 ```python
-from pxr import Usd, UsdGeom, Sdf, Gf
+from pxr import Usd, UsdGeom, Gf
 
 # Create a new stage
 stage = Usd.Stage.CreateNew('scene.usda')
 
-# Set stage metadata
-stage.SetDefaultPrim(stage.DefinePrim('/World'))
-UsdGeom.SetStageUpAxis(stage, UsdGeom.Tokens.y)
-
-# Create a prim
-xform = UsdGeom.Xform.Define(stage, '/World/Object')
-
-# Set transform
-xform.AddTranslateOp().Set(Gf.Vec3d(1.0, 2.0, 3.0))
+# Define a prim
+xform = UsdGeom.Xform.Define(stage, '/World')
 
 # Create a mesh
-mesh = UsdGeom.Mesh.Define(stage, '/World/Object/Mesh')
-mesh.GetPointsAttr().Set([(0,0,0), (1,0,0), (1,1,0)])
+mesh = UsdGeom.Mesh.Define(stage, '/World/Cube')
+mesh.CreatePointsAttr([
+    Gf.Vec3f(-1, -1, -1), Gf.Vec3f(1, -1, -1),
+    # ... more vertices
+])
+
+# Set transform
+xform.AddTranslateOp().Set(Gf.Vec3d(0, 0, 0))
+xform.AddRotateXYZOp().Set(Gf.Vec3f(0, 45, 0))
+xform.AddScaleOp().Set(Gf.Vec3f(1, 1, 1))
 
 # Save
 stage.GetRootLayer().Save()
 ```
 
-### Common API Patterns
+**[📖 USD Python API](https://openusd.org/release/api/index.html)** - Programming reference
 
-```python
-# Open existing stage
-stage = Usd.Stage.Open('scene.usda')
+## File Formats
 
-# Traverse all prims
-for prim in stage.Traverse():
-    print(prim.GetPath())
+### .usda (ASCII)
+- Human-readable text format
+- Editable with any text editor
+- Larger file size
+- Useful for debugging and learning
+- Version control friendly (text diffs)
 
-# Get specific prim
-prim = stage.GetPrimAtPath('/World/Object')
+```usda
+#usda 1.0
 
-# Check prim type
-if prim.IsA(UsdGeom.Mesh):
-    mesh = UsdGeom.Mesh(prim)
-
-# Get attribute value
-points = mesh.GetPointsAttr().Get()
-
-# Set attribute with time sample
-mesh.GetPointsAttr().Set(new_points, Usd.TimeCode(1.0))
+def Xform "World"
+{
+    def Mesh "Cube"
+    {
+        float3[] points = [(-1, -1, -1), (1, -1, -1), ...]
+        int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+        int[] faceVertexIndices = [0, 1, 3, 2, ...]
+    }
+}
 ```
 
-**[📖 USD API Reference](https://openusd.org/release/api/index.html)** - Complete API documentation
+### .usdc (Crate Binary)
+- Compact binary format
+- Fast loading (memory-mapped)
+- Smaller file size than .usda
+- Preferred for production assets
+- Not human-readable
 
-## Schemas
+### .usdz (Package)
+- ZIP archive containing USD files and assets
+- Self-contained (includes textures, materials)
+- Used for distribution and sharing
+- Apple AR Quick Look support
+- Read-only format
 
-### IsA Schemas
-- Define prim types through inheritance
-- Provide typed API for prims
-- Examples: UsdGeomMesh, UsdLuxDistantLight, UsdShadeMaterial
-- A prim can only have one IsA schema type
+### .usd (Generic)
+- Can be either .usda or .usdc
+- USD detects format automatically
+- Convention for files that may change format
+- Recommended for references (format-agnostic)
 
-### API Schemas
-- Add functionality to any prim type
-- Can be applied to existing prims
-- Examples: UsdGeom.CollectionAPI, UsdPhysicsRigidBodyAPI
-- A prim can have multiple API schemas
+## Schema System
 
-### Applied vs Non-Applied
-- **Applied** - Explicitly applied to prims (stored in layer)
-- **Non-Applied** - Available on all prims of compatible type
-- Applied schemas listed in prim's `apiSchemas` metadata
+### Typed Schemas (IsA)
+
+Define what a prim "is":
+- Each prim can have exactly one typed schema
+- Provides built-in properties and behavior
+- Inheritance hierarchy (UsdGeomMesh inherits from UsdGeomGprim)
+- Applied via `Define()` or type name in USD file
+
+**Geometry schemas:** UsdGeomMesh, UsdGeomCurves, UsdGeomPoints, UsdGeomXform
+**Lighting schemas:** UsdLuxDistantLight, UsdLuxSphereLight, UsdLuxRectLight
+**Shading schemas:** UsdShadeMaterial, UsdShadeShader
+
+### API Schemas (HasA)
+
+Add capabilities to prims:
+- Multiple API schemas can be applied to one prim
+- Do not define the prim type
+- Two categories:
+  - **Applied** - Explicitly applied, stored in scene (MaterialBindingAPI)
+  - **Non-Applied** - Utility interfaces, not stored (UsdGeomModelAPI)
+
+**Common API schemas:**
+- UsdShadeMaterialBindingAPI - Bind materials to geometry
+- UsdGeomModelAPI - Model hierarchy metadata
+- UsdCollectionAPI - Define collections of prims
+- UsdPhysicsRigidBodyAPI - Physics simulation properties
+
+## Scene Hierarchy Patterns
+
+### Kind Hierarchy
+- **model** - Base kind for all models
+- **assembly** - Group of components (a car)
+- **component** - Leaf model (a wheel)
+- **group** - Organizational grouping
+- **subcomponent** - Part of a component
+
+### Purpose
+- **default** - Always visible
+- **render** - High-quality geometry for final rendering
+- **proxy** - Simplified geometry for viewport display
+- **guide** - Helper geometry (not rendered)
 
 ## Key Exam Concepts
 
-- Prim types: Xform, Mesh, Camera, Light, Material, Scope
-- Prim specifiers: def, over, class
+- Prim hierarchy and path syntax
+- Attribute vs relationship properties
 - File formats: .usda (text), .usdc (binary), .usdz (package)
-- Attribute time sampling and interpolation
-- Stage metadata: defaultPrim, upAxis, metersPerUnit
-- Prim metadata: kind, purpose, active
-- IsA schemas vs API schemas
+- Typed schemas (IsA) vs API schemas (HasA)
+- Kind hierarchy for asset classification
+- Purpose values for rendering optimization
+- USD Python API basics

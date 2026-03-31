@@ -1,172 +1,163 @@
-# NVIDIA Omniverse
+# Omniverse Platform
 
-**[📖 Omniverse Documentation](https://docs.omniverse.nvidia.com/)** - Complete platform reference
+**[📖 Omniverse Documentation](https://docs.omniverse.nvidia.com/)** - Platform reference
 
-## Platform Architecture
+## Omniverse Architecture
 
 ### Core Components
 
 **Nucleus:**
-- Central collaboration and data server
+- Central server for asset storage and collaboration
 - Real-time file synchronization
-- Version control (checkpoints)
+- Version control with checkpoints
 - Access control and permissions
-- USD live layer support for multi-user editing
-- **[📖 Nucleus Documentation](https://docs.omniverse.nvidia.com/nucleus/)**
+- Pub/sub for live updates between clients
+- **[📖 Nucleus Docs](https://docs.omniverse.nvidia.com/nucleus/)**
 
-**Kit:**
+**Kit SDK:**
 - Application development framework
 - Extension-based modular architecture
 - Python and C++ APIs
-- UI framework for building custom tools
-- Base for Omniverse applications (Composer, Code)
+- Built-in viewport, UI, and rendering
+- Foundation for all Omniverse applications
+- **[📖 Kit SDK Docs](https://docs.omniverse.nvidia.com/kit/)**
 
 **Connectors:**
-- Bi-directional bridges between DCC tools and Omniverse
+- Bridge plugins for third-party DCC tools
+- Maya Connector, Blender Connector, 3ds Max Connector
+- Revit, SketchUp, Rhino connectors (AEC)
+- SolidWorks, Creo connectors (manufacturing)
 - Live sync for real-time collaboration
-- Export/import for batch workflows
-- Available for Maya, 3ds Max, Blender, Revit, SolidWorks, etc.
 
 **RTX Renderer:**
-- Real-time ray tracing and path tracing
-- NVIDIA RTX GPU acceleration
-- MDL material support
-- AI denoising for interactive quality
-- Multi-GPU rendering support
-
-### Omniverse Applications
-
-**USD Composer:**
-- Scene composition and layout
-- Large-scale environment assembly
-- Physics simulation
-- Material editing and assignment
-- Rendering and visualization
-
-**Code:**
-- Developer-focused application
-- Extension development and testing
-- Script editor and debugger
-- API exploration
-
-**Isaac Sim:**
-- Robotics simulation on Omniverse
-- Physics-based robot simulation
-- Synthetic data generation
-- Reinforcement learning environments
-
-**Drive Sim:**
-- Autonomous vehicle simulation
-- Sensor simulation (LiDAR, camera, radar)
-- Traffic simulation
-- Scenario generation
+- Real-time ray tracing engine
+- Path tracing for photorealistic rendering
+- GPU-accelerated with NVIDIA RTX GPUs
+- Global illumination, reflections, shadows
+- Physically-based rendering pipeline
 
 ## Nucleus Server
 
+### Architecture
+- **Database** - Stores file metadata and versions
+- **Storage** - Stores file content (local or cloud)
+- **Auth** - Authentication and authorization
+- **Discovery** - Service discovery for clients
+- **Pub/Sub** - Real-time change notifications
+
+### File Operations
+- Create, read, update, delete files and folders
+- Atomic write operations for consistency
+- File locking for exclusive access
+- Checkpoint creation for version snapshots
+- Branching for experimental changes
+
 ### Collaboration Model
-- Shared USD layers via Nucleus storage
-- Multiple users can edit simultaneously
-- Live layers for real-time sync
-- Conflict resolution through USD composition
-- Each user's edits go to their own layer
+- Multiple users can work on the same scene simultaneously
+- Each user edits in their own layer (live layer)
+- Changes propagate in real-time via pub/sub
+- Conflict resolution through layer strength ordering
+- Layer locking prevents simultaneous edits to same layer
 
-### Storage and Access
-- REST API for file operations
-- Omniverse Client Library for programmatic access
-- Web-based administration interface
-- LDAP/Active Directory integration for authentication
-- Role-based access control (read, write, admin)
-
-### Checkpoints
-- Point-in-time snapshots of files
-- Non-destructive - do not duplicate unchanged data
-- Rollback to any checkpoint
-- Compare checkpoints for changes
-- Automatic checkpoint on save (configurable)
+### Access Control
+- User and group management
+- Per-folder permissions (read, write, admin)
+- ACL-based access control
+- Integration with enterprise identity providers (LDAP, SAML)
+- Audit logging for compliance
 
 ### Deployment Options
-- On-premises server
-- Cloud deployment (AWS, Azure, GCP)
-- NVIDIA Omniverse Cloud
-- Enterprise configurations with HA
+- **Nucleus Cloud** - SaaS offering, managed by NVIDIA
+- **Enterprise Nucleus** - Self-hosted on-premises or in cloud
+- **Local Nucleus** - Single-user development server
+- Docker-based deployment for enterprise
 
 ## Connectors
 
-### Workflow Modes
+### How Connectors Work
+1. User opens DCC tool with connector installed
+2. Connector authenticates with Nucleus
+3. User opens USD file from Nucleus
+4. Edits in DCC tool are synced to Nucleus
+5. Other users see changes in real-time
+6. Materials and textures translated between formats
 
-**Live Sync:**
-- Real-time bi-directional connection
-- Changes in DCC tool appear in Omniverse instantly
-- Changes in Omniverse appear in DCC tool
-- Multiple users in different tools editing the same scene
+### Key Connector Features
+- **Live Sync** - Real-time bidirectional updates
+- **Material Translation** - Convert DCC materials to USD/MDL
+- **Geometry Export** - Convert native geometry to USD meshes
+- **Animation Export** - Time-sampled transform and blend shapes
+- **Camera/Light Export** - Convert to USD light and camera types
 
-**Publish/Subscribe:**
-- Export from DCC tool to Nucleus
-- Import from Nucleus to DCC tool
-- Batch processing workflows
-- Offline asset preparation
+### Supported Tools
+- **Film/VFX:** Maya, Houdini, Blender, 3ds Max
+- **AEC:** Revit, SketchUp, Rhino
+- **Manufacturing:** SolidWorks, Creo, Siemens NX
+- **Visualization:** Unreal Engine
 
-### Supported Applications
-- Autodesk Maya
-- Autodesk 3ds Max
-- Autodesk Revit
-- Blender
-- SolidWorks
-- Unreal Engine
-- Adobe Substance
-- McNeel Rhino
+## Kit SDK
 
-## Kit-Based Development
-
-### Extensions
-
-**Architecture:**
-- Omniverse Kit applications are collections of extensions
+### Extension Architecture
+- Extensions are the fundamental building blocks
 - Each extension provides specific functionality
 - Extensions can depend on other extensions
-- Hot-reloadable during development
+- Hot-reload for rapid development
+- Marketplace for sharing extensions
 
-**Extension Types:**
-- UI extensions (panels, windows, menus)
-- Action extensions (tools, operations)
-- Service extensions (background processes)
-- Schema extensions (custom USD schemas)
+### Key Extensions
+- **omni.kit.viewport** - 3D viewport rendering
+- **omni.ui** - UI framework for windows and widgets
+- **omni.usd** - USD stage management
+- **omni.physx** - Physics simulation
+- **omni.rtx** - RTX rendering pipeline
 
-### Python API
+### Extension Development
 
 ```python
 import omni.ext
-import omni.ui as ui
 
 class MyExtension(omni.ext.IExt):
     def on_startup(self, ext_id):
-        self._window = ui.Window("My Tool", width=300, height=200)
-        with self._window.frame:
-            with ui.VStack():
-                ui.Label("Hello Omniverse!")
-                ui.Button("Click Me", clicked_fn=self._on_click)
-
-    def _on_click(self):
-        print("Button clicked!")
+        print("Extension started")
+        # Initialize extension
 
     def on_shutdown(self):
-        self._window.destroy()
+        print("Extension shutdown")
+        # Cleanup
 ```
 
-### omni.ui Framework
-- Declarative UI framework
-- Layout: VStack, HStack, Frame, ScrollingFrame
-- Widgets: Button, Label, Slider, Field, ComboBox
-- Styling with CSS-like properties
-- Data binding for reactive updates
+### Application Development
+- Build custom Omniverse applications with Kit
+- Combine extensions for desired functionality
+- Deploy as standalone applications
+- Customize UI and workflow
+- **[📖 Extension Development](https://docs.omniverse.nvidia.com/kit/docs/kit-extension-template/)** - Tutorial
 
-**[📖 Kit Documentation](https://docs.omniverse.nvidia.com/kit/)** - Development framework
+## Omniverse Applications
+
+**USD Composer:**
+- Scene layout and composition
+- Large scene assembly
+- Material assignment
+- Rendering and visualization
+
+**USD Presenter:**
+- Interactive presentations of USD scenes
+- Navigation and annotation
+- Sharing and collaboration
+- Real-time rendering
+
+**Omniverse Code:**
+- Development environment for extensions
+- Built-in Python editor
+- Live extension reloading
+- Debugging tools
 
 ## Key Exam Concepts
 
-- Omniverse architecture: Nucleus, Kit, Connectors, RTX Renderer
-- Nucleus collaboration model and checkpoint system
-- Connector workflow modes: live sync vs publish/subscribe
-- Kit extension architecture and Python API
-- Omniverse application portfolio (Composer, Code, Isaac Sim)
-- Deployment options for Nucleus server
+- Nucleus architecture and collaboration model
+- Real-time collaboration through live layers
+- Connector workflow for DCC tool integration
+- Kit SDK extension architecture
+- Access control and version management
+- Deployment options (cloud, enterprise, local)

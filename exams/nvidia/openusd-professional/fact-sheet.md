@@ -14,198 +14,196 @@
 
 | Domain | Weight | Key Focus |
 |--------|--------|-----------|
-| USD Fundamentals | 25% | Data model, prims, layers, schemas |
-| Scene Composition | 25% | LIVRPS, references, variants, payloads |
-| NVIDIA Omniverse | 20% | Platform, Nucleus, Connectors, Kit |
-| Rendering and Materials | 15% | MDL, Hydra, RTX, lighting |
-| Collaboration and Pipelines | 15% | Multi-user, asset management, digital twins |
+| USD Fundamentals | 25% | Data model, prims, properties, schemas |
+| Scene Composition | 25% | Layers, composition arcs, LIVRPS |
+| Omniverse Platform | 20% | Nucleus, connectors, Kit SDK |
+| Rendering and Materials | 15% | Materials, lighting, Hydra, RTX |
+| Collaboration and Pipeline | 15% | Multi-user, versioning, integration |
 
 ## Domain 1: USD Fundamentals
 
-### File Formats
-- **.usda** - ASCII (human-readable)
-- **.usdc** - Binary (Crate format, fast loading)
-- **.usdz** - Zip archive (usdc + textures, for distribution)
-
-### Data Model
+### Core Data Model
 
 **Prims (Primitives):**
-- Fundamental building blocks of USD scenes
-- Hierarchical namespace (tree structure)
-- Types: Xform, Mesh, Camera, Light, Material, Scope
-- Each prim has a path (e.g., /World/Character/Body)
+- Fundamental scene element in USD
+- Hierarchical (tree structure like a file system)
+- Types: Xform, Mesh, Camera, Light, Scope, Material
+- Each prim has a unique path (e.g., `/World/House/Roof`)
 
-**Attributes:**
-- Named, typed data on prims
-- Time-sampled for animation
-- Can have default values and time samples
-- Examples: xformOp:translate, points, normals
-
-**Relationships:**
-- Named connections between prims
-- Used for material bindings, collections, targets
-- Example: material:binding relationship
+**Properties:**
+- **Attributes** - Typed data values (position, color, opacity)
+- **Relationships** - Links between prims (material binding)
+- Properties can be time-sampled for animation
 
 **Metadata:**
-- Data about the stage, layers, or prims
-- kind, purpose, hidden, active
-- Documentation and custom metadata
+- Key-value data attached to prims, properties, or layers
+- `kind`, `purpose`, `hidden`, `active`
+- Custom metadata for pipeline information
 
-### Layers and Stages
-- **Layer** - A single USD file containing opinions
-- **Stage** - The composed result of all layers
-- **Root layer** - Entry point for stage composition
-- **Session layer** - Non-persistent overrides
+### File Formats
 
-**[📖 OpenUSD Documentation](https://openusd.org/release/index.html)** - Core concepts
+| Format | Extension | Description |
+|--------|-----------|-------------|
+| ASCII | .usda | Human-readable text format |
+| Binary (Crate) | .usdc | Compact binary, faster loading |
+| Package | .usdz | ZIP archive for distribution |
+| Generic | .usd | Can be either .usda or .usdc |
 
-### USD Schemas
-- **IsA schemas** - Define prim types (Mesh, Camera, Light)
-- **API schemas** - Add capabilities to prims (CollectionAPI, PhysicsAPI)
-- **Applied schemas** - Explicitly applied to prims
-- **Non-applied schemas** - Implicitly available
+### Schema Types
+
+**Typed Schemas (IsA):**
+- Define prim types with built-in properties
+- UsdGeomMesh, UsdGeomXform, UsdLuxDistantLight
+- Prim can only have one typed schema
+
+**API Schemas (HasA):**
+- Add capabilities to prims
+- Can stack multiple API schemas on one prim
+- UsdShadeMaterialBindingAPI, UsdGeomModelAPI
+- Applied vs Non-Applied API schemas
+
+**[📖 OpenUSD Schema Documentation](https://openusd.org/release/api/index.html)** - Schema reference
 
 ## Domain 2: Scene Composition
 
-### LIVRPS Composition Order
-
-Opinions are resolved in this order (strongest to weakest):
-
-1. **L - Local opinions** (directly authored on the stage)
-2. **I - Inherits** (class-based inheritance)
-3. **V - Variants** (switchable configurations)
-4. **R - References** (scene referencing)
-5. **P - Payloads** (deferred loading references)
-6. **S - Sublayers** (layer stacking)
-
 ### Composition Arcs
 
-**Sublayers:**
-- Stack multiple layers on a stage
-- Later sublayers have stronger opinions
-- Used for department-based workflows (modeling, animation, lighting)
+**LIVRPS (Composition Order - strongest to weakest):**
+1. **L**ocal opinions - Direct edits on the layer
+2. **I**nherits - Inherit from another prim (class-like)
+3. **V**ariantSets - Switchable variations
+4. **R**eferences - Include external USD files or prims
+5. **P**ayloads - Deferred references (lazy loading)
+6. **S**pecializes - Like inherits but weakest (base class)
 
-**References:**
-- Include a prim tree from another layer
-- Can target a specific prim path in the referenced layer
-- Loaded immediately when stage is opened
+### References
+```python
+# USD Python API
+prim.GetReferences().AddReference('./asset.usd', '/Root')
+```
+- Include external USD files into the scene
+- Strongest external composition arc
+- Always loaded with the scene
+- Can target specific prim paths
 
-**Payloads:**
-- Like references but can be deferred (unloaded)
-- Used for heavy assets (geometry, textures)
-- Reduces initial load time for large scenes
-- User controls which payloads to load
+### Payloads
+```python
+prim.GetPayloads().AddPayload('./heavy_asset.usd')
+```
+- Deferred loading (can be unloaded)
+- Same as references but weaker and lazy-loadable
+- Used for heavy assets to manage memory
+- Load/unload at runtime for performance
 
-**Variants:**
-- Switchable configurations on a prim
-- Variant sets contain named variants
-- Example: material variants (wood, metal, glass)
-- Example: LOD variants (high, medium, low)
+### VariantSets
+```python
+vset = prim.GetVariantSets().AddVariantSet('color')
+vset.AddVariant('red')
+vset.AddVariant('blue')
+vset.SetVariantSelection('red')
+```
+- Switchable variations on a prim
+- Named sets with named variants
+- Non-destructive option switching
+- Common for LODs, material variations, configurations
 
-**Inherits:**
-- Class-based inheritance
+### Inherits
+- Prim inherits properties from another prim (class)
 - Changes to class propagate to all inheriting prims
-- Used for shared properties across many instances
+- Stronger than references (overrides reference opinions)
+- Used for shared defaults across many assets
 
-**Specializes:**
-- Like inherits but weaker than local opinions
-- Base class provides defaults that can be overridden
-- Less commonly used than inherits
+### Layer Stack
+- Multiple layers compose to form the final scene
+- Stronger layers override weaker layers
+- Root layer is strongest
+- Sub-layers add opinions in order
+- Non-destructive editing through layer separation
 
 **[📖 USD Composition](https://openusd.org/release/glossary.html)** - Composition reference
 
-## Domain 3: NVIDIA Omniverse
+## Domain 3: Omniverse Platform
 
-### Platform Architecture
-- **Nucleus** - Central collaboration and data server
-- **Kit** - Application development framework
-- **Connectors** - DCC tool integration (Maya, 3ds Max, Blender, etc.)
-- **Extensions** - Modular functionality for Kit apps
-- **RTX Renderer** - Real-time ray tracing
-- **[📖 Omniverse Documentation](https://docs.omniverse.nvidia.com/)**
+### Architecture
 
-### Nucleus Server
-- Central storage for USD assets
-- Real-time collaboration (live sync)
-- Version control for 3D assets
+**Nucleus:**
+- Central collaboration server
+- Stores USD files and assets
+- Real-time synchronization
+- Version control for scene files
 - Access control and permissions
-- Checkpoint system for snapshots
+- **[📖 Nucleus Documentation](https://docs.omniverse.nvidia.com/nucleus/)**
 
-### Connectors
-- Bi-directional sync between DCC tools and Omniverse
-- Maya Connector, 3ds Max Connector, Blender Connector
-- CAD connectors (Revit, SolidWorks)
-- Live sync for real-time collaboration
+**Connectors:**
+- Plugins for DCC tools (Maya, Blender, 3ds Max, etc.)
+- Live sync between DCC and Omniverse
+- USD import/export
+- Material translation
 
-### Kit-Based Applications
-- Omniverse USD Composer (scene composition)
-- Omniverse Code (development)
-- Custom applications via Kit SDK
+**Kit SDK:**
+- Framework for building Omniverse applications
 - Extension-based architecture
+- Python and C++ APIs
+- UI framework (omni.ui)
+- Viewport and rendering integration
+- **[📖 Kit Documentation](https://docs.omniverse.nvidia.com/kit/)**
+
+### Key Applications
+- **USD Composer** - Scene layout and composition
+- **USD Presenter** - Interactive visualization
+- **Audio2Face** - AI-driven facial animation
+- **Machinima** - Real-time storytelling
+- **Code** - Development environment
 
 ## Domain 4: Rendering and Materials
 
-### MDL (Material Definition Language)
-- NVIDIA's physically-based material definition
-- Procedural and texture-based materials
-- Rich library of pre-built materials
-- Cross-renderer compatibility
-- **[📖 MDL SDK](https://developer.nvidia.com/mdl-sdk)** - Material language
-
 ### USD Preview Surface
-- Standard USD material for interchange
-- Basic PBR (physically-based rendering)
-- Diffuse color, metallic, roughness, normal, opacity
-- Supported by all USD-compatible renderers
+- Standard material definition in USD
+- Cross-platform compatibility
+- Properties: diffuseColor, metallic, roughness, opacity
+- Basic PBR (Physically Based Rendering) material
 
-### Hydra Rendering Architecture
-- USD's render delegation framework
-- Separates scene description from rendering
-- Multiple render delegates (Storm, RTX, HdPrman)
-- **Storm** - OpenGL/Vulkan real-time viewport
-- **RTX** - NVIDIA ray tracing renderer
-- **HdPrman** - Pixar's RenderMan delegate
+### MDL Materials
+- NVIDIA Material Definition Language
+- Advanced physically-based materials
+- Procedural textures and functions
+- GPU-optimized rendering
+- **[📖 MDL Documentation](https://developer.nvidia.com/mdl-sdk)** - Material language
 
-### RTX Rendering in Omniverse
-- Real-time ray tracing and path tracing
-- Global illumination and ambient occlusion
-- Reflections, refractions, and caustics
-- AI denoising for interactive performance
-- MDL material support
+### Hydra Render Delegates
+- USD's rendering architecture
+- Pluggable render backends
+- Storm (OpenGL/Vulkan rasterizer)
+- RTX (NVIDIA ray tracing)
+- Third-party delegates (RenderMan, Arnold)
 
-## Domain 5: Collaboration and Pipelines
+### Lighting
+- UsdLux light types: DistantLight, SphereLight, RectLight, DomeLight
+- Light linking and shadow controls
+- IBL (Image-Based Lighting) with DomeLight
+- Physical light units
 
-### Multi-User Collaboration
-- Live sync via Nucleus server
-- Multiple users editing the same stage simultaneously
-- Layer-based conflict resolution
-- Real-time updates across connected clients
+## Domain 5: Collaboration
+
+### Multi-User Workflows
+- Nucleus server enables real-time collaboration
+- Live layers for per-user edits
+- Layer locking for conflict prevention
+- Merge workflows for combining changes
+- Checkpoints for version snapshots
 
 ### Asset Management
-- Nucleus as central asset repository
-- Version control with checkpoints
-- Asset metadata and search
-- Reference resolution across projects
-
-### Pipeline Integration
-- USD as interchange format between pipeline stages
-- Automated asset publishing and validation
-- CI/CD for 3D content pipelines
-- Custom schemas for studio-specific data
-
-### Digital Twin Workflows
-- Industrial facility modeling
-- Real-time simulation and visualization
-- Sensor data integration
-- Physics simulation integration
-- IoT data overlay on 3D scenes
+- Consistent naming conventions
+- Asset resolution (ArResolver) for path mapping
+- Reference counting for dependency tracking
+- Payload management for scene optimization
 
 ## Exam Tips
 
 ### Key Concepts to Master
-1. LIVRPS composition ordering (memorize this)
-2. USD file formats and their use cases
-3. Difference between references and payloads
-4. Omniverse architecture components
-5. MDL vs USD Preview Surface
+1. LIVRPS composition order (memorize this)
+2. References vs Payloads (loading behavior)
+3. USD file formats and when to use each
+4. Prim types and schema system
+5. Omniverse Nucleus and collaboration model
 6. Hydra rendering architecture

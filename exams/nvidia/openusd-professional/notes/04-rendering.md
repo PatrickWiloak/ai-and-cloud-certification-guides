@@ -1,51 +1,24 @@
 # Rendering and Materials
 
-**[📖 MDL SDK Documentation](https://developer.nvidia.com/mdl-sdk)** - Material Definition Language
+**[📖 USD Rendering](https://openusd.org/release/api/usdShade_page_front.html)** - USD shading documentation
 
-## MDL (Material Definition Language)
+## Materials in USD
 
-### Overview
-- NVIDIA's physically-based material definition language
-- Describes material appearance mathematically
-- Procedural and texture-based materials
-- Cross-renderer compatibility (RTX, Iray, etc.)
-- Rich standard library of pre-built materials
+### USD Preview Surface
 
-### MDL Structure
-```mdl
-mdl 1.7;
-import ::df::*;
-import ::tex::*;
+The standard material in USD for cross-platform compatibility:
 
-export material simple_material(
-    color diffuse_color = color(0.8, 0.2, 0.2),
-    float roughness = 0.5
-) = material(
-    surface: material_surface(
-        scattering: df::diffuse_reflection_bsdf(
-            tint: diffuse_color,
-            roughness: roughness
-        )
-    )
-);
-```
+**Properties:**
+- `diffuseColor` - Base color (RGB)
+- `metallic` - Metallic factor (0-1)
+- `roughness` - Surface roughness (0-1)
+- `opacity` - Transparency (0-1)
+- `emissiveColor` - Self-illumination color
+- `ior` - Index of refraction
+- `normal` - Normal map input
+- `occlusion` - Ambient occlusion
 
-### Key Concepts
-- **BSDF** - Bidirectional Scattering Distribution Function
-- **EDF** - Emission Distribution Function
-- **VDF** - Volume Distribution Function
-- Layered material composition
-- Procedural textures and noise functions
-- Cutout opacity and transparency
-
-**[📖 MDL Handbook](https://developer.nvidia.com/mdl-sdk)** - Material authoring guide
-
-## USD Preview Surface
-
-### Standard Material
-
-```python
-# usda syntax
+```usda
 def Material "SimpleMaterial"
 {
     token outputs:surface.connect = </SimpleMaterial/Shader.outputs:surface>
@@ -56,139 +29,162 @@ def Material "SimpleMaterial"
         color3f inputs:diffuseColor = (0.8, 0.2, 0.2)
         float inputs:metallic = 0.0
         float inputs:roughness = 0.5
-        float inputs:opacity = 1.0
         token outputs:surface
     }
 }
 ```
 
-### UsdPreviewSurface Inputs
-- **diffuseColor** - Base color (color3f)
-- **metallic** - Metallic factor (0-1)
-- **roughness** - Surface roughness (0-1)
-- **opacity** - Transparency (0-1)
-- **normal** - Normal map
-- **displacement** - Displacement map
-- **occlusion** - Ambient occlusion
-- **emissiveColor** - Emission color
-- **ior** - Index of refraction
-- **specularColor** - Specular tint
-- **clearcoat** - Clear coat layer
-- **clearcoatRoughness** - Clear coat roughness
+### MDL Materials
 
-### MDL vs UsdPreviewSurface
+**NVIDIA Material Definition Language:**
+- Advanced physically-based material system
+- Procedural textures and noise functions
+- Layered materials and complex shading
+- GPU-optimized for RTX rendering
+- Extensive material library
+- **[📖 MDL SDK](https://developer.nvidia.com/mdl-sdk)** - Material language reference
 
-| Feature | MDL | UsdPreviewSurface |
-|---------|-----|-------------------|
-| Complexity | Full PBR + procedural | Basic PBR |
-| Compatibility | NVIDIA renderers | All USD renderers |
-| Procedural | Yes | No |
-| Layering | Full layer stack | Limited |
-| Use case | Final rendering | Interchange/preview |
+**Key MDL Features:**
+- Mathematical functions for procedural generation
+- Layer blending (clear coat, subsurface)
+- Measured material data support
+- Texture coordinate manipulation
+- Custom BSDF definitions
 
-## Hydra Rendering Architecture
+### Material Binding
 
-### Overview
-- USD's rendering abstraction layer
-- Separates scene description from rendering
-- Multiple render delegates can render the same scene
-- Scene index provides data to render delegates
+```python
+from pxr import UsdShade
 
-### Render Delegates
+# Create material
+material = UsdShade.Material.Define(stage, '/Materials/Red')
 
-**Storm:**
-- OpenGL/Vulkan-based rasterizer
-- Real-time viewport rendering
-- Fast interactive performance
-- USD's default render delegate
-- Good for scene navigation and layout
+# Create shader
+shader = UsdShade.Shader.Define(stage, '/Materials/Red/Shader')
+shader.CreateIdAttr('UsdPreviewSurface')
+shader.CreateInput('diffuseColor', Sdf.ValueTypeNames.Color3f).Set((1, 0, 0))
+shader.CreateInput('roughness', Sdf.ValueTypeNames.Float).Set(0.4)
 
-**RTX (NVIDIA):**
-- Hardware-accelerated ray tracing
-- Path tracing for photorealistic rendering
-- Real-time with AI denoising
-- MDL material support
-- Multi-GPU rendering
+# Connect shader to material output
+material.CreateSurfaceOutput().ConnectToSource(shader.ConnectableAPI(), 'surface')
 
-**HdPrman (Pixar):**
-- RenderMan render delegate
-- Production-quality rendering
-- Film and VFX standard
-- OSL shader support
+# Bind material to geometry
+UsdShade.MaterialBindingAPI(mesh_prim).Bind(material)
+```
 
-### Scene Index
-- Provides scene data to render delegates
-- Handles change tracking and dirty flagging
-- Manages render primitives (rprims)
-- Supports instancing and scene graph optimization
+### Texture Mapping
 
-**[📖 Hydra Architecture](https://openusd.org/release/api/hd_page_front.html)** - Rendering framework
+```usda
+def Shader "DiffuseTexture"
+{
+    uniform token info:id = "UsdUVTexture"
+    asset inputs:file = @./textures/diffuse.png@
+    float2 inputs:st.connect = </Material/UVReader.outputs:result>
+    color3f outputs:rgb
+}
 
-## RTX Rendering in Omniverse
-
-### Rendering Modes
-
-**Real-Time (RTX Real-Time):**
-- Interactive frame rates
-- Ray-traced reflections and shadows
-- Approximate global illumination
-- AI denoising for quality
-- Suitable for editing and preview
-
-**Path Tracing (RTX Path Traced):**
-- Physically accurate light simulation
-- Full global illumination
-- Caustics and complex light transport
-- Converges over time to ground truth
-- Used for final rendering
-
-### Key Features
-- **Global Illumination** - Indirect lighting from bounced light
-- **Reflections** - Accurate mirror and glossy reflections
-- **Shadows** - Soft shadows from area lights
-- **Ambient Occlusion** - Contact shadows for realism
-- **Subsurface Scattering** - Light penetrating translucent materials
-- **AI Denoising** - DLSS and OptiX denoiser for real-time quality
-
-### Multi-GPU Rendering
-- Distribute rendering across multiple GPUs
-- NVLink for efficient multi-GPU communication
-- Linear scaling for path tracing
-- SLI-like compositing for real-time mode
+def Shader "UVReader"
+{
+    uniform token info:id = "UsdPrimvarReader_float2"
+    string inputs:varname = "st"
+    float2 outputs:result
+}
+```
 
 ## Lighting
 
 ### USD Light Types
-- **DistantLight** - Sun/directional light
-- **SphereLight** - Point/spherical area light
-- **RectLight** - Rectangular area light
-- **DiskLight** - Disk-shaped area light
-- **DomeLight** - Environment/IBL light (HDR map)
-- **CylinderLight** - Cylindrical area light
 
-### Lighting Properties
+**UsdLuxDistantLight:**
+- Infinitely far away (sun-like)
+- Parallel rays
+- Properties: angle, color, intensity
+
+**UsdLuxSphereLight:**
+- Point or sphere-shaped light source
+- Properties: radius, color, intensity
+- Soft shadows based on radius
+
+**UsdLuxRectLight:**
+- Rectangular area light
+- Properties: width, height, color, intensity
+- Good for window and panel lighting
+
+**UsdLuxDomeLight:**
+- Environment/sky light
+- Image-based lighting (IBL) with HDR textures
+- Properties: texture file, intensity
+- Provides ambient illumination
+
+**UsdLuxCylinderLight:**
+- Tube-shaped light source
+- Good for fluorescent lighting simulation
+
+### Light Properties
 - **intensity** - Light brightness
-- **color** - Light color
-- **exposure** - Photographic exposure control
-- **enableColorTemperature** - Kelvin color temperature
-- **radius** (for area lights) - Size affects shadow softness
+- **color** - Light color (RGB)
+- **exposure** - Photographic exposure adjustment
+- **normalize** - Normalize intensity by area
+- **enableColorTemperature** - Use Kelvin color temperature
 
-## Camera Setup
+### Light Linking
+- Control which geometry a light affects
+- Include/exclude lists for selective lighting
+- Per-light shadow enable/disable
+- Light group management
+
+## Cameras
 
 ### USD Camera Properties
 - **focalLength** - Lens focal length (mm)
 - **horizontalAperture** - Sensor width (mm)
 - **verticalAperture** - Sensor height (mm)
-- **clippingRange** - Near and far clip planes
+- **clippingRange** - Near/far clip planes
 - **fStop** - Aperture for depth of field
-- **focusDistance** - Focus distance for DOF
+- **focusDistance** - Focus distance for DoF
+
+## Hydra Rendering Architecture
+
+### Overview
+- USD's pluggable rendering system
+- Decouples scene description from rendering
+- Multiple render delegates can render the same scene
+- Scene index translates USD to render-ready data
+
+### Render Delegates
+
+**Storm (Default):**
+- OpenGL/Vulkan rasterizer
+- Fast interactive viewport rendering
+- Good for scene navigation and layout
+- Lower quality than ray tracing
+
+**RTX (NVIDIA):**
+- Real-time ray tracing
+- Path tracing for photorealistic output
+- GPU-accelerated (requires NVIDIA RTX GPU)
+- Global illumination, reflections, caustics
+- Progressive refinement for final quality
+
+**Third-Party Delegates:**
+- RenderMan (Pixar)
+- Arnold (Autodesk)
+- Karma (SideFX)
+- Blender Cycles
+
+### Render Settings
+- Resolution and aspect ratio
+- Samples per pixel (quality vs speed)
+- Ray depth for reflections/refractions
+- Denoising options
+- AOV (Arbitrary Output Variable) channels
+- Motion blur settings
 
 ## Key Exam Concepts
 
-- MDL structure and BSDF concepts
-- UsdPreviewSurface inputs and properties
-- MDL vs UsdPreviewSurface trade-offs
-- Hydra render delegates: Storm, RTX, HdPrman
-- RTX rendering modes: real-time vs path traced
+- USD Preview Surface properties and PBR workflow
+- MDL vs USD Preview Surface (capabilities and use cases)
+- Material binding API for connecting materials to geometry
 - USD light types and their properties
-- Camera properties for rendering
+- Hydra architecture and render delegate concept
+- Storm (rasterizer) vs RTX (ray tracer) render delegates

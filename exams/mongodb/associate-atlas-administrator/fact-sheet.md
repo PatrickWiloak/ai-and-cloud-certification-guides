@@ -1,6 +1,6 @@
 # MongoDB Associate Atlas Administrator - Fact Sheet
 
-## Exam Overview
+## 📋 Exam Overview
 
 **Exam Name:** MongoDB Associate Atlas Administrator
 **Duration:** 75 minutes
@@ -14,186 +14,169 @@
 **[📖 Atlas Documentation](https://www.mongodb.com/docs/atlas/)** - Complete Atlas reference
 **[📖 MongoDB University](https://learn.mongodb.com/)** - Free learning resources
 
-## Target Audience
+## 🎯 Target Audience
 
 This certification is designed for:
 - Cloud database administrators managing Atlas deployments
-- DevOps engineers automating Atlas infrastructure
-- Operations engineers responsible for Atlas clusters
-- Architects designing Atlas-based solutions
+- DevOps engineers responsible for Atlas infrastructure
+- Solutions architects designing Atlas-based architectures
+- Platform engineers building self-service database platforms
 - Professionals with 6+ months Atlas administration experience
 
-## Exam Domains
+## 📚 Exam Domains
 
 ### Domain 1: Cluster Management (25%)
 
 **Cluster Tiers:**
-| Tier | Type | Description |
-|------|------|-------------|
-| M0 | Free | 512 MB storage, shared resources, limited features |
-| M2/M5 | Shared | Low-cost shared clusters for development |
-| M10/M20 | Dedicated | Production-ready, full feature support |
-| M30-M700 | Dedicated | High-performance, large-scale workloads |
 
-**Key Cluster Features:**
-- **Multi-cloud** - Deploy across AWS, Azure, and GCP
-- **Multi-region** - Replicate across geographic regions
-- **Auto-scaling** - Compute and storage auto-scaling
-- **Electable nodes** - Participate in elections (3, 5, or 7)
-- **Analytics nodes** - Isolated read workloads (no election)
-- **Read-only nodes** - Cross-region read replicas
+| Tier | Type | Storage | RAM | Use Case |
+|------|------|---------|-----|----------|
+| M0 | Free shared | 512 MB | Shared | Learning, prototyping |
+| M2 | Shared | 2 GB | Shared | Small apps |
+| M5 | Shared | 5 GB | Shared | Small apps |
+| M10 | Dedicated | 10 GB | 2 GB | Development |
+| M20 | Dedicated | 20 GB | 4 GB | Small production |
+| M30 | Dedicated | 40 GB | 8 GB | Production |
+| M40 | Dedicated | 80 GB | 16 GB | Production |
+| M50 | Dedicated | 160 GB | 32 GB | Large production |
+| M60+ | Dedicated | 320 GB+ | 64 GB+ | Enterprise |
+| M80-M700 | Dedicated | Custom | 128-768 GB | High performance |
 
-**Cluster Operations:**
-- Cluster creation, modification, and termination
-- Tier upgrades and downgrades (no downtime for M10+)
-- Cluster pause/resume (saves cost during inactivity)
-- Rolling maintenance windows
+**Shared vs Dedicated:**
+- M0/M2/M5: Shared infrastructure, limited features
+- M10+: Dedicated infrastructure, full feature set
+- M10 minimum for: backup, VPC peering, private endpoints, sharding
 
-**[📖 Cluster Configuration](https://www.mongodb.com/docs/atlas/cluster-config/multi-cloud-distribution/)** - Cluster setup guide
+**[📖 Cluster Tiers](https://www.mongodb.com/docs/atlas/cluster-tier/)** - Tier comparison
+
+**Multi-Cloud and Multi-Region:**
+- Deploy across AWS, Azure, and GCP simultaneously
+- Multi-region deployments for HA and low latency
+- Global Clusters for data locality (zone sharding)
+- Cross-region replication for disaster recovery
+
+**Auto-Scaling:**
+- **Compute auto-scaling** - Automatically adjusts cluster tier up/down
+- **Storage auto-scaling** - Automatically increases disk space (enabled by default)
+- Configurable scaling limits (min/max tier)
+- Cooldown period between scaling events
+
+**[📖 Auto-Scaling](https://www.mongodb.com/docs/atlas/cluster-autoscaling/)** - Auto-scaling configuration
 
 ### Domain 2: Security and Access (20%)
 
-**Authentication Methods:**
-| Method | Description |
-|--------|-------------|
-| SCRAM | Default username/password authentication |
-| x.509 | Certificate-based authentication |
-| LDAP | Enterprise LDAP directory integration |
-| AWS IAM | AWS IAM role-based authentication |
-
 **Network Security:**
-| Feature | Description |
-|---------|-------------|
-| IP Access List | Allow connections from specific IPs/CIDRs |
-| VPC Peering | Private network connection to your VPC |
-| AWS PrivateLink | Private endpoint (no public internet) |
-| Azure Private Link | Azure private endpoint |
-| GCP Private Service Connect | GCP private endpoint |
+
+| Feature | Description | Minimum Tier |
+|---------|-------------|-------------|
+| IP Access List | Allow specific IPs/CIDR ranges | All tiers |
+| VPC Peering | Private network connection | M10+ |
+| AWS PrivateLink | Private endpoint (AWS) | M10+ |
+| Azure Private Link | Private endpoint (Azure) | M10+ |
+| GCP Private Service Connect | Private endpoint (GCP) | M10+ |
+
+**Database Users:**
+- SCRAM authentication (username/password)
+- x.509 certificate authentication
+- AWS IAM authentication
+- LDAP authentication (M10+)
+- Custom database roles
 
 **Atlas Organization Structure:**
-- **Organization** - Top-level entity, billing, and users
-- **Project** - Container for clusters, teams, and settings
-- **Teams** - Groups of users with shared project access
-- **API Keys** - Programmatic access at org or project level
+- **Organization** - Top level, billing entity
+- **Project** - Groups clusters, users, and settings
+- **Cluster** - The actual MongoDB deployment
 
-**Built-in Atlas Roles:**
-| Role | Description |
-|------|-------------|
-| Organization Owner | Full organization control |
-| Organization Member | View organization, access assigned projects |
-| Project Owner | Full project control |
-| Project Cluster Manager | Create and manage clusters |
-| Project Data Access Admin | Manage database users and access |
-| Project Read Only | View-only access |
+**API Keys:**
+- Organization-level and project-level API keys
+- Programmatic access for automation
+- IP access list for API keys
+- Used with Atlas CLI and Admin API
 
 **[📖 Atlas Security](https://www.mongodb.com/docs/atlas/security/)** - Security documentation
 
 ### Domain 3: Data Management (20%)
 
 **Atlas Search:**
-- Full-text search powered by Apache Lucene
-- Create and manage search indexes via Atlas UI or API
-- Access via `$search` aggregation stage
-- Supports autocomplete, fuzzy matching, faceted search
+- Full-text search powered by Lucene
+- Search indexes on Atlas collections
+- $search aggregation stage
+- Autocomplete, fuzzy, compound queries
 
-**Data Federation:**
-- Query data across Atlas clusters and cloud storage (S3, Azure Blob)
-- Federated database instances for cross-source queries
-- No data movement required
-
-**Online Archive:**
-- Automatically archive infrequently accessed data
-- Archive rules based on date criteria
-- Query archived data alongside live data via Data Federation
-- Reduces cluster storage costs
+**Performance Advisor:**
+- Analyzes slow queries (M10+ clusters)
+- Suggests index creation
+- Shows index usage and recommendations
+- Identifies redundant indexes
 
 **Data Explorer:**
 - Browse collections and documents in Atlas UI
-- Run queries and aggregation pipelines
+- Run queries and aggregations
 - Insert, edit, and delete documents
+- View collection statistics
 
-**[📖 Atlas Search](https://www.mongodb.com/docs/atlas/atlas-search/)** - Search documentation
+**Online Archive:**
+- Automatically archive infrequently accessed data
+- Data moved to cheaper cloud storage
+- Queryable alongside live data using Data Federation
+- Archiving rules based on date or custom criteria
+
+**[📖 Performance Advisor](https://www.mongodb.com/docs/atlas/performance-advisor/)** - Performance optimization
 
 ### Domain 4: Performance (15%)
 
-**Performance Advisor:**
-- Suggests indexes based on slow queries
-- Identifies drop index recommendations
-- Available for M10+ clusters
-- Analyzes queries from the last 24 hours
-
-**Real-Time Performance Panel:**
-- Active operations and their duration
-- Query targeting (documents scanned vs returned)
-- Hottest collections
-
-**Index Management:**
-- Create, drop, and manage indexes via Atlas UI
-- Rolling index builds (no downtime on M10+)
-- Index suggestions from Performance Advisor
-
-**[📖 Performance Advisor](https://www.mongodb.com/docs/atlas/performance-advisor/)** - Performance recommendations
+**Key Performance Features:**
+- Real-Time Performance Panel - Live view of active operations
+- Query Profiler - Analyze slow queries
+- Performance Advisor - Index suggestions
+- Cluster Metrics - Historical performance data
 
 ### Domain 5: Monitoring and Alerts (10%)
 
-**Monitoring Metrics:**
-| Category | Key Metrics |
-|----------|-------------|
-| Connections | Current, available, created |
-| Operations | Insert, query, update, delete rates |
-| Storage | Data size, index size, disk usage |
-| Cache | WiredTiger cache usage and dirty percentage |
-| Replication | Replication lag, oplog window |
-| Network | Bytes in/out, request count |
+**Built-in Metrics:**
+- Connections, operations, network I/O
+- Disk utilization, IOPS, latency
+- CPU utilization, memory usage
+- Replication lag, oplog window
+- Cache utilization
 
-**Alert Types:**
-- Host-level alerts (CPU, memory, disk, connections)
-- Replica set alerts (election, replication lag)
-- Custom metric alerts (thresholds and conditions)
-- Billing alerts (spending thresholds)
-
-**Integrations:**
-- PagerDuty, Slack, email notifications
-- Datadog, New Relic, Prometheus integration
-- Webhook-based custom integrations
+**Alert Configuration:**
+- Pre-configured alerts for common issues
+- Custom alert conditions on any metric
+- Notification channels: email, Slack, PagerDuty, webhooks
 
 **[📖 Atlas Monitoring](https://www.mongodb.com/docs/atlas/monitoring-alerts/)** - Monitoring documentation
 
 ### Domain 6: Backup and Restore (10%)
 
-**Cloud Backup (M10+):**
-| Feature | Description |
+**Snapshot Policies:**
+- Hourly snapshots (configurable retention)
+- Daily snapshots (configurable retention)
+- Weekly snapshots (configurable retention)
+- Monthly snapshots (configurable retention)
+- On-demand snapshots
+
+**Point-in-Time Restore:**
+- Restore to any second within the oplog window
+- Available for M10+ dedicated clusters
+- Restores to a new cluster or existing
+- Oplog window typically 24 hours
+
+**[📖 Atlas Backup](https://www.mongodb.com/docs/atlas/backup-restore-cluster/)** - Backup documentation
+
+## 🔑 Key Facts to Remember
+
+| Feature | Minimum Tier |
 |---------|-------------|
-| Continuous Backup | Oplog-based continuous backup |
-| Snapshots | Configurable snapshot schedule |
-| PIT Restore | Restore to any second within retention |
-| Cross-Region | Restore to different region |
-| Retention | Configurable per frequency (hourly/daily/weekly/monthly) |
-
-**Snapshot Schedule (default):**
-| Frequency | Retention |
-|-----------|-----------|
-| Hourly | 2 days |
-| Daily | 7 days |
-| Weekly | 4 weeks |
-| Monthly | 12 months |
-
-**Backup Compliance Policy:**
-- Prevent unauthorized backup deletion
-- Enforce minimum retention periods
-- Require point-in-time restore capability
-- Cannot be disabled once enabled
-
-**[📖 Atlas Backup](https://www.mongodb.com/docs/atlas/backup/cloud-backup/overview/)** - Backup documentation
-
-## Key Limits to Remember
-
-| Limit | Value |
-|-------|-------|
-| Max clusters per project | 25 |
-| Max projects per organization | 250 |
-| Max database users per project | 100 |
-| Max IP access list entries | 200 |
-| Free tier (M0) storage | 512 MB |
-| M0 max connections | 500 |
-| M10+ max connections | Varies by tier |
+| Cloud Backup | M10 |
+| VPC Peering | M10 |
+| Private Endpoints | M10 |
+| Sharding | M30 |
+| Analytics Nodes | M10 |
+| Performance Advisor | M10 |
+| Query Profiler | M10 |
+| Auto-Scaling (compute) | M10 |
+| LDAP Integration | M10 |
+| Encryption at Rest (CMK) | M10 |
+| Online Archive | M10 |
+| Global Clusters | M30 |

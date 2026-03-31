@@ -1,0 +1,446 @@
+# HashiCorp Terraform Associate (003) - Fact Sheet
+
+## Quick Reference
+
+**Exam Code:** Terraform Associate (003)
+**Duration:** 60 minutes
+**Questions:** 57 questions
+**Passing Score:** 70%
+**Cost:** $70.50 USD
+**Validity:** 2 years
+**Difficulty:** ⭐⭐⭐
+
+## Exam Domains
+
+| Domain | Weight | Key Focus |
+|--------|--------|-----------|
+| Understand IaC concepts | 15% | IaC benefits, patterns, comparisons |
+| Understand the purpose of Terraform | 15% | Multi-cloud, state, workflow, providers |
+| Understand Terraform basics | 20% | HCL, resources, providers, dependencies |
+| Use Terraform outside of core workflow | 10% | Import, state commands, workspaces, debug |
+| Interact with Terraform modules | 10% | Sources, inputs/outputs, versioning, registry |
+| Use the core Terraform workflow | 15% | init, validate, plan, apply, destroy |
+| Implement and maintain state | 15% | Backends, locking, remote state, refresh |
+
+## Infrastructure as Code Fundamentals
+
+### IaC Key Concepts
+- Infrastructure defined in human-readable configuration files
+- Version controlled, reusable, shareable
+- Declarative approach - describe desired end state
+- Idempotent - running multiple times produces the same result
+- Terraform uses HCL (HashiCorp Configuration Language)
+- **[📖 What is Infrastructure as Code](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/infrastructure-as-code)** - IaC concepts introduction
+- **[📖 IaC in Terraform Intro](https://developer.hashicorp.com/terraform/intro)** - Terraform overview and use cases
+
+### IaC Tool Comparison
+| Tool | Type | Language | Provider |
+|------|------|----------|----------|
+| Terraform | Provisioning | HCL | Multi-cloud |
+| CloudFormation | Provisioning | JSON/YAML | AWS only |
+| Ansible | Configuration | YAML | Multi-platform |
+| Pulumi | Provisioning | General-purpose | Multi-cloud |
+| ARM Templates | Provisioning | JSON | Azure only |
+
+### Terraform vs Others
+- **Multi-cloud support:** Works across AWS, Azure, GCP, and hundreds of providers
+- **State management:** Tracks actual infrastructure state
+- **Execution plans:** Preview changes before applying
+- **Resource graph:** Understands dependencies automatically
+- **Provider ecosystem:** 3000+ providers in the registry
+- **[📖 Terraform Use Cases](https://developer.hashicorp.com/terraform/intro/use-cases)** - Common Terraform use cases
+
+## HCL Configuration Language
+
+### Configuration File Structure
+```hcl
+terraform {
+  required_version = ">= 1.0"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_instance" "example" {
+  ami           = var.ami_id
+  instance_type = var.instance_type
+
+  tags = {
+    Name = "example-instance"
+  }
+}
+```
+
+### Block Types
+- **terraform:** Settings, required providers, backend configuration
+- **provider:** Provider configuration and authentication
+- **resource:** Infrastructure objects to create/manage
+- **data:** Query existing infrastructure or external data
+- **variable:** Input parameters for configurations
+- **output:** Return values from configurations
+- **locals:** Named expressions for reuse within a module
+- **module:** Call reusable child modules
+- **[📖 Configuration Language](https://developer.hashicorp.com/terraform/language)** - Complete HCL reference
+- **[📖 Resource Blocks](https://developer.hashicorp.com/terraform/language/resources)** - Resource configuration syntax
+
+### Variable Types
+```hcl
+variable "string_var" {
+  type    = string
+  default = "hello"
+}
+
+variable "number_var" {
+  type    = number
+  default = 42
+}
+
+variable "bool_var" {
+  type    = bool
+  default = true
+}
+
+variable "list_var" {
+  type    = list(string)
+  default = ["a", "b", "c"]
+}
+
+variable "map_var" {
+  type    = map(string)
+  default = { key = "value" }
+}
+
+variable "object_var" {
+  type = object({
+    name = string
+    age  = number
+  })
+}
+```
+
+### Variable Precedence (lowest to highest)
+1. Default values in variable block
+2. `terraform.tfvars` file
+3. `*.auto.tfvars` files (alphabetical order)
+4. `-var-file` flag
+5. `-var` flag
+6. `TF_VAR_` environment variables
+
+- **[📖 Input Variables](https://developer.hashicorp.com/terraform/language/values/variables)** - Variable definitions and usage
+- **[📖 Output Values](https://developer.hashicorp.com/terraform/language/values/outputs)** - Output configuration
+- **[📖 Local Values](https://developer.hashicorp.com/terraform/language/values/locals)** - Local named values
+
+### Meta-Arguments
+- **depends_on:** Explicit dependency declaration
+- **count:** Create multiple instances by count
+- **for_each:** Create instances from a map or set
+- **provider:** Select non-default provider configuration
+- **lifecycle:** Customize resource lifecycle behavior
+  - `create_before_destroy`
+  - `prevent_destroy`
+  - `ignore_changes`
+  - `replace_triggered_by`
+- **[📖 Meta-Arguments](https://developer.hashicorp.com/terraform/language/meta-arguments/depends_on)** - Resource meta-arguments reference
+
+### Built-in Functions (Key Categories)
+- **String:** `format`, `join`, `split`, `replace`, `trim`, `upper`, `lower`
+- **Collection:** `length`, `merge`, `lookup`, `flatten`, `keys`, `values`
+- **Numeric:** `max`, `min`, `ceil`, `floor`, `abs`
+- **Filesystem:** `file`, `fileexists`, `templatefile`, `pathexpand`
+- **Type Conversion:** `tostring`, `tolist`, `tomap`, `tonumber`, `tobool`
+- **Encoding:** `base64encode`, `jsonencode`, `yamlencode`
+- **[📖 Built-in Functions](https://developer.hashicorp.com/terraform/language/functions)** - Complete function reference
+
+## Providers and Resources
+
+### Provider Configuration
+- Providers are plugins that interact with cloud platforms and services
+- Each provider has its own resources and data sources
+- Providers are downloaded during `terraform init`
+- Version constraints: `=`, `!=`, `>`, `>=`, `<`, `<=`, `~>`
+- `~>` (pessimistic constraint) allows only the rightmost version component to increment
+- **[📖 Provider Configuration](https://developer.hashicorp.com/terraform/language/providers/configuration)** - Provider setup and versioning
+- **[📖 Provider Requirements](https://developer.hashicorp.com/terraform/language/providers/requirements)** - Required providers block
+- **[📖 Terraform Registry Providers](https://registry.terraform.io/browse/providers)** - Browse all providers
+
+### Provider Aliases
+```hcl
+provider "aws" {
+  region = "us-east-1"
+}
+
+provider "aws" {
+  alias  = "west"
+  region = "us-west-2"
+}
+
+resource "aws_instance" "west_instance" {
+  provider      = aws.west
+  ami           = "ami-12345678"
+  instance_type = "t3.micro"
+}
+```
+
+### Resource Behavior
+- **Create:** Resources that exist in config but not in state
+- **Destroy:** Resources that exist in state but not in config
+- **Update in-place:** Resources with changed attributes that can be updated
+- **Destroy and re-create:** Resources with changed attributes that require replacement
+- **[📖 Resource Behavior](https://developer.hashicorp.com/terraform/language/resources/behavior)** - How Terraform manages resources
+
+### Data Sources
+- Read-only queries to existing infrastructure
+- Populated during the plan phase
+- Used to reference resources not managed by current configuration
+- **[📖 Data Sources](https://developer.hashicorp.com/terraform/language/data-sources)** - Data source configuration
+
+## Core Terraform Workflow
+
+### Command Reference
+
+| Command | Purpose | Key Flags |
+|---------|---------|-----------|
+| `terraform init` | Initialize working directory | `-upgrade`, `-reconfigure`, `-migrate-state` |
+| `terraform validate` | Check configuration syntax | (no notable flags) |
+| `terraform plan` | Preview changes | `-out`, `-destroy`, `-target`, `-var` |
+| `terraform apply` | Apply changes | `-auto-approve`, `-target`, `-var`, `-parallelism` |
+| `terraform destroy` | Destroy infrastructure | `-auto-approve`, `-target` |
+| `terraform fmt` | Format configuration | `-recursive`, `-check`, `-diff` |
+| `terraform show` | Show state or plan | `-json` |
+| `terraform output` | Show output values | `-json`, `-raw` |
+| `terraform refresh` | Update state to match real resources | (deprecated in favor of plan -refresh-only) |
+| `terraform graph` | Generate dependency graph | (outputs DOT format) |
+
+- **[📖 CLI Commands](https://developer.hashicorp.com/terraform/cli/commands)** - Complete CLI reference
+- **[📖 Terraform Init](https://developer.hashicorp.com/terraform/cli/commands/init)** - Initialization command
+- **[📖 Terraform Plan](https://developer.hashicorp.com/terraform/cli/commands/plan)** - Plan command
+- **[📖 Terraform Apply](https://developer.hashicorp.com/terraform/cli/commands/apply)** - Apply command
+
+### Init Details
+- Downloads and installs providers
+- Initializes backend for state storage
+- Downloads referenced modules
+- Creates `.terraform` directory and `.terraform.lock.hcl`
+- Must be run when: adding providers, changing backends, adding modules
+- **[📖 Dependency Lock File](https://developer.hashicorp.com/terraform/language/files/dependency-lock)** - Lock file management
+
+## State Management
+
+### State File Purpose
+- Maps configuration to real-world resources
+- Tracks metadata and resource dependencies
+- Performance optimization for large infrastructures
+- Default location: `terraform.tfstate` (local)
+- Format: JSON
+- Contains sensitive data - must be secured
+- **[📖 State](https://developer.hashicorp.com/terraform/language/state)** - State overview
+- **[📖 Purpose of State](https://developer.hashicorp.com/terraform/language/state/purpose)** - Why Terraform uses state
+
+### Remote Backends
+| Backend | Locking | Encryption | Provider |
+|---------|---------|------------|----------|
+| S3 + DynamoDB | Yes (DynamoDB) | Yes (SSE) | AWS |
+| GCS | Yes (built-in) | Yes (built-in) | GCP |
+| Azure Blob | Yes (built-in) | Yes (built-in) | Azure |
+| Consul | Yes (built-in) | Optional | HashiCorp |
+| Terraform Cloud | Yes (built-in) | Yes (built-in) | HashiCorp |
+
+- **[📖 Backend Configuration](https://developer.hashicorp.com/terraform/language/backend)** - Backend types and setup
+- **[📖 S3 Backend](https://developer.hashicorp.com/terraform/language/backend/s3)** - AWS S3 backend configuration
+- **[📖 Remote State](https://developer.hashicorp.com/terraform/language/state/remote)** - Remote state storage
+
+### State Commands
+```bash
+terraform state list                    # List resources in state
+terraform state show <resource>         # Show resource details
+terraform state mv <source> <dest>      # Move/rename resource in state
+terraform state rm <resource>           # Remove resource from state
+terraform state pull                    # Pull remote state to stdout
+terraform state push                    # Push local state to remote
+terraform state replace-provider        # Replace provider in state
+```
+- **[📖 State Commands](https://developer.hashicorp.com/terraform/cli/commands/state)** - State manipulation commands
+
+### State Locking
+- Prevents concurrent modifications to state
+- Automatic for supported backends
+- Manual unlock: `terraform force-unlock <LOCK_ID>`
+- Not all backends support locking
+- **[📖 State Locking](https://developer.hashicorp.com/terraform/language/state/locking)** - Locking mechanism details
+
+## Modules
+
+### Module Structure
+```
+modules/
+  my-module/
+    main.tf          # Primary resources
+    variables.tf     # Input variables
+    outputs.tf       # Output values
+    README.md        # Documentation
+```
+
+### Module Sources
+```hcl
+# Local path
+module "vpc" {
+  source = "./modules/vpc"
+}
+
+# Terraform Registry
+module "vpc" {
+  source  = "terraform-aws-modules/vpc/aws"
+  version = "5.0.0"
+}
+
+# GitHub
+module "vpc" {
+  source = "github.com/hashicorp/example"
+}
+
+# S3 bucket
+module "vpc" {
+  source = "s3::https://s3.amazonaws.com/bucket/module.zip"
+}
+```
+
+- **[📖 Modules Overview](https://developer.hashicorp.com/terraform/language/modules)** - Module concepts
+- **[📖 Module Sources](https://developer.hashicorp.com/terraform/language/modules/sources)** - Where to find modules
+- **[📖 Terraform Registry Modules](https://registry.terraform.io/browse/modules)** - Browse public modules
+- **[📖 Module Composition](https://developer.hashicorp.com/terraform/language/modules/develop/composition)** - Module design patterns
+- **[📖 Publishing Modules](https://developer.hashicorp.com/terraform/registry/modules/publish)** - Publishing to the registry
+
+### Module Best Practices
+- Use semantic versioning for module versions
+- Minimize module inputs - use sensible defaults
+- Document all variables and outputs
+- Use `validation` blocks for input validation
+- Nest modules for complex infrastructure patterns
+
+## Workspaces
+
+### Workspace Commands
+```bash
+terraform workspace list      # List all workspaces
+terraform workspace new dev   # Create new workspace
+terraform workspace select dev # Switch to workspace
+terraform workspace delete dev # Delete workspace
+terraform workspace show      # Show current workspace
+```
+
+### Workspace Use Cases
+- Managing multiple environments (dev, staging, prod)
+- Each workspace has its own state file
+- Default workspace cannot be deleted
+- State stored in `terraform.tfstate.d/<workspace>/`
+- Access current workspace: `terraform.workspace`
+- **[📖 Workspaces](https://developer.hashicorp.com/terraform/language/state/workspaces)** - Workspace management
+
+## Import and Migration
+
+### Terraform Import
+```bash
+terraform import aws_instance.example i-1234567890abcdef0
+```
+- Brings existing infrastructure under Terraform management
+- Only imports into state - does not generate configuration
+- Configuration must be written manually (or use `terraform plan -generate-config-out`)
+- One resource at a time
+- **[📖 Import](https://developer.hashicorp.com/terraform/cli/import)** - Import existing resources
+
+### Import Block (Terraform 1.5+)
+```hcl
+import {
+  to = aws_instance.example
+  id = "i-1234567890abcdef0"
+}
+```
+- Declarative import in configuration
+- Can generate configuration automatically
+- Supports bulk imports
+- Preview with `terraform plan`
+
+## Provisioners
+
+### Types
+- **local-exec:** Run commands on the machine running Terraform
+- **remote-exec:** Run commands on the remote resource
+- **file:** Copy files to the remote resource
+
+### Key Points
+- Provisioners are a last resort - prefer native provider features
+- Run only during creation by default
+- `when = destroy` runs during resource destruction
+- `on_failure = continue` or `on_failure = fail`
+- Not stored in state - not re-run on subsequent applies
+- **[📖 Provisioners](https://developer.hashicorp.com/terraform/language/resources/provisioners/syntax)** - Provisioner configuration
+
+## Debugging and Troubleshooting
+
+### TF_LOG Levels
+- `TRACE` - Most verbose
+- `DEBUG` - Debug information
+- `INFO` - General information
+- `WARN` - Warning messages
+- `ERROR` - Error messages only
+
+### Environment Variables
+```bash
+export TF_LOG=DEBUG
+export TF_LOG_PATH=./terraform.log
+export TF_LOG_CORE=TRACE
+export TF_LOG_PROVIDER=DEBUG
+```
+- **[📖 Debugging Terraform](https://developer.hashicorp.com/terraform/internals/debugging)** - Debug logging
+
+## Terraform Cloud and Enterprise
+
+### Terraform Cloud Features
+- Remote state management with encryption
+- Remote plan and apply execution
+- Team management and governance
+- Policy as Code with Sentinel
+- Private module registry
+- VCS integration
+- Cost estimation
+- **[📖 Terraform Cloud](https://developer.hashicorp.com/terraform/cloud-docs)** - Terraform Cloud documentation
+
+### Cloud Block Configuration
+```hcl
+terraform {
+  cloud {
+    organization = "my-org"
+    workspaces {
+      name = "my-workspace"
+    }
+  }
+}
+```
+
+## Exam Tips
+
+### High-Value Topics (by weight)
+1. **Terraform basics (20%):** HCL syntax, resources, providers, dependencies
+2. **IaC concepts (15%):** Benefits, patterns, comparisons
+3. **Purpose of Terraform (15%):** Multi-cloud, state benefits, workflow
+4. **Core workflow (15%):** init, plan, apply, destroy commands and flags
+5. **State management (15%):** Backends, locking, state commands
+6. **Outside core workflow (10%):** Import, workspaces, debugging
+7. **Modules (10%):** Sources, versioning, inputs/outputs
+
+### Common Exam Traps
+- Variable precedence order (environment variables are highest priority)
+- `terraform refresh` is deprecated - use `terraform plan -refresh-only`
+- Provisioners are a last resort, not a best practice
+- `count` and `for_each` cannot be used together on the same resource
+- State locking requires specific backend support (S3 needs DynamoDB)
+- `terraform.workspace` returns "default" in default workspace
+- `-auto-approve` skips the interactive approval, not validation
+- `terraform init` must be run when changing backend configuration

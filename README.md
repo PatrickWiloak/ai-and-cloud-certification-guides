@@ -6,9 +6,9 @@
 >
 > 🎥 [@patrickwiloak](https://youtube.com/@patrickwiloak) | 💼 [LinkedIn](https://www.linkedin.com/in/patricklukewilson/)
 
-[![Certifications](https://img.shields.io/badge/Certifications-56-blue.svg)]()
-[![Documentation Links](https://img.shields.io/badge/Documentation%20Links-5000+-green.svg)]()
-[![Cloud Providers](https://img.shields.io/badge/Cloud%20Providers-5-orange.svg)]()
+[![Certifications](https://img.shields.io/badge/Certifications-105+-blue.svg)]()
+[![Documentation Links](https://img.shields.io/badge/Documentation%20Links-10000+-green.svg)]()
+[![Providers](https://img.shields.io/badge/Providers-16-orange.svg)]()
 [![Free to Use](https://img.shields.io/badge/Free%20to%20Use-Educational-green.svg)]()
 
 ---
@@ -17,11 +17,15 @@
 
 This repository contains **the most comprehensive, multi-cloud certification study materials available**, featuring:
 
-- ✅ **56 certification fact sheets** with 6,000+ embedded documentation links
+- ✅ **105+ certification study guides** across 16 providers with 10,000+ embedded documentation links
 - ✅ **Detailed study notes** for every major certification
-- ✅ **Cross-cloud service comparison guides** (AWS vs GCP vs Azure)
-- ✅ **CLI command references** for hands-on practice
-- ✅ **Certification roadmaps** and learning paths
+- ✅ **Cross-cloud service comparison guides** (12 comparison topics)
+- ✅ **CLI command references** for 9 tools (AWS, Azure, GCP, kubectl, Terraform, Docker, Helm, GitHub CLI)
+- ✅ **11 certification roadmaps** and career-focused learning paths
+- ✅ **17 architecture patterns** with multi-cloud implementations
+- ✅ **10 hands-on projects** for practical learning
+- ✅ **Interview prep guides** for 6 cloud roles
+- ✅ **Compliance, migration, cost optimization, and troubleshooting guides**
 - ✅ **Practice resources** and study strategies
 - ✅ **Free tier guides** to minimize study costs
 
@@ -38,13 +42,25 @@ Read: **[📝 How to Study and Pass Cloud Certifications (2025 Edition)](https:/
 ### **Know What You Want?**
 Jump directly to your certification:
 
-| Cloud Provider | Certifications Available | Status |
-|----------------|-------------------------|---------|
-| [☁️ AWS](./exams/aws/) | 9 certifications (Associate, Professional, Specialty) | ✅ Complete |
-| [☁️ Microsoft Azure](./exams/azure/) | 17 certifications (Fundamentals, Associate, Expert) | ✅ Complete |
-| [☁️ Google Cloud](./exams/gcp/) | 10 certifications (Associate, Professional) | ✅ Complete |
-| [☁️ Oracle Cloud](./exams/oracle/) | 6 certifications (Foundations, Associate, Professional) | ✅ Complete |
-| [☁️ IBM Cloud](./exams/ibm/) | 6 certifications (Advocate, Developer, Architect, SRE) | ✅ Complete |
+| Provider | Certifications | Status |
+|----------|---------------|---------|
+| [☁️ AWS](./exams/aws/) | 15 certifications (Foundational, Associate, Professional, Specialty, GenAI) | ✅ Complete |
+| [☁️ Microsoft Azure](./exams/azure/) | 19 certifications (Fundamentals, Associate, Expert, Specialty) | ✅ Complete |
+| [☁️ Google Cloud](./exams/gcp/) | 13 certifications (Associate, Professional, GenAI) | ✅ Complete |
+| [☸️ Kubernetes/CNCF](./exams/kubernetes/) | 6 certifications (KCNA, KCSA, CKA, CKAD, CKS, PCA) | ✅ Complete |
+| [🟢 NVIDIA](./exams/nvidia/) | 10 certifications (3 Associate, 7 Professional) | ✅ Complete |
+| [🤖 Anthropic](./exams/anthropic/) | 1 certification (Claude Certified Architect - Foundations) | ✅ Complete |
+| [🔧 HashiCorp](./exams/hashicorp/) | 3 certifications (Terraform, Vault, Consul) | ✅ Complete |
+| [🧱 Databricks](./exams/databricks/) | 6 certifications (Data Engineer, ML, GenAI, Admin) | ✅ Complete |
+| [❄️ Snowflake](./exams/snowflake/) | 4 certifications (SnowPro Core + 3 Advanced) | ✅ Complete |
+| [🐙 GitHub](./exams/github/) | 5 certifications (Foundations, Actions, Admin, Security, Copilot) | ✅ Complete |
+| [📊 Confluent/Kafka](./exams/confluent/) | 2 certifications (Developer, Administrator) | ✅ Complete |
+| [🍃 MongoDB](./exams/mongodb/) | 3 certifications (Developer, DBA, Atlas Admin) | ✅ Complete |
+| [💰 FinOps](./exams/finops/) | 2 certifications (Practitioner, Engineer) | ✅ Complete |
+| [🔒 CompTIA](./exams/comptia/) | 2 certifications (Cloud+, Security+) | ✅ Complete |
+| [🐧 Linux Foundation](./exams/linux-foundation/) | 2 certifications (LFCS, LFCA) | ✅ Complete |
+| [☁️ Oracle Cloud](./exams/oracle/) | 5 certifications (Foundations, Associate, Professional) | ✅ Complete |
+| [☁️ IBM Cloud](./exams/ibm/) | 5 certifications (Advocate, Developer, Architect, Security, SRE) | ✅ Complete |
 
 ---
 
@@ -79,9 +95,71 @@ Jump directly to your certification:
 **[→ Browse Oracle Certifications](./exams/oracle/)**
 
 ### **IBM Cloud**
-- Cloud Advocate, Cloud Developer, Cloud Solution Architect, Cloud Security Engineer, Cloud Site Reliability Engineer, Cloud Data Engineer
+- Cloud Advocate, Cloud Developer, Cloud Solution Architect, Cloud Security Engineer, Cloud Site Reliability Engineer
 
 **[→ Browse IBM Certifications](./exams/ibm/)**
+
+### **Kubernetes/CNCF**
+- **Associate:** KCNA (Kubernetes and Cloud Native Associate), KCSA (Security Associate), PCA (Prometheus Certified Associate)
+- **Professional:** CKA (Certified Kubernetes Administrator), CKAD (Application Developer), CKS (Security Specialist)
+
+**[→ Browse Kubernetes Certifications](./exams/kubernetes/)**
+
+### **NVIDIA**
+- **Associate:** Generative AI & LLMs (NCA-GENL), Multimodal GenAI (NCA-GENM), AI Infrastructure & Operations (NCA-AIIO)
+- **Professional:** GenAI & LLMs, Agentic AI, AI Infrastructure, AI Operations, Networking, Accelerated Data Science, OpenUSD
+
+**[→ Browse NVIDIA Certifications](./exams/nvidia/)**
+
+### **Anthropic**
+- **Claude Certified Architect - Foundations (CCA-F)** - Agentic architecture, Claude Code, MCP, prompt engineering
+
+**[→ Browse Anthropic Certifications](./exams/anthropic/)**
+
+### **HashiCorp**
+- Terraform Associate, Vault Associate, Consul Associate
+
+**[→ Browse HashiCorp Certifications](./exams/hashicorp/)**
+
+### **Databricks**
+- Data Engineer (Associate + Professional), ML (Associate + Professional), GenAI Engineer Associate, Lakehouse Platform Administrator
+
+**[→ Browse Databricks Certifications](./exams/databricks/)**
+
+### **Snowflake**
+- SnowPro Core, SnowPro Advanced (Architect, Data Engineer, Administrator)
+
+**[→ Browse Snowflake Certifications](./exams/snowflake/)**
+
+### **GitHub**
+- Foundations, Actions, Administration, Advanced Security, Copilot
+
+**[→ Browse GitHub Certifications](./exams/github/)**
+
+### **Confluent/Apache Kafka**
+- Certified Developer for Apache Kafka, Certified Administrator for Apache Kafka
+
+**[→ Browse Confluent Certifications](./exams/confluent/)**
+
+### **MongoDB**
+- Associate Developer, Associate DBA, Associate Atlas Administrator
+
+**[→ Browse MongoDB Certifications](./exams/mongodb/)**
+
+### **FinOps**
+- FinOps Certified Practitioner, FinOps Certified Engineer
+
+**[→ Browse FinOps Certifications](./exams/finops/)**
+
+### **CompTIA**
+- Cloud+ (CV0-004), Security+ (SY0-701)
+
+**[→ Browse CompTIA Certifications](./exams/comptia/)**
+
+### **Linux Foundation**
+- LFCS (Certified System Administrator), LFCA (Certified IT Associate)
+
+**[→ Browse Linux Foundation Certifications](./exams/linux-foundation/)**
 
 ---
 
@@ -95,6 +173,11 @@ Not sure where to start? Follow these career-focused learning paths:
 - **[📊 Data Engineer Path](./resources/certification-roadmap-data-engineer.md)** - Data pipelines and analytics focus
 - **[🔒 Security Engineer Path](./resources/certification-roadmap-security-engineer.md)** - Security and compliance focus
 - **[🌐 Multi-Cloud Path](./resources/certification-roadmap-multi-cloud.md)** - Cross-cloud expertise
+- **[☸️ Kubernetes Specialist Path](./resources/certification-roadmap-kubernetes-specialist.md)** - Container orchestration mastery
+- **[🛠️ Platform Engineer Path](./resources/certification-roadmap-platform-engineer.md)** - Infrastructure platform focus
+- **[🤖 AI/ML Engineer Path](./resources/certification-roadmap-ai-ml-engineer.md)** - AI and machine learning focus
+- **[💰 FinOps Path](./resources/certification-roadmap-finops.md)** - Cloud cost optimization focus
+- **[🗄️ Database Specialist Path](./resources/certification-roadmap-database-specialist.md)** - Database expertise focus
 
 ---
 
@@ -102,17 +185,47 @@ Not sure where to start? Follow these career-focused learning paths:
 
 ### **Service Comparisons** (AWS vs GCP vs Azure)
 Compare equivalent services across cloud providers:
-- **[💻 Compute Services Comparison](./resources/service-comparison-compute.md)** - VMs, Kubernetes, Serverless
-- **[💾 Storage Services Comparison](./resources/service-comparison-storage.md)** - Object, Block, File storage
-- **[🗄️ Database Services Comparison](./resources/service-comparison-databases.md)** - SQL, NoSQL, Data Warehouses
-- **[🌐 Networking Services Comparison](./resources/service-comparison-networking.md)** - VPC, Load Balancers, CDN
-- **[🤖 AI/ML Services Comparison](./resources/service-comparison-ai-ml.md)** - Machine Learning platforms
+- **[💻 Compute Services](./resources/service-comparison-compute.md)** - VMs, Kubernetes, Serverless
+- **[💾 Storage Services](./resources/service-comparison-storage.md)** - Object, Block, File storage
+- **[🗄️ Database Services](./resources/service-comparison-databases.md)** - SQL, NoSQL, Data Warehouses
+- **[🌐 Networking Services](./resources/service-comparison-networking.md)** - VPC, Load Balancers, CDN
+- **[🤖 AI/ML Services](./resources/service-comparison-ai-ml.md)** - Machine Learning platforms
+- **[☸️ Containers & Kubernetes](./resources/service-comparison-containers-kubernetes.md)** - EKS vs AKS vs GKE
+- **[🔒 Security Tools](./resources/service-comparison-security-tools.md)** - Threat detection, WAF, secrets
+- **[⚙️ DevOps & CI/CD](./resources/service-comparison-devops-cicd.md)** - Pipelines, source control, IaC
+- **[📊 Observability & Monitoring](./resources/service-comparison-observability-monitoring.md)** - Monitoring, logging, tracing
+- **[⚡ Serverless](./resources/service-comparison-serverless.md)** - Functions, events, workflows
+- **[🔑 Identity & IAM](./resources/service-comparison-identity-iam.md)** - Identity providers, SSO, RBAC
+- **[📨 Messaging & Queues](./resources/service-comparison-messaging-queues.md)** - Queues, streaming, pub/sub
 
 ### **CLI Quick References**
-- **[AWS CLI Cheat Sheet](./resources/cli-cheat-sheet-aws.md)** - Essential AWS commands
-- **[GCP gcloud Cheat Sheet](./resources/cli-cheat-sheet-gcp.md)** - Essential GCP commands
-- **[Azure CLI Cheat Sheet](./resources/cli-cheat-sheet-azure.md)** - Essential Azure commands
-- **[Multi-Cloud CLI Comparison](./resources/cli-cheat-sheet-comparison.md)** - Side-by-side comparison
+- **[AWS CLI](./resources/cli-cheat-sheet-aws.md)** | **[Azure CLI](./resources/cli-cheat-sheet-azure.md)** | **[GCP gcloud](./resources/cli-cheat-sheet-gcp.md)** | **[Multi-Cloud Comparison](./resources/cli-cheat-sheet-comparison.md)**
+- **[kubectl](./resources/cli-cheat-sheet-kubectl.md)** | **[Terraform](./resources/cli-cheat-sheet-terraform.md)** | **[Docker](./resources/cli-cheat-sheet-docker.md)** | **[Helm](./resources/cli-cheat-sheet-helm.md)** | **[GitHub CLI](./resources/cli-cheat-sheet-github-cli.md)**
+
+### **Architecture Patterns**
+- **[3-Tier Web App](./resources/architecture-patterns/web-app-3-tier.md)** | **[Serverless API](./resources/architecture-patterns/serverless-api.md)** | **[Microservices](./resources/architecture-patterns/microservices-architecture.md)**
+- **[Event-Driven](./resources/architecture-patterns/event-driven-architecture.md)** | **[Data Pipeline/ETL](./resources/architecture-patterns/data-pipeline-etl.md)** | **[Disaster Recovery](./resources/architecture-patterns/disaster-recovery-patterns.md)**
+- **[Zero Trust](./resources/architecture-patterns/zero-trust-architecture.md)** | **[Data Mesh](./resources/architecture-patterns/data-mesh.md)** | **[Lakehouse](./resources/architecture-patterns/lakehouse-architecture.md)**
+- **[AI/ML Pipeline](./resources/architecture-patterns/ai-ml-pipeline.md)** | **[Multi-Region Active-Active](./resources/architecture-patterns/multi-region-active-active.md)** | **[CQRS/Event Sourcing](./resources/architecture-patterns/cqrs-event-sourcing.md)**
+- **[API Gateway](./resources/architecture-patterns/api-gateway-pattern.md)** | **[Strangler Fig](./resources/architecture-patterns/strangler-fig-migration.md)** | **[Cell-Based](./resources/architecture-patterns/cell-based-architecture.md)**
+- **[Chaos Engineering](./resources/architecture-patterns/chaos-engineering-patterns.md)** | **[Hybrid Cloud](./resources/architecture-patterns/hybrid-cloud-connectivity.md)**
+
+### **Deep Dive Guides**
+- **Compliance:** [SOC 2](./resources/compliance-guides/soc2.md) | [HIPAA](./resources/compliance-guides/hipaa.md) | [PCI DSS](./resources/compliance-guides/pci-dss.md) | [GDPR](./resources/compliance-guides/gdpr.md) | [FedRAMP](./resources/compliance-guides/fedramp.md)
+- **Migration:** [On-Prem to AWS](./resources/migration-guides/on-prem-to-aws.md) | [to Azure](./resources/migration-guides/on-prem-to-azure.md) | [to GCP](./resources/migration-guides/on-prem-to-gcp.md) | [Cloud-to-Cloud](./resources/migration-guides/cloud-to-cloud.md) | [Database](./resources/migration-guides/database-migration.md)
+- **Well-Architected:** [AWS](./resources/well-architected/aws-well-architected.md) | [Azure](./resources/well-architected/azure-well-architected.md) | [GCP](./resources/well-architected/gcp-well-architected.md)
+- **Cost Optimization:** [AWS](./resources/cost-optimization/aws-cost-optimization.md) | [Azure](./resources/cost-optimization/azure-cost-optimization.md) | [GCP](./resources/cost-optimization/gcp-cost-optimization.md) | [FinOps Principles](./resources/cost-optimization/finops-principles.md)
+- **Troubleshooting:** [AWS](./resources/troubleshooting/aws-troubleshooting.md) | [Azure](./resources/troubleshooting/azure-troubleshooting.md) | [GCP](./resources/troubleshooting/gcp-troubleshooting.md) | [Kubernetes](./resources/troubleshooting/kubernetes-troubleshooting.md)
+- **Networking:** [Hybrid Connectivity](./resources/networking-deep-dives/hybrid-connectivity.md) | [Multi-Cloud](./resources/networking-deep-dives/multi-cloud-networking.md) | [DNS Deep Dive](./resources/networking-deep-dives/dns-deep-dive.md) | [Load Balancing](./resources/networking-deep-dives/load-balancing-deep-dive.md)
+
+### **Interview Prep**
+- **[Solutions Architect](./resources/interview-prep/solutions-architect-interview.md)** | **[DevOps](./resources/interview-prep/devops-interview.md)** | **[Cloud Engineer](./resources/interview-prep/cloud-engineer-interview.md)**
+- **[Data Engineer](./resources/interview-prep/data-engineer-interview.md)** | **[Security Engineer](./resources/interview-prep/security-engineer-interview.md)** | **[SRE](./resources/interview-prep/sre-interview.md)**
+
+### **Hands-On Projects**
+- **[Deploy 3-Tier App](./resources/hands-on-projects/deploy-3-tier-app.md)** | **[Build CI/CD Pipeline](./resources/hands-on-projects/build-ci-cd-pipeline.md)** | **[Monitoring Stack](./resources/hands-on-projects/setup-monitoring-stack.md)**
+- **[Zero Trust](./resources/hands-on-projects/implement-zero-trust.md)** | **[Data Pipeline](./resources/hands-on-projects/build-data-pipeline.md)** | **[Deploy ML Model](./resources/hands-on-projects/deploy-ml-model.md)**
+- **[K8s Cluster Setup](./resources/hands-on-projects/kubernetes-cluster-setup.md)** | **[Terraform Infra](./resources/hands-on-projects/terraform-infrastructure.md)** | **[Serverless App](./resources/hands-on-projects/serverless-application.md)** | **[DR Drill](./resources/hands-on-projects/disaster-recovery-drill.md)**
 
 ### **Practice & Study Tools**
 - **[🎯 Practice Resources Guide](./resources/practice-resources.md)** - Practice exams, labs, and communities
@@ -193,10 +306,10 @@ Study the detailed **notes/** files for each topic:
 - Direct access to official cloud provider documentation
 - Format: **[📖 Link Text](URL)** - Description
 
-### **2. Multi-Cloud Perspective** 🌐
-- Coverage across **5 major cloud providers**
-- **Cross-cloud service comparisons** for easy knowledge transfer
-- Understand equivalent services and differences
+### **2. Multi-Cloud & Multi-Platform** 🌐
+- Coverage across **16 certification providers**
+- **12 cross-cloud service comparisons** for easy knowledge transfer
+- Beyond cloud: Kubernetes, AI/ML, data platforms, DevOps tools
 
 ### **3. Comprehensive & Structured** 📚
 - **Consistent format** across all certifications
@@ -264,14 +377,17 @@ Study the detailed **notes/** files for each topic:
 
 ## 📊 Repository Statistics
 
-- **Total Certifications Covered:** 56
-- **Total Fact Sheets:** 56
-- **Total Documentation Links:** 6,000+
-- **Total Lines of Content:** 25,000+
-- **Cloud Providers:** 5 (AWS, Azure, GCP, Oracle, IBM)
-- **Service Comparison Guides:** 5
-- **CLI Reference Sheets:** 4
-- **Certification Roadmaps:** 6
+- **Total Certifications Covered:** 105+
+- **Total Documentation Links:** 10,000+
+- **Providers:** 16 (AWS, Azure, GCP, Kubernetes, NVIDIA, Anthropic, HashiCorp, Databricks, Snowflake, GitHub, Confluent, MongoDB, FinOps, CompTIA, Linux Foundation, Oracle, IBM)
+- **Service Comparison Guides:** 12
+- **CLI Reference Sheets:** 9
+- **Architecture Patterns:** 17
+- **Certification Roadmaps:** 11
+- **Hands-On Projects:** 10
+- **Interview Prep Guides:** 6
+- **Compliance Guides:** 5
+- **Migration Guides:** 5
 
 ---
 
@@ -283,20 +399,39 @@ cloud-certification-materials/
 ├── STUDY-HUB.md (start here for guidance)
 │
 ├── exams/
-│   ├── aws/              # AWS certifications
-│   ├── azure/            # Azure certifications
-│   ├── gcp/              # GCP certifications
-│   ├── oracle/           # Oracle Cloud certifications
-│   └── ibm/              # IBM Cloud certifications
+│   ├── aws/              # 15 AWS certifications
+│   ├── azure/            # 19 Azure certifications
+│   ├── gcp/              # 13 GCP certifications
+│   ├── kubernetes/       # 6 CNCF/Kubernetes certifications
+│   ├── nvidia/           # 10 NVIDIA AI certifications
+│   ├── anthropic/        # Anthropic Claude Certified Architect
+│   ├── hashicorp/        # 3 HashiCorp certifications
+│   ├── databricks/       # 6 Databricks certifications
+│   ├── snowflake/        # 4 Snowflake certifications
+│   ├── github/           # 5 GitHub certifications
+│   ├── confluent/        # 2 Confluent/Kafka certifications
+│   ├── mongodb/          # 3 MongoDB certifications
+│   ├── finops/           # 2 FinOps certifications
+│   ├── comptia/          # 2 CompTIA certifications
+│   ├── linux-foundation/ # 2 Linux Foundation certifications
+│   ├── oracle/           # 5 Oracle Cloud certifications
+│   └── ibm/              # 5 IBM Cloud certifications
 │
 └── resources/
-    ├── service-comparison-*.md          # Cross-cloud comparisons
-    ├── cli-cheat-sheet-*.md             # CLI quick references
-    ├── certification-roadmap-*.md       # Learning paths
-    ├── practice-resources.md            # Practice exams & labs
-    ├── free-tier-guide.md               # Cost-saving strategies
-    ├── study-strategies.md              # Study techniques
-    └── exam-day-checklist.md            # Exam preparation
+    ├── architecture-patterns/           # 17 architecture patterns
+    ├── practice-questions/              # Practice question banks
+    ├── compliance-guides/               # SOC 2, HIPAA, PCI, GDPR, FedRAMP
+    ├── migration-guides/                # Cloud migration playbooks
+    ├── well-architected/                # AWS, Azure, GCP frameworks
+    ├── cost-optimization/               # Cost optimization guides
+    ├── interview-prep/                  # Interview prep by role
+    ├── troubleshooting/                 # Troubleshooting guides
+    ├── networking-deep-dives/           # Networking deep dives
+    ├── hands-on-projects/               # 10 guided projects
+    ├── service-comparison-*.md          # 12 cross-cloud comparisons
+    ├── cli-cheat-sheet-*.md             # 9 CLI quick references
+    ├── certification-roadmap-*.md       # 11 learning paths
+    └── study-strategies.md              # Study techniques
 ```
 
 ---
@@ -309,11 +444,10 @@ cloud-certification-materials/
 - [🎓 Study Paths by Level](#-study-paths-by-experience-level) - Based on experience
 
 ### **Browse Certifications**
-- [AWS Certifications](./exams/aws/)
-- [Azure Certifications](./exams/azure/)
-- [GCP Certifications](./exams/gcp/)
-- [Oracle Certifications](./exams/oracle/)
-- [IBM Certifications](./exams/ibm/)
+- [AWS](./exams/aws/) | [Azure](./exams/azure/) | [GCP](./exams/gcp/) | [Kubernetes](./exams/kubernetes/) | [NVIDIA](./exams/nvidia/)
+- [Anthropic](./exams/anthropic/) | [HashiCorp](./exams/hashicorp/) | [Databricks](./exams/databricks/) | [Snowflake](./exams/snowflake/)
+- [GitHub](./exams/github/) | [Confluent](./exams/confluent/) | [MongoDB](./exams/mongodb/) | [FinOps](./exams/finops/)
+- [CompTIA](./exams/comptia/) | [Linux Foundation](./exams/linux-foundation/) | [Oracle](./exams/oracle/) | [IBM](./exams/ibm/)
 
 ### **Study Tools**
 - [Service Comparisons](./resources/)

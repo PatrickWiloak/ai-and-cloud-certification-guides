@@ -1,6 +1,6 @@
-# ☁️ Cloud Certification Study Materials
+# ☁️ AI and Cloud Certification Guides
 
-> **Comprehensive, documentation-rich study materials for cloud certifications across AWS, GCP, Azure, Oracle, and IBM**
+> **Comprehensive, documentation-rich study guides for 105+ certifications across 16 providers - AWS, Azure, GCP, Kubernetes, NVIDIA, Anthropic, HashiCorp, Databricks, Snowflake, GitHub, and more**
 >
 > Created by [Patrick Wiloak](https://patrickwiloak.com) - Ex-AWS Solutions Architect | 10 Years in Tech | 16 Cloud Certifications
 >

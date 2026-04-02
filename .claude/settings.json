@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(*)",
+      "Read(*)",
+      "Edit(*)",
+      "Write(*)",
+      "Glob(*)",
+      "Grep(*)",
+      "WebFetch(*)",
+      "WebSearch(*)",
+      "mcp__github__*",
+      "mcp__aws-docs__*",
+      "mcp__aws-terraform__*",
+      "mcp__aws-core__*",
+      "mcp__context7__*",
+      "mcp__notion__*",
+      "mcp__playwright__*",
+      "mcp__docker__*",
+      "mcp__sequential-thinking__*",
+      "Bash(/tmp/count.txt:*)",
+      "Read(//tmp/**)",
+      "Bash(git -C /home/plw/coding/cloud-certification-study-guides status --short)",
+      "Bash(git -C /home/plw/coding/cloud-certification-study-guides ls-files --others --exclude-standard)",
+      "Bash(git -C /home/plw/coding/cloud-certification-study-guides diff --stat)",
+      "Bash(for d:*)",
+      "Bash(do echo:*)",
+      "Read(//home/plw/coding/cloud-certification-study-guides/exams/kubernetes/**)",
+      "Bash(done)",
+      "Read(//home/plw/coding/cloud-certification-study-guides/exams/github/**)",
+      "Bash(for dir:*)",
+      "Read(//home/plw/coding/cloud-certification-study-guides/exams/**)",
+      "Bash(git push:*)",
+      "Bash(git -C /home/plw/coding/cloud-certification-study-guides remote get-url origin)"
+    ]
+  }
+}

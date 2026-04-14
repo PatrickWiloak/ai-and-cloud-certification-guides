@@ -1,7 +1,7 @@
 # Cloud Certification Study Guides - Project Instructions
 
 ## Overview
-Study materials and resources for 105+ certifications across 16 providers: AWS, Azure, GCP, Kubernetes/CNCF, NVIDIA, Anthropic, HashiCorp, Databricks, Snowflake, GitHub, Confluent/Kafka, MongoDB, FinOps, CompTIA, Linux Foundation, Oracle, and IBM.
+Study materials and resources for 118+ certifications across 19 providers: AWS, Azure, GCP, Kubernetes/CNCF, NVIDIA, Anthropic, HashiCorp, Databricks, Snowflake, GitHub, Confluent/Kafka, MongoDB, FinOps, CompTIA, ISC2, Cloud Security Alliance, Linux Foundation, Oracle, and IBM.
 
 ## Structure
 ```

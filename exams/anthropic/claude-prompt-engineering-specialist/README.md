@@ -1,12 +1,14 @@
-# CPES - Claude Prompt Engineering Specialist
+# Claude Prompt Engineering Specialist - Self-Directed Study Track
 
-## Exam Overview
+> ℹ️ **Study track, not an official certification.** Anthropic does not currently run an official certification program. This is a self-directed proficiency track for engineers focused on the craft of prompt design.
 
-The Claude Prompt Engineering Specialist (CPES) certification validates the ability to design, evaluate, and iterate prompts that produce reliable, high-quality outputs from Claude models. Where the Architect track focuses on system design and the Application Developer track on API mechanics, the Specialist track focuses on the craft of the prompt itself: clarity, structure, examples, reasoning elicitation, evaluation, and prompt-engineering patterns at production scale.
+## Track Overview
 
-This guide is published in advance of the official exam blueprint. Where the exam is still evolving, content is framed as preparation for an emerging certification grounded in Anthropic's published prompt engineering guide and related cookbook recipes.
+This track covers the ability to design, evaluate, and iterate prompts that produce reliable, high-quality outputs from Claude models. Where the Architect tracks focus on system design and the Application Developer track on API mechanics, this Specialist track focuses on the craft of the prompt itself: clarity, structure, examples, reasoning elicitation, evaluation, and prompt-engineering patterns at production scale.
 
-This certification targets prompt engineers, AI engineers, applied scientists, technical writers crossing into AI, and product engineers responsible for the quality of LLM outputs.
+Material is grounded in Anthropic's published prompt engineering guide and related cookbook recipes.
+
+This track targets prompt engineers, AI engineers, applied scientists, technical writers crossing into AI, and product engineers responsible for the quality of LLM outputs.
 
 ---
 
@@ -14,23 +16,19 @@ This certification targets prompt engineers, AI engineers, applied scientists, t
 
 | Detail | Info |
 |---|---|
-| Exam Code | CPES (preliminary) |
-| Full Name | Claude Prompt Engineering Specialist |
-| Provider | Anthropic |
-| Duration | 90 minutes (estimate) |
-| Questions | 50-60 prompt-analysis and design items (estimate) |
-| Passing Score | ~720 / 1000 (estimate) |
-| Cost | TBD; expected within Claude Partner Network |
-| Delivery | Online proctored |
-| Validity | 2 years |
-| Prereq | Hands-on prompting experience with Claude |
-| Status | Emerging certification - details preliminary |
+| **Track Name** | Claude Prompt Engineering Specialist |
+| **Provider** | Self-directed (Anthropic-focused) |
+| **Skill Level** | Specialist / Intermediate-advanced |
+| **Recommended study time** | 4 weeks (2-3 hr/day) |
+| **Format** | 50-60 prompt-analysis and design self-assessment items provided in this guide |
+| **Prerequisites** | Hands-on prompting experience with Claude |
+| **Primary sources** | [Anthropic prompt engineering guide](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering), Anthropic Cookbook, Prompt Library |
 
 ---
 
 ## Target Audience
 
-You should pursue CPES if you:
+This track is for you if you:
 
 - Write prompts for production Claude applications
 - Iterate on prompts based on quality metrics, not gut feel
@@ -40,11 +38,9 @@ You should pursue CPES if you:
 
 ---
 
-## Expected Exam Domains
+## Skill Areas
 
-Preliminary weights, subject to confirmation against Anthropic's official blueprint.
-
-| # | Domain | Estimated Weight | Focus |
+| # | Skill Area | Suggested Weight | Focus |
 |---|---|---|---|
 | 1 | Prompt Fundamentals and Anatomy | 18% | Roles, structure, clarity |
 | 2 | System Prompts and Role Prompting | 16% | Persona, constraints, defaults |
@@ -56,33 +52,33 @@ Preliminary weights, subject to confirmation against Anthropic's official bluepr
 
 ---
 
-## Domain Summaries
+## Skill Area Summaries
 
-### Domain 1 - Prompt Fundamentals and Anatomy
+### 1 - Prompt Fundamentals and Anatomy
 
 The structure of an effective Claude prompt: system, user, optional examples, optional context, optional reasoning instructions. The role of clarity, specificity, and ordering. Why Claude responds well to certain stylistic choices.
 
-### Domain 2 - System Prompts and Role Prompting
+### 2 - System Prompts and Role Prompting
 
 Setting the model's persona, constraints, capabilities, and default behaviors via the `system` field. When role prompting helps and when it backfires. Composing system prompts for multi-feature assistants.
 
-### Domain 3 - Chain-of-Thought and Extended Thinking
+### 3 - Chain-of-Thought and Extended Thinking
 
 Eliciting step-by-step reasoning. The difference between explicit chain-of-thought instructions in the prompt and Claude's native extended thinking. When to use each.
 
-### Domain 4 - XML Tags and Structured Outputs
+### 4 - XML Tags and Structured Outputs
 
 Why Claude responds especially well to XML-tagged sections. Common tag patterns (instructions, context, examples, output_format). Combining XML tags with forced tool choice for structured extraction.
 
-### Domain 5 - Few-Shot and Example-Driven Prompting
+### 5 - Few-Shot and Example-Driven Prompting
 
 How many examples to include. How to choose representative examples. Many-shot prompting. Counter-examples. Example ordering effects.
 
-### Domain 6 - Prompt Evaluation and Iteration
+### 6 - Prompt Evaluation and Iteration
 
 Writing eval datasets. LLM-as-judge for prompt quality. A/B testing prompt variants. Regression gates for prompt changes. Calibrating judges.
 
-### Domain 7 - Prompt Caching Design Patterns
+### 7 - Prompt Caching Design Patterns
 
 Designing prompts so the static prefix is large enough to cache. Avoiding accidental cache invalidation. Layering cache breakpoints.
 
@@ -126,12 +122,19 @@ Designing prompts so the static prefix is large enough to cache. Avoiding accide
 
 ---
 
-## Preparing for an Emerging Certification
+## Study Approach
 
 1. Read Anthropic's prompt engineering guide cover to cover, twice.
 2. Build a prompt eval harness for one real task and use it.
 3. Maintain a prompt journal: every change, the hypothesis, the result.
-4. Use real model IDs: `claude-opus-4-6`, `claude-sonnet-4-6`, `claude-haiku-4-5`.
-5. Re-verify exam logistics on Anthropic's site before booking.
+4. Use real model IDs: `claude-opus-4-7`, `claude-sonnet-4-6`, `claude-haiku-4-5`.
 
-The fastest way to pass is to ship one prompt-driven feature with measured quality improvements.
+The fastest way to internalize this material is to ship one prompt-driven feature with measured quality improvements.
+
+---
+
+## Companion Tracks
+
+- [Foundations](../claude-certified-architect-foundations/) - architectural fundamentals
+- [Application Developer](../claude-application-developer/) - production API/SDK depth
+- [Architect Advanced](../claude-certified-architect-advanced/) - multi-agent systems, RAG at scale

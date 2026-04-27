@@ -165,7 +165,7 @@ The Databricks Certified Machine Learning Associate certification validates foun
 | [practice-plan.md](practice-plan.md) | Week-by-week study schedule with checkboxes |
 | [scenarios.md](scenarios.md) | Exam-style scenarios with solutions |
 | [strategy.md](strategy.md) | Study phases, resources, and exam tactics |
-| [notes/01-ml-workloads-databricks.md](notes/01-ml-workloads-databricks.md) | Databricks ML ecosystem and MLflow |
+| [notes/01-ml-workloads.md](notes/01-ml-workloads.md) | Databricks ML ecosystem and MLflow |
 | [notes/02-ml-workflow.md](notes/02-ml-workflow.md) | End-to-end ML lifecycle |
 | [notes/03-spark-ml.md](notes/03-spark-ml.md) | Spark MLlib pipelines |
 | [notes/04-deep-learning.md](notes/04-deep-learning.md) | Deep learning on Databricks |

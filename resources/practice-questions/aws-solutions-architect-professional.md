@@ -211,7 +211,7 @@ D. Use AWS Batch with Fargate compute environment, triggered by S3 events
 
 **Correct: B**
 
-**Why:** MediaConvert is a fully managed transcoding service designed specifically for video processing. It scales automatically, supports multiple output formats, handles files up to 100GB, and charges only for processing time—ideal for sporadic workloads. EC2 Auto Scaling (A) requires managing infrastructure. ECS Fargate (C) requires building transcoding logic. Batch (D) is better for general compute workloads, not specialized video processing.
+**Why:** MediaConvert is a fully managed transcoding service designed specifically for video processing. It scales automatically, supports multiple output formats, handles files up to 100GB, and charges only for processing time - ideal for sporadic workloads. EC2 Auto Scaling (A) requires managing infrastructure. ECS Fargate (C) requires building transcoding logic. Batch (D) is better for general compute workloads, not specialized video processing.
 
 **Key Concept:** [AWS Elemental MediaConvert](https://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html)
 </details>
@@ -301,7 +301,7 @@ D. Deploy on ECS with GPU task definitions and Fargate
 
 **Correct: B**
 
-**Why:** SageMaker real-time endpoints support GPU instances (ml.g4dn, ml.p3) with automatic scaling based on invocations. This handles variable traffic efficiently. During low traffic, endpoints scale down (minimum 1 instance). EC2 (A) requires managing infrastructure. Serverless inference (C) doesn't support GPU and has cold start limitations. ECS Fargate (D) doesn't support GPU instances—only EC2 launch type supports GPU.
+**Why:** SageMaker real-time endpoints support GPU instances (ml.g4dn, ml.p3) with automatic scaling based on invocations. This handles variable traffic efficiently. During low traffic, endpoints scale down (minimum 1 instance). EC2 (A) requires managing infrastructure. Serverless inference (C) doesn't support GPU and has cold start limitations. ECS Fargate (D) doesn't support GPU instances - only EC2 launch type supports GPU.
 
 **Key Concept:** [SageMaker Real-time Inference](https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints.html)
 </details>
@@ -467,7 +467,7 @@ D. Enable S3 Intelligent-Tiering with Archive Access tiers
 
 **Correct: D**
 
-**Why:** S3 Intelligent-Tiering with Archive Access tier automatically moves objects between tiers based on actual access patterns—no lifecycle rules to manage. The archive tier handles the 50% not accessed in a year. There's no retrieval fee for Intelligent-Tiering. Fixed lifecycle rules (B) may not match actual access patterns. Storage Lens (C) provides visibility but requires manual action. Basic Intelligent-Tiering (A) doesn't include archive tier.
+**Why:** S3 Intelligent-Tiering with Archive Access tier automatically moves objects between tiers based on actual access patterns - no lifecycle rules to manage. The archive tier handles the 50% not accessed in a year. There's no retrieval fee for Intelligent-Tiering. Fixed lifecycle rules (B) may not match actual access patterns. Storage Lens (C) provides visibility but requires manual action. Basic Intelligent-Tiering (A) doesn't include archive tier.
 
 **Key Concept:** [S3 Intelligent-Tiering](https://docs.aws.amazon.com/AmazonS3/latest/userguide/intelligent-tiering.html)
 </details>
@@ -485,7 +485,7 @@ D. Migrate to Aurora MySQL for better read scaling
 
 **Correct: A**
 
-**Why:** While read replicas require updating connection strings (minimal change), this is simpler than other options and doesn't require code logic changes—just configuration. RDS Proxy (B) doesn't automatically route read traffic to replicas; applications must explicitly connect to the read endpoint. ElastiCache (C) requires code changes for cache-aside pattern. Aurora migration (D) is a larger undertaking.
+**Why:** While read replicas require updating connection strings (minimal change), this is simpler than other options and doesn't require code logic changes - just configuration. RDS Proxy (B) doesn't automatically route read traffic to replicas; applications must explicitly connect to the read endpoint. ElastiCache (C) requires code changes for cache-aside pattern. Aurora migration (D) is a larger undertaking.
 
 **Key Concept:** [RDS Read Replicas](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html)
 </details>
@@ -557,7 +557,7 @@ D. Enable DynamoDB auto scaling with aggressive scale-up settings
 
 **Correct: C**
 
-**Why:** DAX caches frequently accessed items, absorbing read traffic from hot partitions without application changes. For write-heavy hot partitions, write sharding (B) is better, but that requires application changes. Simply increasing capacity (A) doesn't fix hot partition issues—the partition limit is 3,000 RCU/1,000 WCU regardless of table capacity. Auto scaling (D) doesn't help with partition-level limits.
+**Why:** DAX caches frequently accessed items, absorbing read traffic from hot partitions without application changes. For write-heavy hot partitions, write sharding (B) is better, but that requires application changes. Simply increasing capacity (A) doesn't fix hot partition issues - the partition limit is 3,000 RCU/1,000 WCU regardless of table capacity. Auto scaling (D) doesn't help with partition-level limits.
 
 **Key Concept:** [DynamoDB Hot Partitions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-partition-key-uniform-load.html)
 </details>

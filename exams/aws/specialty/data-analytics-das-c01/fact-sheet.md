@@ -1,5 +1,7 @@
 # AWS Data Analytics Specialty (DAS-C01) - Fact Sheet
 
+> ⚠️ **RETIRED April 8, 2024.** No longer available for new candidates. Replaced by **[AWS Data Engineer - Associate (DEA-C01)](../../associate/data-engineer-dea-c01/fact-sheet.md)**. Material preserved as historical reference.
+
 ## Quick Reference
 
 **Exam Code:** DAS-C01

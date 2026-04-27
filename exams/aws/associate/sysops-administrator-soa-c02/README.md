@@ -1,11 +1,37 @@
-# AWS Certified SysOps Administrator - Associate (SOA-C02) Exam Guide
+# AWS Certified SysOps Administrator - Associate (SOA-C02) - RETIRED
 
-## Important Update
-The AWS Certified SysOps Administrator - Associate exam will transition to **AWS Certified CloudOps Engineer - Associate (SOA-C03)** on September 29, 2025. The SOA-C02 exam will be available until that date.
+## Important Notice
 
-## Exam Overview
+**The AWS Certified SysOps Administrator - Associate (SOA-C02) certification was retired on September 29, 2025.**
 
-The AWS Certified SysOps Administrator - Associate (SOA-C02) exam validates technical expertise in deployment, management, and operations of AWS workloads. This certification demonstrates proficiency in implementing and managing production operations on AWS.
+This certification is no longer available for new candidates. If you hold this certification, your credential will remain valid for three years from the date you earned it.
+
+## Replacement Certification
+
+AWS replaced SOA-C02 with the **AWS Certified CloudOps Engineer - Associate (SOA-C03)**, which became the active operations associate-tier exam on September 29, 2025.
+
+**[📖 AWS CloudOps Engineer - Associate (SOA-C03)](../cloudops-engineer-soa-c03/)** - Current cert in this repo
+**[📖 Official AWS CloudOps Engineer Page](https://aws.amazon.com/certification/certified-cloudops-engineer-associate/)**
+
+### Key Differences
+- **New name**: "CloudOps Engineer" reflects the broader operations remit beyond pure SysOps
+- **Updated services**: Refreshed to cover modern operations tooling (Systems Manager Automation, EventBridge, CloudWatch Logs Insights, AWS Config conformance packs)
+- **Format**: SOA-C03 retains the multiple-choice / multiple-response format; the older labs portion remains removed
+
+## For Current Credential Holders
+
+If you currently hold the SOA-C02 certification:
+- Your certification remains valid for 3 years from the date earned
+- Maintain your credential by earning other AWS certifications
+- Take SOA-C03 if you want a current credential
+
+---
+
+> The historical study material below is preserved for credential holders and as a reference. For new candidates, study the [SOA-C03 CloudOps Engineer notes](../cloudops-engineer-soa-c03/) instead.
+
+## Historical Exam Overview (SOA-C02)
+
+The AWS Certified SysOps Administrator - Associate (SOA-C02) exam validated technical expertise in deployment, management, and operations of AWS workloads. This certification demonstrated proficiency in implementing and managing production operations on AWS.
 
 ### Exam Details
 - **Exam Code**: SOA-C02

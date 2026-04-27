@@ -50,6 +50,13 @@ Platform engineers design, build, and maintain the internal platforms that devel
 - Prep time: 4-6 weeks
 - https://training.linuxfoundation.org/certification/certified-it-associate/
 
+**Red Hat Certified System Administrator (RHCSA - EX200)**
+- Hands-on Linux administration on RHEL 9 (performance-based exam)
+- Stronger Red Hat / RHEL specific path; complementary to LFCA / LFCS
+- Cost: ~$500
+- Prep time: 6-8 weeks
+- [→ Full RHCSA study guide](../exams/redhat/rhcsa-ex200/)
+
 **CompTIA Cloud+ (CV0-004)**
 - Vendor-neutral cloud concepts, architecture, security
 - Covers multi-cloud fundamentals

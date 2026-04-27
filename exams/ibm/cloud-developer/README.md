@@ -5,33 +5,14 @@ The IBM Cloud Application Developer certification validates skills in developing
 ## 📋 Quick Links
 
 - [**Fact Sheet**](fact-sheet.md) - Exam logistics and objectives
-- [**Study Strategy**](strategy.md) - Developer-focused preparation
-- [**One-Page Cram**](cram-1p.md) - Critical development concepts
-- [**Practice Plan**](practice-plan.md) - Comprehensive study roadmap
+- [**Practice Plan**](practice-plan.md) - Structured study schedule
 
 ## 📚 Study Materials
 
 ### Core Notes
-- [Cloud Native Development](notes/cloud-native-development.md) - 12-factor apps, microservices
-- [Compute Platforms](notes/compute-platforms.md) - Code Engine, Functions, Cloud Foundry, Kubernetes
-- [APIs & Integration](notes/apis-integration.md) - REST APIs, SDKs, App Connect
-- [Data & Storage](notes/data-storage.md) - Databases, Object Storage, Cloudant
-- [DevOps & CI/CD](notes/devops-cicd.md) - Toolchains, pipelines, GitOps
-- [Containers & Kubernetes](notes/containers-kubernetes.md) - IKS, OpenShift, container best practices
-- [Messaging & Events](notes/messaging-events.md) - Event Streams, MQ, Notifications
-- [Security for Developers](notes/security-developers.md) - IAM, App ID, Key Protect
-- [Observability](notes/observability.md) - Logging, monitoring, APM
-
-### Quick Reference
-- [SDK Quick Reference](cheat-sheets/sdk-quick-reference.md) - Common SDK patterns
-- [CLI Commands](cheat-sheets/cli-commands.md) - ibmcloud CLI essentials
-- [Code Patterns](cheat-sheets/code-patterns.md) - Reusable templates
-
-### Practice & Review
-- [Development Scenarios](scenarios.md) - Real-world coding challenges
-- [Code Examples](code-examples/) - Sample applications
-- [Troubleshooting Guide](troubleshooting-guide.md) - Common issues
-
+- [Cloud Native Development](notes/01-cloud-native-development.md)
+- [Application Deployment Integration](notes/02-application-deployment-integration.md)
+- [Data AI Services Monitoring](notes/03-data-ai-services-monitoring.md)
 ## 🎯 Exam Details
 
 - **Exam Code**: C1000-171

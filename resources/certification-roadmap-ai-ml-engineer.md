@@ -85,12 +85,12 @@ Start with a cloud associate certification to build foundational cloud knowledge
 
 Choose based on your primary cloud:
 
-**AWS Machine Learning Specialty (MLS-C01)**
-- Data engineering, exploratory data analysis
-- Modeling, ML implementation and operations
-- SageMaker deep dive
-- Cost: ~$300
-- https://aws.amazon.com/certification/certified-machine-learning-specialty/
+**AWS Machine Learning Engineer Associate (MLA-C01)** - replaces retired MLS-C01 (April 2025)
+- SageMaker, Bedrock, MLOps, generative AI on AWS
+- Data preparation, model training, deployment, monitoring
+- Cost: $150
+- [→ Repo guide](../exams/aws/associate/ml-engineer-mla-c01/)
+- https://aws.amazon.com/certification/certified-machine-learning-engineer-associate/
 
 **OR Azure AI Engineer Associate (AI-102)**
 - Azure AI services (Cognitive Services, OpenAI Service)

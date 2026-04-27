@@ -5,33 +5,14 @@ The OCI Developer Associate certification validates skills in developing and dep
 ## 📋 Quick Links
 
 - [**Fact Sheet**](fact-sheet.md) - Exam logistics and objectives
-- [**Study Strategy**](strategy.md) - Developer-focused preparation
-- [**One-Page Cram**](cram-1p.md) - Critical development concepts
-- [**Practice Plan**](practice-plan.md) - Comprehensive study roadmap
+- [**Practice Plan**](practice-plan.md) - Structured study schedule
 
 ## 📚 Study Materials
 
 ### Core Notes
-- [OCI SDKs & APIs](notes/sdks-apis.md) - REST APIs, SDKs, authentication
-- [Serverless Development](notes/serverless-development.md) - Functions, API Gateway, Events
-- [Container Development](notes/container-development.md) - OKE, Container Instances, Registry
-- [DevOps & CI/CD](notes/devops-cicd.md) - DevOps service, build, deploy pipelines
-- [Messaging & Streaming](notes/messaging-streaming.md) - Queue, Streaming, Notifications
-- [Database Development](notes/database-development.md) - Autonomous DB, NoSQL, data access
-- [Observability](notes/observability.md) - APM, logging, monitoring for apps
-- [Security for Developers](notes/security-for-developers.md) - Vault, IAM, encryption
-- [Infrastructure as Code](notes/infrastructure-as-code.md) - Terraform, Resource Manager
-
-### Quick Reference
-- [SDK Examples](cheat-sheets/sdk-examples.md) - Common SDK patterns
-- [API Reference](cheat-sheets/api-reference.md) - Frequently used APIs
-- [Functions Cookbook](cheat-sheets/functions-cookbook.md) - Serverless patterns
-
-### Practice & Review
-- [Development Scenarios](scenarios.md) - Real-world application challenges
-- [Code Examples](code-examples/) - Sample applications and snippets
-- [Flashcards](flashcards.md) - Key development concepts
-
+- [Cloud Native Development](notes/01-cloud-native-development.md)
+- [Application Deployment Integration](notes/02-application-deployment-integration.md)
+- [Devops Monitoring](notes/03-devops-monitoring.md)
 ## 🎯 Exam Details
 
 - **Exam Code**: 1Z0-1084-24

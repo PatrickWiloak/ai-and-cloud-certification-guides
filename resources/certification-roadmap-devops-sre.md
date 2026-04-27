@@ -1197,4 +1197,4 @@ This roadmap provides a comprehensive guide for DevOps Engineers and Site Reliab
 
 The journey from junior engineer to senior SRE/DevOps architect takes dedication, hands-on practice, and continuous learning. Use this roadmap as a guide, but adapt it to your specific interests and career goals. Focus on practical experience alongside certifications, and contribute to open-source projects to build your portfolio.
 
-Remember: DevOps and SRE are not just about tools and technologies—they're about culture, collaboration, and continuous improvement. Technical skills will get you started, but soft skills like communication, problem-solving, and teamwork will accelerate your career growth.
+Remember: DevOps and SRE are not just about tools and technologies - they're about culture, collaboration, and continuous improvement. Technical skills will get you started, but soft skills like communication, problem-solving, and teamwork will accelerate your career growth.

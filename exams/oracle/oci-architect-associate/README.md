@@ -5,32 +5,14 @@ The OCI Architect Associate certification validates skills in designing and impl
 ## 📋 Quick Links
 
 - [**Fact Sheet**](fact-sheet.md) - Exam logistics and objectives
-- [**Study Strategy**](strategy.md) - Architecture-focused preparation
-- [**One-Page Cram**](cram-1p.md) - Critical architecture concepts
-- [**Practice Plan**](practice-plan.md) - Comprehensive study roadmap
+- [**Practice Plan**](practice-plan.md) - Structured study schedule
 
 ## 📚 Study Materials
 
 ### Core Notes
-- [Architecture Principles](notes/architecture-principles.md) - Design patterns, best practices
-- [Compute Solutions](notes/compute-solutions.md) - Instances, autoscaling, containers, functions
-- [Storage Architecture](notes/storage-architecture.md) - Block, object, file storage design
-- [Network Design](notes/network-design.md) - VCN architecture, hybrid connectivity
-- [Database Solutions](notes/database-solutions.md) - Autonomous DB, DB systems, data management
-- [Security Architecture](notes/security-architecture.md) - IAM, encryption, compliance
-- [High Availability & DR](notes/high-availability-dr.md) - Multi-AD, backup, disaster recovery
-- [Observability](notes/observability.md) - Monitoring, logging, alerting architecture
-- [Cost Optimization](notes/cost-optimization.md) - Pricing strategies, resource management
-
-### Quick Reference
-- [Service Selection](cheat-sheets/service-selection.md) - Architecture decision trees
-- [Design Patterns](cheat-sheets/design-patterns.md) - Common OCI patterns
-
-### Practice & Review
-- [Architecture Scenarios](scenarios.md) - Real-world design challenges
-- [Case Studies](case-studies.md) - Enterprise architecture examples
-- [Flashcards](flashcards.md) - Key architectural concepts
-
+- [Architecture Design And Networking](notes/01-architecture-design-and-networking.md)
+- [Compute And Storage Solutions](notes/02-compute-and-storage-solutions.md)
+- [Database Security Operations](notes/03-database-security-operations.md)
 ## 🎯 Exam Details
 
 - **Exam Code**: 1Z0-1072-24

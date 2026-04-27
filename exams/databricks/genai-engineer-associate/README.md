@@ -159,10 +159,7 @@ The Databricks Certified Generative AI Engineer Associate certification validate
 | File | Description |
 |------|-------------|
 | [fact-sheet.md](fact-sheet.md) | Comprehensive reference with documentation links |
-| [practice-plan.md](practice-plan.md) | Week-by-week study schedule with checkboxes |
-| [scenarios.md](scenarios.md) | Exam-style scenarios with solutions |
-| [strategy.md](strategy.md) | Study phases, resources, and exam tactics |
+| [practice-plan.md](practice-plan.md) | 5-week study schedule with checkboxes |
 | [notes/01-rag-design.md](notes/01-rag-design.md) | RAG application architecture and design |
 | [notes/02-rag-implementation.md](notes/02-rag-implementation.md) | Building RAG on Databricks |
 | [notes/03-governance-evaluation.md](notes/03-governance-evaluation.md) | Evaluation and governance |
-| [notes/04-llm-fundamentals.md](notes/04-llm-fundamentals.md) | LLM concepts and prompt engineering |

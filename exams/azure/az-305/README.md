@@ -5,32 +5,16 @@ The AZ-305 certification validates skills in designing cloud and hybrid solution
 ## 📋 Quick Links
 
 - [**Fact Sheet**](fact-sheet.md) - Exam logistics and objectives
-- [**Study Strategy**](strategy.md) - Azure-focused preparation
-- [**One-Page Cram**](cram-1p.md) - Critical concepts summary
-- [**Practice Plan**](practice-plan.md) - Comprehensive study roadmap
+- [**Practice Plan**](practice-plan.md) - Structured study schedule
 
 ## 📚 Study Materials
 
 ### Core Notes
-- [Architecture Pillars](notes/architecture-pillars.md) - Azure Well-Architected Framework
-- [Networking](notes/networking.md) - Virtual networks, routing, connectivity
-- [Storage](notes/storage.md) - Azure Storage accounts, blob, files
-- [Security & IAM](notes/security-iam.md) - Azure AD, RBAC, Key Vault
-- [Compute & Containers](notes/compute-containers.md) - VMs, AKS, Container Instances
-- [Databases](notes/databases.md) - SQL Database, Cosmos DB, PostgreSQL
-- [Integration & Streaming](notes/integration-streaming.md) - Service Bus, Event Hub
-- [Observability](notes/observability.md) - Monitor, Application Insights
-- [Cost & Governance](notes/cost-governance.md) - Cost Management, Policy
-
-### Quick Reference
-- [Service Comparisons](cheat-sheets/service-comparisons.md) - Azure service decisions
-- [Decision Trees](cheat-sheets/decision-trees.md) - Architecture patterns
-
-### Practice & Review
-- [Scenarios & Patterns](scenarios.md) - Enterprise Azure architectures
-- [Flashcards](flashcards.md) - Service features and capabilities
-- [Hands-on Labs](labs/) - Practical Azure implementations
-
+- [Compute Containers](notes/compute-containers.md)
+- [Databases](notes/databases.md)
+- [Networking](notes/networking.md)
+- [Security IAM](notes/security-iam.md)
+- [Storage](notes/storage.md)
 ## 🎯 Exam Focus Areas
 
 The AZ-305 exam measures ability to accomplish:

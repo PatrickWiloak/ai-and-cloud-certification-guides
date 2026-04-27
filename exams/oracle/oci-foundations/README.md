@@ -5,32 +5,16 @@ The OCI Foundations certification validates foundational knowledge of core cloud
 ## 📋 Quick Links
 
 - [**Fact Sheet**](fact-sheet.md) - Exam logistics and objectives
-- [**Study Strategy**](strategy.md) - OCI-focused preparation
-- [**One-Page Cram**](cram-1p.md) - Critical concepts summary
-- [**Practice Plan**](practice-plan.md) - Comprehensive study roadmap
+- [**Practice Plan**](practice-plan.md) - Structured study schedule
+- [**Study Strategy**](strategy.md) - Focused preparation approach
+- [**One-Page Cram**](cram-1p.md) - Critical concepts at a glance
 
 ## 📚 Study Materials
 
 ### Core Notes
-- [Cloud Fundamentals](notes/cloud-fundamentals.md) - Cloud computing basics, deployment models
-- [OCI Architecture](notes/oci-architecture.md) - Regions, ADs, fault domains, tenancy
-- [Compute Services](notes/compute-services.md) - Compute instances, autoscaling, containers
-- [Storage Services](notes/storage-services.md) - Block, object, file, and archive storage
-- [Networking](notes/networking.md) - VCNs, subnets, gateways, load balancers
-- [Database Services](notes/database-services.md) - Autonomous DB, DB Systems, NoSQL
-- [Security & Identity](notes/security-identity.md) - IAM, compartments, policies, encryption
-- [Observability](notes/observability.md) - Monitoring, logging, notifications
-- [Pricing & Support](notes/pricing-support.md) - Pricing models, cost management, SLAs
-
-### Quick Reference
-- [Service Comparisons](cheat-sheets/service-comparisons.md) - OCI service selection guide
-- [Common Patterns](cheat-sheets/common-patterns.md) - Architecture best practices
-
-### Practice & Review
-- [Scenarios](scenarios.md) - Real-world OCI scenarios
-- [Flashcards](flashcards.md) - Key concepts and services
-- [Practice Questions](practice-questions.md) - Sample exam questions
-
+- [Cloud Fundamentals And OCI Architecture](notes/01-cloud-fundamentals-and-oci-architecture.md)
+- [Core Services](notes/02-core-services.md)
+- [Security IAM Observability](notes/03-security-iam-observability.md)
 ## 🎯 Exam Details
 
 - **Exam Code**: 1Z0-1085-24

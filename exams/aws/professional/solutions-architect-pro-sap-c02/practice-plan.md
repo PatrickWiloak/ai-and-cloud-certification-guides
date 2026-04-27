@@ -357,7 +357,7 @@
 
 ## 📚 Comprehensive Study Resources
 
-**👉 [Complete AWS Study Resources Guide](../../../.templates/resources-aws.md)**
+**👉 [Complete AWS Study Resources Guide](../../../../.templates/resources-aws.md)**
 
 For detailed information on courses, practice tests, hands-on labs, communities, and more, see our comprehensive AWS study resources guide.
 

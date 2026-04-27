@@ -1,35 +1,25 @@
-# Azure AI Engineer Associate (AI-102)
+# Azure Generative AI - Self-Directed Study Track
 
-The Azure AI Engineer Associate certification demonstrates the ability to use Azure Cognitive Services, Azure Cognitive Search, and Azure OpenAI Service to build AI solutions.
+> ℹ️ **Cross-cert study track, not a single Microsoft certification.** Microsoft's GenAI content is split across several certs (AI-900 fundamentals, AI-102 AI Engineer Associate, plus newer AI-3xxx/Copilot specialties). This dir is a focused study guide for **Generative AI on Azure** (Azure OpenAI, AI Studio, prompt engineering, responsible AI) that complements the cert-specific dirs:
+>
+> - **Foundational coverage:** [exams/azure/ai-900/](../ai-900/)
+> - **Engineer-tier coverage:** [exams/azure/ai-102/](../ai-102/)
 
 ## 📋 Quick Links
 
 - [**Fact Sheet**](fact-sheet.md) - Exam logistics and objectives
-- [**Study Strategy**](strategy.md) - Azure AI focused preparation
-- [**One-Page Cram**](cram-1p.md) - Essential Azure AI services
 - [**Practice Plan**](practice-plan.md) - Structured learning path
 
 ## 📚 Study Materials
 
 ### Core Notes
-- [Azure AI Fundamentals](notes/ai-fundamentals.md) - Core AI concepts and Azure overview
-- [Azure OpenAI Service](notes/azure-openai.md) - GPT, DALL-E, and Codex models
-- [Azure Cognitive Services](notes/cognitive-services.md) - Pre-built AI capabilities
-- [Azure Cognitive Search](notes/cognitive-search.md) - AI-powered search solutions
-- [Computer Vision](notes/computer-vision.md) - Image and video analysis
-- [Natural Language Processing](notes/natural-language.md) - Text analysis and understanding
-- [Speech Services](notes/speech-services.md) - Speech recognition and synthesis
-- [Bot Framework](notes/bot-framework.md) - Conversational AI development
-- [Responsible AI](notes/responsible-ai.md) - Ethics, fairness, and governance
+- [Azure OpenAI Service](notes/azure-openai.md) - GPT, DALL-E, embeddings, Azure OpenAI deployment
+- [Azure AI Studio & Prompt Engineering](notes/azure-ai-studio-prompt-engineering.md) - Studio workflows and prompt design
+- [Responsible AI & Model Deployment](notes/responsible-ai-model-deployment.md) - Ethics, governance, deployment patterns
 
-### Quick Reference
-- [Service Selection Guide](cheat-sheets/service-selection.md) - Choosing the right AI service
-- [API Quick Reference](cheat-sheets/api-reference.md) - Common API patterns and endpoints
-- [Pricing Models](cheat-sheets/pricing-models.md) - Cost optimization for AI services
-
-### Practice & Review
-- [Solution Scenarios](scenarios.md) - Real-world AI implementations
-- [Hands-on Labs](labs/) - Practical Azure AI exercises
+### Companion Materials
+- [Azure AI Engineer (AI-102)](../ai-102/) - The deeper-dive exam after this introduction
+- [Azure AI Fundamentals (AI-900)](../ai-900/) - Foundational pre-requisite
 
 ## 🎯 Exam Focus Areas
 

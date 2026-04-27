@@ -1,14 +1,14 @@
 # ☁️ AI and Cloud Certification Guides
 
-> **Comprehensive, documentation-rich study guides for 118+ certifications across 19 providers - AWS, Azure, GCP, Kubernetes, NVIDIA, Anthropic, HashiCorp, Databricks, Snowflake, GitHub, ISC2, Cloud Security Alliance, and more**
+> **Comprehensive, documentation-rich study guides for 122+ certifications and 4 vendor study tracks across 22 providers - AWS, Azure, GCP, Kubernetes, NVIDIA, HashiCorp, Databricks, Snowflake, GitHub, Red Hat, Cisco, Salesforce, ISC2, Cloud Security Alliance, and more**
 >
 > Created by [Patrick Wiloak](https://patrickwiloak.com) - Ex-AWS Solutions Architect | 10 Years in Tech | 16 Cloud Certifications
 >
 > 🎥 [@patrickwiloak](https://youtube.com/@patrickwiloak) | 💼 [LinkedIn](https://www.linkedin.com/in/patricklukewilson/)
 
-[![Certifications](https://img.shields.io/badge/Certifications-118+-blue.svg)]()
+[![Certifications](https://img.shields.io/badge/Certifications-122+-blue.svg)]()
 [![Documentation Links](https://img.shields.io/badge/Documentation%20Links-12000+-green.svg)]()
-[![Providers](https://img.shields.io/badge/Providers-19-orange.svg)]()
+[![Providers](https://img.shields.io/badge/Providers-22-orange.svg)]()
 [![Free to Use](https://img.shields.io/badge/Free%20to%20Use-Educational-green.svg)]()
 
 ---
@@ -17,7 +17,7 @@
 
 This repository contains **the most comprehensive, multi-cloud certification study materials available**, featuring:
 
-- ✅ **118+ certification study guides** across 19 providers with 12,000+ embedded documentation links
+- ✅ **122+ certification study guides** across 22 providers with 12,000+ embedded documentation links, plus 4 vendor study tracks (Anthropic Claude)
 - ✅ **Detailed study notes** for every major certification
 - ✅ **Cross-cloud service comparison guides** (12 comparison topics)
 - ✅ **CLI command references** for 9 tools (AWS, Azure, GCP, kubectl, Terraform, Docker, Helm, GitHub CLI)
@@ -44,16 +44,18 @@ Jump directly to your certification:
 
 | Provider | Certifications | Status |
 |----------|---------------|---------|
-| [☁️ AWS](./exams/aws/) | 16 certifications (Foundational, Associate, Professional, Specialty, GenAI, Quantum) | ✅ Complete |
-| [☁️ Microsoft Azure](./exams/azure/) | 20 certifications (Fundamentals, Associate, Expert, Specialty, SecOps) | ✅ Complete |
-| [☁️ Google Cloud](./exams/gcp/) | 13 certifications (Associate, Professional, GenAI) | ✅ Complete |
+| [☁️ AWS](./exams/aws/) | 17 certifications (Foundational, Associate, Professional, Specialty, GenAI; 4 retired specialties retained for credential holders) | ✅ Complete |
+| [☁️ Microsoft Azure](./exams/azure/) | 23 certifications (Fundamentals, Associate, Expert, Specialty, SecOps; DP-700 Fabric, AZ-700 Network, MS-900 M365 added) | ✅ Complete |
+| [☁️ Google Cloud](./exams/gcp/) | 12 certifications (Associate, Professional, GenAI) | ✅ Complete |
 | [☸️ Kubernetes/CNCF](./exams/kubernetes/) | 7 certifications (KCNA, KCSA, CKA, CKAD, CKS, PCA, ICA) | ✅ Complete |
 | [🟢 NVIDIA](./exams/nvidia/) | 10 certifications (3 Associate, 7 Professional) | ✅ Complete |
-| [🤖 Anthropic](./exams/anthropic/) | 4 certifications (Architect Foundations + Advanced, App Developer, Prompt Engineering) | ✅ Complete |
 | [🔧 HashiCorp](./exams/hashicorp/) | 7 certifications (Terraform Assoc + Pro, Vault, Consul, Packer, Boundary, Nomad) | ✅ Complete |
 | [🧱 Databricks](./exams/databricks/) | 6 certifications (Data Engineer, ML, GenAI, Admin) | ✅ Complete |
 | [❄️ Snowflake](./exams/snowflake/) | 4 certifications (SnowPro Core + 3 Advanced) | ✅ Complete |
 | [🐙 GitHub](./exams/github/) | 5 certifications (Foundations, Actions, Admin, Advanced Security, Copilot) | ✅ Complete |
+| [🎩 Red Hat](./exams/redhat/) | 2 certifications (RHCSA, OpenShift Administrator EX280) | ✅ Complete |
+| [🌐 Cisco](./exams/cisco/) | 1 certification (CCNA 200-301) | ✅ Complete |
+| [☁️ Salesforce](./exams/salesforce/) | 2 certifications (Administrator, Platform Developer I) | ✅ Complete |
 | [📊 Confluent/Kafka](./exams/confluent/) | 2 certifications (Developer, Administrator) | ✅ Complete |
 | [🍃 MongoDB](./exams/mongodb/) | 3 certifications (Developer, DBA, Atlas Admin) | ✅ Complete |
 | [💰 FinOps](./exams/finops/) | 4 certifications (Practitioner, Engineer, Analyst, Professional) | ✅ Complete |
@@ -61,8 +63,9 @@ Jump directly to your certification:
 | [🛡️ ISC2](./exams/isc2/) | 2 certifications (CISSP, CCSP) | ✅ Complete |
 | [☁️ Cloud Security Alliance](./exams/cloud-security-alliance/) | 1 certification (CCSK v5) | ✅ Complete |
 | [🐧 Linux Foundation](./exams/linux-foundation/) | 2 certifications (LFCS, LFCA) | ✅ Complete |
-| [☁️ Oracle Cloud](./exams/oracle/) | 5 certifications (Foundations, Associate, Professional) | ✅ Complete |
+| [☁️ Oracle Cloud](./exams/oracle/) | 5 certifications (Foundations, Architect Associate + Professional, Developer Associate, Operations Associate) | ✅ Complete |
 | [☁️ IBM Cloud](./exams/ibm/) | 5 certifications (Advocate, Developer, Architect, Security, SRE) | ✅ Complete |
+| [🤖 Anthropic Claude](./exams/anthropic/) | 4 self-directed study tracks (Architect Foundations + Advanced, App Developer, Prompt Engineering Specialist) | ✅ Study tracks |
 
 ---
 
@@ -70,17 +73,18 @@ Jump directly to your certification:
 
 ### **Amazon Web Services (AWS)**
 - **Foundational:** Cloud Practitioner (CLF-C02), AI Practitioner (GenAI)
-- **Associate:** Solutions Architect, Developer, SysOps/CloudOps, ML Engineer
-- **Professional:** Solutions Architect, DevOps Engineer
-- **Specialty:** Security, Data Analytics, Database, Machine Learning, Advanced Networking, SAP on AWS, Quantum Practitioner
+- **Associate:** Solutions Architect (SAA-C03), Developer (DVA-C02), CloudOps Engineer (SOA-C03), ML Engineer (MLA-C01), Data Engineer (DEA-C01)
+- **Professional:** Solutions Architect (SAP-C02), DevOps Engineer (DOP-C02)
+- **Specialty:** Security (SCS-C02), Advanced Networking (ANS-C01), SAP on AWS (PAS-C01), Quantum Practitioner (QPC-C01)
+- **Retired (study material retained for credential holders):** Data Analytics (DAS-C01), Database (DBS-C01), Machine Learning (MLS-C01), SysOps Administrator (SOA-C02)
 
 **[→ Browse AWS Certifications](./exams/aws/)**
 
 ### **Microsoft Azure**
-- **Fundamentals:** AZ-900, AI-900, DP-900, SC-900, PL-900
-- **Associate:** AZ-104, AZ-204, AI-102, DP-100, DP-203, DP-300, DP-420, PL-200, SC-200 (Security Operations Analyst)
+- **Fundamentals:** AZ-900, AI-900, DP-900, SC-900, PL-900, MS-900
+- **Associate:** AZ-104, AZ-204, AI-102, DP-100, DP-203, DP-300, DP-420, DP-600, DP-700, AZ-700, PL-200, SC-200
 - **Expert:** AZ-305, AZ-400
-- **Specialty:** AZ-500, DP-600
+- **Specialty:** AZ-500
 
 **[→ Browse Azure Certifications](./exams/azure/)**
 
@@ -92,8 +96,8 @@ Jump directly to your certification:
 
 ### **Oracle Cloud Infrastructure (OCI)**
 - **Foundations:** OCI Foundations
-- **Associate:** OCI Architect Associate, OCI Developer Associate
-- **Professional:** OCI Architect Professional, OCI Operations Professional, OCI Database Professional
+- **Associate:** OCI Architect Associate, OCI Developer Associate, OCI Operations Associate
+- **Professional:** OCI Architect Professional
 
 **[→ Browse Oracle Certifications](./exams/oracle/)**
 
@@ -114,14 +118,6 @@ Jump directly to your certification:
 
 **[→ Browse NVIDIA Certifications](./exams/nvidia/)**
 
-### **Anthropic**
-- **Claude Certified Architect - Foundations (CCA-F)** - Agentic architecture, Claude Code, MCP, prompt engineering
-- **Claude Certified Architect - Advanced** - Multi-agent systems, RAG at scale, enterprise deployment
-- **Claude Application Developer** - Production Claude API/SDK development
-- **Claude Prompt Engineering Specialist** - Prompt design, evaluation, caching patterns
-
-**[→ Browse Anthropic Certifications](./exams/anthropic/)**
-
 ### **HashiCorp**
 - Terraform Associate (003), Terraform Authoring & Operations Professional, Vault Associate, Consul Associate, Packer Associate (003), Boundary Associate, Nomad Associate
 
@@ -141,6 +137,23 @@ Jump directly to your certification:
 - Foundations, Actions, Administration, Advanced Security, Copilot
 
 **[→ Browse GitHub Certifications](./exams/github/)**
+
+### **Red Hat**
+- **RHCSA (EX200)** - Red Hat Certified System Administrator (RHEL 9, performance-based)
+- **OpenShift Administrator (EX280)** - Red Hat Certified Specialist in OpenShift Administration (performance-based)
+
+**[→ Browse Red Hat Certifications](./exams/redhat/)**
+
+### **Cisco**
+- **CCNA (200-301)** - Cisco Certified Network Associate (foundation networking, routing, switching, security, automation)
+
+**[→ Browse Cisco Certifications](./exams/cisco/)**
+
+### **Salesforce**
+- **Salesforce Certified Administrator** - foundational admin (configuration, security, data, automation, reports)
+- **Platform Developer I (PD1)** - Apex, SOQL, LWC, Visualforce; foundational developer cert
+
+**[→ Browse Salesforce Certifications](./exams/salesforce/)**
 
 ### **Confluent/Apache Kafka**
 - Certified Developer for Apache Kafka, Certified Administrator for Apache Kafka
@@ -176,6 +189,20 @@ Jump directly to your certification:
 - LFCS (Certified System Administrator), LFCA (Certified IT Associate)
 
 **[→ Browse Linux Foundation Certifications](./exams/linux-foundation/)**
+
+---
+
+## 📘 Vendor Study Tracks
+
+Self-directed proficiency tracks for vendors that don't run a formal certification program. Same notes-and-scenarios format as the cert guides; intended to validate applied knowledge.
+
+### **Anthropic Claude**
+- **Architect Foundations** - Agentic architecture, Claude Code, MCP, prompt engineering
+- **Architect Advanced** - Multi-agent systems, RAG at scale, enterprise deployment (Bedrock / Vertex)
+- **Application Developer** - Production Claude API/SDK development
+- **Prompt Engineering Specialist** - Prompt design, evaluation, caching patterns
+
+**[→ Browse Anthropic Study Tracks](./exams/anthropic/)**
 
 ---
 
@@ -393,9 +420,9 @@ Study the detailed **notes/** files for each topic:
 
 ## 📊 Repository Statistics
 
-- **Total Certifications Covered:** 118+
+- **Total Certifications Covered:** 122+ (plus 4 vendor study tracks)
 - **Total Documentation Links:** 12,000+
-- **Providers:** 19 (AWS, Azure, GCP, Kubernetes, NVIDIA, Anthropic, HashiCorp, Databricks, Snowflake, GitHub, Confluent, MongoDB, FinOps, CompTIA, ISC2, Cloud Security Alliance, Linux Foundation, Oracle, IBM)
+- **Providers:** 22 (AWS, Azure, GCP, Kubernetes/CNCF, NVIDIA, HashiCorp, Databricks, Snowflake, GitHub, Red Hat, Cisco, Salesforce, Confluent, MongoDB, FinOps, CompTIA, ISC2, Cloud Security Alliance, Linux Foundation, Oracle, IBM, Anthropic study tracks)
 - **Service Comparison Guides:** 12
 - **CLI Reference Sheets:** 9
 - **Architecture Patterns:** 17
@@ -415,16 +442,19 @@ cloud-certification-materials/
 ├── STUDY-HUB.md (start here for guidance)
 │
 ├── exams/
-│   ├── aws/                     # 16 AWS certifications
-│   ├── azure/                   # 20 Azure certifications
-│   ├── gcp/                     # 13 GCP certifications
+│   ├── aws/                     # 17 AWS certifications (4 retired retained)
+│   ├── azure/                   # 23 Azure certifications
+│   ├── gcp/                     # 12 GCP certifications
 │   ├── kubernetes/              # 7 CNCF/Kubernetes certifications
 │   ├── nvidia/                  # 10 NVIDIA AI certifications
-│   ├── anthropic/               # 4 Anthropic Claude certifications
+│   ├── anthropic/               # 4 Anthropic Claude self-directed study tracks
 │   ├── hashicorp/               # 7 HashiCorp certifications
 │   ├── databricks/              # 6 Databricks certifications
 │   ├── snowflake/               # 4 Snowflake certifications
 │   ├── github/                  # 5 GitHub certifications
+│   ├── redhat/                  # 2 Red Hat certifications (RHCSA, OpenShift Admin)
+│   ├── cisco/                   # 1 Cisco certification (CCNA)
+│   ├── salesforce/              # 2 Salesforce certifications (Admin, PD1)
 │   ├── confluent/               # 2 Confluent/Kafka certifications
 │   ├── mongodb/                 # 3 MongoDB certifications
 │   ├── finops/                  # 4 FinOps certifications
@@ -463,9 +493,10 @@ cloud-certification-materials/
 
 ### **Browse Certifications**
 - [AWS](./exams/aws/) | [Azure](./exams/azure/) | [GCP](./exams/gcp/) | [Kubernetes](./exams/kubernetes/) | [NVIDIA](./exams/nvidia/)
-- [Anthropic](./exams/anthropic/) | [HashiCorp](./exams/hashicorp/) | [Databricks](./exams/databricks/) | [Snowflake](./exams/snowflake/)
-- [GitHub](./exams/github/) | [Confluent](./exams/confluent/) | [MongoDB](./exams/mongodb/) | [FinOps](./exams/finops/)
+- [HashiCorp](./exams/hashicorp/) | [Databricks](./exams/databricks/) | [Snowflake](./exams/snowflake/) | [GitHub](./exams/github/)
+- [Red Hat](./exams/redhat/) | [Cisco](./exams/cisco/) | [Salesforce](./exams/salesforce/) | [Confluent](./exams/confluent/) | [MongoDB](./exams/mongodb/) | [FinOps](./exams/finops/)
 - [CompTIA](./exams/comptia/) | [ISC2](./exams/isc2/) | [Cloud Security Alliance](./exams/cloud-security-alliance/) | [Linux Foundation](./exams/linux-foundation/) | [Oracle](./exams/oracle/) | [IBM](./exams/ibm/)
+- [Anthropic Claude study tracks](./exams/anthropic/)
 
 ### **Study Tools**
 - [Service Comparisons](./resources/)

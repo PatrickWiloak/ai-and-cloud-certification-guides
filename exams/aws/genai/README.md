@@ -5,30 +5,18 @@ The AWS Certified AI Practitioner certification validates foundational knowledge
 ## 📋 Quick Links
 
 - [**Fact Sheet**](fact-sheet.md) - Exam logistics and blueprint
-- [**Study Strategy**](strategy.md) - AI/ML focused preparation approach  
-- [**One-Page Cram**](cram-1p.md) - Essential AI/ML concepts
 - [**Practice Plan**](practice-plan.md) - Structured study schedule
 
 ## 📚 Study Materials
 
 ### Core Notes
 - [AI/ML Fundamentals](notes/ai-ml-fundamentals.md) - Core concepts and terminology
-- [AWS AI Services](notes/aws-ai-services.md) - Amazon AI/ML services overview
 - [Amazon Bedrock](notes/bedrock.md) - Generative AI foundation models
-- [Amazon SageMaker](notes/sagemaker.md) - Machine learning platform
-- [Computer Vision](notes/computer-vision.md) - Image and video analysis
-- [Natural Language Processing](notes/nlp.md) - Text analysis and processing
-- [Speech & Audio](notes/speech-audio.md) - Voice and audio AI services
-- [Responsible AI](notes/responsible-ai.md) - Ethics, bias, and governance
-- [AI Integration](notes/ai-integration.md) - Implementing AI in applications
+- [Responsible AI on AWS](notes/responsible-ai-aws-services.md) - Ethics, governance, and AWS responsible-AI services
 
-### Quick Reference
-- [Service Comparisons](cheat-sheets/service-comparisons.md) - AI service selection
-- [Model Selection Guide](cheat-sheets/model-selection.md) - Choosing the right model
-
-### Practice & Review
-- [Use Case Scenarios](scenarios.md) - Real-world AI implementations
-- [Hands-on Labs](labs/) - Practical AI/ML exercises
+### Companion Materials
+- [AWS Machine Learning Engineer Associate (MLA-C01)](../associate/ml-engineer-mla-c01/) - The natural deeper-dive cert after AI Practitioner
+- [Anthropic Claude Application Developer track](../../anthropic/claude-application-developer/) - For production GenAI applications
 
 ## 🎯 Exam Focus Areas
 

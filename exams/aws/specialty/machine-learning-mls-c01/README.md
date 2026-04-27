@@ -1,8 +1,37 @@
-# AWS Certified Machine Learning - Specialty (MLS-C01) Exam Guide
+# AWS Certified Machine Learning - Specialty (MLS-C01) - RETIRED
 
-## Exam Overview
+## Important Notice
 
-The AWS Certified Machine Learning - Specialty (MLS-C01) exam validates expertise in building, training, tuning, and deploying machine learning models using AWS Cloud. This certification demonstrates the ability to design, implement, deploy, and maintain machine learning solutions for given business problems.
+**The AWS Certified Machine Learning - Specialty (MLS-C01) certification was retired on April 15, 2025.**
+
+This certification is no longer available for new candidates. If you hold this certification, your credential will remain valid for three years from the date you earned it.
+
+## Replacement Certification
+
+AWS has launched the **AWS Certified Machine Learning Engineer - Associate (MLA-C01)** as the modern replacement.
+
+**[📖 AWS Machine Learning Engineer - Associate](https://aws.amazon.com/certification/certified-machine-learning-engineer-associate/)** - Official certification page
+
+### Key Differences
+- **Level**: Associate (vs. Specialty for MLS-C01)
+- **Focus**: SageMaker-centric ML engineering and MLOps, with strong coverage of Bedrock and generative AI
+- **Modern Services**: Updated to include current SageMaker capabilities, Bedrock, and contemporary MLOps tooling
+- **Career Alignment**: Better aligned with today's ML engineer / MLOps roles
+
+## For Current Credential Holders
+
+If you currently hold the MLS-C01 certification:
+- Your certification remains valid for 3 years from the date earned
+- Maintain your credential by earning other AWS certifications
+- Consider AWS Certified Machine Learning Engineer - Associate (MLA-C01) to stay current
+
+---
+
+> The historical study material below is preserved for credential holders and as a reference. For new candidates, study the [MLA-C01 fact sheet](../../associate/ml-engineer-mla-c01/fact-sheet.md) instead.
+
+## Historical Exam Overview (MLS-C01)
+
+The AWS Certified Machine Learning - Specialty (MLS-C01) exam validated expertise in building, training, tuning, and deploying machine learning models using AWS Cloud. This certification demonstrated the ability to design, implement, deploy, and maintain machine learning solutions for given business problems.
 
 ### Exam Details
 - **Exam Code**: MLS-C01

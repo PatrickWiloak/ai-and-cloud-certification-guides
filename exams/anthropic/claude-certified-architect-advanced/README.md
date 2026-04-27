@@ -1,12 +1,14 @@
-# CCA-A - Claude Certified Architect - Advanced
+# Claude Architect Advanced - Self-Directed Study Track
 
-## Exam Overview
+> ℹ️ **Study track, not an official certification.** Anthropic does not currently run an official certification program. This is a self-directed proficiency track for senior engineers who design, build, and operate large-scale production systems on top of Claude.
 
-The Claude Certified Architect - Advanced (CCA-A) is the expected next-tier certification beyond Foundations (CCA-F). It is designed for architects and senior engineers who design, build, and operate large-scale production systems on top of Claude. Where Foundations validates baseline fluency, Advanced validates your ability to make the deep tradeoff decisions that differentiate a hobby project from a resilient, compliant, multi-tenant production platform.
+## Track Overview
 
-This guide is published in advance of the official exam blueprint. Where the exam is still evolving, content is framed as preparation for an emerging certification and is grounded in Anthropic's published guidance: the Messages API reference, prompt engineering guide, tool use guide, extended thinking guide, prompt caching guide, batch API guide, files API guide, Claude Agent SDK documentation, and the Model Context Protocol (MCP) specification. It also reflects public guidance for running Claude on Amazon Bedrock and Google Cloud Vertex AI.
+This advanced track is for architects and senior engineers who already ship Claude-powered products. Where the [Foundations track](../claude-certified-architect-foundations/) covers baseline fluency, this track validates your ability to make the deep tradeoff decisions that differentiate a hobby project from a resilient, compliant, multi-tenant production platform.
 
-This certification targets AI engineers, solutions architects, staff-level software engineers, and platform leads who are already productionizing Claude workloads. It is not a beginner track.
+Material is grounded in Anthropic's published guidance: the Messages API reference, prompt engineering guide, tool use guide, extended thinking guide, prompt caching guide, Batch API guide, Files API guide, Claude Agent SDK documentation, and the Model Context Protocol (MCP) specification. It also reflects public guidance for running Claude on Amazon Bedrock and Google Cloud Vertex AI.
+
+This track targets AI engineers, solutions architects, staff-level software engineers, and platform leads. It is not a beginner track.
 
 ---
 
@@ -14,25 +16,19 @@ This certification targets AI engineers, solutions architects, staff-level softw
 
 | Detail | Info |
 |---|---|
-| Exam Code | CCA-A (preliminary) |
-| Full Name | Claude Certified Architect - Advanced |
-| Provider | Anthropic |
-| Duration | 150 minutes (estimate) |
-| Questions | 65-75 scenario and case-study items (estimate) |
-| Passing Score | ~750 / 1000 (estimate) |
-| Cost | Expected within Claude Partner Network; standalone TBD |
-| Delivery | Online proctored |
-| Validity | 2 years (expected) |
-| Prerequisites | CCA-F strongly recommended; 12+ months production Claude experience |
-| Status | Emerging certification - details preliminary |
-
-All numeric details above are preliminary and should be reconfirmed against Anthropic's published blueprint once released.
+| **Track Name** | Claude Architect Advanced |
+| **Provider** | Self-directed (Anthropic-focused) |
+| **Skill Level** | Senior / Advanced |
+| **Recommended study time** | 6 weeks (2-3 hr/day) |
+| **Format** | Scenario and case-study self-assessment items provided in this guide |
+| **Prerequisites** | Foundations track recommended; 12+ months production Claude experience |
+| **Primary sources** | [docs.anthropic.com](https://docs.anthropic.com), Claude Agent SDK docs, MCP spec, Anthropic Cookbook |
 
 ---
 
 ## Target Audience
 
-This exam is intended for people who already ship Claude-powered products. You should be comfortable with:
+This track is intended for people who already ship Claude-powered products. You should be comfortable with:
 
 - Designing multi-agent and single-agent architectures under cost and latency SLOs
 - Integrating Claude with retrieval systems at scale (vector, hybrid, reranked RAG)
@@ -41,15 +37,13 @@ This exam is intended for people who already ship Claude-powered products. You s
 - Writing evaluations, tracking regressions, and managing model upgrades (e.g., Sonnet 4.5 to Sonnet 4.6)
 - Reasoning about extended thinking budgets, prompt caching layers, batch API economics, and context engineering
 
-If you are still learning the Messages API or the basics of MCP, start with CCA-F first.
+If you are still learning the Messages API or the basics of MCP, start with the [Foundations track](../claude-certified-architect-foundations/) first.
 
 ---
 
-## Expected Exam Domains
+## Skill Areas
 
-These domain weights are preliminary based on Anthropic's public architectural guidance. Confirm against the official blueprint.
-
-| # | Domain | Estimated Weight | Focus |
+| # | Skill Area | Suggested Weight | Focus |
 |---|---|---|---|
 | 1 | Advanced Architectures and Multi-Agent Systems | 22% | Orchestrator-worker, planner-executor, swarms |
 | 2 | Context Engineering and Extended Thinking | 18% | Long context, memory tool, thinking budgets |
@@ -60,29 +54,29 @@ These domain weights are preliminary based on Anthropic's public architectural g
 
 ---
 
-## Domain Summaries
+## Skill Area Summaries
 
-### Domain 1 - Advanced Architectures and Multi-Agent Systems
+### 1 - Advanced Architectures and Multi-Agent Systems
 
 Designing systems where multiple Claude agents cooperate or where a single agent runs long-horizon tool-use loops. Know when orchestrator-worker patterns beat a single super-agent, how to bound recursion and iteration, and how to budget tokens across sub-agents. Understand the Claude Agent SDK primitives (agents, subagents, skills, hooks) and when to compose them manually vs. use the SDK.
 
-### Domain 2 - Context Engineering and Extended Thinking
+### 2 - Context Engineering and Extended Thinking
 
 Modern Claude models support large context windows, extended thinking, and the memory tool. Advanced architects must know how to shape context deliberately: which content gets cached, which is retrieved per turn, which is summarized, and which is offloaded to memory. Understand extended thinking token accounting, interleaved thinking during tool use, and when interleaved thinking is worth its cost.
 
-### Domain 3 - Tool Use and MCP at Scale
+### 3 - Tool Use and MCP at Scale
 
 Tool design, MCP server design, and emerging first-party tools (code execution, computer use, web search, web fetch, bash, text editor, files). Understand parallel tool use, forced tool choice, and how to structure tool definitions so a 30-tool agent still picks correctly. Know MCP transports (stdio, streamable HTTP), authentication patterns (OAuth 2.1), and multi-tenant MCP deployment.
 
-### Domain 4 - Evaluation, Observability, and Safety
+### 4 - Evaluation, Observability, and Safety
 
 Building LLM evals that track quality across model upgrades. Know how to design task-specific evals, LLM-as-judge pipelines, regression gates, and red-team suites. Observability: tracing agents, correlating tool calls with token costs, alerting on quality drift. Safety: Claude's constitutional AI principles, refusals, jailbreak resilience, and PII handling.
 
-### Domain 5 - Cost, Latency, and Throughput Optimization
+### 5 - Cost, Latency, and Throughput Optimization
 
 Prompt caching (ephemeral and 1-hour), the Batch API (50% discount, 24-hour window), model routing between Opus 4.6, Sonnet 4.6, and Haiku 4.5, streaming for perceived latency, parallel tool use, and speculative decoding patterns. Know how to profile an agent and find the 80% cost reduction.
 
-### Domain 6 - Enterprise Deployment (Bedrock, Vertex, VPC)
+### 6 - Enterprise Deployment (Bedrock, Vertex, VPC)
 
 Deploying Claude through Amazon Bedrock (including Bedrock Agents and Guardrails), Google Cloud Vertex AI, and direct API with private networking. Data residency, HIPAA eligibility, SOC 2, ISO 27001, EU AI Act considerations, customer-managed keys, and audit logging.
 
@@ -128,28 +122,24 @@ Deploying Claude through Amazon Bedrock (including Bedrock Agents and Guardrails
 
 ---
 
-## Preparing for an Emerging Certification
-
-Anthropic's certification program is young. When preparing for an advanced exam that is still taking shape:
+## Study Approach
 
 1. Anchor to primary sources. Treat docs.anthropic.com, the Anthropic Cookbook, and the MCP specification as ground truth. Community blog posts age quickly.
-2. Build, do not just read. The items most likely to appear on the exam are the ones Anthropic emphasizes in its official engineering blog posts and cookbook recipes. Reproduce those patterns.
-3. Track model versions. Advanced exam items often differentiate Opus, Sonnet, and Haiku tradeoffs. Know current IDs: claude-opus-4-6, claude-sonnet-4-6, claude-haiku-4-5.
-4. Understand both the first-party API and the cloud deployments. Bedrock and Vertex quirks (model IDs, regional availability, IAM) matter at the advanced tier.
-5. Re-verify this guide's numeric details (duration, question count, price) against Anthropic's official blueprint the week before you sit.
+2. Build, do not just read. Reproduce the patterns Anthropic emphasizes in its official engineering blog posts and cookbook recipes.
+3. Track model versions. Advanced material differentiates Opus, Sonnet, and Haiku tradeoffs. Know current IDs: claude-opus-4-7, claude-sonnet-4-6, claude-haiku-4-5.
+4. Understand both the first-party API and the cloud deployments. Bedrock and Vertex quirks (model IDs, regional availability, IAM) matter at this tier.
 
 ---
 
-## Certification Path
+## Suggested Learning Progression
 
 ```
-CCA-F (Foundations)
-    |
-    v
-CCA-A (Advanced)           <-- You are here
-    |
-    v
-CCA-E (Expert, expected)
+Foundations track   →   Advanced track   (you are here)
 ```
 
-Good luck. The Advanced exam rewards engineers who have felt the pain of a 3am agent loop burning tokens - and fixed it.
+Companion tracks in this repo:
+
+- [Claude Application Developer](../claude-application-developer/) - production API/SDK depth
+- [Prompt Engineering Specialist](../claude-prompt-engineering-specialist/) - prompt design and evaluation
+
+The advanced material rewards engineers who have felt the pain of a 3am agent loop burning tokens - and fixed it.

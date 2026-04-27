@@ -65,7 +65,7 @@ D. Use Cloud Functions for the entire application
 
 **Correct: B**
 
-**Why:** Lift and shift to Compute Engine minimizes initial changes while establishing GCP presence. The Strangler Fig pattern allows incremental modernization—extracting microservices over time while the monolith remains functional. Rewriting (A) is risky and time-consuming. Immediate containerization (C) requires significant changes. Functions (D) aren't suitable for monoliths.
+**Why:** Lift and shift to Compute Engine minimizes initial changes while establishing GCP presence. The Strangler Fig pattern allows incremental modernization - extracting microservices over time while the monolith remains functional. Rewriting (A) is risky and time-consuming. Immediate containerization (C) requires significant changes. Functions (D) aren't suitable for monoliths.
 
 **Key Concept:** [Application Modernization](https://cloud.google.com/architecture/application-modernization)
 </details>
@@ -137,7 +137,7 @@ D. Direct writes to BigQuery
 
 **Correct: B**
 
-**Why:** Pub/Sub provides durable, scalable message ingestion. Dataflow processes streams in real-time with exactly-once semantics—ideal for fraud detection logic. BigQuery stores processed data for batch analytics and reporting. This is the standard streaming architecture on GCP. Batch only (A) has latency. Cloud SQL (C) doesn't handle streaming. Direct BigQuery writes (D) add latency and don't allow real-time processing.
+**Why:** Pub/Sub provides durable, scalable message ingestion. Dataflow processes streams in real-time with exactly-once semantics - ideal for fraud detection logic. BigQuery stores processed data for batch analytics and reporting. This is the standard streaming architecture on GCP. Batch only (A) has latency. Cloud SQL (C) doesn't handle streaming. Direct BigQuery writes (D) add latency and don't allow real-time processing.
 
 **Key Concept:** [Stream Analytics Architecture](https://cloud.google.com/architecture/stream-analytics)
 </details>
@@ -231,7 +231,7 @@ D. Cloud Functions
 
 **Correct: B**
 
-**Why:** Cloud Run is serverless containers—no cluster management. It auto-scales to zero, provides HTTPS endpoints automatically, and has native Cloud SQL connector support for secure database connections. CE with Docker (A) requires VM management. App Engine Flex (C) is similar but less flexible. Functions (D) aren't containers.
+**Why:** Cloud Run is serverless containers - no cluster management. It auto-scales to zero, provides HTTPS endpoints automatically, and has native Cloud SQL connector support for secure database connections. CE with Docker (A) requires VM management. App Engine Flex (C) is similar but less flexible. Functions (D) aren't containers.
 
 **Key Concept:** [Cloud Run](https://cloud.google.com/run/docs/overview/what-is-cloud-run)
 </details>
@@ -343,7 +343,7 @@ D. User credentials
 
 **Correct: B**
 
-**Why:** Workload Identity maps Kubernetes service accounts to GCP service accounts—no keys in pods. Compute Engine can attach service accounts to instances. Cloud Run automatically uses the configured service account. No key management required. Stored keys (A) can be leaked. API keys (C) lack fine-grained permissions. User credentials (D) aren't for applications.
+**Why:** Workload Identity maps Kubernetes service accounts to GCP service accounts - no keys in pods. Compute Engine can attach service accounts to instances. Cloud Run automatically uses the configured service account. No key management required. Stored keys (A) can be leaked. API keys (C) lack fine-grained permissions. User credentials (D) aren't for applications.
 
 **Key Concept:** [Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity)
 </details>
@@ -497,7 +497,7 @@ D. Add more connections
 </details>
 
 ### Question 27
-**Scenario:** A company's application has variable traffic—high during business hours, low at night. They want to scale down at night to save costs. What should they configure?
+**Scenario:** A company's application has variable traffic - high during business hours, low at night. They want to scale down at night to save costs. What should they configure?
 
 A. Manual scaling daily
 B. Scheduled scaling or autoscaling based on metrics with scale-down policies
@@ -527,7 +527,7 @@ D. Cloud Functions
 
 **Correct: B**
 
-**Why:** Cloud Run is serverless containers with zero infrastructure management—ideal for teams without Kubernetes experience. It handles HTTP-based services, auto-scales including to zero, and has per-request pricing. Minimal operational overhead. GKE Autopilot (A) is simpler than standard GKE but still more complex than Cloud Run. CE (C) requires more management.
+**Why:** Cloud Run is serverless containers with zero infrastructure management - ideal for teams without Kubernetes experience. It handles HTTP-based services, auto-scales including to zero, and has per-request pricing. Minimal operational overhead. GKE Autopilot (A) is simpler than standard GKE but still more complex than Cloud Run. CE (C) requires more management.
 
 **Key Concept:** [Cloud Run vs GKE](https://cloud.google.com/blog/topics/developers-practitioners/cloud-run-vs-gke-when-use-which)
 </details>

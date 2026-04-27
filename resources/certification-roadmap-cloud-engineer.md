@@ -183,7 +183,7 @@ SPECIALTY CERTIFICATIONS (2-4 months each)
 - Cost-optimized architectures
 - Deep dive into: EC2, S3, RDS, VPC, IAM, CloudFormation
 
-*Step 2: SysOps Administrator Associate (SOA-C02)*
+*Step 2: CloudOps Engineer Associate (SOA-C03)* - replaces SOA-C02 (retired Sept 29, 2025)
 - Time: 60-100 hours study
 - Cost: $150 exam fee
 
@@ -221,10 +221,10 @@ SPECIALTY CERTIFICATIONS (2-4 months each)
 
 **Phase 4: Specializations (Optional, 2-4 months each)**
 - Security Specialty (SCS-C02) - [/exams/aws/specialty/security-scs-c02/](/exams/aws/specialty/security-scs-c02/)
-- Advanced Networking Specialty
-- Machine Learning Specialty (MLS-C01) - [/exams/aws/specialty/machine-learning-mls-c01/](/exams/aws/specialty/machine-learning-mls-c01/)
-- Database Specialty
-- Data Analytics Specialty
+- Advanced Networking Specialty (ANS-C01) - [/exams/aws/specialty/advanced-networking-ans-c01/](/exams/aws/specialty/advanced-networking-ans-c01/)
+- Machine Learning Engineer Associate (MLA-C01) - [/exams/aws/associate/ml-engineer-mla-c01/](/exams/aws/associate/ml-engineer-mla-c01/) (replaces retired MLS-C01)
+- Data Engineer Associate (DEA-C01) - [/exams/aws/associate/data-engineer-dea-c01/](/exams/aws/associate/data-engineer-dea-c01/) (replaces retired DAS-C01 and DBS-C01)
+- SAP on AWS (PAS-C01) - [/exams/aws/specialty/sap-on-aws-pas-c01/](/exams/aws/specialty/sap-on-aws-pas-c01/)
 
 ---
 
@@ -448,6 +448,18 @@ Choose 2-3 specialty areas across clouds:
 
 ## Foundation Level Certifications
 
+### Optional: Networking Foundation - Cisco CCNA (200-301)
+
+**Ideal for:** Cloud engineers who came from non-networking backgrounds and want a deeper foundation in TCP/IP, routing, and switching.
+
+Cloud networking still relies on the same protocols: VPCs, subnets, NAT, BGP, OSPF, ACLs, VLANs. CCNA gives you a deep, vendor-neutral grounding that translates well to AWS / Azure / GCP networking specialty exams.
+
+- **Time Commitment:** 80-120 hours (10-16 weeks part-time)
+- **Cost:** $300
+- **[→ Full CCNA study guide](../exams/cisco/ccna-200-301/)**
+
+Skip if you already have networking experience; pair with [AWS Advanced Networking Specialty](../exams/aws/specialty/advanced-networking-ans-c01/) or [GCP Cloud Network Engineer](../exams/gcp/cloud-network-engineer/) at the cloud-networking layer.
+
 ### AWS Cloud Practitioner (CLF-C02)
 
 **Ideal for:** Complete cloud beginners, business professionals, technical roles
@@ -634,7 +646,9 @@ Choose 2-3 specialty areas across clouds:
 
 ---
 
-### AWS SysOps Administrator Associate (SOA-C02)
+### AWS CloudOps Engineer Associate (SOA-C03)
+
+> 📌 SOA-C02 was retired September 29, 2025 and replaced by **SOA-C03 (CloudOps Engineer)**. The skills below remain valid; the exam code and naming changed.
 
 **Ideal for:** System administrators, operations engineers
 

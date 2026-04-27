@@ -5,32 +5,14 @@ The IBM Cloud Advocate certification validates foundational knowledge of IBM Clo
 ## 📋 Quick Links
 
 - [**Fact Sheet**](fact-sheet.md) - Exam logistics and objectives
-- [**Study Strategy**](strategy.md) - IBM Cloud-focused preparation
-- [**One-Page Cram**](cram-1p.md) - Critical concepts summary
-- [**Practice Plan**](practice-plan.md) - Comprehensive study roadmap
+- [**Practice Plan**](practice-plan.md) - Structured study schedule
 
 ## 📚 Study Materials
 
 ### Core Notes
-- [Cloud Fundamentals](notes/cloud-fundamentals.md) - Cloud computing basics, IBM Cloud overview
-- [Compute Services](notes/compute-services.md) - Virtual Servers, Bare Metal, VMware
-- [Storage & Databases](notes/storage-databases.md) - Object Storage, Block Storage, Cloud Databases
-- [Networking](notes/networking.md) - VPC, Load Balancers, Cloud Internet Services
-- [Containers & Kubernetes](notes/containers-kubernetes.md) - Kubernetes Service, OpenShift, Code Engine
-- [AI & Data](notes/ai-data.md) - Watson AI, Analytics, Data services
-- [DevOps & Development](notes/devops-development.md) - Toolchains, CI/CD, App development
-- [Security & Compliance](notes/security-compliance.md) - IAM, security services, compliance
-- [Cloud Native](notes/cloud-native.md) - Microservices, serverless, cloud-native patterns
-
-### Quick Reference
-- [Service Catalog](cheat-sheets/service-catalog.md) - IBM Cloud services overview
-- [Use Cases](cheat-sheets/use-cases.md) - Common solution patterns
-
-### Practice & Review
-- [Scenarios](scenarios.md) - Real-world IBM Cloud scenarios
-- [Flashcards](flashcards.md) - Key concepts and services
-- [Practice Questions](practice-questions.md) - Sample exam questions
-
+- [Cloud Fundamentals And IBM Cloud Overview](notes/01-cloud-fundamentals-and-ibm-cloud-overview.md)
+- [Core Services](notes/02-core-services.md)
+- [AI Devops And Security](notes/03-ai-devops-and-security.md)
 ## 🎯 Exam Details
 
 - **Exam Code**: C1000-176

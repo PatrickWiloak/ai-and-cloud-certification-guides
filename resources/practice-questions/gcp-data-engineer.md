@@ -46,7 +46,7 @@ D. External ML platform
 
 **Correct: B**
 
-**Why:** BigQuery ML allows creating and executing ML models using SQL. ARIMA_PLUS for time series forecasting is built-in. No infrastructure to manage—models run within BigQuery. Ideal for SQL-proficient data scientists. Custom models (A) require infrastructure. AutoML (C) requires data export. External platforms (D) add complexity.
+**Why:** BigQuery ML allows creating and executing ML models using SQL. ARIMA_PLUS for time series forecasting is built-in. No infrastructure to manage - models run within BigQuery. Ideal for SQL-proficient data scientists. Custom models (A) require infrastructure. AutoML (C) requires data export. External platforms (D) add complexity.
 
 **Key Concept:** [BigQuery ML](https://cloud.google.com/bigquery/docs/bqml-introduction)
 </details>
@@ -64,7 +64,7 @@ D. Run Hadoop on Compute Engine VMs
 
 **Correct: B**
 
-**Why:** Dataproc runs Apache Spark/Hadoop with minimal code changes. Ephemeral clusters (create for job, delete after) reduce costs to only job execution time. Cloud Storage replaces HDFS for persistent data—clusters are stateless. Persistent clusters (A) cost more. Rewriting (C) is time-consuming. Self-managed VMs (D) require more administration.
+**Why:** Dataproc runs Apache Spark/Hadoop with minimal code changes. Ephemeral clusters (create for job, delete after) reduce costs to only job execution time. Cloud Storage replaces HDFS for persistent data - clusters are stateless. Persistent clusters (A) cost more. Rewriting (C) is time-consuming. Self-managed VMs (D) require more administration.
 
 **Key Concept:** [Dataproc](https://cloud.google.com/dataproc/docs/concepts/overview)
 </details>
@@ -254,7 +254,7 @@ D. mysqldump to Cloud Storage
 </details>
 
 ### Question 14
-**Scenario:** A Dataflow job processing large datasets runs slowly. Analysis shows data skew—most data goes to a few workers while others are idle. How should they fix this?
+**Scenario:** A Dataflow job processing large datasets runs slowly. Analysis shows data skew - most data goes to a few workers while others are idle. How should they fix this?
 
 A. Add more workers
 B. Implement a Combine.perKey with fanout or use Reshuffle to rebalance data
@@ -266,7 +266,7 @@ D. Use smaller machine types
 
 **Correct: B**
 
-**Why:** Hot keys cause data skew. Combine.perKey with fanout pre-aggregates data across workers before final combination. Reshuffle redistributes data randomly. Both techniques address skew. Adding workers (A) doesn't help if data is skewed—same keys go to same workers. Reducing parallelism (C) makes it worse.
+**Why:** Hot keys cause data skew. Combine.perKey with fanout pre-aggregates data across workers before final combination. Reshuffle redistributes data randomly. Both techniques address skew. Adding workers (A) doesn't help if data is skewed - same keys go to same workers. Reducing parallelism (C) makes it worse.
 
 **Key Concept:** [Handling Hot Keys](https://cloud.google.com/dataflow/docs/guides/specifying-exec-params#handling-hot-keys)
 </details>
@@ -432,7 +432,7 @@ D. Cloud Storage
 
 **Correct: B**
 
-**Why:** Firestore is a document database with flexible schema—each document can have different fields. Automatic indexing enables queries on any field. Millisecond latency with automatic scaling. Real-time updates supported. Cloud SQL (A) has rigid schema. BigQuery (C) is for analytics with higher latency. Storage (D) doesn't support queries.
+**Why:** Firestore is a document database with flexible schema - each document can have different fields. Automatic indexing enables queries on any field. Millisecond latency with automatic scaling. Real-time updates supported. Cloud SQL (A) has rigid schema. BigQuery (C) is for analytics with higher latency. Storage (D) doesn't support queries.
 
 **Key Concept:** [Firestore](https://cloud.google.com/firestore/docs/overview)
 </details>
@@ -450,7 +450,7 @@ D. No encryption
 
 **Correct: B**
 
-**Why:** CMEK in BigQuery uses keys from Cloud KMS. Key rotation creates new key versions—existing data remains encrypted with old versions, new data uses new versions. No re-encryption needed. Automatic rotation can be scheduled. Customer maintains key control. Default (A) uses Google-managed keys.
+**Why:** CMEK in BigQuery uses keys from Cloud KMS. Key rotation creates new key versions - existing data remains encrypted with old versions, new data uses new versions. No re-encryption needed. Automatic rotation can be scheduled. Customer maintains key control. Default (A) uses Google-managed keys.
 
 **Key Concept:** [BigQuery CMEK](https://cloud.google.com/bigquery/docs/customer-managed-encryption)
 </details>
@@ -544,7 +544,7 @@ D. Manual execution
 
 **Correct: B**
 
-**Why:** Cloud Composer (managed Apache Airflow) handles complex workflow orchestration. DAGs (Directed Acyclic Graphs) define task dependencies—downstream tasks wait for upstream completion. Built-in monitoring, logging, and alerting. Retry logic for failed tasks. Cron (A) doesn't handle dependencies. Scheduler alone (C) doesn't orchestrate.
+**Why:** Cloud Composer (managed Apache Airflow) handles complex workflow orchestration. DAGs (Directed Acyclic Graphs) define task dependencies - downstream tasks wait for upstream completion. Built-in monitoring, logging, and alerting. Retry logic for failed tasks. Cron (A) doesn't handle dependencies. Scheduler alone (C) doesn't orchestrate.
 
 **Key Concept:** [Cloud Composer](https://cloud.google.com/composer/docs/concepts/overview)
 </details>
@@ -562,7 +562,7 @@ D. Encrypt entire tables
 
 **Correct: B**
 
-**Why:** Cloud DLP provides de-identification transformations. Deterministic tokenization (cryptographic hash with key) produces consistent pseudonyms—the same name always becomes the same token, enabling analysis while protecting identity. Deleting (A) loses analytical value. Manual masking (C) doesn't scale. Full encryption (D) prevents analysis.
+**Why:** Cloud DLP provides de-identification transformations. Deterministic tokenization (cryptographic hash with key) produces consistent pseudonyms - the same name always becomes the same token, enabling analysis while protecting identity. Deleting (A) loses analytical value. Manual masking (C) doesn't scale. Full encryption (D) prevents analysis.
 
 **Key Concept:** [Cloud DLP De-identification](https://cloud.google.com/dlp/docs/deidentify-sensitive-data)
 </details>
@@ -598,13 +598,13 @@ D. Pre-built reports only
 
 **Correct: B**
 
-**Why:** BI Engine accelerates queries for interactive analytics. Looker provides a semantic layer for business-friendly exploration. Gemini in BigQuery (Duet AI) enables natural language queries—users describe what they want in plain English. SQL training (A) is time-consuming. Spreadsheets (C) and fixed reports (D) limit exploration.
+**Why:** BI Engine accelerates queries for interactive analytics. Looker provides a semantic layer for business-friendly exploration. Gemini in BigQuery (Duet AI) enables natural language queries - users describe what they want in plain English. SQL training (A) is time-consuming. Spreadsheets (C) and fixed reports (D) limit exploration.
 
 **Key Concept:** [BigQuery Natural Language](https://cloud.google.com/bigquery/docs/generate-sql)
 </details>
 
 ### Question 33
-**Scenario:** A company needs to track data lineage—understanding where data comes from, how it's transformed, and where it's used. This is required for regulatory compliance. What should they implement?
+**Scenario:** A company needs to track data lineage - understanding where data comes from, how it's transformed, and where it's used. This is required for regulatory compliance. What should they implement?
 
 A. Manual documentation
 B. Data Catalog with lineage tracking and Dataflow/Dataplex lineage integration
@@ -692,7 +692,7 @@ D. Keep all data in BigQuery
 
 **Correct: B**
 
-**Why:** Partitioned tables can have partition expiration—automatically delete partitions older than threshold. Alternatively, scheduled queries export old data to Cloud Storage (cheaper) and delete from BigQuery. Automates lifecycle management. Manual archival (A) is labor-intensive. Deleting (C) may lose needed data. Keeping all (D) is expensive.
+**Why:** Partitioned tables can have partition expiration - automatically delete partitions older than threshold. Alternatively, scheduled queries export old data to Cloud Storage (cheaper) and delete from BigQuery. Automates lifecycle management. Manual archival (A) is labor-intensive. Deleting (C) may lose needed data. Keeping all (D) is expensive.
 
 **Key Concept:** [Partition Expiration](https://cloud.google.com/bigquery/docs/managing-partitioned-tables#partition-expiration)
 </details>
@@ -710,7 +710,7 @@ D. Delete and recreate
 
 **Correct: B**
 
-**Why:** Dataflow supports in-place updates for compatible changes—existing state is preserved. For incompatible changes, drain the pipeline (processes remaining data, then stops) and start new version. In-flight data is preserved. Stop/delete (A, D) may lose data. Parallel pipelines (C) cause duplicate processing.
+**Why:** Dataflow supports in-place updates for compatible changes - existing state is preserved. For incompatible changes, drain the pipeline (processes remaining data, then stops) and start new version. In-flight data is preserved. Stop/delete (A, D) may lose data. Parallel pipelines (C) cause duplicate processing.
 
 **Key Concept:** [Updating Pipelines](https://cloud.google.com/dataflow/docs/guides/updating-a-pipeline)
 </details>

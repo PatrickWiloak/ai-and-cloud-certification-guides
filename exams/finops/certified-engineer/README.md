@@ -151,11 +151,11 @@ The FinOps Certified Engineer (FOCE) exam validates your technical ability to im
 | File | Description |
 |------|-------------|
 | [fact-sheet.md](fact-sheet.md) | Comprehensive reference with documentation links |
-| [notes/01-cost-data-engineering.md](notes/01-cost-data-engineering.md) | Cloud billing APIs and data pipelines |
-| [notes/02-tagging-automation.md](notes/02-tagging-automation.md) | Cost allocation and tagging automation |
-| [notes/03-optimization-automation.md](notes/03-optimization-automation.md) | Automated right-sizing and waste reduction |
-| [notes/04-finops-tooling.md](notes/04-finops-tooling.md) | FinOps tools, IaC, and policy as code |
-| [notes/05-unit-economics-kpis.md](notes/05-unit-economics-kpis.md) | Unit economics, KPIs, and governance |
+| [notes/01-finops-engineering-fundamentals.md](notes/01-finops-engineering-fundamentals.md) | FinOps engineering principles and operating model |
+| [notes/02-cloud-cost-data-analytics.md](notes/02-cloud-cost-data-analytics.md) | Cloud billing APIs, cost data, and analytics |
+| [notes/03-rate-and-usage-optimization.md](notes/03-rate-and-usage-optimization.md) | Rate optimization (RIs, SPs) and usage optimization |
+| [notes/04-automation-and-tooling.md](notes/04-automation-and-tooling.md) | Automation, IaC, and FinOps tooling |
+| [notes/05-governance-and-compliance.md](notes/05-governance-and-compliance.md) | Governance, policy, and compliance |
 | [practice-plan.md](practice-plan.md) | Week-by-week study schedule |
 | [scenarios.md](scenarios.md) | Exam-style practice scenarios |
 | [strategy.md](strategy.md) | Study strategy and exam tactics |

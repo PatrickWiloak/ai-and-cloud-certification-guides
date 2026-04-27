@@ -1,12 +1,12 @@
 # 📚 Study Hub - Your Cloud Certification Navigation Center
 
-> **Your comprehensive guide to navigating 118+ certifications across 19 providers - cloud, AI/ML, security, DevOps, data, and FinOps.**
+> **Your comprehensive guide to navigating 122+ certifications across 22 providers - cloud, AI/ML, security, DevOps, data, networking, FinOps, and CRM. Plus 4 vendor study tracks for Anthropic Claude.**
 
 <div align="center">
 
-[![Total Certifications](https://img.shields.io/badge/Certifications-118+-blue.svg)]()
+[![Total Certifications](https://img.shields.io/badge/Certifications-122+-blue.svg)]()
 [![Documentation Links](https://img.shields.io/badge/Docs%20Links-12000+-green.svg)]()
-[![Providers](https://img.shields.io/badge/Providers-19-orange.svg)]()
+[![Providers](https://img.shields.io/badge/Providers-22-orange.svg)]()
 [![Study Tracks](https://img.shields.io/badge/Study%20Tracks-12-purple.svg)]()
 
 **Welcome to your one-stop navigation hub for certification success.**
@@ -54,20 +54,22 @@ What's your starting point?
 ├─ Have some cloud experience (6-18 months)
 │  ├─ Want infrastructure focus → AWS SAA-C03 | Azure AZ-104 | GCP Cloud Engineer
 │  ├─ Want development focus  → AWS DVA-C02 | Azure AZ-204
-│  ├─ Want operations focus   → AWS CloudOps SOA-C03 | Azure AZ-104
-│  └─ Want data focus         → Azure DP-203 | GCP Data Engineer | Databricks DE Assoc
+│  ├─ Want operations focus   → AWS CloudOps SOA-C03 | Azure AZ-104 | RHCSA
+│  └─ Want data focus         → AWS DEA-C01 | Azure DP-203 | GCP Data Engineer | Databricks DE Assoc
 │
 ├─ Senior practitioner (18+ months)
 │  ├─ Architecture        → AWS SAP-C02 | Azure AZ-305 | GCP PCA
 │  ├─ DevOps              → AWS DOP-C02 | Azure AZ-400 | GCP Cloud DevOps
 │  ├─ Security            → AWS SCS-C02 | Azure AZ-500 | GCP Cloud Security | CISSP | CCSP
-│  └─ Specialty           → AWS Adv Networking | AWS ML | AWS Quantum | Databricks ML Pro
+│  └─ Specialty           → AWS Adv Networking | AWS Quantum | Databricks ML Pro | OpenShift EX280
 │
 └─ Cross-cutting specializations
-   ├─ Kubernetes          → KCNA → CKA → CKAD → CKS → ICA (Istio)
+   ├─ Kubernetes          → KCNA → CKA → CKAD → CKS → ICA (Istio) | OpenShift EX280
    ├─ Terraform/IaC       → Terraform Associate → Terraform Authoring & Operations Pro
    ├─ AI/ML platform      → AWS MLA-C01 | Azure AI-102 | NVIDIA AI Infra Pro
-   ├─ Generative AI       → AWS AI Practitioner | Azure GenAI | NVIDIA GenAI/LLM | Anthropic
+   ├─ Generative AI       → AWS AI Practitioner | Azure GenAI | NVIDIA GenAI/LLM | Anthropic study tracks
+   ├─ Networking          → CCNA → CCNP | AWS Adv Networking | GCP Cloud Network Engineer
+   ├─ Linux / Platform    → LFCS | RHCSA → RHCE / OpenShift EX280
    ├─ Security specialty  → CISSP | CCSP | CCSK v5 | Security+ | SC-200
    └─ FinOps              → FinOps Practitioner → Engineer/Analyst → Professional
 ```
@@ -98,7 +100,7 @@ What's your starting point?
 
 ### Data Engineering Track
 1. Foundational cert in your primary cloud
-2. AWS Data Analytics (DAS-C01) *or* Azure DP-203 *or* GCP Data Engineer
+2. AWS Data Engineer Associate (DEA-C01) *or* Azure DP-203 *or* GCP Data Engineer
 3. Databricks Data Engineer Associate → Professional
 4. Snowflake SnowPro Core → Advanced Data Engineer
 5. Specialization: Confluent (Kafka), MongoDB DBA
@@ -108,13 +110,14 @@ What's your starting point?
 2. AWS MLA-C01 *or* Azure AI-102 *or* GCP ML Engineer
 3. Databricks ML Associate → Professional
 4. NVIDIA AI Infrastructure & Operations Associate → Professional
-5. Generative AI: NVIDIA GenAI/LLM, Anthropic Architect Foundations → Advanced, Claude Application Developer, Prompt Engineering Specialist
+5. Generative AI: NVIDIA GenAI/LLM, plus the Anthropic Claude self-directed study tracks (Architect Foundations → Advanced, Application Developer, Prompt Engineering Specialist)
 
 ### Kubernetes Track <a id="kubernetes-track"></a>
 1. KCNA (Kubernetes and Cloud Native Associate)
 2. CKA (Administrator)
 3. CKAD (Application Developer) *or* CKS (Security Specialist)
-4. Specialization: PCA (Prometheus), ICA (Istio), KCSA (Security Associate)
+4. OpenShift Administrator (EX280) for Red Hat-specific path
+5. Specialization: PCA (Prometheus), ICA (Istio), KCSA (Security Associate)
 
 ### FinOps Track <a id="finops-track"></a>
 1. FinOps Certified Practitioner
@@ -123,11 +126,16 @@ What's your starting point?
 4. Cloud-specific: AWS Cost optimization, Azure Cost Management, GCP billing
 
 ### Platform Engineering Track
-1. Linux Foundation LFCS *or* CompTIA Cloud+
+1. Linux Foundation LFCS *or* RHCSA *or* CompTIA Cloud+
 2. Cloud associate cert (your primary cloud)
-3. Kubernetes CKA + HashiCorp Terraform Associate
+3. Kubernetes CKA + HashiCorp Terraform Associate (or OpenShift EX280 for Red Hat shops)
 4. GitHub Actions + Administration certifications
 5. Add: Boundary Associate, Vault Associate, Nomad Associate
+
+### Networking Track
+1. Cisco CCNA (200-301) - foundational networking and routing/switching
+2. AWS Advanced Networking Specialty *or* GCP Cloud Network Engineer (cloud-side)
+3. CCNP Enterprise (350-401 ENCOR) for advanced Cisco networking
 
 ---
 
@@ -135,16 +143,18 @@ What's your starting point?
 
 | Provider | Count | Highlights | Browse |
 |----------|------:|------------|--------|
-| **AWS** | 16 | CLF-C02, SAA-C03, SAP-C02, DOP-C02, MLA-C01, SCS-C02, AI Practitioner, Quantum (QPC-C01) | [exams/aws/](./exams/aws/) |
-| **Azure** | 20 | AZ-900/104/204/305/400/500, AI-102, DP-203/600, SC-200, PL-100/200 | [exams/azure/](./exams/azure/) |
-| **GCP** | 13 | Cloud Engineer, PCA, Data Engineer, ML Engineer, DevOps, Security, GenAI | [exams/gcp/](./exams/gcp/) |
+| **AWS** | 17 | CLF-C02, SAA-C03, SAP-C02, DOP-C02, MLA-C01, **DEA-C01**, SCS-C02, AI Practitioner, Quantum (QPC-C01); 4 retired specialties retained | [exams/aws/](./exams/aws/) |
+| **Azure** | 23 | AZ-900/104/204/305/400/500/700, AI-102, DP-203/600/700, SC-200, PL-100/200, MS-900 | [exams/azure/](./exams/azure/) |
+| **GCP** | 12 | Cloud Engineer, Cloud Architect, Data Engineer, ML Engineer, DevOps, Security, GenAI | [exams/gcp/](./exams/gcp/) |
 | **Kubernetes/CNCF** | 7 | KCNA, KCSA, CKA, CKAD, CKS, PCA (Prometheus), ICA (Istio) | [exams/kubernetes/](./exams/kubernetes/) |
 | **NVIDIA** | 10 | AI Infra & Ops, GenAI/LLM, Multimodal, Agentic AI, Networking, OpenUSD | [exams/nvidia/](./exams/nvidia/) |
-| **Anthropic** | 4 | Architect Foundations + Advanced, Application Developer, Prompt Engineering | [exams/anthropic/](./exams/anthropic/) |
 | **HashiCorp** | 7 | Terraform Assoc + Pro, Vault, Consul, Packer, Boundary, Nomad | [exams/hashicorp/](./exams/hashicorp/) |
 | **Databricks** | 6 | Data Engineer (A/P), ML (A/P), GenAI Engineer, Lakehouse Admin | [exams/databricks/](./exams/databricks/) |
 | **Snowflake** | 4 | SnowPro Core + 3 Advanced (Architect, Data Eng, Admin) | [exams/snowflake/](./exams/snowflake/) |
 | **GitHub** | 5 | Foundations, Actions, Administration, Advanced Security, Copilot | [exams/github/](./exams/github/) |
+| **Red Hat** | 2 | RHCSA (EX200), OpenShift Administrator (EX280) | [exams/redhat/](./exams/redhat/) |
+| **Cisco** | 1 | CCNA (200-301) | [exams/cisco/](./exams/cisco/) |
+| **Salesforce** | 2 | Administrator, Platform Developer I (PD1) | [exams/salesforce/](./exams/salesforce/) |
 | **Confluent/Kafka** | 2 | Certified Developer, Certified Administrator | [exams/confluent/](./exams/confluent/) |
 | **MongoDB** | 3 | Associate Developer, DBA, Atlas Administrator | [exams/mongodb/](./exams/mongodb/) |
 | **FinOps Foundation** | 4 | Practitioner, Engineer, Analyst, Professional | [exams/finops/](./exams/finops/) |
@@ -152,9 +162,10 @@ What's your starting point?
 | **ISC2** | 2 | CISSP, CCSP | [exams/isc2/](./exams/isc2/) |
 | **Cloud Security Alliance** | 1 | CCSK v5 | [exams/cloud-security-alliance/](./exams/cloud-security-alliance/) |
 | **Linux Foundation** | 2 | LFCS, LFCA | [exams/linux-foundation/](./exams/linux-foundation/) |
-| **Oracle Cloud (OCI)** | 5 | Foundations, Architect Assoc + Pro, Developer, Operations | [exams/oracle/](./exams/oracle/) |
+| **Oracle Cloud (OCI)** | 5 | Foundations, Architect Assoc + Pro, Developer Assoc, Operations Assoc | [exams/oracle/](./exams/oracle/) |
 | **IBM Cloud** | 5 | Advocate, Developer, Solution Architect, Security, SRE | [exams/ibm/](./exams/ibm/) |
-| **TOTAL** | **118** | | |
+| **CERTIFICATIONS TOTAL** | **122** | | |
+| **Anthropic Claude (study tracks)** | 4 | Architect Foundations + Advanced, Application Developer, Prompt Engineering Specialist | [exams/anthropic/](./exams/anthropic/) |
 
 ---
 
@@ -170,8 +181,10 @@ Top picks based on industry demand and salary impact:
 6. [AWS Solutions Architect Professional (SAP-C02)](./exams/aws/professional/solutions-architect-pro-sap-c02/) - senior architect
 7. [CISSP](./exams/isc2/cissp/) - security gold standard
 8. [Azure DevOps Engineer (AZ-400)](./exams/azure/az-400/) - Azure expert DevOps
-9. [Databricks Data Engineer Associate](./exams/databricks/data-engineer-associate/) - lakehouse data
+9. [AWS Data Engineer Associate (DEA-C01)](./exams/aws/associate/data-engineer-dea-c01/) - modern AWS data certification
 10. [FinOps Certified Practitioner](./exams/finops/certified-practitioner/) - cloud cost discipline
+11. [Cisco CCNA (200-301)](./exams/cisco/ccna-200-301/) - foundational networking
+12. [Red Hat RHCSA (EX200)](./exams/redhat/rhcsa-ex200/) - Linux administration foundation
 
 ---
 
@@ -180,7 +193,7 @@ Top picks based on industry demand and salary impact:
 | Cert Tier | Typical Prep Time | Daily Study | Examples |
 |-----------|-------------------|-------------|----------|
 | **Fundamentals** | 2-4 weeks | 1-2 hr | CLF-C02, AZ-900, GCP Digital Leader, KCNA |
-| **Associate** | 6-10 weeks | 2-3 hr | SAA-C03, AZ-104, CKA, Databricks DE Assoc |
+| **Associate** | 6-10 weeks | 2-3 hr | SAA-C03, AZ-104, CKA, DEA-C01, RHCSA |
 | **Professional** | 10-16 weeks | 2-4 hr | SAP-C02, AZ-305, AZ-400, GCP PCA |
 | **Specialty** | 8-14 weeks | 2-4 hr | AWS Security, ML, Networking, Quantum |
 | **Security capstone** | 12-26 weeks | 2-4 hr | CISSP (16wk), CCSP (10wk) |

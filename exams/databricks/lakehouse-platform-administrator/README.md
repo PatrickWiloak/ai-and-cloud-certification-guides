@@ -180,6 +180,5 @@ The Databricks Certified Lakehouse Platform Administrator certification validate
 | [strategy.md](strategy.md) | Study phases, resources, and exam tactics |
 | [notes/01-workspace-administration.md](notes/01-workspace-administration.md) | Workspace configuration and management |
 | [notes/02-identity-access.md](notes/02-identity-access.md) | Identity, SSO, and access control |
-| [notes/03-data-management.md](notes/03-data-management.md) | Unity Catalog administration |
-| [notes/04-compute-management.md](notes/04-compute-management.md) | Clusters, policies, and warehouses |
-| [notes/05-security.md](notes/05-security.md) | Network and data security |
+| [notes/03-data-cluster-management.md](notes/03-data-cluster-management.md) | Unity Catalog, clusters, policies, and warehouses |
+| [notes/04-security.md](notes/04-security.md) | Network and data security |

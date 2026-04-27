@@ -4,7 +4,7 @@
 
 The AWS Well-Architected Framework provides a consistent approach to evaluating architectures against best practices and design principles. At the professional level, you must demonstrate deep understanding of advanced architectural patterns, trade-offs between pillars, and how to apply these principles across complex enterprise environments, multi-account structures, and hybrid deployments.
 
-The six pillars—Operational Excellence, Security, Reliability, Performance Efficiency, Cost Optimization, and Sustainability—must be balanced against business requirements, technical constraints, and organizational complexity.
+The six pillars - Operational Excellence, Security, Reliability, Performance Efficiency, Cost Optimization, and Sustainability - must be balanced against business requirements, technical constraints, and organizational complexity.
 
 ## Key Concepts
 

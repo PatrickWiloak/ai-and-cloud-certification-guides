@@ -16,33 +16,21 @@ The AWS Certified Solutions Architect - Professional certification validates adv
 
 ## 📋 Quick Links
 
-- [**Fact Sheet**](fact-sheet.md) - Exam logistics and blueprint
-- [**Study Strategy**](strategy.md) - Advanced preparation approach
-- [**One-Page Cram**](cram-1p.md) - Final review essentials
-- [**Practice Plan**](practice-plan.md) - Comprehensive study schedule
+- [**Fact Sheet**](fact-sheet.md) - Exam logistics and objectives
+- [**Practice Plan**](practice-plan.md) - Structured study schedule
 
 ## 📚 Study Materials
 
 ### Core Notes
-- [Architecture Pillars](notes/architecture-pillars.md) - Advanced Well-Architected concepts
-- [Networking](notes/networking.md) - Complex networking scenarios
-- [Storage](notes/storage.md) - Enterprise storage solutions
-- [Security & IAM](notes/security-iam.md) - Advanced security patterns
-- [Compute & Containers](notes/compute-containers.md) - Enterprise compute strategies
-- [Databases](notes/databases.md) - Complex data architecture
-- [Integration & Streaming](notes/integration-streaming.md) - Enterprise integration
-- [Observability](notes/observability.md) - Advanced monitoring
-- [Cost & Governance](notes/cost-governance.md) - Enterprise cost management
-
-### Quick Reference
-- [Service Comparisons](cheat-sheets/service-comparisons.md) - Advanced service decisions
-- [Decision Trees](cheat-sheets/decision-trees.md) - Complex architecture patterns
-
-### Practice & Review
-- [Scenarios & Patterns](scenarios.md) - Enterprise architecture scenarios
-- [Flashcards](flashcards.md) - Advanced concepts
-- [Hands-on Labs](labs/) - Complex implementations
-
+- [Architecture Pillars](notes/architecture-pillars.md)
+- [Compute Containers](notes/compute-containers.md)
+- [Cost Governance](notes/cost-governance.md)
+- [Databases](notes/databases.md)
+- [Integration Streaming](notes/integration-streaming.md)
+- [Networking](notes/networking.md)
+- [Observability](notes/observability.md)
+- [Security IAM](notes/security-iam.md)
+- [Storage](notes/storage.md)
 ## 🎯 Exam Domains
 
 ### Domain 1: Design Solutions for Organizational Complexity (26%)

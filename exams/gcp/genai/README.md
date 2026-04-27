@@ -1,34 +1,25 @@
-# Google Cloud Professional Machine Learning Engineer
+# Google Cloud Generative AI - Self-Directed Study Track
 
-The Professional Machine Learning Engineer certification demonstrates the ability to design, build, and productionize ML models to solve business challenges using Google Cloud technologies.
+> ℹ️ **Generative-AI-focused study track, not a discrete certification.** Google announced the **Generative AI Leader** cert in late 2024 and continues to evolve its GenAI offerings. This dir is a focused study guide for GenAI on GCP (Vertex AI, Gemini, Imagen, MLOps for GenAI) that complements:
+>
+> - **ML cert coverage:** [exams/gcp/machine-learning-engineer/](../machine-learning-engineer/)
+> - **Architect coverage:** [exams/gcp/cloud-architect/](../cloud-architect/) (PCA touches GenAI patterns)
 
 ## 📋 Quick Links
 
 - [**Fact Sheet**](fact-sheet.md) - Exam logistics and blueprint
-- [**Study Strategy**](strategy.md) - ML engineering focused approach
-- [**One-Page Cram**](cram-1p.md) - Essential ML concepts and GCP services
 - [**Practice Plan**](practice-plan.md) - Comprehensive study roadmap
 
 ## 📚 Study Materials
 
 ### Core Notes
-- [ML Engineering Fundamentals](notes/ml-fundamentals.md) - Core ML concepts and lifecycle
-- [Vertex AI Platform](notes/vertex-ai.md) - Google Cloud's unified ML platform
-- [Generative AI on GCP](notes/generative-ai.md) - PaLM, Gemini, and GenAI services
-- [ML Model Development](notes/model-development.md) - Training, tuning, and validation
-- [ML Operations (MLOps)](notes/mlops.md) - Production ML workflows
-- [Data Engineering for ML](notes/data-engineering.md) - Data pipelines and preprocessing
-- [Model Monitoring](notes/model-monitoring.md) - Performance tracking and drift detection
-- [AI Ethics & Responsible ML](notes/responsible-ml.md) - Fairness, interpretability, governance
+- [Generative AI Fundamentals](notes/generative-ai-fundamentals.md) - PaLM, Gemini, foundation model concepts
+- [Vertex AI](notes/vertex-ai.md) - Google Cloud's unified ML platform
+- [MLOps for Production GenAI](notes/mlops-production-genai.md) - Production ML and GenAI workflows
 
-### Quick Reference
-- [Service Comparisons](cheat-sheets/service-comparisons.md) - GCP ML service selection
-- [Algorithm Selection](cheat-sheets/algorithm-selection.md) - Choosing ML algorithms
-- [AutoML vs Custom](cheat-sheets/automl-vs-custom.md) - When to use AutoML
-
-### Practice & Review
-- [ML Scenarios](scenarios.md) - End-to-end ML solution designs
-- [Hands-on Labs](labs/) - Practical ML implementations
+### Companion Materials
+- [GCP Professional Machine Learning Engineer](../machine-learning-engineer/) - Deeper ML cert
+- [GCP Data Engineer](../data-engineer/) - Data pipelines that feed ML models
 
 ## 🎯 Exam Focus Areas
 

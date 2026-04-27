@@ -5,32 +5,14 @@ The IBM Cloud Solution Architect certification validates advanced skills in desi
 ## 📋 Quick Links
 
 - [**Fact Sheet**](fact-sheet.md) - Exam logistics and objectives
-- [**Study Strategy**](strategy.md) - Architecture-focused preparation
-- [**One-Page Cram**](cram-1p.md) - Critical architecture concepts
-- [**Practice Plan**](practice-plan.md) - Comprehensive study roadmap
+- [**Practice Plan**](practice-plan.md) - Structured study schedule
 
 ## 📚 Study Materials
 
 ### Core Notes
-- [Architecture Principles](notes/architecture-principles.md) - Design patterns, best practices
-- [Compute Architecture](notes/compute-architecture.md) - VMs, bare metal, containers, serverless
-- [Storage Architecture](notes/storage-architecture.md) - Object, block, file storage design
-- [Network Design](notes/network-design.md) - VPC, hybrid connectivity, security
-- [Database Solutions](notes/database-solutions.md) - SQL, NoSQL, data management
-- [Security Architecture](notes/security-architecture.md) - IAM, encryption, compliance
-- [High Availability & DR](notes/high-availability-dr.md) - Multi-zone, backup, disaster recovery
-- [Hybrid & Multicloud](notes/hybrid-multicloud.md) - OpenShift, Satellite, integration
-- [Migration Strategies](notes/migration-strategies.md) - Cloud migration planning
-
-### Quick Reference
-- [Architecture Patterns](cheat-sheets/architecture-patterns.md) - Common design patterns
-- [Service Selection](cheat-sheets/service-selection.md) - Decision trees
-
-### Practice & Review
-- [Architecture Scenarios](scenarios.md) - Real-world design challenges
-- [Case Studies](case-studies.md) - Enterprise architecture examples
-- [Design Reviews](design-reviews.md) - Practice architecture reviews
-
+- [Architecture Design Patterns](notes/01-architecture-design-patterns.md)
+- [Advanced Services Integration](notes/02-advanced-services-integration.md)
+- [Security Compliance Optimization](notes/03-security-compliance-optimization.md)
 ## 🎯 Exam Details
 
 - **Exam Code**: C1000-172

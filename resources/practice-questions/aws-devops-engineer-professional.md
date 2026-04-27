@@ -173,7 +173,7 @@ D. Both B and C are valid approaches
 
 **Correct: D**
 
-**Why:** Both approaches work for servers that can't accept inbound connections. CodeDeploy agents poll for deployments (outbound only). Systems Manager agents also poll via hybrid activations, enabling Run Command for deployments. Choice depends on existing tooling—CodeDeploy integrates with CodePipeline; SSM provides broader management capabilities.
+**Why:** Both approaches work for servers that can't accept inbound connections. CodeDeploy agents poll for deployments (outbound only). Systems Manager agents also poll via hybrid activations, enabling Run Command for deployments. Choice depends on existing tooling - CodeDeploy integrates with CodePipeline; SSM provides broader management capabilities.
 
 **Key Concept:** [CodeDeploy On-Premises](https://docs.aws.amazon.com/codedeploy/latest/userguide/instances-on-premises.html)
 </details>
@@ -249,7 +249,7 @@ D. Both B and C
 
 **Correct: D**
 
-**Why:** CDK Aspects can traverse the construct tree and validate/modify all S3 buckets before synthesis—adding encryption and versioning automatically or failing synthesis. CloudFormation Guard provides additional validation of synthesized templates as a second layer. Together they provide comprehensive pre-deployment compliance. Config rules (A) are post-deployment.
+**Why:** CDK Aspects can traverse the construct tree and validate/modify all S3 buckets before synthesis - adding encryption and versioning automatically or failing synthesis. CloudFormation Guard provides additional validation of synthesized templates as a second layer. Together they provide comprehensive pre-deployment compliance. Config rules (A) are post-deployment.
 
 **Key Concept:** [CDK Aspects](https://docs.aws.amazon.com/cdk/v2/guide/aspects.html)
 </details>
@@ -303,7 +303,7 @@ D. Use CodePipeline with parallel deploy actions
 
 **Correct: C**
 
-**Why:** StackSets with failure tolerance of 0 stops operations on first failure. Combined with max concurrent operations, you can control rollout. However, StackSets don't provide atomic rollback across regions—they stop on failure but don't undo completed deployments. For true atomicity, you'd need custom orchestration. Option C is closest to the requirement within AWS native tools.
+**Why:** StackSets with failure tolerance of 0 stops operations on first failure. Combined with max concurrent operations, you can control rollout. However, StackSets don't provide atomic rollback across regions - they stop on failure but don't undo completed deployments. For true atomicity, you'd need custom orchestration. Option C is closest to the requirement within AWS native tools.
 
 **Key Concept:** [StackSet Operations](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html)
 </details>
@@ -343,7 +343,7 @@ D. All of the above can achieve the requirement
 
 **Correct: D**
 
-**Why:** All three options can provide automatic failover within 5 minutes. Route 53 health checks detect failures and route to DR. CloudFront origin failover switches to secondary origin on errors. Global Accelerator health checks failover to healthy endpoints. Choice depends on existing architecture—Route 53 for DNS-level, CloudFront for CDN-distributed apps, Global Accelerator for TCP/UDP applications needing static IPs.
+**Why:** All three options can provide automatic failover within 5 minutes. Route 53 health checks detect failures and route to DR. CloudFront origin failover switches to secondary origin on errors. Global Accelerator health checks failover to healthy endpoints. Choice depends on existing architecture - Route 53 for DNS-level, CloudFront for CDN-distributed apps, Global Accelerator for TCP/UDP applications needing static IPs.
 
 **Key Concept:** [Route 53 Failover](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring.html)
 </details>
@@ -603,7 +603,7 @@ D. Schedule Lambda functions to apply patches
 
 **Correct: A**
 
-**Why:** Patch Manager with maintenance windows automates patching during defined periods. Patch baselines define which patches to apply. Integration with SSM allows compliance reporting. Note: automatic rollback requires custom implementation as Patch Manager doesn't natively rollback—you'd need AMI snapshots or custom automation. Custom documents (B) reinvent Patch Manager. Lambda (D) doesn't leverage SSM capabilities.
+**Why:** Patch Manager with maintenance windows automates patching during defined periods. Patch baselines define which patches to apply. Integration with SSM allows compliance reporting. Note: automatic rollback requires custom implementation as Patch Manager doesn't natively rollback - you'd need AMI snapshots or custom automation. Custom documents (B) reinvent Patch Manager. Lambda (D) doesn't leverage SSM capabilities.
 
 **Key Concept:** [SSM Patch Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-patch.html)
 </details>

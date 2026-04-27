@@ -837,9 +837,33 @@ for message in consumer:
 
 ## Cloud Platform Certifications
 
-### 1. AWS Data Analytics Specialty
+### 1. AWS Data Engineer - Associate (DEA-C01)
+
+The **AWS Certified Data Engineer - Associate (DEA-C01)** is the modern AWS data certification, replacing both the retired Data Analytics Specialty (DAS-C01, retired April 2024) and Database Specialty (DBS-C01, retired April 2024).
+
+**[→ Full DEA-C01 study guide](../exams/aws/associate/data-engineer-dea-c01/)**
 
 #### Exam Overview
+- **Duration**: 130 minutes
+- **Questions**: 65 (50 scored + 15 unscored)
+- **Passing Score**: 720/1000
+- **Cost**: $150 USD
+- **Validity**: 3 years
+- **Prerequisites**: Recommended: 2-3 years of data engineering experience plus 1-2 years building data pipelines on AWS
+
+#### Domain Breakdown
+1. **Data Ingestion and Transformation (34%)** - Kinesis, MSK, DMS, AppFlow, Glue, EMR, Step Functions, MWAA
+2. **Data Store Management (26%)** - S3, Iceberg / Hudi / Delta lakehouse, Redshift (Provisioned + Serverless), DynamoDB, RDS / Aurora, OpenSearch
+3. **Data Operations and Support (22%)** - Athena, QuickSight, CloudWatch, EventBridge, Glue Data Quality, cost monitoring
+4. **Data Security and Governance (18%)** - IAM + Lake Formation, KMS, VPC endpoints, Macie, CloudTrail, secrets management
+
+---
+
+### 1b. AWS Data Analytics Specialty (DAS-C01) - RETIRED
+
+> ⚠️ **Retired April 8, 2024.** Kept here for historical reference. New candidates should pursue DEA-C01 above.
+
+#### Historical Exam Overview
 - **Duration**: 180 minutes
 - **Questions**: 65 multiple choice/multiple response
 - **Passing Score**: 750/1000

@@ -172,4 +172,3 @@ The Databricks Certified Data Engineer Associate certification validates foundat
 | [notes/03-incremental-processing.md](notes/03-incremental-processing.md) | Structured Streaming and Auto Loader |
 | [notes/04-production-pipelines.md](notes/04-production-pipelines.md) | Delta Live Tables and job orchestration |
 | [notes/05-data-governance.md](notes/05-data-governance.md) | Unity Catalog and data governance |
-| [notes/06-delta-lake.md](notes/06-delta-lake.md) | Delta Lake deep dive |

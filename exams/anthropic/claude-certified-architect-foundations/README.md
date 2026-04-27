@@ -1,10 +1,12 @@
-# CCA-F - Claude Certified Architect - Foundations
+# Claude Architect Foundations - Self-Directed Study Track
 
-## Exam Overview
+> ℹ️ **Study track, not an official certification.** Anthropic does not currently run an official certification program. This guide is structured around the skill areas a foundational Claude architect should master. Use it as a self-directed proficiency track to validate your knowledge of building production Claude systems.
 
-The Claude Certified Architect - Foundations (CCA-F) is Anthropic's first official certification, launched on March 12, 2026. It validates foundational knowledge of building production applications with Claude, including agentic architecture design, Claude Code configuration, prompt engineering, tool design, MCP integration, and reliability patterns.
+## Track Overview
 
-This certification targets developers, architects, and AI engineers who have hands-on experience building with the Claude API, Claude Code, and the Model Context Protocol (MCP). It is designed to prove you can design, build, and maintain Claude-powered systems in production environments.
+This track covers the foundational knowledge of building production applications with Claude: agentic architecture design, Claude Code configuration, prompt engineering, tool design, Model Context Protocol (MCP) integration, and reliability patterns.
+
+It targets developers, architects, and AI engineers who have hands-on experience building with the Claude API, Claude Code, and MCP. Completing the material should leave you able to design, build, and maintain Claude-powered systems in production environments.
 
 ---
 
@@ -12,37 +14,33 @@ This certification targets developers, architects, and AI engineers who have han
 
 | Detail | Info |
 |---|---|
-| **Exam Code** | CCA-F |
-| **Full Name** | Claude Certified Architect - Foundations |
-| **Provider** | Anthropic |
-| **Duration** | 120 minutes |
-| **Questions** | 60 scenario-based multiple choice |
-| **Passing Score** | 720 / 1000 |
-| **Cost** | Included with Claude Partner Network (standalone pricing available) |
-| **Delivery** | ProctorFree (online proctored) |
-| **Validity** | 2 years |
-| **Prerequisites** | 6+ months production experience with Claude API, Claude Code, and MCP recommended |
-| **Launched** | March 12, 2026 |
+| **Track Name** | Claude Architect Foundations |
+| **Provider** | Self-directed (Anthropic-focused) |
+| **Skill Level** | Foundational / Associate-equivalent |
+| **Recommended study time** | 4-8 weeks (2-3 hr/day) |
+| **Format** | 60 scenario-based self-assessment questions provided in this guide |
+| **Prerequisites** | 6+ months of hands-on experience with the Claude API, Claude Code, and MCP recommended |
+| **Primary sources** | Anthropic Academy (Skilljar), [docs.anthropic.com](https://docs.anthropic.com), MCP spec, Anthropic Cookbook |
 
 ---
 
-## Exam Domains
+## Skill Areas
 
-| # | Domain | Weight | Questions (approx.) |
-|---|---|---|---|
-| 1 | Agentic Architecture | 27% | ~16 |
-| 2 | Claude Code Configuration | 20% | ~12 |
-| 3 | Prompt Engineering & Structured Output | 20% | ~12 |
-| 4 | Tool Design & MCP Integration | 18% | ~11 |
-| 5 | Context & Reliability | 15% | ~9 |
+| # | Skill Area | Suggested weight |
+|---|---|---|
+| 1 | Agentic Architecture | 27% |
+| 2 | Claude Code Configuration | 20% |
+| 3 | Prompt Engineering & Structured Output | 20% |
+| 4 | Tool Design & MCP Integration | 18% |
+| 5 | Context & Reliability | 15% |
 
 ---
 
-## Domain Breakdown
+## Skill Area Breakdown
 
-### Domain 1 - Agentic Architecture (27%)
+### 1 - Agentic Architecture (27%)
 
-This is the highest-weighted domain and the most critical to pass. You must understand how to design agentic systems with Claude, including when to use agents vs simple prompts, multi-agent orchestration, and production reliability patterns.
+The highest-weighted area. You should understand how to design agentic systems with Claude, including when to use agents vs simple prompts, multi-agent orchestration, and production reliability patterns.
 
 **Key Concepts:**
 - Agentic design patterns (tool use loops, multi-step reasoning, orchestration)
@@ -53,9 +51,9 @@ This is the highest-weighted domain and the most critical to pass. You must unde
 - Production considerations (cost management, latency, reliability)
 - Claude's extended thinking in agentic contexts
 
-### Domain 2 - Claude Code Configuration (20%)
+### 2 - Claude Code Configuration (20%)
 
-Claude Code is Anthropic's official CLI and IDE integration for Claude. This domain tests your knowledge of configuring, customizing, and managing Claude Code for individual and team development workflows.
+Claude Code is Anthropic's official CLI and IDE integration for Claude. This area covers configuring, customizing, and managing Claude Code for individual and team development workflows.
 
 **Key Concepts:**
 - Claude Code CLI setup, installation, and configuration
@@ -67,9 +65,9 @@ Claude Code is Anthropic's official CLI and IDE integration for Claude. This dom
 - MCP server configuration within Claude Code
 - Team workflow configuration
 
-### Domain 3 - Prompt Engineering & Structured Output (20%)
+### 3 - Prompt Engineering & Structured Output (20%)
 
-This domain covers the art and science of crafting effective prompts for Claude, as well as extracting structured data from Claude's responses.
+The art and science of crafting effective prompts for Claude, plus extracting structured data from responses.
 
 **Key Concepts:**
 - Prompt engineering best practices specific to Claude
@@ -81,9 +79,9 @@ This domain covers the art and science of crafting effective prompts for Claude,
 - Prompt caching for cost optimization
 - Multimodal prompting (vision, PDF processing)
 
-### Domain 4 - Tool Design & MCP Integration (18%)
+### 4 - Tool Design & MCP Integration (18%)
 
-The Model Context Protocol (MCP) is a core part of Claude's extensibility story. This domain tests your ability to design tools, build MCP servers, and integrate external capabilities into Claude workflows.
+The Model Context Protocol (MCP) is a core part of Claude's extensibility story. This area covers designing tools, building MCP servers, and integrating external capabilities into Claude workflows.
 
 **Key Concepts:**
 - Model Context Protocol (MCP) architecture and fundamentals
@@ -95,9 +93,9 @@ The Model Context Protocol (MCP) is a core part of Claude's extensibility story.
 - Parallel tool use
 - Error handling in tool calls
 
-### Domain 5 - Context & Reliability (15%)
+### 5 - Context & Reliability (15%)
 
-This domain covers managing Claude's context window effectively, implementing reliability patterns, and building production-grade applications.
+Managing Claude's context window effectively, implementing reliability patterns, and building production-grade applications.
 
 **Key Concepts:**
 - Context window management (200K token window)
@@ -119,9 +117,9 @@ This domain covers managing Claude's context window effectively, implementing re
 
 2. **Read the documentation** - The official docs at docs.anthropic.com are the primary source of truth. Focus on the API reference, guides, and cookbooks.
 
-3. **Build hands-on projects** - The exam is scenario-based. You need practical experience building with the Claude API, Claude Code, and MCP to answer questions confidently.
+3. **Build hands-on projects** - This is applied material. You need practical experience building with the Claude API, Claude Code, and MCP to internalize it.
 
-4. **Practice with scenarios** - Work through the scenario-based practice questions in this guide. The exam tests applied knowledge, not memorization.
+4. **Practice with scenarios** - Work through the scenario-based questions in this guide. The goal is applied judgment, not memorization.
 
 5. **Review and fill gaps** - Use the fact sheet and notes in this guide to identify and fill knowledge gaps.
 
@@ -161,35 +159,39 @@ This domain covers managing Claude's context window effectively, implementing re
 
 ---
 
-## Exam Day Tips
+## Self-Assessment Tips
 
 1. **Read every word** - Scenario questions have important details buried in the context. Skim at your peril.
 2. **Eliminate first** - Most questions have 1-2 obviously wrong answers. Eliminate those, then reason through the remaining options.
-3. **Think production** - The exam favors production-ready, reliable, cost-effective solutions over clever hacks.
+3. **Think production** - Favor production-ready, reliable, cost-effective solutions over clever hacks.
 4. **Watch for "most appropriate"** - Many questions ask for the BEST answer, not just a correct one. Multiple options may work, but one is better.
-5. **Time management** - 120 minutes for 60 questions gives you 2 minutes per question. Flag hard ones and come back.
-6. **Agentic Architecture is king** - At 27%, this domain can make or break your score. Prioritize it.
+5. **Time management** - Pace yourself at ~2 minutes per scenario when working through the practice set.
+6. **Agentic Architecture is king** - At 27% weighting in this guide, prioritize it.
 
 ---
 
-## Certification Path
+## Suggested Learning Progression
 
-The CCA-F is the foundational certification in Anthropic's certification program. As Anthropic's first certification offering, it establishes a baseline of knowledge for working with Claude in production. Future certifications are expected to build on this foundation with more advanced topics.
+This is the foundational track in a recommended Claude proficiency progression:
 
 ```
-CCA-F (Foundations)     <-- You are here
+Foundations (this track)
     |
     v
-CCA-P (Professional)   <-- Expected future certification
+Application Developer track  -  production API/SDK depth
     |
     v
-CCA-E (Expert)          <-- Expected future certification
+Advanced / Architect track   -  multi-agent systems, RAG at scale, enterprise deployment
 ```
+
+The other Anthropic-focused study tracks in this repo:
+
+- [Claude Application Developer](../claude-application-developer/) - production Claude API/SDK development
+- [Prompt Engineering Specialist](../claude-prompt-engineering-specialist/) - prompt design, evaluation, caching patterns
+- [Architect Advanced](../claude-certified-architect-advanced/) - multi-agent systems, RAG at scale, enterprise deployment
 
 ---
 
 ## About This Guide
 
-This study guide was created to help engineers prepare for the CCA-F certification exam. It is organized to follow the exam domains and weighted accordingly. The notes, scenarios, and practice plan are all designed to maximize your preparation efficiency.
-
-Good luck on your exam!
+This study guide is designed to help engineers build production-ready proficiency with Claude. It is organized around the major skill areas a foundational Claude architect should master. The notes, scenarios, and practice plan are designed to maximize learning efficiency and applied judgment.

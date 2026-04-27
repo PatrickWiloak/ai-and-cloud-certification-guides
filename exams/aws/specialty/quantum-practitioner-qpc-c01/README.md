@@ -1,8 +1,10 @@
-# AWS Quantum Practitioner (QPC-C01)
+# AWS Quantum Practitioner (QPC-C01) - Anticipated Study Track
+
+> ℹ️ **Anticipated study track, not a currently-available certification.** AWS has not formally announced an exam under this code. The structure below is built from the public direction of Amazon Braket, AWS quantum announcements, and adjacent specialty exam patterns. Use this as a self-directed proficiency track for quantum on AWS; verify all specifics against AWS Training and Certification when an official exam is released.
 
 ## Overview
 
-The AWS Quantum Practitioner certification (anticipated exam code QPC-C01) is an emerging AWS specialty credential targeting practitioners who design, build, and operate quantum computing workloads on AWS. As of this writing the exam has not been formally announced with a confirmed code, scope, or pricing; the structure here is built from the public direction of Amazon Braket, AWS quantum announcements, and adjacent specialty exam patterns. Treat the specifics as anticipated, not authoritative; verify against AWS Training when the exam goes live.
+The "AWS Quantum Practitioner" framing here targets practitioners who design, build, and operate quantum computing workloads on AWS. The material is structured around what AWS has publicly emphasized in Braket announcements and quantum-focused re:Invent sessions; treat exam-style specifics as anticipated, not authoritative.
 
 The credential is positioned for the rapidly growing community of researchers, ML engineers, and cloud architects who use Amazon Braket to access quantum hardware and simulators, build hybrid quantum-classical workflows, and run quantum algorithms (VQE, QAOA, Grover, Shor) at small but increasing scale. Quantum is not yet a production workload for most enterprises, but it is increasingly a strategic R&D investment, and AWS has invested heavily in Braket and the Center for Quantum Computing at Caltech.
 

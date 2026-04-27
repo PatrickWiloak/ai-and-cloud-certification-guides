@@ -5,33 +5,14 @@ The IBM Cloud Security Engineer certification validates advanced skills in desig
 ## 📋 Quick Links
 
 - [**Fact Sheet**](fact-sheet.md) - Exam logistics and objectives
-- [**Study Strategy**](strategy.md) - Security-focused preparation
-- [**One-Page Cram**](cram-1p.md) - Critical security concepts
-- [**Practice Plan**](practice-plan.md) - Comprehensive study roadmap
+- [**Practice Plan**](practice-plan.md) - Structured study schedule
 
 ## 📚 Study Materials
 
 ### Core Notes
-- [IAM & Access Control](notes/iam-access-control.md) - Identity, policies, access groups
-- [Data Protection](notes/data-protection.md) - Encryption, key management, secrets
-- [Network Security](notes/network-security.md) - VPC security, firewalls, DDoS protection
-- [Threat Detection](notes/threat-detection.md) - Security monitoring, SIEM integration
-- [Compliance & Governance](notes/compliance-governance.md) - SCC, audit logs, frameworks
-- [Application Security](notes/application-security.md) - App ID, API security, container security
-- [Incident Response](notes/incident-response.md) - Detection, response, forensics
-- [Security Operations](notes/security-operations.md) - Security automation, DevSecOps
-- [Hyper Protect Services](notes/hyper-protect-services.md) - FIPS 140-2 Level 4 security
-
-### Quick Reference
-- [Security Checklist](cheat-sheets/security-checklist.md) - Security best practices
-- [Compliance Frameworks](cheat-sheets/compliance-frameworks.md) - GDPR, HIPAA, PCI-DSS
-- [Security Tools](cheat-sheets/security-tools.md) - IBM Cloud security services
-
-### Practice & Review
-- [Security Scenarios](scenarios.md) - Real-world security challenges
-- [Incident Response Drills](incident-response-drills.md) - Practice scenarios
-- [Compliance Audits](compliance-audits.md) - Audit practice
-
+- [Security Fundamentals IAM](notes/01-security-fundamentals-iam.md)
+- [Network Infrastructure Security](notes/02-network-infrastructure-security.md)
+- [Compliance Operations](notes/03-compliance-operations.md)
 ## 🎯 Exam Details
 
 - **Exam Code**: C1000-162

@@ -5,32 +5,14 @@ The OCI Architect Professional certification validates advanced skills in design
 ## 📋 Quick Links
 
 - [**Fact Sheet**](fact-sheet.md) - Exam logistics and objectives
-- [**Study Strategy**](strategy.md) - Professional-level preparation
-- [**One-Page Cram**](cram-1p.md) - Advanced concepts summary
-- [**Practice Plan**](practice-plan.md) - Comprehensive study roadmap
+- [**Practice Plan**](practice-plan.md) - Structured study schedule
 
 ## 📚 Study Materials
 
 ### Core Notes
-- [Enterprise Architecture](notes/enterprise-architecture.md) - Complex multi-tier patterns
-- [Advanced Networking](notes/advanced-networking.md) - Hybrid, multi-region, transit routing
-- [Migration Strategies](notes/migration-strategies.md) - Large-scale cloud migration
-- [Multi-Cloud Design](notes/multi-cloud-design.md) - OCI integration with AWS/Azure
-- [Performance Optimization](notes/performance-optimization.md) - Tuning and scaling
-- [Security Architecture](notes/security-architecture.md) - Enterprise security patterns
-- [Governance & Compliance](notes/governance-compliance.md) - Multi-tenancy, policies
-- [Cost Management](notes/cost-management.md) - FinOps and optimization
-- [Disaster Recovery](notes/disaster-recovery.md) - Enterprise DR and business continuity
-
-### Quick Reference
-- [Architecture Patterns](cheat-sheets/architecture-patterns.md) - Enterprise design patterns
-- [Service Comparison](cheat-sheets/service-comparison.md) - Advanced service selection
-
-### Practice & Review
-- [Enterprise Scenarios](scenarios.md) - Complex architecture challenges
-- [Migration Case Studies](migration-case-studies.md) - Real-world migrations
-- [Design Reviews](design-reviews.md) - Architecture review practice
-
+- [Advanced Architecture Patterns](notes/01-advanced-architecture-patterns.md)
+- [Advanced Networking Security](notes/02-advanced-networking-security.md)
+- [Advanced Services Optimization](notes/03-advanced-services-optimization.md)
 ## 🎯 Exam Details
 
 - **Exam Code**: 1Z0-997-24

@@ -431,13 +431,15 @@ After achieving professional certification, consider specialties aligned with yo
 **Resources**: [Exam Notes](/exams/aws/specialty/security-scs-c02/README.md)
 **Salary Impact**: $140,000-$190,000
 
-#### AWS Certified Machine Learning - Specialty (MLS-C01)
+#### AWS Certified Machine Learning Engineer - Associate (MLA-C01)
 
-**Focus**: ML/AI services, data engineering, model training, deployment
-**Study Time**: 10-14 weeks (20-25 hours/week)
-**Prerequisites**: 1-2 years developing ML/AI workloads on AWS
-**Best For**: ML engineers, data scientists transitioning to AWS
-**Resources**: [Exam Notes](/exams/aws/specialty/machine-learning-mls-c01/README.md)
+> 📌 Replaces the retired MLS-C01 (Specialty, retired April 15, 2025). MLA-C01 is now the active AWS ML credential.
+
+**Focus**: SageMaker, Bedrock, MLOps, GenAI services, data preparation, training, deployment, monitoring
+**Study Time**: 8-12 weeks (15-20 hours/week)
+**Prerequisites**: 1+ year hands-on SageMaker experience
+**Best For**: ML engineers, applied scientists, data engineers moving into ML
+**Resources**: [Exam Notes](/exams/aws/associate/ml-engineer-mla-c01/README.md)
 **Salary Impact**: $145,000-$200,000
 
 #### AWS Certified Advanced Networking - Specialty
@@ -924,7 +926,7 @@ Professional Cloud Architect
 **Storage & Databases:**
 - Cloud Storage (Standard, Nearline, Coldline, Archive)
 - Cloud SQL and Cloud Spanner
-- [Bigtable, Firestore, Datastore](/exams/gcp/pca/notes/databases.md)
+- [Bigtable, Firestore, Datastore](/exams/gcp/cloud-architect/notes/databases.md)
 - Memorystore (Redis/Memcached)
 
 **Networking:**
@@ -935,11 +937,11 @@ Professional Cloud Architect
 
 **Data & Analytics:**
 - BigQuery
-- [Dataflow, Pub/Sub, Dataproc](/exams/gcp/pca/notes/integration-streaming.md)
+- [Dataflow, Pub/Sub, Dataproc](/exams/gcp/cloud-architect/notes/integration-streaming.md)
 - Cloud Composer (Airflow)
 
 **Security:**
-- [Cloud IAM](/exams/gcp/pca/notes/security-iam.md)
+- [Cloud IAM](/exams/gcp/cloud-architect/notes/security-iam.md)
 - Cloud KMS
 - Security Command Center
 - VPC Service Controls
@@ -954,7 +956,7 @@ Professional Cloud Architect
 - Architect Kubernetes-native applications
 
 **Study Resources:**
-- [Exam Notes](/exams/gcp/pca/README.md)
+- [Exam Notes](/exams/gcp/cloud-architect/README.md)
 - Google Cloud Architecture Framework
 - GCP case studies (especially exam case studies)
 - Coursera GCP Architect specialization

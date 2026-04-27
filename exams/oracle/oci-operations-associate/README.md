@@ -5,33 +5,14 @@ The OCI Operations Associate certification validates skills in managing, monitor
 ## 📋 Quick Links
 
 - [**Fact Sheet**](fact-sheet.md) - Exam logistics and objectives
-- [**Study Strategy**](strategy.md) - Operations-focused preparation
-- [**One-Page Cram**](cram-1p.md) - Critical operations concepts
-- [**Practice Plan**](practice-plan.md) - Comprehensive study roadmap
+- [**Practice Plan**](practice-plan.md) - Structured study schedule
 
 ## 📚 Study Materials
 
 ### Core Notes
-- [Resource Management](notes/resource-management.md) - Console, CLI, API, Terraform
-- [Monitoring & Alerting](notes/monitoring-alerting.md) - Metrics, alarms, dashboards
-- [Logging & Auditing](notes/logging-auditing.md) - Service logs, audit logs, analysis
-- [Backup & Recovery](notes/backup-recovery.md) - Backup strategies, restoration
-- [Incident Management](notes/incident-management.md) - Troubleshooting, resolution
-- [Automation](notes/automation.md) - Resource Manager, Functions, scripting
-- [Cost Management](notes/cost-management.md) - Budgets, analysis, optimization
-- [Security Operations](notes/security-operations.md) - IAM management, compliance
-- [Performance Tuning](notes/performance-tuning.md) - Optimization, rightsizing
-
-### Quick Reference
-- [CLI Commands](cheat-sheets/cli-commands.md) - Common OCI CLI commands
-- [Troubleshooting Guide](cheat-sheets/troubleshooting.md) - Common issues and fixes
-- [Operations Playbooks](cheat-sheets/operations-playbooks.md) - Standard procedures
-
-### Practice & Review
-- [Operational Scenarios](scenarios.md) - Real-world operations challenges
-- [Troubleshooting Cases](troubleshooting-cases.md) - Incident resolution examples
-- [Flashcards](flashcards.md) - Key operational concepts
-
+- [Infrastructure Operations](notes/01-infrastructure-operations.md)
+- [Monitoring Troubleshooting](notes/02-monitoring-troubleshooting.md)
+- [Security Cost Management](notes/03-security-cost-management.md)
 ## 🎯 Exam Details
 
 - **Exam Code**: 1Z0-1067-24

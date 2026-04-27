@@ -170,7 +170,7 @@ The Databricks Certified Machine Learning Professional certification validates a
 | [scenarios.md](scenarios.md) | Exam-style scenarios with solutions |
 | [strategy.md](strategy.md) | Study phases, resources, and exam tactics |
 | [notes/01-feature-engineering.md](notes/01-feature-engineering.md) | Feature Store and feature engineering |
-| [notes/02-mlops-pipelines.md](notes/02-mlops-pipelines.md) | MLOps and ML pipeline design |
+| [notes/02-mlops-pipeline.md](notes/02-mlops-pipeline.md) | MLOps and ML pipeline design |
 | [notes/03-advanced-ml.md](notes/03-advanced-ml.md) | Advanced ML techniques |
 | [notes/04-deployment-serving.md](notes/04-deployment-serving.md) | Model deployment and serving |
 | [notes/05-monitoring.md](notes/05-monitoring.md) | Model monitoring and drift detection |

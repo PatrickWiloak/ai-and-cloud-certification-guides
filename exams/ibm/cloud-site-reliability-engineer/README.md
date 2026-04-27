@@ -5,33 +5,14 @@ The IBM Cloud Site Reliability Engineer certification validates skills in operat
 ## 📋 Quick Links
 
 - [**Fact Sheet**](fact-sheet.md) - Exam logistics and objectives
-- [**Study Strategy**](strategy.md) - SRE-focused preparation
-- [**One-Page Cram**](cram-1p.md) - Critical SRE concepts
-- [**Practice Plan**](practice-plan.md) - Comprehensive study roadmap
+- [**Practice Plan**](practice-plan.md) - Structured study schedule
 
 ## 📚 Study Materials
 
 ### Core Notes
-- [SRE Principles](notes/sre-principles.md) - SLIs, SLOs, SLAs, error budgets
-- [Observability](notes/observability.md) - Monitoring, logging, tracing
-- [Incident Management](notes/incident-management.md) - Detection, response, postmortems
-- [Automation](notes/automation.md) - IaC, CI/CD, runbooks
-- [Performance Optimization](notes/performance-optimization.md) - Tuning, capacity planning
-- [Reliability Patterns](notes/reliability-patterns.md) - HA, DR, resilience
-- [Kubernetes Operations](notes/kubernetes-operations.md) - IKS, OpenShift operations
-- [Cost Optimization](notes/cost-optimization.md) - Resource efficiency, FinOps
-- [Chaos Engineering](notes/chaos-engineering.md) - Resilience testing
-
-### Quick Reference
-- [SRE Playbooks](cheat-sheets/sre-playbooks.md) - Operational procedures
-- [Troubleshooting Guide](cheat-sheets/troubleshooting-guide.md) - Common issues
-- [CLI Commands](cheat-sheets/cli-commands.md) - Essential commands
-
-### Practice & Review
-- [Operational Scenarios](scenarios.md) - Real-world SRE challenges
-- [Incident Response Drills](incident-drills.md) - Practice scenarios
-- [Postmortem Reviews](postmortems.md) - Learning from incidents
-
+- [Infrastructure Operations](notes/01-infrastructure-operations.md)
+- [Monitoring Observability](notes/02-monitoring-observability.md)
+- [Reliability Performance](notes/03-reliability-performance.md)
 ## 🎯 Exam Details
 
 - **Exam Code**: C1000-173 (Note: Check IBM for current exam code)

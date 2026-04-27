@@ -884,4 +884,4 @@ User → CDN (edge location) → Global LB → Regional LB → Application
 - [Compute Service Comparison](./service-comparison-compute.md)
 - [Storage Service Comparison](./service-comparison-storage.md)
 - [Database Service Comparison](./service-comparison-databases.md)
-- [Security Service Comparison](./service-comparison-security.md)
+- [Security Tools Comparison](./service-comparison-security-tools.md)

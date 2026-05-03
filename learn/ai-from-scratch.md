@@ -135,6 +135,26 @@ You should now be comfortable building a basic LLM-powered script.
 **Why it matters**
 "Chat with your docs" is the most common LLM use case in industry. RAG is how it works. Most failed RAG projects fail at chunking and retrieval, not at the model.
 
+**The pipeline**
+
+```mermaid
+flowchart LR
+  Docs[Source documents] --> Chunk[Chunk into pieces]
+  Chunk --> Embed1[Embed each chunk]
+  Embed1 --> VDB[(Vector DB)]
+
+  Q[User query] --> Embed2[Embed query]
+  Embed2 --> Search[Search vector DB]
+  VDB --> Search
+  Search --> TopK[Top-K relevant chunks]
+  TopK --> Build[Build prompt]
+  Q --> Build
+  Build --> LLM[LLM]
+  LLM --> A[Answer + citations]
+```
+
+Two phases: indexing (left, run once or when docs change) and query (right, run on every user request). The trick to good RAG is chunking and retrieval; the LLM at the end is the easy part.
+
 **Try it**
 Build a tiny RAG over a single PDF. Use OpenAI/Anthropic for embeddings + a model, and pgvector or sqlite-vec for storage. ~100 lines. You'll learn more from this than reading 10 articles.
 

@@ -18,6 +18,8 @@ These are not exam-objective summaries. They're "explain it like I'm a smart eng
 
 If you want exam coverage, head back to the [Study Hub](../../STUDY-HUB.md).
 
+**Brand new to all of this?** Start with **[Day One](../day-one/)** - terminal, git, HTTP, and servers - then come back here once that vocabulary feels familiar.
+
 ---
 
 ## ☁️ Cloud Computing

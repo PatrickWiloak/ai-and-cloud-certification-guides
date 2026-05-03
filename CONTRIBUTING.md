@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for your interest in improving these study guides. This repo is a markdown knowledge base for cloud, AI, security, data, and DevOps certifications. The goal is accurate, well-linked, exam-aligned material that respects readers' time.
+Thanks for your interest in improving this repo. It's a markdown knowledge base for cloud and AI - concepts, hands-on builds, references, and certification prep. The goal is accurate, well-linked, exam-aligned material that respects readers' time. Plain-English, no fluff.
 
 ## What kinds of contributions are welcome
 
@@ -11,6 +11,8 @@ Thanks for your interest in improving these study guides. This repo is a markdow
 - **New cert scaffolds** for missing in-demand certifications (open an issue first to confirm scope and naming).
 - **Resource updates**: better practice questions, scenarios, or hands-on lab walkthroughs.
 - **Roadmap additions** for under-served career paths.
+- **`learn/` content**: new concept pages (`learn/concepts/<topic>.md`), day-one onramp expansions, glossary additions. Keep concept pages 5-10 minute reads, plain English, no exam framing.
+- **Diagrams**: PNG diagrams (draw.io export) under `assets/diagrams/<topic>/`, or inline Mermaid in existing pages. See [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md#visual-content-standards).
 
 ## What is out of scope
 
@@ -29,6 +31,13 @@ exams/<provider>/<cert-dir>/
     practice-plan.md    # weekly study schedule with checkboxes
     scenarios.md        # exam-style scenarios with explanations (optional but recommended)
     strategy.md         # exam day approach, time allocation (optional)
+learn/
+    concepts/           # bite-size topic pages (5-10 min reads), cloud + AI
+    day-one/            # strict beginner on-ramp (terminal, git, HTTP, servers)
+    ai-from-scratch.md  # 8-phase non-cert AI path
+    cloud-from-scratch.md  # 8-phase non-cert cloud path
+    glossary.md         # 200+ term reference
+    youtube.md          # curated video resources
 resources/
     architecture-patterns/      # multi-cloud architecture write-ups
     certification-roadmap-*.md  # career-focused learning paths
@@ -43,6 +52,7 @@ resources/
     service-comparison-*.md     # cross-cloud service comparisons
     troubleshooting/            # per-platform troubleshooting
     well-architected/           # AWS, Azure, GCP frameworks
+assets/diagrams/        # PNG diagrams (draw.io exports), organized by topic
 README.md           # top-level overview and provider table
 STUDY-HUB.md        # navigation hub with decision tree and roadmaps
 CLAUDE.md           # project-level guidance for AI-assisted edits
@@ -90,6 +100,37 @@ Other conventions:
 - **Don't write fluffy intros.** Lead with the substance.
 - **No trailing summaries** that repeat what was just said.
 - **Cite, don't paraphrase**, when a vendor doc says it best. Link the doc.
+
+## Diagrams
+
+- Canonical: PNG files generated from draw.io, stored under `assets/diagrams/<topic>/<slug>.png`. Always include descriptive alt text when embedding.
+- Acceptable fallback: Mermaid in fenced ` ```mermaid ` code blocks (renders inline on GitHub). Use when small/simple or when draw.io tooling isn't available.
+- See [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md#visual-content-standards) for the full convention.
+
+## Frontmatter (new and refreshed pages)
+
+Add YAML frontmatter to new pages. `last-updated` is the only required field; others are optional but useful.
+
+```yaml
+---
+last-updated: YYYY-MM-DD
+applies-to: AWS console as of 2026-Q2          # optional
+difficulty: beginner | intermediate | advanced  # optional
+reading-time: 10 min                            # optional
+---
+```
+
+Backfilling existing files is opportunistic - do it when you touch a file, don't open a frontmatter-only PR for thousands of files.
+
+## YouTube tie-in (optional)
+
+When a topic has a companion video on [@patrickwiloak](https://youtube.com/@patrickwiloak), add a single-line callout near the top:
+
+```markdown
+> 📺 **Watch:** [Video title](https://youtube.com/...)
+```
+
+Keep these to one per page. Topic stays the source of truth; the video is a companion, not a replacement.
 
 ## What to do with retired exams
 

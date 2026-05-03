@@ -6,6 +6,31 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 ---
 
+## [2026-05-03] - Scope expansion: cloud + AI learning, not just certs
+
+### Added
+
+- **`learn/concepts/` AI pages** - 8 promised but missing concept files: llm-basics, transformer-architecture, embeddings-and-vector-search, prompt-engineering, rag-explained, fine-tuning-vs-rag, agents-explained, evals-for-llms. Each is a 5-10 minute plain-English explanation.
+- **`learn/day-one/`** - strict beginner on-ramp for people who have never opened a terminal. 5 pages: README, terminal-basics, git-basics, http-and-apis, what-is-a-server.
+- **`assets/diagrams/`** - canonical home for PNG diagrams (draw.io exports), organized by topic.
+- **Mermaid diagrams** seeded in 3 high-ROI pages: `learn/cloud-from-scratch.md` (region/AZ/subnet topology), `learn/ai-from-scratch.md` (RAG pipeline), `resources/architecture-patterns/web-app-3-tier.md` (3-tier flow). Plus inline mermaid in transformer-architecture.md, rag-explained.md, agents-explained.md, what-is-a-server.md.
+- **Visual content standards** in `docs/ARCHITECTURE.md` and `CLAUDE.md`: PNG via draw.io MCP is canonical, Mermaid is an acceptable inline fallback.
+- **YAML frontmatter convention** documented in `docs/ARCHITECTURE.md` (`last-updated`, optional `applies-to`, `difficulty`, `reading-time`). Backfill is opportunistic.
+- **YouTube tie-in convention** documented in `CONTRIBUTING.md` for connecting topic pages to companion videos on @patrickwiloak.
+
+### Changed
+
+- **README.md repositioned** as cloud + AI learning resource (zero to hero), not cert-only. New hero, new "Four Pillars" section (Learn / Build / Certify / Reference), reordered "What's Inside" to lead with `learn/`. The "122+ certifications" social proof is preserved as the second sentence.
+- **STUDY-HUB.md repositioned** as "Cloud + AI Learning Hub" with a new "Not chasing a certification?" section pointing to `learn/`. Cert decision tree is preserved.
+- **CLAUDE.md (project)** rewritten to reflect 4-pillar scope, new directory structure, visual content standards, and frontmatter convention.
+- **CONTRIBUTING.md** updated with `learn/` contribution rules, diagram expectations, frontmatter expectations, and YouTube tie-in convention.
+- **`docs/ARCHITECTURE.md`** - "At a glance" tree updated to include `learn/` and `assets/diagrams/`. New sections: Visual content standards, Frontmatter convention. Repo description broadened.
+- **2 career roadmaps retrofit** with "Foundation Concepts" + "Hands-on builds" cross-link sections (cloud-engineer, ai-ml-engineer). Rest are deferred to a follow-up pass. Body content untouched.
+- **`learn/README.md`** - reordered to lead with Day One on-ramp, then Concepts, then structured paths. "Coming soon" markers removed - concept pages are shipped.
+- **`learn/concepts/README.md`** - added a Day One callout for absolute beginners.
+
+---
+
 ## [2026-04-27] - Gap fix and provider expansion
 
 ### Added

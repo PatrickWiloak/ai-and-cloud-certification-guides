@@ -1,6 +1,34 @@
-# Certification Roadmap - AI/ML Engineer
+# AI/ML Engineer Roadmap
 
-A structured certification path for AI and machine learning engineers who build, deploy, and maintain ML models and AI-powered applications in cloud environments.
+A complete AI/ML engineer journey: foundation concepts → hands-on builds → certifications → mastery. Certs are one pillar, not the whole path.
+
+---
+
+## Before the certs: foundation concepts
+
+Modern AI engineering is mostly using LLMs well, retrieving the right context, exposing the right tools, and shipping with evals. These plain-English concept pages get you from "knows the buzzwords" to "can reason about LLM systems":
+
+- **[LLM basics](../learn/concepts/llm-basics.md)** - tokens, context windows, sampling, what LLMs are good and bad at
+- **[Transformer architecture](../learn/concepts/transformer-architecture.md)** - attention, what's actually under the hood
+- **[Embeddings and vector search](../learn/concepts/embeddings-and-vector-search.md)** - the substrate of semantic search
+- **[Prompt engineering](../learn/concepts/prompt-engineering.md)** - the unglamorous superpower
+- **[RAG explained](../learn/concepts/rag-explained.md)** - retrieval-augmented generation in practice
+- **[Fine-tuning vs RAG](../learn/concepts/fine-tuning-vs-rag.md)** - how to choose
+- **[AI agents explained](../learn/concepts/agents-explained.md)** - tool use, ReAct, agent failure modes
+- **[Evals for LLMs](../learn/concepts/evals-for-llms.md)** - the practice that separates demos from production
+
+Or follow the structured **[AI from Scratch](../learn/ai-from-scratch.md)** path - 8 phases for builders, no PhD math required.
+
+## Hands-on builds
+
+Read less, ship more. The fastest path to AI engineering competence is wiring real systems end-to-end:
+
+- **[Deploy an ML model](./hands-on-projects/deploy-ml-model.md)** - the production-serving fundamentals
+- **[Build a 3-tier app](./hands-on-projects/deploy-3-tier-app.md)** - the substrate any AI app sits on
+- **[Build a data pipeline](./hands-on-projects/build-data-pipeline.md)** - what feeds your models
+- **[Set up monitoring and observability](./hands-on-projects/setup-monitoring-stack.md)** - critical for eval drift
+
+See [resources/hands-on-projects/](./hands-on-projects/) for all 10 guided builds.
 
 ---
 

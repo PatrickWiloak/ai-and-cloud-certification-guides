@@ -56,7 +56,37 @@ Three-tier architecture is a client-server software architecture pattern that se
 
 ## Architecture Diagram Description
 
-### High-Level Architecture
+### Architecture (Mermaid - renders inline on GitHub)
+
+```mermaid
+flowchart TB
+  Users((Users)) --> DNS[DNS / CDN]
+  DNS --> ELB[External Load Balancer]
+  subgraph Web[Presentation Tier]
+    W1[Web Server 1]
+    W2[Web Server 2]
+    W3[Web Server N]
+  end
+  ELB --> W1
+  ELB --> W2
+  ELB --> W3
+  Web --> ILB[Internal Load Balancer]
+  subgraph App[Application Tier]
+    A1[App Server 1]
+    A2[App Server 2]
+    A3[App Server N]
+  end
+  ILB --> A1
+  ILB --> A2
+  ILB --> A3
+  App --> Cache[(Redis / Memcached)]
+  App --> DB[(Primary Database)]
+  DB -.replication.-> RR[(Read Replicas)]
+  App --> RR
+  DB --> Backup[(Backup / Archive)]
+```
+
+### High-Level Architecture (ASCII reference)
 
 ```
                          [Users/Internet]

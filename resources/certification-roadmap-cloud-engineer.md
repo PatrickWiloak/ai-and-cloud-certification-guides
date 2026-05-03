@@ -1,4 +1,41 @@
-# Cloud Engineer Certification Roadmap
+# Cloud Engineer Roadmap
+
+> A complete cloud engineer journey: foundation concepts → hands-on builds → certifications → mastery. The cert path is one piece of the picture, not the whole picture.
+
+---
+
+## Before the certs: foundation concepts
+
+If you're new, build mental models before exam prep. These plain-English pages give you the substrate every cloud engineer is reasoning from:
+
+- **[Day One: terminal, git, HTTP, servers](../learn/day-one/)** - if you've never touched a terminal, start here
+- **[What is cloud computing?](../learn/concepts/what-is-cloud-computing.md)** - the foundational mental model
+- **[IaaS vs PaaS vs SaaS](../learn/concepts/iaas-paas-saas.md)** - the three terms that come up daily
+- **[Regions and availability zones](../learn/concepts/regions-and-availability-zones.md)** - where your code physically runs
+- **[Shared responsibility model](../learn/concepts/shared-responsibility-model.md)** - what the cloud provider does vs what you do
+- **[VPC explained](../learn/concepts/vpc-explained.md)** - networking inside the cloud
+- **[Containers vs VMs](../learn/concepts/containers-vs-vms.md)** - why containers won
+- **[Kubernetes in 10 minutes](../learn/concepts/kubernetes-in-10-minutes.md)** - the orchestrator everyone deploys
+- **[Serverless explained](../learn/concepts/serverless-explained.md)** - the no-server-management option
+- **[Terraform explained](../learn/concepts/terraform-explained.md)** - infrastructure as code
+- **[CI/CD explained](../learn/concepts/cicd-explained.md)** - the automated deployment loop
+
+Or follow the structured **[Cloud from Scratch](../learn/cloud-from-scratch.md)** path - 8 phases, no exam scaffolding.
+
+## Hands-on builds before (or alongside) certs
+
+The biggest gap between cert holders and effective engineers is shipped systems. Pair every cert with at least one of these:
+
+- **[Deploy a 3-tier application](./hands-on-projects/deploy-3-tier-app.md)**
+- **[Build a CI/CD pipeline](./hands-on-projects/build-ci-cd-pipeline.md)**
+- **[Set up monitoring and observability](./hands-on-projects/setup-monitoring-stack.md)**
+- **[Provision infrastructure with Terraform](./hands-on-projects/terraform-infrastructure.md)**
+- **[Set up a Kubernetes cluster](./hands-on-projects/kubernetes-cluster-setup.md)**
+- **[Run a disaster recovery drill](./hands-on-projects/disaster-recovery-drill.md)**
+
+See [resources/hands-on-projects/](./hands-on-projects/) for all 10 guided builds.
+
+---
 
 ## Table of Contents
 

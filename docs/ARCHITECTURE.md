@@ -6,18 +6,26 @@ This document explains the structure and conventions of the cloud certification 
 
 ## At a glance
 
-This repo is a **markdown knowledge base** for 117+ certifications across 21 providers, plus 4 vendor study tracks. There is no build step, no test suite, no deployment - it is a content repository served as Markdown via GitHub.
+This repo is a **markdown knowledge base** for cloud + AI learning - certifications, hands-on patterns, plain-English concepts, and a beginner on-ramp. There is no build step, no test suite, no deployment - it is a content repository served as Markdown via GitHub.
 
 ```
 cloud-certification-study-guides/
-├── README.md           # Top-level overview + provider table + quick links
+├── README.md           # Top-level overview + pillars + provider table
 ├── STUDY-HUB.md        # Navigation hub: decision tree, career tracks, full provider table
 ├── CLAUDE.md           # Project context for Claude Code / AI tools
 ├── CONTRIBUTING.md     # How to contribute (templates, doc-link format, PR checklist)
 ├── CHANGELOG.md        # User-visible / operationally-significant changes
 ├── .templates/         # Cross-cert resources hubs (resources-aws.md, resources-azure.md, resources-gcp.md)
-├── docs/               # Repository-level documentation (ARCHITECTURE.md, FEATURES.md if added)
+├── assets/diagrams/    # PNG diagrams (draw.io exports), organized by topic subdir
+├── docs/               # Repository-level documentation (ARCHITECTURE.md)
 ├── exams/              # All certification study guides, organized by provider
+├── learn/              # Plain-English learning content for non-cert students
+│   ├── concepts/       # Bite-size topic pages (5-10 min reads): cloud + AI primitives
+│   ├── day-one/        # Strict beginner on-ramp (terminal, git, HTTP, servers)
+│   ├── ai-from-scratch.md
+│   ├── cloud-from-scratch.md
+│   ├── glossary.md
+│   └── youtube.md
 └── resources/          # Cross-cert resources (roadmaps, comparisons, CLI cheat sheets, etc.)
 ```
 
@@ -161,6 +169,67 @@ Link audits run with a code-block-aware scanner. See `CONTRIBUTING.md` for the d
 - **Plain English, short sentences**
 - **Cite, don't paraphrase** vendor docs - link them
 - **No verbatim vendor exam questions** - legal and ethical violation
+
+---
+
+## Visual content standards
+
+### Where diagrams go
+
+- **Canonical**: PNG files generated from draw.io, stored under `assets/diagrams/<topic>/<slug>.png`. Topic subdirs are created lazily: `cloud/`, `ai/`, `networking/`, `architecture/`, `security/`, etc.
+- **Inline fallback**: Mermaid in fenced ` ```mermaid ` code blocks. Renders natively on GitHub and most modern markdown viewers. Use this when (a) the draw.io tooling isn't available, (b) the diagram is small enough to be readable as text, or (c) you want it to be editable directly in the markdown.
+
+Both are valid. Choose based on what the page needs.
+
+### Authoring
+
+PNG diagrams should be created with the **draw.io MCP server** when available. Export at 2x resolution for retina screens. Keep file size reasonable (< 200 KB per diagram for inline use).
+
+For Mermaid, prefer `flowchart TB` / `flowchart LR` over the older `graph` syntax. Use `subgraph` blocks for grouped components (regions, AZs, tiers).
+
+### Embedding
+
+**PNG**:
+```markdown
+![3-tier web application architecture](../../assets/diagrams/architecture/web-app-3-tier.png)
+```
+
+Always include descriptive alt text. The alt text should be useful when the image fails to render or for screen-reader users.
+
+**Mermaid**: just a fenced code block tagged `mermaid`. Don't wrap in HTML.
+
+### Where to add diagrams
+
+Highest-ROI pages for diagrams:
+- `learn/cloud-from-scratch.md`, `learn/ai-from-scratch.md` (foundational paths)
+- `learn/concepts/` AI pages: transformer-architecture, RAG, agents
+- `resources/architecture-patterns/` (every pattern benefits from a diagram)
+- `resources/networking-deep-dives/` (network topologies)
+
+Lower-ROI: cert fact-sheets, practice plans, study strategies. Don't force diagrams onto pages that read fine without them.
+
+---
+
+## Frontmatter convention
+
+New pages and (opportunistically) refreshed pages should use YAML frontmatter for living-doc metadata:
+
+```yaml
+---
+last-updated: 2026-05-03
+applies-to: AWS console as of 2026-Q2          # optional
+difficulty: beginner                           # optional: beginner | intermediate | advanced
+reading-time: 10 min                           # optional
+---
+```
+
+- `last-updated` is the only required field. Use ISO date format (`YYYY-MM-DD`).
+- `applies-to` is for content tied to a specific console version, exam version, or product release that may drift.
+- `difficulty` and `reading-time` help readers calibrate.
+
+**Backfill is opportunistic, not blocking.** Don't open a PR that adds frontmatter to 1300 existing files at once. When you touch a file, add it.
+
+The link audit script below is YAML-frontmatter safe (frontmatter contains no markdown link syntax).
 
 ---
 

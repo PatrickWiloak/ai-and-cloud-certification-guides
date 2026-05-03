@@ -1,6 +1,8 @@
-# ☁️ AI and Cloud Certification Guides
+# ☁️🤖 AI and Cloud - From Zero to Mastery
 
-> **Comprehensive, documentation-rich study guides for 122+ certifications and 4 vendor study tracks across 22 providers - AWS, Azure, GCP, Kubernetes, NVIDIA, HashiCorp, Databricks, Snowflake, GitHub, Red Hat, Cisco, Salesforce, ISC2, Cloud Security Alliance, and more**
+> **Cloud + AI from zero to hero. Concepts in plain English, hands-on builds, deep references, and the most comprehensive certification library on GitHub.**
+>
+> 122+ certification study guides across 22 providers, plus a beginner on-ramp, AI deep-dives, and 17 multi-cloud architecture patterns. Whether you've never opened a terminal or you're chasing your fifth cert, start here.
 >
 > Created by [Patrick Wiloak](https://patrickwiloak.com) - Ex-AWS Solutions Architect | 10 Years in Tech | 16 Cloud Certifications
 >
@@ -13,12 +15,26 @@
 
 ---
 
+## 🏛️ The Four Pillars
+
+| | Pillar | What it is | Start here |
+|---|---|---|---|
+| 🎓 | **Learn** | Plain-English concepts, beginner on-ramp, structured paths. No exam scaffolding. | [learn/](./learn/) |
+| 🛠️ | **Build** | Hands-on projects, architecture patterns, CLI cheat sheets - the practitioner's reference. | [resources/hands-on-projects/](./resources/hands-on-projects/) |
+| 🎯 | **Certify** | 122+ cert study guides across 22 providers. Fact sheets, practice plans, exam scenarios. | [STUDY-HUB.md](./STUDY-HUB.md) |
+| 📚 | **Reference** | Cross-cloud service comparisons, career roadmaps, compliance and FinOps guides. | [resources/](./resources/) |
+
+---
+
 ## 🎯 What's Inside This Repository?
 
-This repository contains **the most comprehensive, multi-cloud certification study materials available**, featuring:
+A complete cloud + AI learning resource. Whether you're starting fresh, building production systems, or chasing certifications:
 
+- ✅ **[Day One on-ramp](./learn/day-one/)** - terminal, git, HTTP, servers - if you've never seen this stuff before, start here
+- ✅ **[Plain-English concept pages](./learn/concepts/)** - bite-size explanations of LLMs, RAG, agents, VPCs, K8s, and 20+ other topics
+- ✅ **[Cloud from Scratch](./learn/cloud-from-scratch.md)** + **[AI from Scratch](./learn/ai-from-scratch.md)** - structured 8-phase paths for non-cert learners
 - ✅ **122+ certification study guides** across 22 providers with 12,000+ embedded documentation links, plus 4 vendor study tracks (Anthropic Claude)
-- ✅ **Detailed study notes** for every major certification
+- ✅ **Detailed study notes** for every major certification (fact sheets, practice plans, scenarios, strategy)
 - ✅ **Cross-cloud service comparison guides** (12 comparison topics)
 - ✅ **CLI command references** for 9 tools (AWS, Azure, GCP, kubectl, Terraform, Docker, Helm, GitHub CLI)
 - ✅ **11 certification roadmaps** and career-focused learning paths
@@ -26,15 +42,23 @@ This repository contains **the most comprehensive, multi-cloud certification stu
 - ✅ **10 hands-on projects** for practical learning
 - ✅ **Interview prep guides** for 6 cloud roles
 - ✅ **Compliance, migration, cost optimization, and troubleshooting guides**
-- ✅ **Practice resources** and study strategies
 - ✅ **Free tier guides** to minimize study costs
 
 ---
 
 ## 🚀 Quick Start
 
-### **New to Cloud Certifications?**
-Start here: **[📚 Study Hub](./STUDY-HUB.md)** - Your one-stop guide to certification success
+### **Brand new to all of this?**
+Start with **[Day One](./learn/day-one/)** - terminal, git, HTTP, servers. Nothing assumed.
+
+### **Want to learn cloud or AI without an exam?**
+Pick a path: **[Cloud from Scratch](./learn/cloud-from-scratch.md)** or **[AI from Scratch](./learn/ai-from-scratch.md)**.
+
+### **Looking up a single concept?**
+**[Concepts](./learn/concepts/)** has 22+ bite-size pages: VPC, RAG, transformer architecture, serverless, evals, and more.
+
+### **Heading for a certification?**
+**[📚 Study Hub](./STUDY-HUB.md)** - decision tree, career tracks, and 122+ cert guides.
 
 ### **Want Expert Study Strategies?**
 Read: **[📝 How to Study and Pass Cloud Certifications (2025 Edition)](https://patrickwiloak.com/blog/aws-certification-study-framework-how-to-prepare-pass-certifications)** - Proven techniques from my certification journey

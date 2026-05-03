@@ -1,6 +1,6 @@
-# 📚 Study Hub - Your Cloud Certification Navigation Center
+# 📚 Study Hub - Cloud + AI Learning Hub
 
-> **Your comprehensive guide to navigating 122+ certifications across 22 providers - cloud, AI/ML, security, DevOps, data, networking, FinOps, and CRM. Plus 4 vendor study tracks for Anthropic Claude.**
+> **Your navigation hub for the whole repo: 122+ certifications across 22 providers, plus the [Learn](./learn/) pillar for non-cert students - bite-size concepts, beginner on-ramp, and structured cloud + AI paths.**
 
 <div align="center">
 
@@ -9,7 +9,7 @@
 [![Providers](https://img.shields.io/badge/Providers-22-orange.svg)]()
 [![Study Tracks](https://img.shields.io/badge/Study%20Tracks-12-purple.svg)]()
 
-**Welcome to your one-stop navigation hub for certification success.**
+**Welcome. Whether you're new to all this or chasing your fifth cert, this is the entry point.**
 
 </div>
 
@@ -18,6 +18,7 @@
 ## 🗺️ Table of Contents
 
 - [Quick Navigation](#-quick-navigation)
+- [Not chasing a certification?](#-not-chasing-a-certification)
 - [Decision Tree: Find Your Cert](#-decision-tree-find-your-cert)
 - [Study Tracks by Career Path](#-study-tracks-by-career-path)
 - [Certifications by Provider](#-certifications-by-provider)
@@ -32,7 +33,11 @@
 
 | I Want To... | Go To... |
 |--------------|----------|
-| 🆕 Start my cloud journey | [Beginner Fundamentals](#beginner-fundamentals) |
+| 🌅 Start from absolute zero (terminal, git, HTTP) | [Day One](./learn/day-one/) |
+| 💡 Look up a concept (RAG, VPC, K8s, agents) | [Concepts](./learn/concepts/) |
+| 🎓 Learn cloud without an exam | [Cloud from Scratch](./learn/cloud-from-scratch.md) |
+| 🤖 Learn AI/LLMs without an exam | [AI from Scratch](./learn/ai-from-scratch.md) |
+| 🆕 Start my cloud cert journey | [Beginner Fundamentals](#beginner-fundamentals) |
 | 🎯 Choose the right cert | [Decision Tree](#-decision-tree-find-your-cert) |
 | 🚀 Follow a career path | [Study Tracks](#-study-tracks-by-career-path) |
 | 🔒 Specialize in security | [Security Track](#security-track) |
@@ -40,6 +45,20 @@
 | 💰 Specialize in FinOps | [FinOps Track](#finops-track) |
 | ☸️ Specialize in Kubernetes | [Kubernetes Track](#kubernetes-track) |
 | 📚 Browse all materials | [Resource Library](#-resource-library) |
+
+---
+
+## 🎓 Not chasing a certification?
+
+The **[Learn](./learn/)** pillar is for everyone who wants to understand cloud and AI without an exam date:
+
+- **[Day One](./learn/day-one/)** - terminal, git, HTTP, servers. Strict beginner on-ramp.
+- **[Concepts](./learn/concepts/)** - 22+ bite-size pages (5-10 min each) on cloud + AI primitives.
+- **[Cloud from Scratch](./learn/cloud-from-scratch.md)** + **[AI from Scratch](./learn/ai-from-scratch.md)** - structured 8-phase paths.
+- **[Glossary](./learn/glossary.md)** - 200+ terms in plain English.
+- **[YouTube curation](./learn/youtube.md)** - filtered videos worth your time.
+
+Come back when you decide to certify. Many do, after using the Learn pillar to figure out which direction.
 
 ---
 

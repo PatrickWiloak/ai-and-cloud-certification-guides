@@ -23,16 +23,19 @@ If you **do** want certifications, head back to the **[Study Hub](../STUDY-HUB.m
 
 ## What's in this hub
 
-### 📖 Reference
-- **[Glossary](./glossary.md)** - 200+ cloud, AI, DevOps, networking, and security terms in plain English
+### 🌅 Brand new to all of this?
+- **[Day One](./day-one/)** - terminal, git, HTTP, servers. The pages assume nothing. If you've never opened a terminal, start here.
 
-### 🛤️ Learning paths
+### 💡 Bite-size concept pages
+- **[Concepts](./concepts/)** - 22+ topic pages, 5-10 min each. Cloud primitives (VPC, K8s, serverless), DevOps (CI/CD, Terraform), networking (DNS, TLS), and AI (LLMs, RAG, agents, transformers, embeddings, prompt engineering, evals).
+
+### 🛤️ Structured learning paths
 - **[Cloud from Scratch](./cloud-from-scratch.md)** - 8-phase path from "what is cloud?" to designing real systems
 - **[AI from Scratch](./ai-from-scratch.md)** - LLMs, RAG, agents, and production AI apps
 
-### 🎥 Curation (coming soon)
-- **YouTube channels and videos worth your time** - filtered list, not algorithmic slop
-- **Bite-size concept pages** - one topic per file, 5-10 min reads
+### 📖 Reference
+- **[Glossary](./glossary.md)** - 200+ cloud, AI, DevOps, networking, and security terms in plain English
+- **[YouTube curation](./youtube.md)** - filtered videos worth your time
 
 ---
 
@@ -42,7 +45,9 @@ There's no "right order." Pick what fits:
 
 | If you want to... | Start here |
 |------------------|------------|
+| Start from absolute zero | [Day One](./day-one/) |
 | Look up a term you keep seeing | [Glossary](./glossary.md) |
+| Understand one concept (RAG, VPC, agents, ...) | [Concepts](./concepts/) |
 | Build a foundation in cloud | [Cloud from Scratch](./cloud-from-scratch.md) |
 | Build a foundation in AI/LLMs | [AI from Scratch](./ai-from-scratch.md) |
 | Compare AWS vs Azure vs GCP | [Service comparisons](../resources/) |

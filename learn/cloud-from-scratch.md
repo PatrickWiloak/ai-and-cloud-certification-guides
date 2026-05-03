@@ -88,6 +88,36 @@ You should now be able to read an architecture diagram and identify the compute,
 **Why it matters**
 Networking is the most common source of "why doesn't this work?" pain. The error is almost always a security group, a route, or DNS.
 
+**The mental picture**
+
+```mermaid
+flowchart TB
+  Internet((Internet)) --> IGW[Internet Gateway]
+  IGW --> Region[Region: us-east-1]
+  subgraph Region
+    direction TB
+    subgraph AZ1[Availability Zone A]
+      PubA[Public Subnet 10.0.1.0/24]
+      PrivA[Private Subnet 10.0.11.0/24]
+      DBA[DB Subnet 10.0.21.0/24]
+    end
+    subgraph AZ2[Availability Zone B]
+      PubB[Public Subnet 10.0.2.0/24]
+      PrivB[Private Subnet 10.0.12.0/24]
+      DBB[DB Subnet 10.0.22.0/24]
+    end
+    PubA <--> PubB
+    PrivA <--> PrivB
+    DBA <--> DBB
+    PubA --> NATA[NAT Gateway A]
+    NATA --> PrivA
+    PubB --> NATB[NAT Gateway B]
+    NATB --> PrivB
+  end
+```
+
+One region. Two availability zones (separate physical data centers). Three subnet types per AZ. Public subnets reach the internet directly; private subnets route outbound through a NAT gateway; database subnets are isolated. This shape - replicated across at least two AZs - is the foundation of nearly every production cloud system.
+
 **Try it**
 Build a VPC with two subnets (public + private). Put a VM in each. Make sure the private one can reach the internet via a NAT gateway. You'll touch every concept above.
 

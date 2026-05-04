@@ -1,3 +1,8 @@
+---
+last-updated: 2026-05-03
+difficulty: intermediate
+---
+
 # Service Comparison - Serverless
 
 ## Overview
@@ -247,3 +252,12 @@ This guide compares serverless compute, event routing, workflow orchestration, a
 6. **Step Functions** provides the cleanest workflow-as-state-machine model
 7. For exam prep, understand the trade-offs between event-driven and request-driven architectures
 8. All three providers are converging on **CloudEvents** as the standard event format
+
+---
+
+**Related Guides:**
+- [Compute Service Comparison](./service-comparison-compute.md)
+- [Containers and Kubernetes Comparison](./service-comparison-containers-kubernetes.md)
+- [Messaging and Queues Comparison](./service-comparison-messaging-queues.md)
+- [Database Service Comparison](./service-comparison-databases.md)
+- [Topic: Serverless](../topics/serverless.md)

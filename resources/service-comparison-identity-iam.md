@@ -1,3 +1,8 @@
+---
+last-updated: 2026-05-03
+difficulty: intermediate
+---
+
 # Service Comparison - Identity and IAM
 
 ## Overview
@@ -287,3 +292,11 @@ This guide provides a deep comparison of identity and access management services
 6. **Cross-cloud identity** is best handled through OIDC federation rather than syncing credentials
 7. Understanding policy evaluation logic is critical for security certification exams on all platforms
 8. **Entra Permissions Management** (formerly CloudKnox) is unique in providing cross-cloud permission visibility
+
+---
+
+**Related Guides:**
+- [Security Tools Comparison](./service-comparison-security-tools.md)
+- [Networking Service Comparison](./service-comparison-networking.md)
+- [Topic: IAM](../topics/iam.md)
+- [IAM Explained](../learn/concepts/iam-explained.md)

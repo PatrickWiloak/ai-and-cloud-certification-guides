@@ -1,3 +1,8 @@
+---
+last-updated: 2026-05-03
+difficulty: intermediate
+---
+
 # Cloud Service Comparison: Networking Services
 
 ## Quick Reference

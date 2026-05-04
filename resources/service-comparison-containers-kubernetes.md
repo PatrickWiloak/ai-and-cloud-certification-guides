@@ -1,3 +1,8 @@
+---
+last-updated: 2026-05-03
+difficulty: intermediate
+---
+
 # Service Comparison - Containers and Kubernetes
 
 ## Overview
@@ -249,3 +254,12 @@ This guide compares container orchestration, managed Kubernetes, container regis
 5. **ECS** remains the simplest option for AWS-only container workloads
 6. All three providers now support Kubernetes 1.28+ with similar feature parity
 7. Container registry capabilities are converging - focus on scanning, signing, and lifecycle management for exams
+
+---
+
+**Related Guides:**
+- [Compute Service Comparison](./service-comparison-compute.md)
+- [Serverless Service Comparison](./service-comparison-serverless.md)
+- [DevOps and CI/CD Comparison](./service-comparison-devops-cicd.md)
+- [Observability and Monitoring Comparison](./service-comparison-observability-monitoring.md)
+- [Topic: Kubernetes](../topics/kubernetes.md)

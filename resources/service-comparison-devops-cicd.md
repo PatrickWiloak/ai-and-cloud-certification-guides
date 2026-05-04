@@ -1,3 +1,8 @@
+---
+last-updated: 2026-05-03
+difficulty: intermediate
+---
+
 # Service Comparison - DevOps and CI/CD
 
 ## Overview
@@ -275,3 +280,11 @@ GitHub/CSR -> Cloud Build -> Artifact Registry -> Cloud Deploy -> GKE/Cloud Run
 6. Most organizations use a hybrid approach - GitHub/GitLab for source + cloud-native tools for deployment
 7. GitOps (Flux/ArgoCD) is becoming the standard for Kubernetes deployments across all clouds
 8. Supply chain security (SBOM, signing, provenance) is increasingly important for exam questions
+
+---
+
+**Related Guides:**
+- [Containers and Kubernetes Comparison](./service-comparison-containers-kubernetes.md)
+- [Observability and Monitoring Comparison](./service-comparison-observability-monitoring.md)
+- [Security Tools Comparison](./service-comparison-security-tools.md)
+- [IaC Tool Decision Matrix](./decision-matrix-iac-tool.md)

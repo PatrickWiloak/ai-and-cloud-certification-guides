@@ -1,3 +1,8 @@
+---
+last-updated: 2026-05-03
+difficulty: intermediate
+---
+
 # Cloud Service Comparison: AI/ML Services
 
 ## Quick Reference
@@ -921,5 +926,9 @@ response = openai.ChatCompletion.create(
 
 ---
 
-*Last updated: 2025-10-13*
-*Total lines: 730+*
+**Related Guides:**
+- [GenAI Platforms Comparison](./service-comparison-genai-platforms.md)
+- [LLM Observability Comparison](./service-comparison-llm-observability.md)
+- [Vector Databases Comparison](./service-comparison-vector-databases.md)
+- [Agent Frameworks Comparison](./service-comparison-agent-frameworks.md)
+- [LLM Serving Decision Matrix](./decision-matrix-llm-serving.md)

@@ -1,3 +1,8 @@
+---
+last-updated: 2026-05-03
+difficulty: intermediate
+---
+
 # Service Comparison - Observability and Monitoring
 
 ## Overview
@@ -276,3 +281,12 @@ This guide compares monitoring, logging, tracing, and alerting services across A
 6. **KQL** (Azure) is the most powerful query language but has the steepest learning curve
 7. For multi-cloud observability, consider third-party tools like Datadog, New Relic, or Grafana Cloud
 8. Understanding log retention policies and archive strategies is critical for compliance exam questions
+
+---
+
+**Related Guides:**
+- [LLM Observability Comparison](./service-comparison-llm-observability.md)
+- [DevOps and CI/CD Comparison](./service-comparison-devops-cicd.md)
+- [Containers and Kubernetes Comparison](./service-comparison-containers-kubernetes.md)
+- [Topic: Observability](../topics/observability.md)
+- [Observability Basics](../learn/concepts/observability-basics.md)

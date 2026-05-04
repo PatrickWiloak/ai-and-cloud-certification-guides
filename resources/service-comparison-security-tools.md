@@ -1,3 +1,8 @@
+---
+last-updated: 2026-05-03
+difficulty: intermediate
+---
+
 # Service Comparison - Security Tools
 
 ## Overview
@@ -255,3 +260,11 @@ This guide compares cloud security services across AWS, Azure, and Google Cloud 
 5. Secrets management is converging in features - focus on rotation automation and CSI driver integration for exams
 6. For multi-cloud security posture management, consider third-party tools like Prisma Cloud, Wiz, or Orca
 7. Understanding the audit trail capabilities and retention periods is critical for compliance-focused exam questions
+
+---
+
+**Related Guides:**
+- [Identity and IAM Comparison](./service-comparison-identity-iam.md)
+- [Networking Service Comparison](./service-comparison-networking.md)
+- [Topic: Security](../topics/security.md)
+- [Compliance Guides (SOC 2, HIPAA, PCI DSS, GDPR, FedRAMP)](./compliance-guides/)

@@ -1,3 +1,8 @@
+---
+last-updated: 2026-05-03
+difficulty: intermediate
+---
+
 # Service Comparison - Messaging and Queues
 
 ## Overview
@@ -255,3 +260,11 @@ Note: Pricing varies significantly based on message size, retention, and data tr
 6. Dead letter queues are essential for production workloads - know how to configure and monitor them on all platforms
 7. Cross-cloud messaging is best achieved with Apache Kafka or HTTP-based Pub/Sub push
 8. Understanding the pricing model differences (per-request vs per-unit vs per-volume) is critical for cost optimization questions
+
+---
+
+**Related Guides:**
+- [Serverless Service Comparison](./service-comparison-serverless.md)
+- [Database Service Comparison](./service-comparison-databases.md)
+- [Compute Service Comparison](./service-comparison-compute.md)
+- [Queues vs Streams](../learn/concepts/queues-vs-streams.md)

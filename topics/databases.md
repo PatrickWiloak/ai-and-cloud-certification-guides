@@ -8,6 +8,17 @@ reading-time: 4 min
 
 SQL, NoSQL, vector databases, data warehouses, lakehouses. The choice is rarely "which database" - it's "which database for which workload."
 
+```mermaid
+flowchart LR
+  W{Workload}
+  W -- transactional<br/>strong consistency --> SQL[Relational:<br/>RDS, Cloud SQL, Spanner]
+  W -- key-value<br/>at scale --> KV[Wide-column:<br/>DynamoDB, Bigtable]
+  W -- document<br/>flexible schema --> DOC[Document:<br/>Cosmos DB, Firestore, MongoDB]
+  W -- semantic search<br/>RAG --> VEC[Vector:<br/>pgvector, Pinecone, Weaviate]
+  W -- analytics<br/>columnar --> OLAP[(Warehouse:<br/>BigQuery, Redshift, Snowflake)]
+  W -- streaming<br/>+ batch unified --> LH[Lakehouse:<br/>Databricks Delta / Iceberg]
+```
+
 ---
 
 ## Learn

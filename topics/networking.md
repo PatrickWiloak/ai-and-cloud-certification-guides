@@ -8,6 +8,18 @@ reading-time: 4 min
 
 VPCs, subnets, routing, hybrid connectivity, DNS, load balancing, multi-cloud networking. Networking is the layer everyone forgets until something doesn't connect.
 
+```mermaid
+flowchart LR
+  U[Internet users] --> CDN[CDN / edge]
+  CDN --> LB[Global / regional load balancer]
+  LB --> VPC[VPC / VNet:<br/>subnets, route tables, security groups]
+  VPC --> APP[App tier]
+  APP --> DB[(Private DB)]
+  ONP[On-prem] -. VPN / Direct Connect / ExpressRoute / Interconnect .-> VPC
+  DNS[DNS:<br/>Route 53 / Cloud DNS / Azure DNS] -.- CDN
+  DNS -.- LB
+```
+
 ---
 
 ## Learn

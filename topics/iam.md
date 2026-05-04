@@ -8,6 +8,17 @@ reading-time: 4 min
 
 Authentication ("who are you?"), authorization ("what can you do?"), federation, roles vs policies, RBAC vs ABAC, SSO. Every cloud cert tests this; almost every breach starts here.
 
+```mermaid
+flowchart LR
+  REQ[Request:<br/>credentials + action + resource] --> N{Authenticate}
+  N -- valid --> ID[Verified identity:<br/>user / role / service account]
+  N -- invalid --> X1[401]
+  ID --> Z{Authorize<br/>policy lookup}
+  Z -- allow --> OK[Execute]
+  Z -- deny --> X2[403]
+  IDP[External IdP:<br/>Okta, Azure AD, Google] -. SAML / OIDC / SCIM .-> N
+```
+
 ---
 
 ## Learn

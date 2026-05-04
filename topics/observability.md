@@ -8,6 +8,19 @@ reading-time: 4 min
 
 Logs, metrics, traces. The three pillars that turn "production is broken" into "production is broken because the order-service p99 spiked at 14:32 after the deploy at 14:30."
 
+```mermaid
+flowchart LR
+  APP[Apps + infra] -- OpenTelemetry / agents --> COL[Collectors]
+  COL --> L[(Logs:<br/>structured, indexed)]
+  COL --> M[(Metrics:<br/>time-series, low cardinality)]
+  COL --> T[(Traces:<br/>request spans across services)]
+  L --> DASH[Dashboards + queries]
+  M --> DASH
+  T --> DASH
+  M --> ALERT[Alerts on SLO burn]
+  ALERT --> ONCALL[On-call / incident manager]
+```
+
 ---
 
 ## Learn

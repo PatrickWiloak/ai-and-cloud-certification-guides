@@ -8,6 +8,20 @@ reading-time: 5 min
 
 Cloud security across pillars: shared responsibility, zero trust, secrets, threat detection, compliance, and the certs that test it. Security is the topic with the highest stakes per character of code.
 
+```mermaid
+flowchart TB
+  IDENTITY[Identity:<br/>users, roles, federation, MFA, PIM]
+  NETWORK[Network:<br/>VPC, security groups, firewalls, WAF, zero trust]
+  DATA[Data:<br/>encryption at rest / in transit / in use, KMS, DLP]
+  OPS[Detection + response:<br/>GuardDuty / Defender / SCC, SIEM, IR]
+  GOV[Governance:<br/>SCPs / Org policies, compliance frameworks, audit]
+  IDENTITY --> SCC[Security posture<br/>+ findings]
+  NETWORK --> SCC
+  DATA --> SCC
+  OPS --> SCC
+  GOV --> SCC
+```
+
 ---
 
 ## Learn

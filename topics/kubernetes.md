@@ -8,6 +8,25 @@ reading-time: 4 min
 
 K8s primitives, distributions, security, operations. Eight years past 1.0, K8s is no longer optional knowledge for anyone touching production infrastructure.
 
+```mermaid
+flowchart TB
+  subgraph CP[Control plane]
+    API[API server]
+    SCH[Scheduler]
+    CM[Controller manager]
+    ETCD[(etcd)]
+  end
+  subgraph N1[Worker node]
+    K[kubelet]
+    P1[Pod]
+    P2[Pod]
+  end
+  USER[kubectl / GitOps] --> API
+  CP -.- N1
+  SVC[Service / Ingress] -.routes traffic.-> P1
+  ADD[Add-ons:<br/>Istio mesh, Argo, Prometheus] -.- N1
+```
+
 ---
 
 ## Learn

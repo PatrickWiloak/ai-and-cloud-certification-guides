@@ -8,16 +8,25 @@
 
 ## What this section is
 
-Five pages, in order. Each is a 5-15 minute read. By the end, you'll know enough to follow conversations and tutorials that currently feel like another language.
+Eight pages, in order. Each is a 5-15 minute read. By the end, you'll know enough to follow conversations and tutorials that currently feel like another language.
 
 This isn't cloud or AI yet. This is the bedrock under both. Skip this and the rest of the repo will feel harder than it should.
 
 ## Suggested order
 
+**Foundations (read first)**
+
 1. **[Terminal basics](./terminal-basics.md)** - opening a terminal, running commands, navigating files. (15 min)
 2. **[Git basics](./git-basics.md)** - what version control is, what GitHub is, the 5 commands you actually use. (15 min)
 3. **[HTTP and APIs](./http-and-apis.md)** - how computers talk to each other, what an API actually is. (10 min)
 4. **[What is a server?](./what-is-a-server.md)** - what's "running" when something is "running on a server." (10 min)
+
+**Daily-use additions (read in any order)**
+
+5. **[SSH basics](./ssh-basics.md)** - logging into remote servers; key-based auth; the host-key prompt. (5 min)
+6. **[Package managers](./package-managers.md)** - apt / brew / npm / pip - what they share. (5 min)
+7. **[Networking troubleshooting](./networking-troubleshooting.md)** - dig, ping, traceroute, curl - the diagnostic ladder. (5 min)
+8. **[What is an API call?](./what-is-an-api-call.md)** - method + URL + headers + body, status codes. (5 min)
 
 After these you have enough vocabulary to start [Cloud from Scratch](../cloud-from-scratch.md) or [AI from Scratch](../ai-from-scratch.md) without getting blocked every other paragraph.
 

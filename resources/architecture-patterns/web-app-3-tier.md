@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Three-Tier Web Application Architecture
 
 A comprehensive guide to implementing scalable, highly available three-tier web applications across AWS, Azure, and Google Cloud Platform.

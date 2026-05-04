@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Multi-Region Active-Active Architecture
 
 A comprehensive guide to building globally distributed active-active systems across AWS, Azure, and Google Cloud Platform.

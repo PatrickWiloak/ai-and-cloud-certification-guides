@@ -1,0 +1,33 @@
+name: Spell check
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.md'
+      - '.cspell.json'
+  pull_request:
+    paths:
+      - '**/*.md'
+      - '.cspell.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  cspell:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run cspell
+        uses: streetsidesoftware/cspell-action@v6
+        with:
+          config: .cspell.json
+          # Only show errors, suppress info-level "checked X files" output.
+          verbose: false
+          # Don't fail the workflow on first run while we tune the dictionary.
+          # Flip strict to true once the noise is acceptable.
+          strict: false
+          incremental_files_only: true

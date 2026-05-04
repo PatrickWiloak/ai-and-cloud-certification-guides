@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Microservices Architecture
 
 A comprehensive guide to building scalable, maintainable microservices applications using AWS, Azure, and Google Cloud Platform.

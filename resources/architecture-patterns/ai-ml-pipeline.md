@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # AI/ML Pipeline Architecture
 
 A comprehensive guide to building end-to-end machine learning pipelines with MLOps practices across AWS, Azure, and Google Cloud Platform.

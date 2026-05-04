@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Load Balancing Deep Dive
 
 Comprehensive guide to load balancing concepts and cloud services.

@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Zero Trust Architecture
 
 A comprehensive guide to implementing zero trust security models across AWS, Azure, and Google Cloud Platform.

@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Terminal Basics
 
 > **15-minute read. The first thing to make peace with if you want to do anything in cloud, AI, or DevOps.**

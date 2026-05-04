@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Event-Driven Architecture
 
 A comprehensive guide to building scalable, loosely coupled event-driven systems using AWS, Azure, and Google Cloud Platform.

@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Disaster Recovery Patterns
 
 A comprehensive guide to implementing disaster recovery strategies across AWS, Azure, and Google Cloud Platform to ensure business continuity.

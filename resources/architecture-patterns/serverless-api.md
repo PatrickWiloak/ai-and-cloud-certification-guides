@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Serverless API Architecture
 
 A comprehensive guide to building scalable, cost-effective serverless APIs using AWS Lambda, Azure Functions, and Google Cloud Functions.

@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # CQRS and Event Sourcing
 
 A comprehensive guide to Command Query Responsibility Segregation and Event Sourcing patterns with implementation across AWS, Azure, and Google Cloud Platform.

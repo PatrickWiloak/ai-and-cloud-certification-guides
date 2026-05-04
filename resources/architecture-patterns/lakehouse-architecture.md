@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Lakehouse Architecture
 
 A comprehensive guide to building unified lakehouse architectures that combine the best of data lakes and data warehouses across AWS, Azure, and Google Cloud Platform.

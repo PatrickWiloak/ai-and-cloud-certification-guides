@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # What Is a Server?
 
 > **10-minute read. The thing your code "runs on" when it's not running on your laptop.**

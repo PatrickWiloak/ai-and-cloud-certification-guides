@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Data Pipeline ETL Architecture
 
 A comprehensive guide to designing and implementing scalable Extract, Transform, Load (ETL) data pipelines across AWS, Azure, and Google Cloud Platform.

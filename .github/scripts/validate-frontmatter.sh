@@ -95,8 +95,25 @@ for f in learn/concepts/*.md; do check_file "$f"; done
 # Top-level learn pages
 for f in learn/*.md; do check_file "$f"; done
 
+# Day-One on-ramp
+for f in learn/day-one/*.md; do check_file "$f"; done
+
 # Hands-on projects
 for f in resources/hands-on-projects/*.md; do check_file "$f"; done
+
+# Topic indexes
+for f in topics/*.md; do check_file "$f"; done
+
+# Architecture patterns
+for f in resources/architecture-patterns/*.md; do check_file "$f"; done
+
+# Networking deep-dives
+for f in resources/networking-deep-dives/*.md; do check_file "$f"; done
+
+# New content shapes (decision matrices, postmortems, persona playlists)
+for f in resources/decision-matrix-*.md; do check_file "$f"; done
+for f in resources/postmortem-*.md; do check_file "$f"; done
+for f in resources/playlist-*.md; do check_file "$f"; done
 
 # Cert fact-sheets
 mapfile -t cert_dirs < <(find exams -type d -name notes | sed 's|/notes$||' | sort)

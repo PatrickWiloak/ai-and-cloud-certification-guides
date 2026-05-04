@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Multi-Cloud Networking Deep Dive
 
 Strategies and patterns for connecting workloads across multiple cloud providers.

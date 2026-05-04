@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Data Mesh Architecture
 
 A comprehensive guide to implementing domain-oriented, decentralized data architectures across AWS, Azure, and Google Cloud Platform.

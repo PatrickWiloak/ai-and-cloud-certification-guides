@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # HTTP and APIs
 
 > **10-minute read. How computers talk to each other on the internet.**

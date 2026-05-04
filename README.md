@@ -148,11 +148,21 @@ Career-focused learning paths:
 ### **Interview Prep**
 [Solutions Architect](./resources/interview-prep/solutions-architect-interview.md) | [DevOps](./resources/interview-prep/devops-interview.md) | [Cloud Engineer](./resources/interview-prep/cloud-engineer-interview.md) | [Data Engineer](./resources/interview-prep/data-engineer-interview.md) | [Security Engineer](./resources/interview-prep/security-engineer-interview.md) | [SRE](./resources/interview-prep/sre-interview.md)
 
+### **Decision Matrices** - score-driven product picks
+[Vector database](./resources/decision-matrix-vector-database.md) | [IaC tool](./resources/decision-matrix-iac-tool.md) | [LLM serving](./resources/decision-matrix-llm-serving.md)
+
+### **Postmortem Study Guides** - real public outages, mapped to exam domains
+[AWS S3 us-east-1, 2017](./resources/postmortem-aws-s3-2017.md) | [Cloudflare regex, 2019](./resources/postmortem-cloudflare-regex-2019.md) | [GCP networking, 2019](./resources/postmortem-gcp-networking-2019.md)
+
+### **Persona Playlists** - curated reading sequences
+[AI engineer in 30 min](./resources/playlist-ai-engineer-30min.md) | [Cloud security in 1 hour](./resources/playlist-cloud-security-1hour.md) | [Data engineer in 1 hour](./resources/playlist-data-engineer-1hour.md) | [SRE in 1 hour](./resources/playlist-sre-1hour.md)
+
 ### **Practice & Strategy**
 - [🎯 Practice Resources Guide](./resources/practice-resources.md)
 - [💰 Free Tier Guides](./resources/free-tier-guide.md)
 - [📝 Study Tips & Strategies](./resources/study-strategies.md)
 - [✅ Exam Day Checklist](./resources/exam-day-checklist.md)
+- [📅 Freshness Ledger](./docs/freshness.md) - per-page last-verified dates
 - [📖 Complete Study Guide (Blog)](https://patrickwiloak.com/blog/aws-certification-study-framework-how-to-prepare-pass-certifications)
 
 ---

@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # DNS Deep Dive
 
 Comprehensive guide to DNS concepts and cloud DNS services.

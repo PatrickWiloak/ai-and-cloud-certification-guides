@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Git Basics
 
 > **15-minute read. The version control system every cloud and AI tool assumes you know.**

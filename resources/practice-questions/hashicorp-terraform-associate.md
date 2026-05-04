@@ -276,10 +276,180 @@ D. Apply changes, then plan
 
 ---
 
+### Question 16
+**Scenario:** Your team uses S3 + DynamoDB as the Terraform backend. What does the DynamoDB table provide?
+
+A. State storage
+B. State locking (preventing concurrent applies)
+C. Audit history
+D. Encryption keys
+
+<details><summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** S3 stores the state file; DynamoDB stores a lock entry while an `apply` is running. The lock prevents two engineers from running `apply` simultaneously and corrupting state.
+</details>
+
+---
+
+### Question 17
+**Scenario:** You need to import an existing AWS resource (e.g., a manually-created S3 bucket) into Terraform management.
+
+A. `terraform import aws_s3_bucket.mybucket bucket-name`
+B. Manually edit the state file
+C. `terraform refresh`
+D. Recreate the bucket via Terraform
+
+<details><summary>Answer</summary>
+
+**Correct: A**
+
+**Why:** `terraform import` brings existing resources under management, mapping a real-world resource ID to a TF resource address. You also need the `resource "aws_s3_bucket" "mybucket" {}` block in your config (Terraform 1.5+ supports `import` blocks too).
+</details>
+
+---
+
+### Question 18
+**Scenario:** Best way to share infrastructure modules across teams:
+
+A. Copy/paste HCL between repos
+B. Publish to the public Terraform Registry, a private registry (Terraform Cloud / Enterprise), or a versioned git tag
+C. Hardcode in each repo
+D. Use raw Bash scripts
+
+<details><summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Modules are TF's reuse unit. Source from public registry, private registry, git (`git::https://...?ref=v1.2.0`), or local paths. Versioning is critical so consumers don't break on upstream changes.
+</details>
+
+---
+
+### Question 19
+**Scenario:** What's `count` vs `for_each` for module / resource iteration?
+
+A. `count` uses an integer (creates N indexed copies); `for_each` uses a map or set of strings (creates one per key)
+B. They're identical
+C. `count` is for modules only
+D. `for_each` is deprecated
+
+<details><summary>Answer</summary>
+
+**Correct: A**
+
+**Why:** Use `for_each` when you have a logical key (e.g., per-tenant config); resources are addressed by key. Use `count` when truly indexed (e.g., 3 identical replicas). `count` is fragile to reordering; `for_each` is more robust.
+</details>
+
+---
+
+### Question 20
+**Scenario:** Sensitive output value (e.g., DB password) needs to be passed to a downstream module.
+
+A. Mark output as `sensitive = true`; pass to downstream module input variable also marked sensitive
+B. Print to console
+C. Commit to git
+D. Email it
+
+<details><summary>Answer</summary>
+
+**Correct: A**
+
+**Why:** `sensitive = true` masks the value in CLI output and `terraform plan`. Still stored in state (encrypt the backend), but not displayed. The full path: source secret in a manager (Vault, Secrets Manager) and use a data source instead of putting the value through TF at all.
+</details>
+
+---
+
+### Question 21
+**Scenario:** Workspaces in Terraform - what are they for?
+
+A. Separate state files for the same config (e.g., dev / staging / prod)
+B. Visual editing
+C. Module isolation
+D. Provider versioning
+
+<details><summary>Answer</summary>
+
+**Correct: A**
+
+**Why:** Workspaces give you multiple state files for the same config. Use case: same module deployed to dev/staging/prod with different vars. Modern best practice prefers separate directories or backend configs over workspaces for production environment isolation.
+</details>
+
+---
+
+### Question 22
+**Scenario:** A Terraform provider defines:
+
+A. Cloud-specific resource and data source types
+B. Backend storage
+C. Module syntax
+D. State encryption
+
+<details><summary>Answer</summary>
+
+**Correct: A**
+
+**Why:** Providers (`aws`, `azurerm`, `google`, `kubernetes`, `random`, etc.) implement resources and data sources for a target API. Terraform Core handles graph + state; providers handle CRUD against APIs.
+</details>
+
+---
+
+### Question 23
+**Scenario:** What does `terraform validate` do?
+
+A. Checks syntax + internal consistency without contacting providers
+B. Applies the plan
+C. Refreshes state
+D. Tests in production
+
+<details><summary>Answer</summary>
+
+**Correct: A**
+
+**Why:** `validate` checks HCL syntax and references inside the config. Doesn't talk to provider APIs (so it's fast and offline). Used in CI before `plan`.
+</details>
+
+---
+
+### Question 24
+**Scenario:** Best way to handle provider version constraints:
+
+A. Pin in `required_providers` in a `terraform { ... }` block; commit `.terraform.lock.hcl`
+B. Don't pin; use latest
+C. Pin globally in environment
+D. Edit ~/.terraform.d/
+
+<details><summary>Answer</summary>
+
+**Correct: A**
+
+**Why:** Pin major and minor (e.g., `~> 5.0` for AWS provider 5.x). The lock file (`.terraform.lock.hcl`) records exact versions across providers and platforms; commit it for reproducibility.
+</details>
+
+---
+
+### Question 25
+**Scenario:** Drift - someone changed a resource in the cloud console.
+
+A. Run `terraform plan` to see drift; either accept the change into config or `terraform apply` to revert
+B. Ignore
+C. Delete state
+D. Recreate everything
+
+<details><summary>Answer</summary>
+
+**Correct: A**
+
+**Why:** `plan` shows the difference between config and reality. You then decide: update config to match reality (accept the change) or `apply` to overwrite reality with config (revert). Drift detection should be regular (CI cron, Terraform Cloud).
+</details>
+
+---
+
 ## Scoring guide
 
-- **13-15:** Ready. Combine with HashiCorp's official prep + a Udemy course for confidence.
-- **10-12:** Solid; review weak areas.
-- **<10:** Hands-on practice + re-read fact-sheet.
+- **22-25:** Ready. Combine with HashiCorp's official prep + a Udemy course for confidence.
+- **17-21:** Solid; review weak areas.
+- **<17:** Hands-on practice + re-read fact-sheet.
 
 Terraform Associate is multiple-choice, 60 minutes, ~57 questions. These reinforce concepts; for full coverage see HashiCorp Learn and the [exams/hashicorp/terraform-associate/](../../exams/hashicorp/terraform-associate/) materials.

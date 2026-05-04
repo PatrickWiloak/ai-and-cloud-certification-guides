@@ -276,10 +276,180 @@ D. Insurance certificate
 
 ---
 
+### Question 16
+**Scenario:** A new security control is proposed. What's the security manager's FIRST step before approving?
+
+A. Conduct a risk assessment to determine if the control's cost is justified by the risk it mitigates
+B. Implement immediately
+C. Buy the most expensive option
+D. Skip if it's expensive
+
+<details><summary>Answer</summary>
+
+**Correct: A**
+
+**Why:** CISSP rule: every control proposal goes through risk assessment. Cost of control should not exceed expected loss it mitigates. "Best" answer in CISSP is almost always the risk-based one.
+</details>
+
+---
+
+### Question 17
+**Scenario:** During incident response, the FIRST priority is:
+
+A. Public statement
+B. Containment to prevent further damage
+C. Forensic analysis
+D. Restoration
+
+<details><summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** NIST IR lifecycle: Preparation → Detection → **Containment** → Eradication → Recovery → Lessons Learned. Containment first. Even before knowing root cause, stopping the bleeding is the priority.
+</details>
+
+---
+
+### Question 18
+**Scenario:** Best evidence in a fraud investigation:
+
+A. Eyewitness testimony
+B. Original / direct evidence (system logs, signed documents, video)
+C. Hearsay
+D. Circumstantial evidence
+
+<details><summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Evidence hierarchy: best (original / direct) > secondary > circumstantial > hearsay. System logs with chain of custody are the gold standard for digital forensics.
+</details>
+
+---
+
+### Question 19
+**Scenario:** RTO is 4 hours, RPO is 15 minutes. Which DR pattern fits?
+
+A. Backup and restore
+B. Pilot light
+C. Warm standby
+D. Multi-site active-active
+
+<details><summary>Answer</summary>
+
+**Correct: B (or C depending on cost tolerance)**
+
+**Why:** RTO 4h means tens of minutes of warm-up are acceptable. RPO 15 min requires near-continuous replication. Pilot light (data tier replicated, app off) fits. Warm standby tightens RTO further at higher cost. Backup-restore (A) blows the RTO; active-active (D) is overkill.
+</details>
+
+---
+
+### Question 20
+**Scenario:** Defense in depth means:
+
+A. One very strong control
+B. Multiple layered controls so failure of any one doesn't compromise the system
+C. Buying expensive products
+D. Hiring more security staff
+
+<details><summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Defense in depth = layered defenses (perimeter + network + host + app + data + identity + monitoring) so an attacker must defeat multiple controls to reach assets. Single-control strategies are brittle.
+</details>
+
+---
+
+### Question 21
+**Scenario:** Most secure password storage:
+
+A. Plain text
+B. Reversible encryption
+C. One-way hash with salt + slow KDF (bcrypt, scrypt, Argon2)
+D. SHA-256 fast hash
+
+<details><summary>Answer</summary>
+
+**Correct: C**
+
+**Why:** Passwords should never be reversible. Salt prevents rainbow tables. Slow KDF (bcrypt / scrypt / Argon2) makes brute force computationally expensive. Fast hashes like SHA-256 are wrong - they're optimized for speed, which helps attackers.
+</details>
+
+---
+
+### Question 22
+**Scenario:** Bell-LaPadula model focuses on:
+
+A. Confidentiality (no read up, no write down)
+B. Integrity
+C. Availability
+D. Non-repudiation
+
+<details><summary>Answer</summary>
+
+**Correct: A**
+
+**Why:** Bell-LaPadula = confidentiality. Biba = integrity (no write up, no read down). Clark-Wilson = integrity via well-formed transactions. Brewer-Nash (Chinese Wall) = conflict-of-interest. Memorize the model-to-property mapping for CISSP.
+</details>
+
+---
+
+### Question 23
+**Scenario:** Which legal concept applies when an employee's actions cause harm and the employer is held responsible?
+
+A. Vicarious liability
+B. Strict liability
+C. Negligence per se
+D. Comparative fault
+
+<details><summary>Answer</summary>
+
+**Correct: A**
+
+**Why:** Vicarious liability = employer responsible for employee actions within scope of employment. Implications: training, policies, accountability chains all matter for the security manager.
+</details>
+
+---
+
+### Question 24
+**Scenario:** A penetration test discovers a vulnerability that the team disagrees about exploiting in scope. The CORRECT response:
+
+A. Test it anyway
+B. Stop, refer to the rules of engagement, get written authorization to expand scope before exploiting
+C. Inform a competitor
+D. Ignore it
+
+<details><summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Pen testing requires written authorization. Anything outside scope without authorization risks legal liability and breach of contract. The professional response: pause, document, get sign-off, then proceed.
+</details>
+
+---
+
+### Question 25
+**Scenario:** Most important component of an effective security awareness program:
+
+A. Annual mandatory training
+B. Continuous, role-relevant content + measured outcomes (phish simulation pass rates, time-to-report) + non-punitive culture for reporting
+C. Posters
+D. Email reminders
+
+<details><summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Awareness is a program, not an event. Sustained, measured, role-relevant training with a non-punitive reporting culture is what changes behavior. Annual training is necessary but not sufficient. Punitive responses suppress reporting.
+</details>
+
+---
+
 ## Scoring guide
 
-- **13-15 correct:** Strong; schedule the exam.
-- **10-12:** Re-read weak domains; CISSP is broad - know all 8 domains.
-- **<10:** More foundational study needed.
+- **22-25 correct:** Strong; schedule the exam.
+- **17-21:** Re-read weak domains; CISSP is broad - know all 8 domains.
+- **<17:** More foundational study needed.
 
 CISSP exam: 100-150 adaptive questions, 3 hours. Pass rate ~70%. The mindset is **manager-level / risk-based**, not technical-implementation. When in doubt, pick the answer that prioritizes safety, business continuity, and the formal process.

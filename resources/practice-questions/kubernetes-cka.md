@@ -276,10 +276,190 @@ D. `systemctl stop kubelet` on that node
 
 ---
 
+### Question 16
+**Scenario:** A Service of type ClusterIP isn't reachable from inside the cluster. `kubectl get endpoints <svc>` returns no addresses. What's most likely?
+
+A. The Service spec is wrong
+B. The Service's `selector` doesn't match any Pod labels
+C. The Pods are in a different namespace
+D. CoreDNS is down
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Empty endpoints means no Pods match the Service's `selector`. Either the labels in the Service selector are wrong, or the Pods don't have those labels (yet). `kubectl get pods -l <selector>` confirms. CoreDNS being down would still show endpoints if the selector matched.
+</details>
+
+---
+
+### Question 17
+**Scenario:** You need to give a CI service account read-only access to all resources in the `staging` namespace. What's the minimal correct setup?
+
+A. ClusterRole with full read permissions, ClusterRoleBinding to the service account
+B. Role in `staging` namespace with `verbs: [get, list, watch]`, RoleBinding to the service account
+C. Edit the kube-system service account
+D. Run the CI as cluster-admin
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Role is namespace-scoped (matching "all resources in staging"); RoleBinding grants it. ClusterRole + ClusterRoleBinding (A) gives access to ALL namespaces. C is dangerous and wrong scope. D is least-privilege violation.
+</details>
+
+---
+
+### Question 18
+**Scenario:** A pod's container exits with `OOMKilled`. What's the right first action?
+
+A. Lower `resources.limits.memory`
+B. Increase `resources.limits.memory` (and `requests` if needed)
+C. Disable OOM kills on the node
+D. Switch to a different node
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** OOMKilled means the container exceeded its memory limit. The fix is to raise the limit (after profiling the actual need) or to fix the memory leak. Lowering makes it worse. Disabling OOM is dangerous. Different node won't help if the limit is the issue.
+</details>
+
+---
+
+### Question 19
+**Scenario:** You want to schedule a Pod only on nodes labeled `disk=ssd`. What's the standard mechanism?
+
+A. `nodeSelector: { disk: ssd }`
+B. `tolerations` for `disk=ssd`
+C. Manually choose the node in the spec
+D. `priorityClassName: ssd-only`
+
+<details>
+<summary>Answer</summary>
+
+**Correct: A**
+
+**Why:** `nodeSelector` is the simplest matching mechanism. For more complex rules, `nodeAffinity` is the modern replacement. Tolerations are paired with taints (different concept - taints repel; tolerations let pods land on tainted nodes). Priority is for scheduling order, not target.
+</details>
+
+---
+
+### Question 20
+**Scenario:** A NetworkPolicy denies all ingress to namespace `app`. You need to allow traffic from namespace `web` only. What's the right rule?
+
+A. NetworkPolicy with `podSelector: {}` and ingress from a `namespaceSelector` matching `web`
+B. RBAC role
+C. Service Account binding
+D. Edit the CNI directly
+
+<details>
+<summary>Answer</summary>
+
+**Correct: A**
+
+**Why:** NetworkPolicy is the K8s primitive for L3/L4 traffic control. `podSelector: {}` selects all pods in the policy's namespace; ingress from `namespaceSelector` allows traffic from another namespace. RBAC is API-level, not network-level. Editing CNI directly is wrong abstraction layer. Note: the cluster's CNI must support NetworkPolicy (Calico, Cilium yes; flannel without extensions no).
+</details>
+
+---
+
+### Question 21
+**Scenario:** You apply a Deployment manifest. Pods come up but immediately CrashLoopBackOff. `kubectl logs` shows the container can't connect to its database. What do you check first?
+
+A. Service exists and resolves the DB hostname; ConfigMap / Secret with DB creds is mounted; NetworkPolicy doesn't block egress
+B. Restart all nodes
+C. Increase replica count
+D. Disable health checks
+
+<details>
+<summary>Answer</summary>
+
+**Correct: A**
+
+**Why:** CrashLoopBackOff with a connection error is almost always: wrong DB hostname / port (Service or DNS issue), wrong credentials (Secret not mounted), or NetworkPolicy blocking. Check those three. B/C/D don't address connectivity.
+</details>
+
+---
+
+### Question 22
+**Scenario:** A StatefulSet has 3 replicas. You delete pod-1 (the middle one). What happens?
+
+A. K8s recreates pod-1 with the same name and same PVC binding
+B. K8s renames the remaining pods sequentially (pod-0, pod-1)
+C. The StatefulSet enters a degraded state
+D. The PVC is deleted
+
+<details>
+<summary>Answer</summary>
+
+**Correct: A**
+
+**Why:** StatefulSets give pods stable identities (`pod-0`, `pod-1`, `pod-2`). Deleting one causes K8s to recreate it with the same name and re-bind to the same PersistentVolumeClaim. This is what makes StatefulSets suitable for databases. Renaming would defeat the purpose. PVCs are not deleted with the pod.
+</details>
+
+---
+
+### Question 23
+**Scenario:** You need to expose a Deployment to the internet on a managed K8s service (EKS / AKS / GKE). What's the standard way?
+
+A. `Service` of type `LoadBalancer`
+B. Pod with `hostNetwork: true`
+C. Manually configure cloud LB outside K8s
+D. NodePort + manual cloud LB pointing at NodePort
+
+<details>
+<summary>Answer</summary>
+
+**Correct: A**
+
+**Why:** `Service` type `LoadBalancer` provisions a cloud LB automatically (ELB/ALB on AWS, ALB on Azure, NLB on GCP). For HTTP/L7 you'd typically use Ingress + an Ingress controller, but for any single port the LoadBalancer Service is the K8s-native pattern. B is anti-pattern. D is what `LoadBalancer` does for you.
+</details>
+
+---
+
+### Question 24
+**Scenario:** etcd backup. What's the correct command to take a snapshot?
+
+A. `etcdctl snapshot save backup.db --cacert ... --cert ... --key ...` (with appropriate cert paths and the etcd endpoint)
+B. `kubectl backup etcd`
+C. `cp -r /var/lib/etcd /backups/`
+D. `systemctl stop etcd && tar -czf etcd.tar.gz /var/lib/etcd`
+
+<details>
+<summary>Answer</summary>
+
+**Correct: A**
+
+**Why:** `etcdctl snapshot save` is the documented way to take a consistent backup of etcd while it's running. B isn't a kubectl subcommand. C copies live data files (not consistent). D works but takes the cluster down.
+</details>
+
+---
+
+### Question 25
+**Scenario:** You need to enforce that all pods in a namespace must have CPU/memory `requests` and `limits` set. What's the right tool?
+
+A. LimitRange + ResourceQuota in the namespace
+B. NetworkPolicy
+C. PodSecurityPolicy
+D. ClusterRole
+
+<details>
+<summary>Answer</summary>
+
+**Correct: A**
+
+**Why:** LimitRange enforces per-pod / per-container defaults and constraints (default requests / limits, max / min). ResourceQuota enforces aggregate namespace limits. Together they ensure every pod has resource specs. NetworkPolicy is networking. PSP is deprecated (replaced by Pod Security Admission). ClusterRole is RBAC.
+</details>
+
+---
+
 ## Scoring guide
 
-- **13-15 correct (85%+):** Strong. Combine with killer.sh for hands-on practice and schedule the exam.
-- **10-12 correct (65-80%):** Re-read weak-area notes; do more hands-on with `kubectl`.
-- **<10:** Spend more time on the official `kubernetes.io` docs and hands-on labs before retesting.
+- **22-25 correct (85%+):** Strong. Combine with killer.sh for hands-on practice and schedule the exam.
+- **17-21 correct (65-80%):** Re-read weak-area notes; do more hands-on with `kubectl`.
+- **<17:** Spend more time on the official `kubernetes.io` docs and hands-on labs before retesting.
 
 The CKA exam is **performance-based** with 15-20 hands-on tasks in 2 hours. These multiple-choice questions test conceptual understanding; you also need fluency with `kubectl` and YAML.

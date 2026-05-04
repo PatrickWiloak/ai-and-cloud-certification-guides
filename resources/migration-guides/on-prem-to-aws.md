@@ -6,6 +6,34 @@ Migrating from on-premises infrastructure to AWS requires a structured approach 
 
 ---
 
+## Migration phases at a glance
+
+```mermaid
+flowchart LR
+  assess[Assess<br/>inventory + dependencies<br/>TCO + business case]
+  mobilize[Mobilize<br/>landing zone<br/>networking + security]
+  plan[Plan migration<br/>wave planning<br/>per-workload R-decision]
+  execute[Execute<br/>AWS MGN / DMS / DataSync<br/>parallel run + validate<br/>cutover]
+  modernize[Modernize<br/>refactor monoliths<br/>managed services]
+
+  assess --> mobilize --> plan --> execute --> modernize
+
+  rs[The 7 Rs<br/>per workload]
+  rs --> R1[Retire]
+  rs --> R2[Retain]
+  rs --> R3[Rehost]
+  rs --> R4[Relocate]
+  rs --> R5[Replatform]
+  rs --> R6[Repurchase]
+  rs --> R7[Refactor]
+
+  plan -. classifies each workload .-> rs
+```
+
+Most enterprise migrations are dominated by Rehost (fast, low risk) and Replatform (managed databases, container packaging) early. Refactor is reserved for the apps with strongest cloud-native ROI.
+
+---
+
 ## AWS Migration Methodology - The 7 Rs
 
 ### 1. Rehost (Lift and Shift)

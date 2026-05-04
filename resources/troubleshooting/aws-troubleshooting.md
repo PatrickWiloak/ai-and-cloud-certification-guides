@@ -4,6 +4,30 @@ Common issues and resolution steps for AWS services.
 
 ---
 
+## Cloud troubleshooting decision tree
+
+```mermaid
+flowchart TD
+  start[User-reported<br/>problem]
+  start --> reach{Can the user<br/>reach the service?}
+  reach -->|no| net[Network path<br/>SG/NACL/route<br/>NAT, IGW, VPN<br/>DNS resolution]
+  reach -->|yes, but errors| auth{Auth failure?}
+  auth -->|yes| iam[IAM<br/>identity policy +<br/>resource policy +<br/>SCPs + permission<br/>boundary]
+  auth -->|no| layer{Which layer?}
+  layer -->|app| app[CloudWatch Logs<br/>X-Ray traces<br/>app metrics]
+  layer -->|data| data[RDS / DDB metrics<br/>throttles, IOPS,<br/>storage full,<br/>replica lag]
+  layer -->|infra| infra[CloudWatch alarms<br/>Personal Health<br/>Service Health Dashboard<br/>quotas]
+  net --> fix[Apply minimum-change fix<br/>document in runbook]
+  iam --> fix
+  app --> fix
+  data --> fix
+  infra --> fix
+```
+
+The fastest path to a fix is to narrow the problem layer first - network vs auth vs app vs data vs infra - then drill into the layer's diagnostic surface (logs, metrics, traces, dashboards). The sections below assume you've already identified the layer.
+
+---
+
 ## EC2 Connectivity Issues
 
 ### Cannot SSH into EC2 Instance

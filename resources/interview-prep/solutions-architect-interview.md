@@ -6,6 +6,26 @@ Solutions Architect interviews typically combine system design, cloud architectu
 
 ---
 
+## Interview format at a glance
+
+```mermaid
+flowchart LR
+  Phone[Phone screen<br/>30-45 min<br/>recruiter or hiring mgr]
+  Tech[Technical screen<br/>45-60 min<br/>cloud knowledge<br/>scenario-based]
+  SD[System design<br/>60 min<br/>whiteboard / shared doc<br/>1-2 architect interviewers]
+  BD[Behavioral / values<br/>45 min<br/>STAR-format stories<br/>leadership principles]
+  Final[Final / closing<br/>30 min<br/>director or VP<br/>scope, fit, comp]
+
+  Phone --> Tech --> SD --> BD --> Final
+
+  SD -. demonstrate .-> SDSkills[Skills tested:<br/>requirements clarification,<br/>tradeoff articulation,<br/>scaling reasoning,<br/>cost awareness,<br/>communication]
+  BD -. demonstrate .-> BDSkills[Stories about:<br/>conflict, mistakes,<br/>cross-team work,<br/>customer obsession,<br/>technical leadership]
+```
+
+The system design round is the strongest signal in most loops. Have 3-4 polished STAR-format stories ready - the same stories often answer multiple behavioral prompts.
+
+---
+
 ## System Design Questions
 
 ### How to Approach System Design

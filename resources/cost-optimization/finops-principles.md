@@ -6,6 +6,38 @@ FinOps (Cloud Financial Operations) is a cultural practice that brings financial
 
 ---
 
+## FinOps maturity at a glance
+
+```mermaid
+flowchart LR
+  crawl[Crawl<br/>visibility]
+  walk[Walk<br/>optimization]
+  run[Run<br/>operate]
+
+  crawl --> walk --> run
+
+  crawl --- C1[Tagging coverage]
+  crawl --- C2[Allocation + reporting]
+  crawl --- C3[Anomaly alerts]
+
+  walk --- W1[Rightsizing]
+  walk --- W2[Commitments<br/>RIs / Savings Plans]
+  walk --- W3[Spot / preemptible]
+
+  run --- R1[Forecasting]
+  run --- R2[Unit economics]
+  run --- R3[Automated guardrails]
+  run --- R4[Sustainability]
+
+  loop[Inform -> Optimize -> Operate<br/>continuous loop]
+  run -. feeds back .-> loop
+  loop -. drives .-> crawl
+```
+
+A team can be at different maturity levels per capability - Walk in Anomaly Management while still Crawl in Forecasting. The framework lets you pick the next capability to mature based on impact and readiness, not lockstep linear progression.
+
+---
+
 ## The Six FinOps Principles
 
 | Principle | Description |

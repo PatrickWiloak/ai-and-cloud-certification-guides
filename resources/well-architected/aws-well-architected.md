@@ -6,6 +6,26 @@ The AWS Well-Architected Framework helps cloud architects build secure, high-per
 
 ---
 
+## Six pillars at a glance
+
+```mermaid
+flowchart TB
+  WAF[AWS Well-Architected<br/>Framework]
+  WAF --> P1[Operational<br/>Excellence<br/>run + improve]
+  WAF --> P2[Security<br/>protect data +<br/>systems + identity]
+  WAF --> P3[Reliability<br/>recover from failure<br/>scale to demand]
+  WAF --> P4[Performance<br/>Efficiency<br/>use compute right]
+  WAF --> P5[Cost<br/>Optimization<br/>spend mindfully]
+  WAF --> P6[Sustainability<br/>environmental<br/>impact]
+
+  WAF -. evaluated via .-> WATool[Well-Architected Tool<br/>workload review]
+  WAF -. extended by .-> Lenses[Lenses:<br/>Serverless, SaaS,<br/>ML, Data Analytics,<br/>FTR, IoT, Healthcare,<br/>Financial Services,<br/>GenAI]
+```
+
+Each pillar has design principles + best practices. The Well-Architected Tool (free in the AWS console) walks a workload through each pillar's questions and surfaces high/medium-risk gaps. Lenses adapt the framework for specialized domains (ML, SaaS, GenAI, etc.).
+
+---
+
 ## The Six Pillars
 
 ### 1. Operational Excellence

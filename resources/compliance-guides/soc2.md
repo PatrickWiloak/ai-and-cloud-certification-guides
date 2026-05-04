@@ -6,6 +6,32 @@ SOC 2 (System and Organization Controls 2) is a compliance framework developed b
 
 ---
 
+## SOC 2 audit at a glance
+
+```mermaid
+flowchart LR
+  scope[Scope: which Trust<br/>Services Criteria<br/>are in scope?]
+  controls[Design controls<br/>per criterion]
+  evidence[Operate controls<br/>collect evidence<br/>over observation window]
+  audit[Independent CPA firm<br/>audit + testing]
+  report[SOC 2 Report<br/>Type I or Type II]
+
+  scope --> controls --> evidence --> audit --> report
+
+  TSC[Trust Services Criteria]
+  TSC --> sec[Security<br/>always required]
+  TSC --> av[Availability]
+  TSC --> pi[Processing Integrity]
+  TSC --> conf[Confidentiality]
+  TSC --> priv[Privacy]
+
+  scope -. selects from .-> TSC
+```
+
+Type I describes control design at a point in time; Type II adds proof that controls operated effectively over 3-12 months.
+
+---
+
 ## Trust Services Criteria
 
 ### The Five Categories

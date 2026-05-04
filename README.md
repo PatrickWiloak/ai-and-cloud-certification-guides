@@ -4,8 +4,8 @@
 
 ### Built by [Patrick Wiloak](https://patrickwiloak.com) at [Nobler Works](https://noblerworks.com/)
 
-We build cloud + AI training resources, internal developer platforms, and custom software for teams that need to skill up fast.<br>
-If you want training, integrations, or tooling built for your team, [get in touch](https://noblerworks.com/).
+We build custom software and products at Nobler Works. Open source projects and training like this one are our way of giving back - we're nothing without the community that supports us.<br>
+If you need custom software built, [get in touch](https://noblerworks.com/).
 
 [![Website](https://img.shields.io/badge/Website-000000?style=for-the-badge&logo=googlechrome&logoColor=white)](https://noblerworks.com/)
 [![X](https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/Nobler_Works)

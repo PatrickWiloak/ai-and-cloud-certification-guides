@@ -179,7 +179,7 @@ Several scripts live under `.github/scripts/`. The validators run in CI on every
 - `structure-validate.yml` - runs the cert-structure and frontmatter validators.
 - `cspell.yml` - spell-checks markdown changes against `.cspell.json`. Currently non-strict (won't fail builds while the dictionary tunes); will flip to strict once noise is acceptable.
 
-See [.github/README.md](./.github/README.md) for a one-page map of every script and workflow.
+See [.github/AUTOMATION.md](./.github/AUTOMATION.md) for a one-page map of every script and workflow.
 
 ## Submitting a change
 

@@ -1,4 +1,4 @@
-# `.github/` - automation and contributor scaffolding
+# Automation reference: `.github/` scripts and workflows
 
 This directory holds CI workflows, validation scripts, and contributor templates. Everything here exists to keep the repo's content honest at scale (160+ cert dirs, 1000+ markdown files).
 

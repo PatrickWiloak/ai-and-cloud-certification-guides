@@ -23,27 +23,33 @@ DNS adds a layer of indirection. You publish "the IP for `gmail.com` is X." Brow
 
 When you type `example.com`:
 
-```
-Your browser
-    |
-    v
-OS resolver (cached?) ──[no]──→ Your DNS server (e.g., 1.1.1.1, 8.8.8.8)
-                                       |
-                                       | (cached?) ──[no]──+
-                                       v                    |
-                                Root DNS servers           |
-                                       |                    |
-                                       | "for .com, ask"   |
-                                       v                    |
-                                .com TLD servers           |
-                                       |                    |
-                                       | "for example.com" |
-                                       v                    |
-                                example.com authoritative <-+
-                                       |
-                                       | A record: 93.184.216.34
-                                       v
-                                Your browser connects to 93.184.216.34
+```mermaid
+sequenceDiagram
+  participant B as Browser
+  participant OS as OS resolver
+  participant R as Recursive resolver<br/>(1.1.1.1, 8.8.8.8)
+  participant Root as Root servers (.)
+  participant TLD as .com TLD servers
+  participant Auth as example.com<br/>authoritative
+  B->>OS: example.com?
+  alt OS cache hit
+    OS-->>B: cached IP
+  else OS cache miss
+    OS->>R: example.com?
+    alt Resolver cache hit
+      R-->>OS: cached IP
+    else Resolver cache miss
+      R->>Root: example.com?
+      Root-->>R: ask .com TLD at...
+      R->>TLD: example.com?
+      TLD-->>R: ask example.com NS at...
+      R->>Auth: example.com?
+      Auth-->>R: A 93.184.216.34
+      R-->>OS: 93.184.216.34
+    end
+    OS-->>B: 93.184.216.34
+  end
+  B->>B: Connect to 93.184.216.34
 ```
 
 This whole dance often takes <50ms because of aggressive caching at every layer.

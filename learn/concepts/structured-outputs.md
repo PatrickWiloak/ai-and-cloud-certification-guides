@@ -32,6 +32,15 @@ Every time.
 
 ## The mechanism
 
+```mermaid
+flowchart LR
+  P[Prompt:<br/>'Extract customer info'] --> M[Model]
+  S[JSON schema:<br/>name, id, tier enum] --> CD[Constrained decoder]
+  M --> CD
+  CD -- per-token, only emit<br/>schema-valid tokens --> J[Guaranteed-valid JSON]
+  J --> APP[Downstream code:<br/>no parsing, no try/except]
+```
+
 Three approaches, in increasing strength:
 
 ### 1. Prompt-based ("please return JSON")

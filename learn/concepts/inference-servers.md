@@ -24,6 +24,22 @@ Real inference servers do three things:
 2. **KV cache management** - intelligently store and reuse the attention key/value tensors that get computed during generation, so the model doesn't redo work for the prefix it's already seen.
 3. **Optimized kernels** - use FlashAttention, PagedAttention, and other tricks to wring throughput out of the hardware.
 
+```mermaid
+flowchart LR
+  C1[Client A] --> Q[Request queue]
+  C2[Client B] --> Q
+  C3[Client C] --> Q
+  C4[Client D] --> Q
+  Q --> S[Scheduler:<br/>continuous batching]
+  S --> B[Batched forward pass]
+  B --> GPU[(GPU<br/>model weights<br/>+ KV cache)]
+  GPU --> B
+  B --> R1[Stream tokens to A]
+  B --> R2[Stream tokens to B]
+  B --> R3[Stream tokens to C]
+  B --> R4[Stream tokens to D]
+```
+
 Done well, the same A100 + 7B model can serve thousands of tokens/sec across many concurrent users.
 
 ## The major options

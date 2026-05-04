@@ -16,16 +16,21 @@ The context window is the total number of tokens (chunks of text, roughly 0.75 o
 
 Everything sent to the model in a single API call:
 
-```
-context = system_prompt
-        + tool_definitions
-        + chat_history (every turn so far)
-        + retrieved_documents (RAG)
-        + the user's current message
-        + the response (counted toward the same window)
+```mermaid
+flowchart LR
+  subgraph WIN[Context window budget - e.g. 200K tokens]
+    direction TB
+    SYS[System prompt<br/>~500 cached]
+    TOOLS[Tool definitions<br/>~200 cached]
+    HIST[Chat history<br/>~3K]
+    RAG[Retrieved chunks<br/>~4K]
+    USER[User message<br/>~50]
+    RESP[Response<br/>~400 output]
+  end
+  SYS --> TOOLS --> HIST --> RAG --> USER --> RESP
 ```
 
-Tokens vary by language. A token in English is ~4 characters or 0.75 words. In code or other languages it can be much less efficient.
+Every token counts toward the same hard limit - the response too. Tokens vary by language: English is ~4 characters / 0.75 words per token; code and non-English languages can be 2-3x less efficient.
 
 ## The limit isn't free
 

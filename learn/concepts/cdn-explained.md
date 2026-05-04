@@ -24,21 +24,23 @@ End result: a user in Tokyo loads your site in ~30ms instead of ~250ms, even tho
 
 ## How it works
 
-```
-User in Tokyo
-    |
-    v
-[CDN PoP in Tokyo]  ← caches the JS bundle, images, etc.
-    |
-    | (only when cache miss)
-    v
-[Your origin in us-east-1]  ← actually serves the asset once
+```mermaid
+flowchart LR
+  U1[Users in Tokyo] --> P1[PoP Tokyo]
+  U2[Users in São Paulo] --> P2[PoP São Paulo]
+  U3[Users in London] --> P3[PoP London]
+  P1 -- cache hit ~10ms --> U1
+  P2 -- cache hit ~10ms --> U2
+  P3 -- cache hit ~10ms --> U3
+  P1 -. cache miss .-> O[(Origin in us-east-1)]
+  P2 -. cache miss .-> O
+  P3 -. cache miss .-> O
+  O -- fetch once, cache everywhere --> P1
+  O -- fetch once, cache everywhere --> P2
+  O -- fetch once, cache everywhere --> P3
 ```
 
-First user in Tokyo: cache miss, request goes to origin (~150ms).
-Origin sends asset back to PoP.
-PoP caches it.
-Next 1,000 users in Tokyo: cache hit, ~10ms.
+First user in a region: cache miss, request goes to origin (~150ms). Origin sends the asset back to the PoP, which caches it. Next 1,000 users in that region: cache hit, ~10ms.
 
 ## What gets cached
 

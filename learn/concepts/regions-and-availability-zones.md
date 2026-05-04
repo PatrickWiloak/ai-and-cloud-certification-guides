@@ -49,35 +49,46 @@ Each region has multiple AZs (typically 3-6), each AZ has 1+ datacenters. AZs in
 
 ## A small concrete example
 
-You're running a 3-tier web app in AWS `us-east-1`:
+You're running a 3-tier web app in AWS `us-east-1`. Three architectures, in order of resilience:
 
-**Bad architecture (single AZ):**
+```mermaid
+flowchart TB
+  subgraph BAD["Single AZ - one power outage = total outage"]
+    W1[Web]
+    D1[(DB primary)]
+    W1 --> D1
+  end
+  subgraph GOOD["Multi-AZ in one region - AZ outage = brief blip"]
+    LB1[Load balancer]
+    subgraph AZ1[us-east-1a]
+      W2[Web 1]
+      D2[(DB primary)]
+    end
+    subgraph AZ2[us-east-1b]
+      W3[Web 2]
+      D3[(DB standby)]
+    end
+    LB1 --> W2
+    LB1 --> W3
+    W2 --> D2
+    W3 --> D2
+    D2 -. sync replication .-> D3
+  end
+  subgraph GREAT["Multi-region - region outage = traffic shifts"]
+    R53[Route 53<br/>geo-routing]
+    subgraph US[us-east-1: multi-AZ web + DB]
+      USR[Active]
+    end
+    subgraph EU[eu-west-1: multi-AZ web + DB]
+      EUR[Active]
+    end
+    R53 --> US
+    R53 --> EU
+    US -. async cross-region<br/>replication .-> EU
+  end
 ```
-us-east-1a:
-  [Web server] -> [DB primary]
-```
-If `us-east-1a` has a power outage, you're down.
 
-**Good architecture (multi-AZ):**
-```
-us-east-1a:                us-east-1b:
-  [Web 1]   ----+---->  [Web 2]
-                |
-  [DB primary] -+----->  [DB standby]
-```
-Load balancer fronts both web servers. DB has automated failover. One AZ dying = brief blip, then healthy.
-
-**Great architecture (multi-region, for global apps):**
-```
-us-east-1 (active):           eu-west-1 (active):
-  Multi-AZ web + DB            Multi-AZ web + DB
-       \                        /
-        +---- Route 53 ---------+
-              (geo-routing)
-              
-              + cross-region replication
-```
-A region-wide outage = traffic shifts. Some replication lag, but no full outage.
+Don't reach for multi-region until you have a business reason - it adds significant complexity (replication lag, cross-region transfer fees, ops in 2x places).
 
 ## The cost of multi-region
 

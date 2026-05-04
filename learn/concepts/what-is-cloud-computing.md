@@ -25,6 +25,24 @@ Cloud changed three things:
 - **Months → minutes.** You can spin up a new server in 30 seconds with an API call.
 - **Peak provisioning → elastic scaling.** Need 100 servers for Black Friday and 5 for Tuesday at 3am? Fine.
 
+```mermaid
+flowchart LR
+  subgraph PRE[Pre-cloud - own everything]
+    P1[Buy server $3000]
+    P2[Wait 4 weeks]
+    P3[Rack + cable + power]
+    P4[Pay for peak capacity<br/>idle most of the time]
+    P1 --> P2 --> P3 --> P4
+  end
+  subgraph CLOUD[Cloud - rent on demand]
+    C1[API call]
+    C2[30 seconds]
+    C3[Server running]
+    C4[Pay per second of use<br/>scale to zero when idle]
+    C1 --> C2 --> C3 --> C4
+  end
+```
+
 This sounds obvious now, but in 2006 it was a fundamental shift. AWS launched, Azure followed in 2010, GCP in 2008.
 
 ## What "cloud" actually means

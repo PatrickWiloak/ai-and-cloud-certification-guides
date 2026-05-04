@@ -16,6 +16,20 @@ A multimodal model accepts inputs beyond text - images, audio, video, sometimes 
 
 The model has been trained on paired data (text + images, text + audio) so that all input types produce vectors in a shared embedding space. From the model's perspective, an image is just another sequence of tokens, encoded by a vision encoder, that gets attended to alongside the text tokens.
 
+```mermaid
+flowchart LR
+  T[Text prompt] --> TE[Text tokenizer]
+  I[Image] --> VE[Vision encoder]
+  A[Audio clip] --> AE[Audio encoder]
+  V[Video] --> VFE[Frame sampler<br/>+ vision encoder]
+  TE --> SHARED[Shared embedding space]
+  VE --> SHARED
+  AE --> SHARED
+  VFE --> SHARED
+  SHARED --> LLM[LLM<br/>attends across<br/>all modalities]
+  LLM --> OUT[Text output]
+```
+
 Most current frontier models are multimodal:
 
 - **Claude 3.5+ Sonnet, Claude 3.7, Claude 4** - text and images

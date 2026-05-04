@@ -28,7 +28,45 @@ The classic visualization:
 | Table     | You               | You           | You      | Provider |
 |           | **On-prem**       | **IaaS**      | **PaaS** | **SaaS** |
 
-The further right you go, the less you manage - but the less you control.
+```mermaid
+flowchart TB
+  subgraph ONP[On-prem]
+    O1[App + data]:::you
+    O2[Runtime]:::you
+    O3[OS]:::you
+    O4[Hypervisor]:::you
+    O5[Hardware]:::you
+    O6[Datacenter]:::you
+  end
+  subgraph IAAS[IaaS]
+    I1[App + data]:::you
+    I2[Runtime]:::you
+    I3[OS]:::you
+    I4[Hypervisor]:::them
+    I5[Hardware]:::them
+    I6[Datacenter]:::them
+  end
+  subgraph PAAS[PaaS]
+    P1[App + data]:::you
+    P2[Runtime]:::them
+    P3[OS]:::them
+    P4[Hypervisor]:::them
+    P5[Hardware]:::them
+    P6[Datacenter]:::them
+  end
+  subgraph SAAS[SaaS]
+    S1[Your data + config]:::you
+    S2[App]:::them
+    S3[Runtime]:::them
+    S4[OS]:::them
+    S5[Hypervisor]:::them
+    S6[Hardware]:::them
+  end
+  classDef you fill:#ffd,stroke:#aa0
+  classDef them fill:#dde,stroke:#33a
+```
+
+Yellow = your responsibility. Blue = provider's. The further right you go, the less you manage - but the less you control.
 
 ## IaaS - Infrastructure as a Service
 

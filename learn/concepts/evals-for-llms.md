@@ -31,6 +31,18 @@ You need three things:
 2. **A grader**: code or another LLM that decides if a given output is good.
 3. **A runner**: harness that runs your prompt against the dataset, applies the grader, reports scores.
 
+```mermaid
+flowchart LR
+  DS[Dataset:<br/>input + ideal output<br/>50-500 cases] --> R[Runner]
+  PROMPT[Your prompt<br/>or agent] --> R
+  R --> M[Model under test]
+  M --> OUT[Outputs per case]
+  OUT --> G[Grader<br/>exact / LLM judge / human]
+  IDEAL[Ideal outputs] --> G
+  G --> SCORE[Aggregate score:<br/>0.82 vs prior 0.79]
+  SCORE --> CI[CI / regression dashboard]
+```
+
 Output: a single number (or a few). "Prompt v3 scored 0.82, prompt v2 scored 0.79."
 
 ## Building the dataset

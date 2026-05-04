@@ -6,6 +6,18 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 ---
 
+## [2026-05-03] - 100% concept-page diagram coverage
+
+### Changed
+
+- **Twelve more Mermaid diagrams** added to the remaining concept pages without one. Every content concept page (36 / 36) now has at least one diagram.
+  - Networking / cloud foundations: `cdn-explained` (multi-PoP cache hit/miss with origin), `dns-explained` (sequence diagram of recursive resolution), `regions-and-availability-zones` (single-AZ vs multi-AZ vs multi-region), `iaas-paas-saas` (responsibility layering across all four service models including on-prem), `what-is-cloud-computing` (pre-cloud vs cloud workflow side-by-side).
+  - AI / LLM systems: `context-windows-and-management` (stacked context budget with cached vs live tokens), `inference-servers` (continuous batching: clients → queue → batched forward pass → GPU), `multimodal-models` (text + image + audio + video → shared embedding space → LLM), `prompt-engineering` (test-driven iteration loop), `structured-outputs` (prompt + schema → constrained decoder → guaranteed-valid JSON), `evals-for-llms` (dataset + grader + runner → aggregate score → CI).
+  - DevOps: `terraform-explained` (code → init/plan/apply with state file as central truth).
+- The two ASCII diagrams in `cdn-explained` and `dns-explained` were upgraded to Mermaid for better rendering and accessibility.
+
+---
+
 ## [2026-05-03] - Frontmatter scale-out, six more concept diagrams
 
 ### Changed

@@ -100,6 +100,18 @@ A surprising amount of "the model is dumb" turns into "the model never had acces
 
 Real prompt engineering is a tight loop:
 
+```mermaid
+flowchart LR
+  W[Write prompt] --> R[Run on 10-20<br/>representative inputs]
+  R --> F[Inspect failures]
+  F --> A[Adjust prompt for<br/>that failure class]
+  A --> RE[Re-run on whole set]
+  RE --> CHK{Old wins<br/>still pass?}
+  CHK -- yes --> ADD[Add new failure<br/>cases to test set]
+  CHK -- no --> A
+  ADD --> R
+```
+
 1. Write a prompt.
 2. Run it on 10-20 representative inputs.
 3. Look at where it fails.

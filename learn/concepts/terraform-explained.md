@@ -25,6 +25,18 @@ Terraform is the most popular IaC tool. It works across nearly every cloud and S
 
 ## How it works
 
+```mermaid
+flowchart LR
+  CODE[".tf files in git<br/>(your desired state)"] --> INIT[terraform init]
+  INIT --> PLAN[terraform plan]
+  REAL[(Real cloud<br/>resources)] -. read current state .-> PLAN
+  STATE[(terraform.tfstate<br/>in S3 / GCS / Azure)] -. read mappings .-> PLAN
+  PLAN --> DIFF[Diff:<br/>create / update / destroy]
+  DIFF --> APPLY[terraform apply]
+  APPLY --> REAL2[(Cloud resources<br/>updated)]
+  APPLY --> STATE2[(State file<br/>updated)]
+```
+
 You write `.tf` files like:
 
 ```hcl

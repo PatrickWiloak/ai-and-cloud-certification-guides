@@ -1,3 +1,8 @@
+---
+last-updated: 2026-05-03
+difficulty: intermediate
+---
+
 # AI/ML Engineer Roadmap
 
 A complete AI/ML engineer journey: foundation concepts → hands-on builds → certifications → mastery. Certs are one pillar, not the whole path.

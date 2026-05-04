@@ -1,3 +1,8 @@
+---
+last-updated: 2026-05-03
+difficulty: intermediate
+---
+
 # DevOps & Site Reliability Engineering Certification Roadmap
 
 ## Overview

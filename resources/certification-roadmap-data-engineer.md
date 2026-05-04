@@ -1,3 +1,8 @@
+---
+last-updated: 2026-05-03
+difficulty: intermediate
+---
+
 # Data Engineer Certification Roadmap
 
 ## Table of Contents

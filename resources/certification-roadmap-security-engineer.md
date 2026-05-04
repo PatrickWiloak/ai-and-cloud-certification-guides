@@ -1,3 +1,8 @@
+---
+last-updated: 2026-05-03
+difficulty: intermediate
+---
+
 # Cloud Security Engineer Certification Roadmap
 
 ## Table of Contents
@@ -1545,13 +1550,5 @@ Certifications validate knowledge but practical experience makes you valuable. C
 The journey to becoming a Cloud Security Engineer is challenging but immensely rewarding. Stay curious, keep learning, and always prioritize security in everything you build.
 
 Good luck on your cloud security journey!
-
----
-
-**Document Version**: 1.0
-**Last Updated**: 2025
-**Total Lines**: 500+
-
----
 
 *This roadmap is a living document. Cloud platforms and security practices evolve rapidly. Always refer to official certification guides and documentation for the most current information.*

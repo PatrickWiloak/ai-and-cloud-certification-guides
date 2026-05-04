@@ -1,3 +1,8 @@
+---
+last-updated: 2026-05-03
+difficulty: intermediate
+---
+
 # Cloud Engineer Roadmap
 
 > A complete cloud engineer journey: foundation concepts → hands-on builds → certifications → mastery. The cert path is one piece of the picture, not the whole picture.
@@ -1983,8 +1988,3 @@ https://cloud.google.com/certification
 - Azure User Groups
 - Google Cloud Developer Community
 
----
-
-*Last Updated: October 2025*
-*Document Version: 1.0*
-*Maintained by: Cloud Engineering Community*

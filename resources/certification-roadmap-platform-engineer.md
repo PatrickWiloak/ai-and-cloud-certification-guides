@@ -1,3 +1,8 @@
+---
+last-updated: 2026-05-03
+difficulty: intermediate
+---
+
 # Certification Roadmap - Platform Engineer
 
 A structured certification path for platform engineers responsible for building and maintaining internal developer platforms, infrastructure automation, and deployment systems.

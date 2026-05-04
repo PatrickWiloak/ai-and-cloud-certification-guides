@@ -1,3 +1,8 @@
+---
+last-updated: 2026-05-03
+difficulty: intermediate
+---
+
 # Certification Roadmap - FinOps
 
 A structured certification path for FinOps practitioners who manage cloud financial operations, cost optimization, and financial accountability across cloud environments.

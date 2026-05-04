@@ -1,3 +1,8 @@
+---
+last-updated: 2026-05-03
+difficulty: intermediate
+---
+
 # Solutions Architect Certification Roadmap
 
 ## Overview

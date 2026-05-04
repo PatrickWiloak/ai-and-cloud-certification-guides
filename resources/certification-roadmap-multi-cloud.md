@@ -1,3 +1,8 @@
+---
+last-updated: 2026-05-03
+difficulty: intermediate
+---
+
 # Multi-Cloud Certification Roadmap
 
 ## Overview
@@ -1200,8 +1205,3 @@ Good luck on your certification journey!
 - [Networking Service Comparison](/resources/service-comparison-networking.md)
 - [AI/ML Service Comparison](/resources/service-comparison-ai-ml.md)
 
----
-
-**Document Version:** 1.0
-**Last Updated:** 2025-10-13
-**Maintained By:** Cloud Certification Study Guide Project

@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # OCI Architect Professional (1Z0-997-24) - Fact Sheet
 
 ## Quick Reference

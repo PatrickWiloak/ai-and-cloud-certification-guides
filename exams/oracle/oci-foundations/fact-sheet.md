@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # OCI Foundations (1Z0-1085-24) - Fact Sheet
 
 ## Quick Reference

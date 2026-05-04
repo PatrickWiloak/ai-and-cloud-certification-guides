@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # AWS Certified CloudOps Engineer - Associate (SOA-C03) Fact Sheet
 
 ## 📋 Exam Overview

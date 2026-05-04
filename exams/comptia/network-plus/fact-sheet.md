@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # CompTIA Network+ (N10-009) Fact Sheet
 
 ## Quick Reference

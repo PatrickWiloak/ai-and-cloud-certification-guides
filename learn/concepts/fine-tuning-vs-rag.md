@@ -22,6 +22,22 @@ If you can't articulate clearly why fine-tuning beats RAG for your specific case
 
 Fine-tuning isn't bad. It's just frequently the wrong tool because people confuse "the model doesn't know X" (a knowledge problem - fix with RAG) with "the model doesn't behave the way I want" (a behavior problem - fix with fine-tuning, or with a better prompt).
 
+## The decision tree
+
+```mermaid
+flowchart TD
+  Q[What do you actually need?] --> K{Knowledge<br/>or behavior?}
+  K -- The model doesn't<br/>know about my data --> R[RAG]
+  K -- The model doesn't<br/>output the way I want --> P{Tried strong<br/>prompting + JSON mode?}
+  P -- No --> PR[Fix the prompt first]
+  P -- Yes, still drifts --> S{Narrow repetitive task<br/>at high volume?}
+  S -- Yes --> FT[Fine-tune small<br/>open model]
+  S -- No, just better outputs --> P2[More few-shots,<br/>better system prompt]
+  R --> RC{Data updates often<br/>or needs citations?}
+  RC -- Yes --> RAG[RAG with<br/>per-tenant filters]
+  RC -- No, fully static --> EITHER[RAG still wins:<br/>cheaper, swappable model]
+```
+
 ## The decision matrix
 
 | You want to... | Use |

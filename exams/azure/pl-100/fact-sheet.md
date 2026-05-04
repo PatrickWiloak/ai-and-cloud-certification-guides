@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Microsoft Power Platform App Maker (PL-100): Comprehensive Fact Sheet
 
 ## Exam Overview

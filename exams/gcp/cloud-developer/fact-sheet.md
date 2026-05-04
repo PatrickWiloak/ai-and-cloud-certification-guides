@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # GCP Professional Cloud Developer Certification - Fact Sheet
 
 ## Exam Overview

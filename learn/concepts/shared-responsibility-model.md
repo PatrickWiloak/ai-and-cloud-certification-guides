@@ -36,7 +36,37 @@ The most important line: **identity and access management is always your job.** 
 
 ## How the line shifts by service
 
-The further "up the stack" you go (IaaS → PaaS → SaaS), the more the provider does:
+```mermaid
+flowchart LR
+  subgraph IAAS[IaaS - VM]
+    I1[Your data]:::you
+    I2[Your code]:::you
+    I3[Runtime / libs]:::you
+    I4[OS + patches]:::you
+    I5[Hypervisor]:::them
+    I6[Hardware]:::them
+  end
+  subgraph PAAS[PaaS - Lambda, App Service]
+    P1[Your data]:::you
+    P2[Your code]:::you
+    P3[Runtime / libs]:::them
+    P4[OS + patches]:::them
+    P5[Hypervisor]:::them
+    P6[Hardware]:::them
+  end
+  subgraph SAAS[SaaS - S3, RDS, DynamoDB]
+    S1[Your data + IAM]:::you
+    S2[Service code]:::them
+    S3[Runtime / libs]:::them
+    S4[OS + patches]:::them
+    S5[Hypervisor]:::them
+    S6[Hardware]:::them
+  end
+  classDef you fill:#ffd,stroke:#aa0
+  classDef them fill:#dde,stroke:#33a
+```
+
+Yellow = your responsibility. Blue = provider's. The further up the stack you go (IaaS → PaaS → SaaS), the more the provider does:
 
 ### IaaS (e.g., EC2 VM)
 - Provider: hardware, hypervisor

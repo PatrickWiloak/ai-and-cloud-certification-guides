@@ -34,6 +34,24 @@ A 1536-dimensional vector is just a list of 1536 floating-point numbers. By itse
 
 ## How "similar" gets measured
 
+```mermaid
+flowchart LR
+  Q[Query:<br/>'how do I reset my password'] --> EM[Embedding model]
+  EM --> QV[Query vector<br/>1536 floats]
+  D1[Doc: 'changing your account password'] --> EM
+  D2[Doc: 'forgot password reset link'] --> EM
+  D3[Doc: 'cancel my subscription'] --> EM
+  D1 --> V1[(0.91 cosine)]
+  D2 --> V2[(0.88 cosine)]
+  D3 --> V3[(0.21 cosine)]
+  QV -. compared via cosine .-> V1
+  QV -. compared via cosine .-> V2
+  QV -. compared via cosine .-> V3
+  V1 --> TOP[Top-K nearest<br/>1, 2 returned]
+  V2 --> TOP
+  V3 -.below threshold.-> X[Dropped]
+```
+
 The standard metric is **cosine similarity**: the cosine of the angle between two vectors.
 
 - `1.0` = identical direction (very similar meaning)

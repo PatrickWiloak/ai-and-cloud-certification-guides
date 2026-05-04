@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # OCI Architect Associate (1Z0-1072-24) - Fact Sheet
 
 ## Quick Reference

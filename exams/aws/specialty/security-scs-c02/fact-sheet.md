@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # AWS Security Specialty (SCS-C02) - Fact Sheet
 
 ## Quick Reference

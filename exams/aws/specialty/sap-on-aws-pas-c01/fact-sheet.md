@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # AWS Certified SAP on AWS - Specialty (PAS-C01) Fact Sheet
 
 ## 📋 Exam Overview

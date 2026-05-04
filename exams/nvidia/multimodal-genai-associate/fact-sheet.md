@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # NVIDIA Multimodal GenAI Associate - Fact Sheet
 
 ## Quick Reference

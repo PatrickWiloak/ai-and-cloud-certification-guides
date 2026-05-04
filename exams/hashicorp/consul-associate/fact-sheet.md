@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # HashiCorp Consul Associate (003) - Fact Sheet
 
 ## Quick Reference

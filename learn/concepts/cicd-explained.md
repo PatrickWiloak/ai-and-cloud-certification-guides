@@ -27,6 +27,16 @@ The Stripe/Etsy/Google playbook: deploy 50+ times a day, never have an emergency
 
 ## The pieces
 
+```mermaid
+flowchart LR
+  D[Developer push] --> CI[CI: build + test + lint + scan]
+  CI -- pass --> ART[Artifact registry<br/>container, binary, package]
+  CI -- fail --> X[Block merge]
+  ART --> CD{Deploy gate}
+  CD -- Continuous Delivery<br/>human approval --> PROD1[Production]
+  CD -- Continuous Deployment<br/>automatic --> PROD2[Production]
+```
+
 ### Continuous Integration
 
 Every push triggers:

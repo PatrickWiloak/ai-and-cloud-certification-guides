@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Microsoft Azure Data Scientist Associate (DP-100) - Fact Sheet
 
 ## Quick Reference

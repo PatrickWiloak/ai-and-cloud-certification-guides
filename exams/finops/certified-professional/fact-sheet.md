@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # FinOps Certified Professional - Fact Sheet
 
 ## Exam Identity

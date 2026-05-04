@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Databricks Machine Learning Professional - Fact Sheet
 
 ## Exam Overview

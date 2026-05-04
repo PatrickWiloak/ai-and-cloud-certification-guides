@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # AWS Certified Advanced Networking - Specialty (ANS-C01) - Fact Sheet
 
 ## Quick Reference

@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # RHCSA (EX200) - Fact Sheet
 
 ## Quick Reference

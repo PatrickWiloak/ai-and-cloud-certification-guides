@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Azure AI-102: Designing and Implementing Azure AI Solution - Comprehensive Fact Sheet
 
 ## Exam Overview

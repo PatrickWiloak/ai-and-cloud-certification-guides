@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Oracle Cloud Infrastructure Operations Associate Fact Sheet
 
 ## 📋 Exam Overview

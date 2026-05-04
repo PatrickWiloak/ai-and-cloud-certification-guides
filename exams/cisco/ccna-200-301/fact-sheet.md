@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # CCNA (200-301) - Fact Sheet
 
 ## Quick Reference

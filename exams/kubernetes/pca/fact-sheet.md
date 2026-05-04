@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Prometheus Certified Associate (PCA) Fact Sheet
 
 ## Exam Overview

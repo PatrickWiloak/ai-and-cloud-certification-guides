@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # ServiceNow CSA - Fact Sheet
 
 High-yield reference. Skim weekly. Memorize the table hierarchy, ACL evaluation order, and GlideRecord patterns.

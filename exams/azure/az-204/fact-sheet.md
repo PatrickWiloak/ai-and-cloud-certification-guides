@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Azure Developer Associate (AZ-204) Fact Sheet
 
 ## Quick Reference

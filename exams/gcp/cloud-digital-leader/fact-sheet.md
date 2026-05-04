@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # GCP Cloud Digital Leader Certification - Comprehensive Fact Sheet
 
 ## Exam Overview

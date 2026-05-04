@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Google Cloud Professional Google Workspace Administrator - Fact Sheet
 
 ## Quick Reference

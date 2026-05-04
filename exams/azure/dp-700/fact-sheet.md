@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # DP-700 Fabric Data Engineer Associate - Fact Sheet
 
 ## Quick Reference

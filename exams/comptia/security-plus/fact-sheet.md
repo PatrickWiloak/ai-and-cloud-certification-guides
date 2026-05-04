@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # CompTIA Security+ (SY0-701) Fact Sheet
 
 ## Quick Reference

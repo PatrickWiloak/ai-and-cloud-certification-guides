@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # NVIDIA Accelerated Data Science Professional - Fact Sheet
 
 ## Quick Reference

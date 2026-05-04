@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # AWS Database Specialty (DBS-C01) - Fact Sheet
 
 > ⚠️ **RETIRED April 29, 2024.** No longer available for new candidates. Replaced by **[AWS Data Engineer - Associate (DEA-C01)](../../associate/data-engineer-dea-c01/fact-sheet.md)** for data-engineering roles. Material preserved as historical reference.

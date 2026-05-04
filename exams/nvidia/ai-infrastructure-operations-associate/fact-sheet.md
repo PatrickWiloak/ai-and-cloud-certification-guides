@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # NVIDIA AI Infrastructure Operations Associate - Fact Sheet
 
 ## Quick Reference

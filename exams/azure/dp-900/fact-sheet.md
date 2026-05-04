@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Azure DP-900: Data Fundamentals - Comprehensive Fact Sheet
 
 ## Exam Overview

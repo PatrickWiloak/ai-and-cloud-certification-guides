@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Terraform Authoring and Operations Professional - Fact Sheet
 
 ## Exam Logistics

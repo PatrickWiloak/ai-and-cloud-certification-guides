@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Databricks Lakehouse Platform Administrator - Fact Sheet
 
 ## Exam Overview

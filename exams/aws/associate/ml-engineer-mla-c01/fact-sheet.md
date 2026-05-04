@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # AWS Certified Machine Learning Engineer - Associate (MLA-C01) Fact Sheet
 
 ## 📋 Exam Overview

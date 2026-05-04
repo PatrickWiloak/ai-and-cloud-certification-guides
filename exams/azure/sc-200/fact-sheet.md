@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # SC-200 Fact Sheet
 
 ## Exam Logistics

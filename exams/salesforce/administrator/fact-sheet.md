@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Salesforce Certified Administrator - Fact Sheet
 
 ## Quick Reference

@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Databricks Data Engineer Professional - Fact Sheet
 
 ## Exam Overview

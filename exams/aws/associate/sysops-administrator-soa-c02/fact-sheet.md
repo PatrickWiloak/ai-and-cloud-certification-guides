@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # AWS SysOps Administrator Associate (SOA-C02) - Fact Sheet
 
 > ⚠️ **RETIRED September 29, 2025.** No longer available for new candidates. Replaced by **[AWS CloudOps Engineer - Associate (SOA-C03)](../cloudops-engineer-soa-c03/fact-sheet.md)**. Material preserved as historical reference.

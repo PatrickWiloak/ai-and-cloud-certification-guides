@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # HashiCorp Terraform Associate (003) - Fact Sheet
 
 ## Quick Reference

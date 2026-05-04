@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # AWS Certified Data Engineer - Associate (DEA-C01) - Fact Sheet
 
 ## Quick Reference

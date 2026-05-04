@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Azure AZ-500: Microsoft Azure Security Technologies - Fact Sheet
 
 ## Exam Overview

@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # IBM Cloud Security Engineer Certification - Fact Sheet
 
 ## Quick Reference

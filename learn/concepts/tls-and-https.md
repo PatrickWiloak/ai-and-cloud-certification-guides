@@ -22,6 +22,22 @@ In 2026, basically everything is HTTPS. Browsers warn you about HTTP sites. Sear
 
 ## What happens during a TLS handshake
 
+```mermaid
+sequenceDiagram
+  participant C as Client (browser)
+  participant S as Server (example.com)
+  participant CA as Trusted root CAs<br/>(shipped with browser)
+  C->>S: 1. Client hello<br/>(TLS versions, ciphers, random)
+  S->>C: 2. Server hello + certificate<br/>(cipher chosen, random, cert chain)
+  C->>CA: 3. Verify cert chain<br/>+ domain match + expiry
+  CA-->>C: Trusted ✓
+  C->>S: 4. Key exchange (ECDHE)
+  S->>C: 4. Key exchange (ECDHE)
+  Note over C,S: Both derive same<br/>symmetric session key
+  C->>S: 5. Encrypted HTTP request
+  S->>C: 5. Encrypted HTTP response
+```
+
 Simplified flow when you visit `https://example.com`:
 
 1. **Client hello** - browser sends supported TLS versions, cipher suites, a random number.

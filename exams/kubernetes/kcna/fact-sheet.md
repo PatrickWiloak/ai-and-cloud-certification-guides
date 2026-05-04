@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Kubernetes and Cloud Native Associate (KCNA) Fact Sheet
 
 ## Exam Overview

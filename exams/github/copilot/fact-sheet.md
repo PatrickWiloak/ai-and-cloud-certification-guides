@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # GitHub Copilot Certification Fact Sheet
 
 ## Exam Overview

@@ -26,6 +26,26 @@ For something like "send me an email when this webhook fires" - this was wildly 
 
 ## How it works
 
+```mermaid
+sequenceDiagram
+  autonumber
+  participant U as User
+  participant P as Platform
+  participant R as Runtime instance
+  U->>P: Request
+  alt Cold start (no warm runtime)
+    P->>R: Provision micro-VM<br/>load code (~100-500ms)
+    R-->>P: Ready
+  else Warm (recent traffic)
+    P->>R: Reuse existing runtime
+  end
+  R->>R: Execute your handler
+  R-->>P: Response + execution metrics
+  P-->>U: Response
+  Note over P,R: Bills for execution<br/>time only (1ms increments)
+  Note over R: Idle for 5-15 min →<br/>platform tears it down
+```
+
 When a request comes in:
 
 1. The platform spins up a small isolated runtime ("container," "micro-VM," whatever)

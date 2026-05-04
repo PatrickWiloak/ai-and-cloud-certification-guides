@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Azure AZ-400 DevOps Engineer Expert - Comprehensive Fact Sheet
 
 ## Exam Overview

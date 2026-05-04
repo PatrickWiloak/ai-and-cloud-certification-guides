@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # AWS Certified Machine Learning - Specialty (MLS-C01) - Fact Sheet
 
 > ⚠️ **RETIRED April 15, 2025.** No longer available for new candidates. Replaced by **[AWS Machine Learning Engineer - Associate (MLA-C01)](../../associate/ml-engineer-mla-c01/fact-sheet.md)**. Material preserved as historical reference.

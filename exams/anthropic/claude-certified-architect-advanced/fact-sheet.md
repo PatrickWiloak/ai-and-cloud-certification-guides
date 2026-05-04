@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # CCA-A - Fact Sheet
 
 ## Quick Reference (Preliminary)

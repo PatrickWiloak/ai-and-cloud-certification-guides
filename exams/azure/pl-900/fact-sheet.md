@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # PL-900: Microsoft Power Platform Fundamentals - Comprehensive Fact Sheet
 
 ## Exam Overview

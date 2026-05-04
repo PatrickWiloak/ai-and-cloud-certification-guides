@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Google Cloud Professional Data Engineer - Fact Sheet
 
 ## Quick Reference

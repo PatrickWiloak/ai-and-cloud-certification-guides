@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # CompTIA Cloud+ (CV0-004) Fact Sheet
 
 ## Quick Reference

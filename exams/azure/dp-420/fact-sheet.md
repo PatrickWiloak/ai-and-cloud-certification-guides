@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Azure DP-420 Certification Fact Sheet
 ## Designing and Implementing Cloud-Native Applications Using Microsoft Azure Cosmos DB
 

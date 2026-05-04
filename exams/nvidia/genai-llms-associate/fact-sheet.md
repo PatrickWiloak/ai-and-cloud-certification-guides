@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # NVIDIA Certified Associate - Generative AI and LLMs (NCA-GENL) Fact Sheet
 
 ## Exam Overview

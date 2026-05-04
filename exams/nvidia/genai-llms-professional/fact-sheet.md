@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # NVIDIA Generative AI & LLMs Professional - Fact Sheet
 
 ## Quick Reference

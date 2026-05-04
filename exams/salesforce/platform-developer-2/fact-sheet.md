@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Salesforce Platform Developer II (PDII) - Fact Sheet
 
 ## Quick Reference

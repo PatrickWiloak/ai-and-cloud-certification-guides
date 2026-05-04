@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Azure DP-300 Certification Fact Sheet
 
 ## Comprehensive Quick Reference Guide for Administering Microsoft Azure SQL Solutions

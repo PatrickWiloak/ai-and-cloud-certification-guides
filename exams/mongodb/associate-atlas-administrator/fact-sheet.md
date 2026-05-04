@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # MongoDB Associate Atlas Administrator - Fact Sheet
 
 ## 📋 Exam Overview

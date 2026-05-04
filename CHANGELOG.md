@@ -6,6 +6,15 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 ---
 
+## [2026-05-03] - Frontmatter scale-out, six more concept diagrams
+
+### Changed
+
+- **Frontmatter backfill on the remaining 123 cert fact-sheets**. Every cert in the freshness ledger now shows a real `last-updated` date instead of "unknown". `validate-frontmatter.sh` goes from 123 warnings to 0.
+- **Six new Mermaid diagrams** added to concept pages that previously had no visual: `cicd-explained.md` (pipeline stages with delivery vs deployment branch), `fine-tuning-vs-rag.md` (decision tree: knowledge vs behavior problem), `embeddings-and-vector-search.md` (query → embedding → cosine-similarity ranking), `shared-responsibility-model.md` (IaaS/PaaS/SaaS layered with you-vs-provider color coding), `serverless-explained.md` (sequence diagram of cold start vs warm), `tls-and-https.md` (sequence diagram of TLS handshake including CA chain verification).
+
+---
+
 ## [2026-05-03] - Freshness backfill, hands-on index, automation guards
 
 ### Added

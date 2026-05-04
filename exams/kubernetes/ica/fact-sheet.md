@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Istio Certified Associate - Fact Sheet
 
 ## Exam Identity

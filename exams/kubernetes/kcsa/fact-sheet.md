@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Kubernetes and Cloud Native Security Associate (KCSA) Fact Sheet
 
 ## Exam Overview

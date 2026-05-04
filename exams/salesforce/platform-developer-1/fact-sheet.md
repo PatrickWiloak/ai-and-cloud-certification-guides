@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Salesforce Platform Developer I (PD1) - Fact Sheet
 
 ## Quick Reference

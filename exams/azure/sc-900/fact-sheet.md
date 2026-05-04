@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Azure SC-900: Microsoft Security, Compliance, and Identity Fundamentals - Fact Sheet
 
 ## Exam Overview

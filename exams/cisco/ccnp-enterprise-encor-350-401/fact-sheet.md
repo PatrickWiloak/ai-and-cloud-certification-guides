@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # CCNP Enterprise ENCOR (350-401) - Fact Sheet
 
 ## Quick Reference

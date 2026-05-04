@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # VCP-DCV (2V0-21.23) - Fact Sheet
 
 ## Quick Reference

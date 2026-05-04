@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # MS-900 Microsoft 365 Fundamentals - Fact Sheet
 
 ## Quick Reference

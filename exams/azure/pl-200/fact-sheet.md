@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # PL-200: Microsoft Power Platform Functional Consultant Associate - Comprehensive Fact Sheet
 
 ## Exam Information

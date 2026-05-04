@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # AZ-700 Azure Network Engineer Associate - Fact Sheet
 
 ## Quick Reference

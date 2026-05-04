@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Azure DP-203: Data Engineering on Microsoft Azure - Fact Sheet
 
 ## Exam Overview

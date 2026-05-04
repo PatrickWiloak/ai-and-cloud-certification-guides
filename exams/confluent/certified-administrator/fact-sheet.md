@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Confluent Certified Administrator for Apache Kafka - Fact Sheet
 
 ## 📋 Exam Overview

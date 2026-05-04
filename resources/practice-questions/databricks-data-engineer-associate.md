@@ -1,6 +1,6 @@
 # Databricks Data Engineer Associate - Practice Questions
 
-15 scenario-based questions for Databricks DE Associate prep.
+25 scenario-based questions for Databricks DE Associate prep.
 
 > **Cert page:** [exams/databricks/data-engineer-associate/](../../exams/databricks/data-engineer-associate/)
 
@@ -276,10 +276,190 @@ D. IAM only
 
 ---
 
+### Question 16
+**Scenario:** A Delta table has accumulated 10,000 small files from frequent micro-batch writes. Read latency is poor. Which command compacts files without changing schema?
+
+A. `OPTIMIZE table_name` (combined with `ZORDER BY` for clustering on common filter columns)
+B. `VACUUM`
+C. `CONVERT TO DELTA`
+D. `MSCK REPAIR`
+
+<details>
+<summary>Answer</summary>
+
+**Correct: A**
+
+**Why:** OPTIMIZE bin-packs small files into ~1 GB target files; ZORDER BY (when added) co-locates rows by a column for skipping. VACUUM removes old data files past the retention period.
+</details>
+
+---
+
+### Question 17
+**Scenario:** Difference between MERGE INTO and a separate DELETE + INSERT pattern?
+
+A. They produce the same output
+B. MERGE INTO is atomic in a single transaction and supports WHEN MATCHED / WHEN NOT MATCHED clauses with conditions; manual delete+insert needs explicit transaction management and is error-prone
+C. MERGE is slower
+D. MERGE only works on partitioned tables
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** MERGE INTO is the canonical Delta upsert. Atomic, supports complex match conditions, CDC-friendly. Manual delete+insert has race conditions and double the I/O.
+</details>
+
+---
+
+### Question 18
+**Scenario:** Delta Live Tables (DLT) - what does Auto Loader solve?
+
+A. Cluster autoscaling
+B. Incremental ingestion of new files from cloud storage with exactly-once semantics, schema evolution, and a rescued data column for malformed rows
+C. SQL query optimization
+D. Hyperparameter tuning
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Auto Loader (`cloudFiles` source) tracks processed files in a checkpoint, processes only new arrivals, and handles schema drift gracefully. Standard pattern for ingesting from S3 / ADLS / GCS into bronze Delta tables.
+</details>
+
+---
+
+### Question 19
+**Scenario:** Unity Catalog: which scope does `GRANT SELECT ON SCHEMA` apply to?
+
+A. Single table
+B. All current and future tables/views in the schema (and their columns)
+C. The whole metastore
+D. Cluster only
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Schema-level grants cascade to current and future objects unless explicitly overridden. Use schema grants for team-wide access; table grants for fine-grained.
+</details>
+
+---
+
+### Question 20
+**Scenario:** Bronze ingests raw JSON. Silver applies cleansing. Gold serves aggregates. Typical refresh cadence?
+
+A. All three refresh hourly
+B. Bronze near-real-time (Auto Loader / DLT continuous), Silver follows bronze (often same DLT pipeline), Gold on business-aligned schedule (hourly/daily) or on-demand
+C. Gold refreshes first
+D. Bronze is daily only
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Medallion architecture: bronze captures raw arrival, silver normalizes for joinability, gold aggregates for BI. Refresh frequencies cascade based on downstream needs.
+</details>
+
+---
+
+### Question 21
+**Scenario:** Time Travel in Delta - which is true?
+
+A. You can query historical versions with `VERSION AS OF` or `TIMESTAMP AS OF` until VACUUM removes the underlying files (default retention 7 days)
+B. Time Travel is unlimited
+C. Time Travel is a paid add-on
+D. Time Travel only works on partitioned tables
+
+<details>
+<summary>Answer</summary>
+
+**Correct: A**
+
+**Why:** Delta keeps version history in `_delta_log/`. Old data files remain queryable until VACUUM removes them past `delta.deletedFileRetentionDuration` (default 7 days). For longer retention, raise the property.
+</details>
+
+---
+
+### Question 22
+**Scenario:** A nightly notebook job fails 1 in 5 times due to transient cluster startup issues. Best fix?
+
+A. Manual retry every morning
+B. Configure job-level retries and use Jobs Compute (job clusters) - fresh cluster per run, not shared all-purpose, plus library version pinning
+C. Switch to interactive cluster
+D. Disable logging
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Job clusters spin up fresh per run, isolating from drift on shared clusters. Retries handle transient failures. Pin library versions for reproducibility.
+</details>
+
+---
+
+### Question 23
+**Scenario:** Photon - what is it and when does it help most?
+
+A. A SQL syntax extension
+B. A vectorized C++ query engine that replaces the JVM operator implementations - largely benefits SQL/DataFrame workloads with heavy CPU work (joins, aggregations); minimal benefit for IO-bound or UDF-heavy code
+C. A serverless tier
+D. A model registry
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Photon accelerates analytic SQL/DF workloads. Best ROI on heavy joins/aggregations on large columnar data. Python UDFs and external IO get less benefit since the bottleneck is elsewhere.
+</details>
+
+---
+
+### Question 24
+**Scenario:** A streaming pipeline reads Kafka and writes Delta. What configuration achieves exactly-once?
+
+A. Disable checkpoints
+B. Spark Structured Streaming with unique checkpoint location per query and Delta sink (Delta's transaction log provides idempotency); avoid `failOnDataLoss=false` unless intentional
+C. Use foreachBatch always
+D. Set startingOffsets=latest
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Structured Streaming + Delta gives exactly-once when checkpoint location is unique and the sink is transactional. Delta's transaction log handles re-runs safely.
+</details>
+
+---
+
+### Question 25
+**Scenario:** Cost optimization: workload runs 16 hours/day, idle 8 hours. Best cluster choice?
+
+A. All-purpose cluster running 24/7
+B. Job cluster + Workflows scheduling, or SQL Warehouse with auto-stop set to 5-15 min idle - pay only when running
+C. Photon disabled
+D. Use serverless for everything
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Auto-stop is the simplest cost lever (idle == off). Job clusters scale to zero between runs by design. SQL Warehouses have native auto-stop.
+</details>
+
+---
+
 ## Scoring guide
 
-- **13-15:** Schedule the exam.
-- **10-12:** Re-read weak-area notes.
-- **<10:** Hands-on Delta Lake / DLT practice + re-read fact-sheet.
+- **22-25:** Schedule the exam.
+- **17-21:** Re-read weak-area notes.
+- **<17:** Hands-on Delta Lake / DLT practice + re-read fact-sheet.
 
 DE Associate exam: ~45 questions, 90 minutes. Multi-choice + multi-select. Strong focus on Delta Lake operations, DLT, ELT patterns, and Unity Catalog.

@@ -1,6 +1,6 @@
 # Snowflake SnowPro Core - Practice Questions
 
-15 scenario-based questions for SnowPro Core prep.
+25 scenario-based questions for SnowPro Core prep.
 
 > **Cert page:** [exams/snowflake/snowpro-core/](../../exams/snowflake/snowpro-core/)
 
@@ -276,10 +276,190 @@ D. JSON isn't supported
 
 ---
 
+### Question 16
+**Scenario:** A team queries a 1 TB table frequently filtered by `transaction_date`. Performance is poor. What helps most?
+
+A. Add a B-tree index
+B. Define a clustering key on `transaction_date` so micro-partitions are co-located by date and pruning is effective
+C. Larger warehouse only
+D. Disable result cache
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Snowflake doesn't have B-tree indexes. Clustering keys re-organize micro-partitions on the chosen columns so queries that filter on those columns scan fewer partitions. Use Automatic Clustering for steady maintenance. Reclustering has cost - apply only on heavily filtered, large tables.
+</details>
+
+---
+
+### Question 17
+**Scenario:** A virtual warehouse is X-Small but queries are slow due to long scans. The bottleneck shows full-scan on a 5 TB table. What's the lever?
+
+A. Add more rows
+B. Resize the warehouse (X-Small to Small / Medium / Large) - more compute scales scan throughput linearly; combine with clustering / pruning to reduce data read
+C. Switch to Standard edition
+D. Disable result cache
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Warehouse size doubles with each step (X-Small=1 credit/hr, Small=2, etc.) and roughly doubles compute. For pure scan-bound queries, larger warehouses help proportionally. Better: prune so you scan less in the first place. The two strategies stack.
+</details>
+
+---
+
+### Question 18
+**Scenario:** Time Travel default retention for a permanent Standard-edition table?
+
+A. 0 days
+B. 1 day (configurable up to 1 day on Standard, up to 90 days on Enterprise+)
+C. 30 days
+D. Forever
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Standard edition: 1 day. Enterprise+: up to 90 days. Time Travel allows AT/BEFORE queries, UNDROP, and CLONE from a past point. Fail-safe (additional 7 days, recoverable only by Snowflake support) follows Time Travel.
+</details>
+
+---
+
+### Question 19
+**Scenario:** Loading a 1 TB nightly dump from S3 - what's the fastest approach?
+
+A. Many small INSERT statements
+B. COPY INTO from a stage with files split into ~100-250 MB compressed chunks, multiple files in parallel; the warehouse parallelizes file ingestion across compute nodes
+C. Single 1 TB file
+D. Bulk PUT from a laptop
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** COPY INTO scales by parallelizing file ingestion. Snowflake docs recommend ~100-250 MB compressed file size for best parallelism. Single huge file or many tiny files both hurt throughput. Use Snowpipe for continuous ingest.
+</details>
+
+---
+
+### Question 20
+**Scenario:** Streams and Tasks - which describes their relationship?
+
+A. Streams replace tables
+B. Streams capture row-level changes (CDC) on a table; Tasks schedule SQL/Procedure execution. Combine them: a task runs on a schedule, consumes the stream's changes, processes them, advancing the stream offset on commit
+C. Tasks send email
+D. Streams require external Kafka
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Streams + Tasks is the native CDC pipeline pattern. Stream tracks INSERTs/UPDATEs/DELETEs since last consumption. Task schedules a MERGE or other downstream load. Self-contained ELT inside Snowflake.
+</details>
+
+---
+
+### Question 21
+**Scenario:** Sharing data with a partner outside your account without copying?
+
+A. SFTP export
+B. Secure Data Sharing - producer creates a share with selected objects; consumer accounts query in real time without data movement
+C. S3 bucket
+D. Snowpipe
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Secure Data Sharing is the native Snowflake feature. Zero-copy, no ETL, near-real-time. Consumer pays only for compute when querying. Use the Marketplace for monetized sharing or for browsing public datasets.
+</details>
+
+---
+
+### Question 22
+**Scenario:** Data masking on PII columns visible only to authorized roles?
+
+A. Manual filtering in every query
+B. Column-level Dynamic Data Masking policy applied to the column - masks values for unauthorized roles, returns clear values for authorized roles, transparent at query time
+C. Encrypt with KMS
+D. Drop the column
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Dynamic Data Masking is policy-based: define a UDF-like masking policy and apply to columns. Row Access Policies handle row-level filtering. Both are transparent and cannot be bypassed by app-side code.
+</details>
+
+---
+
+### Question 23
+**Scenario:** A user reports: "the query returned in 0 ms, no compute used." What happened?
+
+A. Bug
+B. Result cache hit - identical query within the cache TTL (default 24h) returned the prior result without using a warehouse
+C. Time Travel
+D. Snowpipe
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Snowflake's result cache returns prior results for byte-identical queries (same SQL, same role, no time-dependent functions, underlying micro-partitions unchanged). Free, instantaneous. To force re-compute, suspend cache or modify the query.
+</details>
+
+---
+
+### Question 24
+**Scenario:** Query history shows a query "spilled to remote storage" - what does that mean?
+
+A. Network failure
+B. Query needed more memory than the warehouse had so it spilled intermediate results to local SSD and then to remote (S3) storage - significantly slower; resize warehouse, optimize query, or reduce data scanned
+C. Backup completed
+D. Streaming write
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Snowflake spills (1) to local SSD, then (2) to remote storage when local is exhausted. Remote spill is a strong signal that the warehouse is undersized for the workload or that the query is producing massive intermediate state.
+</details>
+
+---
+
+### Question 25
+**Scenario:** Account-level security baseline beyond basic users/roles?
+
+A. Public access only
+B. Network policies (allow-list IPs), MFA enforcement, SCIM for user lifecycle from your IdP, key-pair auth for service accounts, password policies, audit via ACCESS_HISTORY view
+C. Disable encryption
+D. Single shared admin
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Layered baseline: network controls + identity (MFA/SCIM) + service account keys + audit trail. ACCESS_HISTORY (Enterprise+) tracks who accessed what columns/tables - critical for compliance reporting.
+</details>
+
+---
+
 ## Scoring guide
 
-- **13-15:** Schedule the exam.
-- **10-12:** Re-read architecture + Time Travel sections.
-- **<10:** Hands-on Snowflake practice + re-read fact-sheet.
+- **22-25:** Schedule the exam.
+- **17-21:** Re-read architecture + Time Travel sections.
+- **<17:** Hands-on Snowflake practice + re-read fact-sheet.
 
 SnowPro Core: 100 questions, 115 minutes, 750/1000 (~75%) to pass. Foundational - tests architecture, SQL, account admin, performance, and core features. Hands-on with a free trial highly recommended.

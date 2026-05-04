@@ -1,6 +1,6 @@
 # Cisco CCNA (200-301) - Practice Questions
 
-15 scenario-based questions for CCNA prep.
+25 scenario-based questions for CCNA prep.
 
 > **Cert page:** [exams/cisco/ccna-200-301/](../../exams/cisco/ccna-200-301/)
 
@@ -276,10 +276,190 @@ D. Neither encrypts
 
 ---
 
+### Question 16
+**Scenario:** Two switches are connected by a trunk link. VLAN 10 traffic passes but VLAN 20 doesn't. What's the most likely cause?
+
+A. STP blocked
+B. VLAN 20 not allowed on the trunk (allowed-vlan list missing it) or VLAN 20 not created on one of the switches
+C. CDP disabled
+D. PoE issue
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Trunks default to allowing all VLANs but operators often prune. Also, both ends must have the VLAN created in the VLAN database for traffic to forward. Check `show interfaces trunk` and `show vlan brief`.
+</details>
+
+---
+
+### Question 17
+**Scenario:** RSTP convergence after a link failure is dramatically faster than 802.1D STP. Why?
+
+A. Different math
+B. RSTP uses proposal/agreement handshakes and per-port roles (alternate, backup) that pre-compute alternate paths, instead of waiting for the 30-50s timer-based transitions
+C. RSTP runs at L1
+D. RSTP doesn't use BPDUs
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** RSTP (802.1w) replaces timer-based listening/learning with explicit handshakes; alternate ports already know they're backups and can take over immediately. Convergence drops from ~30-50s to sub-second on simple topologies.
+</details>
+
+---
+
+### Question 18
+**Scenario:** A LAN has a single DHCP server in VLAN 10. Hosts in VLAN 20 don't get IPs. What's needed on the VLAN 20 SVI?
+
+A. NAT
+B. `ip helper-address <DHCP-server-IP>` - relays DHCP broadcasts as unicast to the server
+C. Disable DHCP snooping
+D. ACL deny
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** DHCP DISCOVER is a broadcast; routers don't forward broadcasts. The `ip helper-address` command on the receiving SVI converts the broadcast to a unicast aimed at the DHCP server, which uses the giaddr to determine which subnet to allocate from.
+</details>
+
+---
+
+### Question 19
+**Scenario:** A small office shares one public IP across 50 internal hosts. Which NAT type?
+
+A. Static NAT
+B. PAT (NAT overload) - one public IP, many internal hosts disambiguated by source port
+C. Dynamic NAT one-to-one
+D. Twice NAT
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** PAT (Port Address Translation) overloads a single public IP using the L4 source port to disambiguate connections. Standard for SOHO and most enterprise edge cases. Static NAT is one-to-one (servers); dynamic NAT pools require multiple public IPs.
+</details>
+
+---
+
+### Question 20
+**Scenario:** Configuring a wireless LAN: which mode is most common in enterprise deployments?
+
+A. Standalone autonomous APs
+B. Lightweight APs managed by a Wireless LAN Controller (WLC) using CAPWAP, with central config and roaming
+C. Mesh only
+D. Ad-hoc
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Controller-based (lightweight + WLC) deployment is standard for enterprise: centralized policy, fast roaming, RF management. Standalone APs scale poorly past a handful. CAPWAP tunnels traffic between AP and WLC.
+</details>
+
+---
+
+### Question 21
+**Scenario:** Network monitoring: which protocol is best for collecting traffic flow records (source/dest IPs, bytes, ports)?
+
+A. SNMP
+B. NetFlow / IPFIX - exports per-flow metadata to a collector for traffic analysis
+C. Syslog
+D. ICMP
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** NetFlow (Cisco) and IPFIX (standards-based) export flow records summarizing traffic, used for security, capacity, and billing analysis. SNMP polls counters; Syslog is event log; ICMP is ping/diagnostics.
+</details>
+
+---
+
+### Question 22
+**Scenario:** IPv6: how does a host learn its global unicast address on a typical enterprise LAN?
+
+A. DHCPv4
+B. SLAAC (Stateless Address Autoconfiguration) using router advertisements + EUI-64 or random IID, optionally combined with DHCPv6 for DNS info
+C. Manual only
+D. ARP
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Routers advertise a /64 prefix; hosts append a 64-bit interface ID (EUI-64 from MAC, or RFC 7217 stable random) to form the global unicast. DHCPv6 is optional and often used for "other" config (DNS) only.
+</details>
+
+---
+
+### Question 23
+**Scenario:** Spine-leaf vs traditional 3-tier (core/distribution/access) - the key architectural difference?
+
+A. Spine-leaf has more layers
+B. Spine-leaf provides predictable East-West latency (every leaf is one hop from any spine, no oversubscription) - better for data center workloads dominated by server-to-server traffic
+C. They're identical
+D. Spine-leaf is wireless
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Modern data centers run heavy East-West (server-to-server) traffic that 3-tier handles poorly. Spine-leaf flattens the topology: every leaf connects to every spine, ECMP routing balances load, predictable two-hop max between any servers.
+</details>
+
+---
+
+### Question 24
+**Scenario:** SD-WAN replaces or augments which traditional WAN technology in most deployments?
+
+A. Replaces L2 switching
+B. Replaces or augments MPLS by using multiple internet/broadband links with application-aware overlay routing, encrypted tunnels, and centralized policy
+C. Replaces Wi-Fi
+D. Replaces L1 cabling
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** SD-WAN abstracts the underlay (broadband, LTE, MPLS) and steers traffic per-application based on real-time link quality. Cuts MPLS spend, simplifies branch deployment, integrates security. Cisco's offerings: Viptela, Meraki SD-WAN.
+</details>
+
+---
+
+### Question 25
+**Scenario:** Network automation: a team wants to push the same VLAN config to 50 switches reliably. Best approach?
+
+A. Telnet from a script with copy-paste
+B. Use Ansible (or similar) with idempotent network modules over SSH/NETCONF, version the config in git
+C. Manual SSH each switch
+D. SNMP write
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Idempotent automation tools handle drift, partial failures, and rollback. Ansible's `ios_*` modules (or NETCONF/RESTCONF for newer platforms) are the standard. Git provides change history and review. Telnet copy-paste is brittle and unauditable.
+</details>
+
+---
+
 ## Scoring guide
 
-- **13-15:** Schedule the exam.
-- **10-12:** Re-read OSPF + ACL + IP services sections; subnetting drills.
-- **<10:** Subnetting fluency first, then re-attempt.
+- **22-25:** Schedule the exam.
+- **17-21:** Re-read OSPF + ACL + IP services sections; subnetting drills.
+- **<17:** Subnetting fluency first, then re-attempt.
 
 CCNA: ~100-120 questions, 120 minutes. Includes simulation labs (Packet Tracer-style configuration tasks). These multiple-choice questions test concepts; build hands-on fluency in Packet Tracer / GNS3 too.

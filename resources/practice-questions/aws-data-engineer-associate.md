@@ -1,6 +1,6 @@
 # AWS Certified Data Engineer - Associate (DEA-C01) - Practice Questions
 
-20 scenario-based questions mapped to the four exam domains. Use these alongside [the official AWS sample questions](https://d1.awsstatic.com/training-and-certification/docs-data-engineer-associate/AWS-Certified-Data-Engineer-Associate_Sample-Questions.pdf) and the AWS Skill Builder Official Practice Exam.
+25 scenario-based questions mapped to the four exam domains. Use these alongside [the official AWS sample questions](https://d1.awsstatic.com/training-and-certification/docs-data-engineer-associate/AWS-Certified-Data-Engineer-Associate_Sample-Questions.pdf) and the AWS Skill Builder Official Practice Exam.
 
 > **Cert page:** [exams/aws/associate/data-engineer-dea-c01/](../../exams/aws/associate/data-engineer-dea-c01/)
 > **Fact sheet:** [fact-sheet.md](../../exams/aws/associate/data-engineer-dea-c01/fact-sheet.md)
@@ -416,11 +416,101 @@ D. Pass via Firehose record headers
 
 ---
 
+### Question 21
+**Scenario:** A daily ETL writes ~5 GB of small Parquet files to S3 then queries with Athena. Queries are slow. Best fix?
+
+A. Add more memory to Athena
+B. Compact small files into ~128 MB files (use AWS Glue compaction / Iceberg compaction / a periodic Glue job that bin-packs); also partition by frequently filtered columns to enable partition pruning
+C. Switch to Redshift
+D. Use larger instance types
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Athena (and most query engines on S3) suffers from the small-file problem - per-file overhead dominates. Aim for 128 MB-1 GB files, columnar format (Parquet/ORC), and partitioned by query predicates. Iceberg or Delta with their compaction utilities automate this.
+</details>
+
+---
+
+### Question 22
+**Scenario:** A streaming pipeline writes to Kinesis Data Streams. Consumer can't keep up; iterator age grows. What's the canonical scaling lever?
+
+A. Larger consumer instance
+B. Increase shards (resharding) - throughput scales linearly with shard count; consumer needs to be sharded too (KCL workers, Lambda parallelization factor, or Kinesis Data Firehose parallelism)
+C. Smaller batch size
+D. Add SQS
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Kinesis Data Streams scales by shards (1 MB/sec or 1000 records/sec write per shard, 2 MB/sec read). When iterator age (consumer lag) grows, either scale up shards or scale up consumers. Enhanced fan-out gives each consumer dedicated 2 MB/sec.
+</details>
+
+---
+
+### Question 23
+**Scenario:** A team needs slowly-changing dimensions (Type 2) on a Redshift fact-and-dimension model. Best implementation?
+
+A. Multiple tables
+B. SCD Type 2 logic via MERGE or stored procedure: when a dim row changes, expire the old row (set effective_end_date) and insert a new row with the new values and a new surrogate key; downstream facts join on surrogate keys for point-in-time accuracy
+C. Drop and recreate
+D. Truncate dim daily
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** SCD Type 2 preserves historical dimension states. Standard analytical pattern for "as-of" reporting. Redshift supports MERGE; alternatively use UPDATE + INSERT in a transaction. The surrogate key + effective dates is the textbook pattern.
+</details>
+
+---
+
+### Question 24
+**Scenario:** Data quality - a pipeline must reject batches that violate schema or row-count thresholds before downstream loads. Best AWS service?
+
+A. Manual SQL checks
+B. AWS Glue Data Quality (DQDL rules) attached to a Glue job - validates schema, completeness, freshness, distribution; can fail the job, route bad data to quarantine, and emit metrics to CloudWatch
+C. Athena alone
+D. Lambda crons
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Glue Data Quality is the AWS-native data quality framework. DQDL declarative rules cover the common quality checks. Integrates with Glue jobs and Glue Studio. Open-source alternative: Great Expectations or Deequ.
+</details>
+
+---
+
+### Question 25
+**Scenario:** A team migrates a 50 TB on-prem Hadoop cluster to AWS. Which combination minimizes total project risk?
+
+A. Lift-and-shift to EC2
+B. Phased: data first (DataSync or Snowball Edge for the bulk + DataSync delta for ongoing changes) → metadata to Glue Catalog → workloads incrementally to EMR or refactored to Athena/Redshift, with parallel run for validation
+C. Big bang cutover
+D. Use only S3
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Phased migrations with parallel-run validation are the lower-risk path for large data systems. DataSync handles ongoing sync; Snowball Edge for the initial bulk if network is slow. Refactoring to managed services (Athena, Redshift) where possible reduces ongoing ops.
+</details>
+
+---
+
 ## Scoring guide
 
-- **18-20 correct (90%+):** Strong. Schedule the exam.
-- **15-17 correct (75-89%):** Solid. Targeted re-study on any wrong-answer domain, then schedule.
-- **12-14 correct (60-74%):** Re-read the relevant notes and try again in a week.
-- **<12 correct (<60%):** Spend 2-3 more weeks on weak domains before retesting.
+- **23-25 correct (92%+):** Strong. Schedule the exam.
+- **19-22 correct (76-91%):** Solid. Targeted re-study on any wrong-answer domain, then schedule.
+- **15-18 correct (60-75%):** Re-read the relevant notes and try again in a week.
+- **<15 correct (<60%):** Spend 2-3 more weeks on weak domains before retesting.
 
 Pair these with the [official sample questions](https://d1.awsstatic.com/training-and-certification/docs-data-engineer-associate/AWS-Certified-Data-Engineer-Associate_Sample-Questions.pdf) and an AWS Skill Builder practice exam for full coverage.

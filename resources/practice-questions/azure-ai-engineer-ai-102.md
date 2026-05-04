@@ -1,6 +1,6 @@
 # Azure AI Engineer Associate (AI-102) - Practice Questions
 
-15 scenario-based questions for AI-102 prep.
+25 scenario-based questions for AI-102 prep.
 
 > **Cert page:** [exams/azure/ai-102/](../../exams/azure/ai-102/)
 
@@ -276,10 +276,186 @@ D. Application Insights
 
 ---
 
+### Question 16
+**Scenario:** A team uses Azure AI Search with vector index for a RAG bot. Retrieval relevance is poor on multi-sentence questions. Which change usually helps most?
+
+A. Switch from cosine similarity to dot product
+B. Enable hybrid retrieval (BM25 keyword + vector) and add a semantic ranker
+C. Increase the embedding model temperature
+D. Reduce chunk size to 50 tokens
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Hybrid (keyword + vector) + semantic ranking consistently outperforms vector-only on multi-sentence queries because the ranker re-orders the top-N candidates using a cross-encoder. AI Search exposes both as a single query option. Embedding similarity metric and temperature have far smaller effects.
+</details>
+
+---
+
+### Question 17
+**Scenario:** Your application sends 8K-token prompts to GPT-4o thousands of times a day, often with the same long system prompt. Cost is high. What helps most?
+
+A. Switch to GPT-3.5
+B. Enable prompt caching on the static system prompt prefix so cached input tokens are billed at a discounted rate
+C. Disable streaming
+D. Add more context
+
+**Correct: B**
+
+**Why:** Azure OpenAI supports prompt caching for repeated prompt prefixes (and a "global standard" deployment uses it). Cached tokens are charged at a fraction of normal input rate. Splitting the static system prompt up front and the variable user content at the end maximizes hit rate.
+
+---
+
+### Question 18
+**Scenario:** A developer wants to enrich documents in AI Search with custom logic during indexing (e.g., call an internal classifier). Which feature?
+
+A. Custom skill - exposed as a Web API skill in the AI Search skillset
+B. Built-in OCR
+C. Indexer schedule
+D. Power Automate
+
+<details>
+<summary>Answer</summary>
+
+**Correct: A**
+
+**Why:** AI Search skillsets chain enrichment steps. Custom skills are HTTPS endpoints (Azure Function is common) that follow the skill input/output contract, letting you plug in classification, redaction, or domain-specific extractors during indexing.
+</details>
+
+---
+
+### Question 19
+**Scenario:** Bot Framework: which choice connects a published bot to Microsoft Teams without rewriting code?
+
+A. Build a separate Teams app
+B. Add a Microsoft Teams channel in Azure Bot resource configuration
+C. Webhook proxy
+D. Azure Logic Apps
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Azure Bot resources support multiple "channels" (Teams, Web Chat, Direct Line, SMS, etc.) via configuration. The bot logic runs once; channels handle protocol translation. Each channel has its own configuration page in the portal.
+</details>
+
+---
+
+### Question 20
+**Scenario:** Document Intelligence: which model type is best for extracting fields from a custom contract layout that varies slightly across vendors?
+
+A. Prebuilt invoice model
+B. Custom neural model trained on labeled samples (5+ per layout)
+C. Read API only
+D. Layout API only
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Custom neural models handle layout variation (vs custom template models which are stricter on positioning). Train on 5+ labeled samples per variant and the model generalizes across similar but non-identical layouts. Layout API gives you raw structure but no field labels.
+</details>
+
+---
+
+### Question 21
+**Scenario:** A team needs to generate captions for product images at scale, in multiple languages. Which combination is most direct?
+
+A. Computer Vision describe + Translator
+B. Custom Vision
+C. Document Intelligence + Speech
+D. Azure OpenAI vision input + multilingual prompt
+
+<details>
+<summary>Answer</summary>
+
+**Correct: D**
+
+**Why:** GPT-4o (and similar) accept image input plus a multilingual prompt and produce captions in any target language in one call. Computer Vision describe + Translator works but adds latency and a translation step. Custom Vision classifies, doesn't caption.
+</details>
+
+---
+
+### Question 22
+**Scenario:** Responsible AI: a chatbot occasionally outputs ungrounded answers ("hallucinations") despite having retrieval-based context. Which mitigations stack best?
+
+A. Lower temperature only
+B. Layered: tighter retrieval + system prompt that says "if not in context, say I don't know" + Azure AI Studio Groundedness evaluation in CI + Content Safety Groundedness Detection at runtime
+C. Switch models
+D. Add more training data
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Hallucinations are a multi-cause problem - retrieval, prompting, and evaluation all contribute. Stacked defenses: improve retrieval quality, instruct the model to abstain, evaluate offline with Groundedness metric, detect at runtime with Content Safety. Single levers (temperature, model swap) rarely solve it alone.
+</details>
+
+---
+
+### Question 23
+**Scenario:** Speech Service: how do you build a voicebot that can be interrupted mid-sentence by the user?
+
+A. Polling
+B. Speech SDK with continuous recognition + push-to-talk on the synthesized audio so the engine can stop output when user speech is detected (barge-in)
+C. Cancel after each turn
+D. Use REST API only
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Barge-in / interruption requires continuous recognition (not single-shot) plus the ability to stop the TTS playback when speech is detected. Speech SDK exposes both. REST API is request/response, not appropriate for full-duplex conversation.
+</details>
+
+---
+
+### Question 24
+**Scenario:** A team builds a multi-agent app in Azure AI Studio's prompt flow. Which design ensures observability and reproducibility across runs?
+
+A. Print to console
+B. Enable trace + log to Application Insights, save flow versions, parameterize models so swapping deployments is one-line
+C. Manual notes
+D. Disable telemetry
+
+<details>
+<summary>Answer</summary>
+
+**Correct: B**
+
+**Why:** Prompt flow tracing emits per-node spans to App Insights (latency, tokens, errors). Versioned flows + parameterized model deployments make A/B comparison and rollback trivial. This is the GenAI equivalent of structured logging + feature flags.
+</details>
+
+---
+
+### Question 25
+**Scenario:** Pricing: which decision lever has the largest direct impact on monthly Azure OpenAI spend for a bursty workload?
+
+A. Choosing PTU (provisioned throughput units) for steady high volume vs pay-as-you-go for bursty
+B. Number of API keys
+C. Region
+D. Resource group name
+
+<details>
+<summary>Answer</summary>
+
+**Correct: A**
+
+**Why:** PTU buys reserved throughput at a flat hourly rate - cheaper if utilization is high, expensive if idle. Pay-as-you-go is per-token, no commitment - fits bursty / unpredictable load. Wrong choice can swing costs 5-10x. Region affects availability and data residency, not directly the unit price for the same SKU.
+</details>
+
+---
+
 ## Scoring guide
 
-- **13-15:** Schedule the exam.
-- **10-12:** Re-read prompt engineering + responsible AI sections.
-- **<10:** Hands-on with Azure AI Studio + re-read fact-sheet.
+- **22-25:** Schedule the exam.
+- **17-21:** Re-read prompt engineering + responsible AI sections.
+- **<17:** Hands-on with Azure AI Studio + re-read fact-sheet.
 
 AI-102: ~50 questions, 100 minutes, 700/1000 to pass. Strong focus on Azure AI services portfolio and modern GenAI patterns (RAG, prompt flow, evaluation).

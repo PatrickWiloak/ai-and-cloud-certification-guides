@@ -125,7 +125,7 @@ Each data product consists of:
 2. **Transformation**: Domain-specific business logic
 3. **Output Ports**: APIs, datasets, events for consumers
 4. **Metadata**: Schema, documentation, lineage, quality metrics
-5. **Observability**: Monitoring, alerting, SLA tracking
+5. [**Observability**](../../learn/glossary.md#term-observability): Monitoring, alerting, SLA tracking
 
 ---
 
@@ -148,7 +148,7 @@ Each data product consists of:
 |-----------|---------|--------------|
 | **Owner** | Accountable person/team | Domain expert, product manager |
 | **SLA** | Quality and availability guarantees | Freshness, completeness, uptime |
-| **Schema** | Data structure definition | Versioned, backward compatible |
+| [**Schema**](../../learn/glossary.md#term-schema) | Data structure definition | Versioned, backward compatible |
 | **Documentation** | Usage instructions and context | Examples, business definitions |
 | **Access Policies** | Who can consume the data | Request-based, self-service |
 

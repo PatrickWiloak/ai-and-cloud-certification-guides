@@ -42,7 +42,7 @@ flowchart TD
 
 | You want to... | Use |
 |----------------|-----|
-| Give the model access to your docs / database / wiki | **RAG** |
+| Give the model access to your docs / database / wiki | [**RAG**](../glossary.md#term-rag-retrieval-augmented-generation) |
 | Make answers reflect data that updates daily | **RAG** |
 | Cite sources / show provenance | **RAG** |
 | Multi-tenant: each tenant has different data | **RAG** with metadata filters |

@@ -139,7 +139,7 @@ flowchart LR
 
 | Component | Purpose | Key Features |
 |-----------|---------|--------------|
-| **SIEM** | Security event correlation | Real-time alerting, threat detection |
+| [**SIEM**](../../learn/glossary.md#term-siem-security-information-and-event-management) | Security event correlation | Real-time alerting, threat detection |
 | **UEBA** | User behavior analytics | Anomaly detection, risk scoring |
 | **Audit Logging** | Record all access events | Immutable logs, compliance reporting |
 | **Threat Intelligence** | Enrich security context | IP reputation, known threats |
@@ -167,7 +167,7 @@ flowchart LR
 | **Application Proxy** | AWS Verified Access | Identity-aware application proxy |
 | **Service Mesh** | AWS App Mesh | mTLS between services |
 | **DNS Security** | Route 53 Resolver DNS Firewall | DNS-level filtering |
-| **WAF** | AWS WAF | Application layer protection |
+| [**WAF**](../../learn/glossary.md#term-waf-web-application-firewall) | AWS WAF | Application layer protection |
 
 ### Monitoring Layer
 
@@ -195,7 +195,7 @@ flowchart LR
 |-----------|--------------|---------|
 | **Identity Provider** | Microsoft Entra ID | Enterprise identity and access |
 | **Conditional Access** | Entra Conditional Access | Context-aware access policies |
-| **MFA** | Entra MFA | Multi-factor authentication |
+| [**MFA**](../../learn/glossary.md#term-mfa-multi-factor-authentication) | Entra MFA | Multi-factor authentication |
 | **PIM** | Privileged Identity Management | Just-in-time privileged access |
 | **App Proxy** | Entra Application Proxy | Secure access to on-premises apps |
 
@@ -206,7 +206,7 @@ flowchart LR
 | **Microsegmentation** | NSGs + ASGs | Network-level segmentation |
 | **Private Connectivity** | Azure Private Link | Private access to PaaS services |
 | **ZTNA** | Entra Global Secure Access | Zero trust network access |
-| **Firewall** | Azure Firewall Premium | Network and application filtering |
+| [**Firewall**](../../learn/glossary.md#term-firewall) | Azure Firewall Premium | Network and application filtering |
 | **WAF** | Azure WAF on Application Gateway | Web application protection |
 
 ### Monitoring Layer

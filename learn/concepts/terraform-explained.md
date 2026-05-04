@@ -169,10 +169,10 @@ Don't use the same state for prod and dev. Don't.
 ## Terraform vs the alternatives
 
 - [**CloudFormation**](../glossary.md#term-cloudformation) (AWS-only) - native, JSON/YAML, slower iteration than Terraform.
-- **Pulumi** - Terraform-like but in real programming languages (TypeScript, Python, Go). Same state model.
+- [**Pulumi**](../glossary.md#term-pulumi) - Terraform-like but in real programming languages (TypeScript, Python, Go). Same state model.
 - **CDK** (AWS Cloud Development Kit) - write CloudFormation in TypeScript/Python. AWS-native.
-- **Ansible** - configuration management. Sometimes used for infra; not its sweet spot.
-- **Terragrunt** - thin wrapper over Terraform that helps with DRY across many environments and stacks.
+- [**Ansible**](../glossary.md#term-ansible) - configuration management. Sometimes used for infra; not its sweet spot.
+- [**Terragrunt**](../glossary.md#term-terragrunt) - thin wrapper over Terraform that helps with DRY across many environments and stacks.
 
 For multi-cloud or vendor-neutral: Terraform.
 For AWS-only with a developer-first team: CDK is great.

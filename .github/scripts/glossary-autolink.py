@@ -17,13 +17,28 @@ Safety:
 Run: python3 .github/scripts/glossary-autolink.py [--dry-run]
 """
 
+import os
 import re
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 GLOSSARY = ROOT / "learn" / "glossary.md"
-TARGET_DIRS = [ROOT / "learn" / "concepts", ROOT / "resources" / "hands-on-projects"]
+
+TARGET_DIRS = [
+    ROOT / "learn" / "concepts",
+    ROOT / "topics",
+    ROOT / "resources" / "hands-on-projects",
+    ROOT / "resources" / "architecture-patterns",
+    ROOT / "resources" / "networking-deep-dives",
+]
+
+# Single-file globs for new content shapes that live directly under resources/.
+TARGET_FILE_GLOBS = [
+    "resources/decision-matrix-*.md",
+    "resources/postmortem-*.md",
+    "resources/playlist-*.md",
+]
 
 MAX_LINKS_PER_FILE = 5
 
@@ -87,17 +102,8 @@ def parse_glossary():
 
 
 def relpath_to_glossary(file_path: Path) -> str:
-    """Compute the relative path from file_path to learn/glossary.md."""
-    rel = Path("/" + str(GLOSSARY.relative_to(ROOT)))
-    file_rel = Path("/" + str(file_path.relative_to(ROOT)))
-    # Walk up from the file's directory to find common parent.
-    up = ".." * (len(file_rel.parts) - 2)  # -2: leading slash + filename
-    parts = ["..", "..", "glossary.md"]  # default: from learn/concepts/ or resources/hands-on-projects/
-    if "concepts" in str(file_path):
-        return "../glossary.md"
-    if "hands-on-projects" in str(file_path):
-        return "../../learn/glossary.md"
-    return "../../learn/glossary.md"
+    """Compute the relative path from file_path's directory to learn/glossary.md."""
+    return os.path.relpath(GLOSSARY, file_path.parent)
 
 
 def link_terms_in_file(file_path: Path, terms: dict, dry_run: bool) -> int:
@@ -159,15 +165,28 @@ def main():
     print(f"Loaded {len(terms)} glossary terms.")
     total_links = 0
     files_changed = 0
+    target_files = []
     for d in TARGET_DIRS:
+        if not d.exists():
+            continue
         for f in sorted(d.glob("*.md")):
             if f.name == "README.md":
                 continue
-            n = link_terms_in_file(f, terms, dry_run)
-            if n > 0:
-                files_changed += 1
-                total_links += n
-                print(f"  {f.relative_to(ROOT)}: {n} link{'s' if n != 1 else ''}")
+            target_files.append(f)
+    for pattern in TARGET_FILE_GLOBS:
+        for f in sorted(ROOT.glob(pattern)):
+            target_files.append(f)
+
+    seen = set()
+    for f in target_files:
+        if f in seen:
+            continue
+        seen.add(f)
+        n = link_terms_in_file(f, terms, dry_run)
+        if n > 0:
+            files_changed += 1
+            total_links += n
+            print(f"  {f.relative_to(ROOT)}: {n} link{'s' if n != 1 else ''}")
     mode = "(dry run)" if dry_run else "(applied)"
     print(f"\n{files_changed} files changed, {total_links} links added {mode}.")
 

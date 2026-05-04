@@ -25,18 +25,18 @@ Scale: 1 (poor) → 5 (excellent).
 
 | Tool | Multi-cloud | Language | State | Modules | Coverage | Drift | Lock-in | Learning curve | Total |
 |---|---|---|---|---|---|---|---|---|---|
-| **Terraform** | 5 | 3 (HCL DSL) | 4 (S3+DynamoDB / GCS / Azure Blob backends) | 5 (huge registry) | 5 | 4 (terraform plan) | 3 (HCL is portable; HashiCorp BSL since 2023) | 3 (HCL takes some learning) | 32 |
+| [**Terraform**](../learn/glossary.md#term-terraform) | 5 | 3 (HCL DSL) | 4 (S3+DynamoDB / GCS / Azure Blob backends) | 5 (huge registry) | 5 | 4 (terraform plan) | 3 (HCL is portable; HashiCorp BSL since 2023) | 3 (HCL takes some learning) | 32 |
 | **OpenTofu** | 5 | 3 (HCL, fork) | 4 | 4 (mostly TF-compatible) | 4 (slightly behind TF) | 4 | 5 (Apache 2.0 OSS) | 3 | 32 |
-| **Pulumi** | 5 | 5 (TS / Python / Go / .NET / YAML) | 4 (Pulumi Cloud or self-host) | 4 | 4 | 4 | 4 | 4 (real lang familiar) | 34 |
+| [**Pulumi**](../learn/glossary.md#term-pulumi) | 5 | 5 (TS / Python / Go / .NET / YAML) | 4 (Pulumi Cloud or self-host) | 4 | 4 | 4 | 4 | 4 (real lang familiar) | 34 |
 | **AWS CloudFormation** | 1 (AWS-only) | 2 (JSON / YAML) | 5 (managed by AWS) | 4 (CFN modules + StackSets) | 5 (AWS) | 4 (drift detection native) | 1 (AWS-only) | 3 | 25 |
 | **AWS CDK** | 1 (AWS-only) | 5 (TS / Python / Java / .NET / Go) | 5 (synthesizes to CFN) | 4 (constructs library) | 5 (AWS) | 4 (via CFN) | 1 | 4 (real lang) | 29 |
-| **Bicep** (Azure) | 1 (Azure-only) | 4 (Bicep DSL, much cleaner than ARM) | 5 (managed by Azure) | 4 (modules + Template Specs) | 5 (Azure) | 4 (what-if) | 1 (Azure-only) | 4 | 28 |
+| [**Bicep**](../learn/glossary.md#term-bicep) (Azure) | 1 (Azure-only) | 4 (Bicep DSL, much cleaner than ARM) | 5 (managed by Azure) | 4 (modules + Template Specs) | 5 (Azure) | 4 (what-if) | 1 (Azure-only) | 4 | 28 |
 | **GCP Deployment Manager** | 1 (GCP-only) | 2 (YAML / Jinja / Python templates) | 4 | 2 | 3 | 3 | 1 | 3 | 19 |
 | **Crossplane** | 5 (K8s-native, providers for AWS/Azure/GCP/etc) | 4 (K8s YAML / Composition / KCL) | 5 (etcd-backed via K8s API) | 4 (Compositions) | 4 | 5 (K8s reconciler) | 3 | 2 (K8s + new mental model) | 32 |
 
 ## Recommendations by scenario
 
-- **Single cloud, AWS, ops-team builds and operates infra** → **CloudFormation** is the conservative pick (zero new tooling); **CDK** if your team prefers code over YAML.
+- **Single cloud, AWS, ops-team builds and operates infra** → [**CloudFormation**](../learn/glossary.md#term-cloudformation) is the conservative pick (zero new tooling); **CDK** if your team prefers code over YAML.
 - **Single cloud, Azure** → **Bicep**. Modern Azure-native, much better than ARM JSON.
 - **Multi-cloud or planning multi-cloud** → **Terraform** or **OpenTofu**. Terraform if you accept HashiCorp BSL; OpenTofu if you need fully open-source / Linux Foundation governance.
 - **Software engineering team that resents HCL** → **Pulumi**. Real programming languages, real tests, real abstractions. Pays off at scale.

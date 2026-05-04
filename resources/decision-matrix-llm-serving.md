@@ -40,7 +40,7 @@ Scale: 1 (poor) → 5 (excellent).
 | **OpenAI** | 5 | 4 | 5 (GPT-4 / o-series) | 5 | 4 | 2 (OpenAI only) | 3 (Azure OpenAI for stricter privacy) |
 | **AWS Bedrock** | 4 | 4 | 5 (Claude + Llama + Mistral + Titan) | 5 | 4 | 5 (multi-model) | 5 (AWS native, HIPAA, BAA) |
 | **Azure OpenAI** | 4 | 4 | 5 | 5 | 4 | 2 (OpenAI only) | 5 (Azure native) |
-| **Vertex AI** | 4 | 4 | 4 (Gemini + partners) | 5 | 4 | 4 (multi-model) | 5 (GCP native) |
+| [**Vertex AI**](../learn/glossary.md#term-vertex-ai) | 4 | 4 | 4 (Gemini + partners) | 5 | 4 | 4 (multi-model) | 5 (GCP native) |
 | **Together / Fireworks / Groq** | 5 | 5 (Groq is wildly fast) | 3-4 (open models) | 5 | 3 | 4 | 3 |
 
 ## Recommendations by scenario

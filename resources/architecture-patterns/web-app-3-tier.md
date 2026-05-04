@@ -270,7 +270,7 @@ flowchart TB
 ### Architecture Components
 
 #### Network Layer
-- **VPC**: Isolated network with CIDR block (e.g., 10.0.0.0/16)
+- [**VPC**](../../learn/glossary.md#term-vpc-virtual-private-cloud): Isolated network with CIDR block (e.g., 10.0.0.0/16)
 - **Subnets**:
   - Public subnets (2+ AZs): 10.0.1.0/24, 10.0.2.0/24
   - Private app subnets (2+ AZs): 10.0.11.0/24, 10.0.12.0/24
@@ -280,9 +280,9 @@ flowchart TB
 - **Route Tables**: Separate for public and private subnets
 
 #### Presentation Tier
-- **CloudFront**: CDN for global content delivery
-- **Route 53**: DNS management and routing
-- **Application Load Balancer (ALB)**:
+- [**CloudFront**](../../learn/glossary.md#term-cloudfront): CDN for global content delivery
+- [**Route 53**](../../learn/glossary.md#term-route-53): DNS management and routing
+- [**Application Load Balancer (ALB)**](../../learn/glossary.md#term-alb-application-load-balancer):
   - Internet-facing
   - Target groups for web instances
   - SSL/TLS termination
@@ -307,7 +307,7 @@ flowchart TB
   - Multi-AZ for high availability
   - Session storage and caching
 - **Alternative**: ECS/EKS for containerized applications
-- **Lambda**: For specific microservices or async processing
+- [**Lambda**](../../learn/glossary.md#term-lambda): For specific microservices or async processing
 
 #### Data Tier
 - **Amazon RDS**:

@@ -42,8 +42,8 @@ Lakehouse architecture combines the flexibility of data lakes with the performan
 |---------|-----------|----------------|-----------|
 | **Storage** | Object storage (cheap) | Proprietary (expensive) | Object storage (cheap) |
 | **Data Types** | Structured, semi, unstructured | Structured only | All types |
-| **Schema** | Schema-on-read | Schema-on-write | Both |
-| **ACID** | No | Yes | Yes |
+| [**Schema**](../../learn/glossary.md#term-schema) | Schema-on-read | Schema-on-write | Both |
+| [**ACID**](../../learn/glossary.md#term-acid) | No | Yes | Yes |
 | **Performance** | Slow for SQL | Fast for SQL | Fast for SQL |
 | **Cost** | Low storage, variable compute | High (coupled) | Low storage, elastic compute |
 | **ML Support** | Native | Limited | Native |

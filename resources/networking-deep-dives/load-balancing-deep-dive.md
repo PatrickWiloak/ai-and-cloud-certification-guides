@@ -66,7 +66,7 @@ Operates at the HTTP/HTTPS level. Inspects the application payload to make intel
 
 ### AWS Load Balancers
 
-**Application Load Balancer (ALB) - Layer 7**
+[**Application Load Balancer (ALB) - Layer 7**](../../learn/glossary.md#term-alb-application-load-balancer)
 - HTTP/HTTPS traffic routing
 - Path-based and host-based routing rules
 - Target groups: instances, IPs, Lambda functions, containers
@@ -76,7 +76,7 @@ Operates at the HTTP/HTTPS level. Inspects the application payload to make intel
 - Pricing: hourly charge + LCU (Load Balancer Capacity Units)
 - Docs: https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html
 
-**Network Load Balancer (NLB) - Layer 4**
+[**Network Load Balancer (NLB) - Layer 4**](../../learn/glossary.md#term-nlb-network-load-balancer)
 - Ultra-high performance (millions of requests per second)
 - Static IP addresses (one per AZ) and Elastic IP support
 - Preserves source IP address

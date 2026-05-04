@@ -241,7 +241,7 @@ AWS DC    GCP DC
 
 ### Approaches
 
-**Infrastructure as Code**
+[**Infrastructure as Code**](../../learn/glossary.md#term-iac-infrastructure-as-code)
 - Define security policies in Terraform for all clouds
 - Use modules per cloud that implement the same logical policy
 - Store policies in version control and enforce via CI/CD
@@ -312,7 +312,7 @@ On-premises:
 
 - **Cloud-native**: AWS IPAM, Azure IPAM (preview), GCP does not have a native IPAM service
 - **Third-party**: Infoblox, NetBox, phpIPAM
-- **Terraform**: Use data sources and variables to enforce CIDR allocation
+- [**Terraform**](../../learn/glossary.md#term-terraform): Use data sources and variables to enforce CIDR allocation
 
 ### IPv6 Considerations
 

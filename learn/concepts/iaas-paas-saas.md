@@ -26,7 +26,7 @@ The classic visualization:
 | Oven      | You               | You           | Provider | Provider |
 | Plates    | You               | You           | You      | Provider |
 | Table     | You               | You           | You      | Provider |
-|           | **On-prem**       | **IaaS**      | **PaaS** | **SaaS** |
+|           | **On-prem**       | [**IaaS**](../glossary.md#term-iaas-infrastructure-as-a-service)      | [**PaaS**](../glossary.md#term-paas-platform-as-a-service) | [**SaaS**](../glossary.md#term-saas-software-as-a-service) |
 
 ```mermaid
 flowchart TB

@@ -40,11 +40,11 @@ Serverless API architecture is a cloud-native approach to building APIs where:
 
 ### Core Components
 
-1. **API Gateway**: HTTP endpoint management and routing
+1. [**API Gateway**](../../learn/glossary.md#term-api-gateway): HTTP endpoint management and routing
 2. **Functions**: Serverless compute executing business logic
 3. **Database**: Managed database services (DynamoDB, Cosmos DB, Firestore)
 4. **Storage**: Object storage for files and assets
-5. **Authentication**: Managed authentication services
+5. [**Authentication**](../../learn/glossary.md#term-authentication-authn): Managed authentication services
 6. **Event Bus**: Asynchronous event processing
 
 ### Benefits
@@ -651,7 +651,7 @@ stepFunctions:
 #### Lambda
 - **Requests**: $0.20 per million requests
   - 10M requests × $0.20 = $2.00
-- **Compute**: $0.0000166667 per GB-second
+- [**Compute**](../../learn/glossary.md#term-compute): $0.0000166667 per GB-second
   - 10M × 0.2s × 0.5 GB = 1,000,000 GB-seconds
   - $0.0000166667 × 1,000,000 = $16.67
 - **Free Tier**: 1M requests + 400,000 GB-seconds/month free
@@ -1203,8 +1203,8 @@ resource "google_firestore_database" "database" {
 #### API-Level Authentication
 - **API Keys**: Simple but less secure, for public APIs
 - **JWT Tokens**: Standard for stateless authentication
-- **OAuth 2.0**: Industry-standard authorization framework
-- **OpenID Connect**: Identity layer on top of OAuth 2.0
+- [**OAuth 2.0**](../../learn/glossary.md#term-oauth-20): Industry-standard authorization framework
+- [**OpenID Connect**](../../learn/glossary.md#term-oidc-openid-connect): Identity layer on top of OAuth 2.0
 
 #### Provider-Specific Solutions
 - **AWS**: Cognito User Pools, IAM authorizers, Lambda authorizers

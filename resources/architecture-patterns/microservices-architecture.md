@@ -41,7 +41,7 @@ Microservices architecture is a software design approach where:
 
 ### Core Components
 
-1. **API Gateway**: Single entry point for all client requests
+1. [**API Gateway**](../../learn/glossary.md#term-api-gateway): Single entry point for all client requests
 2. **Service Mesh**: Service-to-service communication infrastructure
 3. **Container Orchestration**: Managing containerized services (Kubernetes, ECS)
 4. **Service Registry**: Dynamic service discovery
@@ -251,7 +251,7 @@ flowchart TB
 - **Services**: Stable network endpoint for pods
 - **Deployments**: Declarative updates for pods
 - **ConfigMaps/Secrets**: Configuration management
-- **Ingress**: External access to services
+- [**Ingress**](../../learn/glossary.md#term-ingress): External access to services
 - **HPA**: Horizontal Pod Autoscaler for scaling
 
 #### Managed Kubernetes Options
@@ -269,7 +269,7 @@ flowchart TB
 #### What It Provides
 - **Traffic Management**: Load balancing, routing, retries
 - **Security**: mTLS, authentication, authorization
-- **Observability**: Metrics, tracing, logging
+- [**Observability**](../../learn/glossary.md#term-observability): Metrics, tracing, logging
 - **Resilience**: Circuit breakers, timeouts, fault injection
 
 #### Service Mesh Options
@@ -301,8 +301,8 @@ flowchart TB
 - Event sourcing
 
 #### Provider Services
-- **AWS**: SQS (queues), SNS (pub/sub), EventBridge, Kinesis (streaming)
-- **Azure**: Service Bus, Event Grid, Event Hubs
+- [**AWS**](../../learn/glossary.md#term-aws): SQS (queues), SNS (pub/sub), EventBridge, Kinesis (streaming)
+- [**Azure**](../../learn/glossary.md#term-azure): Service Bus, Event Grid, Event Hubs
 - **GCP**: Pub/Sub, Cloud Tasks
 
 ### Databases (Per Service)

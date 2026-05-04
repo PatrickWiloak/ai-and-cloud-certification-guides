@@ -42,7 +42,7 @@ Active-active architecture runs identical workloads in multiple regions simultan
 |--------|--------------|----------------|
 | **Traffic** | All regions serve traffic | Only primary serves traffic |
 | **Failover** | Automatic, near-instant | Requires failover process (minutes) |
-| **Latency** | Low (nearest region) | Higher for distant users |
+| [**Latency**](../../learn/glossary.md#term-latency) | Low (nearest region) | Higher for distant users |
 | **Cost** | Higher (full capacity in all regions) | Lower (standby can be scaled down) |
 | **Complexity** | High (data sync, conflict resolution) | Moderate (one-way replication) |
 | **Data Consistency** | Eventual (typically) | Strong (single primary) |
@@ -142,14 +142,14 @@ flowchart TB
 | **Global DNS** | Route users to nearest region | Latency-based, geolocation, health checks |
 | **Global Load Balancer** | Distribute traffic globally | Anycast, SSL termination, CDN integration |
 | **Health Checks** | Detect region failures | Endpoint monitoring, automatic failover |
-| **CDN** | Cache static content globally | Edge locations, origin shielding |
+| [**CDN**](../../learn/glossary.md#term-cdn-content-delivery-network) | Cache static content globally | Edge locations, origin shielding |
 
 ### Regional Application Layer
 
 | Component | Purpose | Key Features |
 |-----------|---------|--------------|
 | **Load Balancer** | Regional traffic distribution | SSL termination, health checks |
-| **Compute** | Application logic | Auto-scaling, containerized |
+| [**Compute**](../../learn/glossary.md#term-compute) | Application logic | Auto-scaling, containerized |
 | **Cache** | Reduce database load | In-memory, session management |
 | **Queue** | Async processing | Decouple components, buffer writes |
 
@@ -175,7 +175,7 @@ flowchart TB
 | **CDN** | Amazon CloudFront | Global edge caching |
 | **Compute** | ECS/EKS/Lambda | Regional application compute |
 | **Global Database** | DynamoDB Global Tables | Multi-region, multi-master |
-| **Relational DB** | Aurora Global Database | Multi-region read/write |
+| [**Relational DB**](../../learn/glossary.md#term-relational-db) | Aurora Global Database | Multi-region read/write |
 | **Cache** | ElastiCache Global Datastore | Cross-region Redis replication |
 | **Object Storage** | S3 Cross-Region Replication | Multi-region object storage |
 | **Messaging** | Amazon EventBridge Global Endpoints | Cross-region event routing |
@@ -256,7 +256,7 @@ flowchart TB
 | **CDN** | Cloud CDN | Global edge caching |
 | **Compute** | GKE / Cloud Run / Cloud Functions | Regional compute |
 | **Global Database** | Cloud Spanner | Globally consistent, multi-region |
-| **NoSQL** | Firestore Multi-Region | Multi-region document database |
+| [**NoSQL**](../../learn/glossary.md#term-nosql) | Firestore Multi-Region | Multi-region document database |
 | **Cache** | Memorystore for Redis | Regional caching |
 | **Object Storage** | Cloud Storage (Multi-Region) | Multi-region object storage |
 | **Messaging** | Pub/Sub (Global) | Global messaging service |

@@ -41,7 +41,7 @@ ETL is a data integration process that:
 
 - **Scalable**: Handles growing data volumes
 - **Fault-Tolerant**: Recovers from failures automatically
-- **Idempotent**: Safe to retry without data duplication
+- [**Idempotent**](../../learn/glossary.md#term-idempotent): Safe to retry without data duplication
 - **Observable**: Comprehensive monitoring and logging
 - **Schema-Aware**: Handles schema evolution gracefully
 - **Cost-Efficient**: Optimizes resource utilization
@@ -240,20 +240,20 @@ flowchart LR
 
 ### Ingestion Tools
 
-**AWS**:
+[**AWS**](../../learn/glossary.md#term-aws):
 - AWS Glue: Serverless ETL
 - AWS Data Migration Service (DMS): Database replication
 - AWS Transfer Family: SFTP/FTPS file transfer
 - Amazon Kinesis: Streaming data ingestion
 - Amazon MSK: Kafka-managed service
 
-**Azure**:
+[**Azure**](../../learn/glossary.md#term-azure):
 - Azure Data Factory: Cloud ETL service
 - Azure Database Migration Service: Database migration
 - Azure Event Hubs: Event streaming
 - Azure Stream Analytics: Real-time analytics
 
-**GCP**:
+[**GCP**](../../learn/glossary.md#term-gcp):
 - Cloud Data Fusion: Visual ETL builder
 - Dataflow: Apache Beam pipelines
 - Dataproc: Managed Spark/Hadoop
@@ -1435,7 +1435,7 @@ resource "google_storage_bucket_object" "dataflow_template" {
 **Same assumptions as AWS and Azure**
 
 #### Storage
-- **Cloud Storage**: 10 TB total
+- [**Cloud Storage**](../../learn/glossary.md#term-cloud-storage-gcs): 10 TB total
   - Standard: $0.020/GB × 10,240 GB = $204.80
   - Nearline (archives): 5 TB × $0.010/GB × 5,120 GB = $51.20
 

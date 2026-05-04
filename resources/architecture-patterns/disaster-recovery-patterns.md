@@ -77,7 +77,7 @@ Last Backup    Disaster    Recovery Complete
 1. **Backup Storage**: Durable storage for backups (S3, Blob, GCS)
 2. **Data Replication**: Sync or async replication to DR region
 3. **DNS/Traffic Management**: Route traffic to healthy region
-4. **Infrastructure as Code**: Quickly provision DR environment
+4. [**Infrastructure as Code**](../../learn/glossary.md#term-iac-infrastructure-as-code): Quickly provision DR environment
 5. **Monitoring/Alerting**: Detect failures and trigger failover
 6. **Runbooks**: Documented procedures for failover/failback
 
@@ -271,9 +271,9 @@ Impact: Lower latency, possible data loss
 ### Data Replication Technologies
 
 #### Database Replication
-- **AWS**: RDS Multi-AZ, Aurora Global Database, DynamoDB Global Tables
-- **Azure**: SQL Always On, Cosmos DB Multi-region
-- **GCP**: Cloud SQL HA, Spanner, Firestore Multi-region
+- [**AWS**](../../learn/glossary.md#term-aws): RDS Multi-AZ, Aurora Global Database, DynamoDB Global Tables
+- [**Azure**](../../learn/glossary.md#term-azure): SQL Always On, Cosmos DB Multi-region
+- [**GCP**](../../learn/glossary.md#term-gcp): Cloud SQL HA, Spanner, Firestore Multi-region
 
 #### Storage Replication
 - **AWS**: S3 Cross-Region Replication (CRR), EBS Snapshots
@@ -312,7 +312,7 @@ Impact: Lower latency, possible data loss
 - Drift detection
 
 #### Tools
-- **Terraform**: Multi-cloud, declarative
+- [**Terraform**](../../learn/glossary.md#term-terraform): Multi-cloud, declarative
 - **AWS CloudFormation**: AWS-native
 - **Azure Resource Manager**: Azure-native
 - **Google Cloud Deployment Manager**: GCP-native

@@ -4,10 +4,10 @@
 
 <div align="center">
 
-[![Total Certifications](https://img.shields.io/badge/Certifications-122+-blue.svg)]()
-[![Documentation Links](https://img.shields.io/badge/Docs%20Links-12000+-green.svg)]()
-[![Providers](https://img.shields.io/badge/Providers-22-orange.svg)]()
-[![Study Tracks](https://img.shields.io/badge/Study%20Tracks-12-purple.svg)]()
+![Total Certifications](https://img.shields.io/badge/Certifications-122+-blue.svg)
+![Documentation Links](https://img.shields.io/badge/Docs%20Links-12000+-green.svg)
+![Providers](https://img.shields.io/badge/Providers-22-orange.svg)
+![Study Tracks](https://img.shields.io/badge/Study%20Tracks-12-purple.svg)
 
 **Welcome. Whether you're new to all this or chasing your fifth cert, this is the entry point.**
 

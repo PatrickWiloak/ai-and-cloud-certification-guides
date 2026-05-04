@@ -7,10 +7,9 @@
 4. [Kubernetes on GKE](#kubernetes-on-gke)
 5. [Hybrid and Multi-Cloud (Anthos)](#hybrid-and-multi-cloud-anthos)
 6. [Architecture Patterns](#architecture-patterns)
-7. [Serverless Compute Options](#serverless-compute-options)
-8. [Cost Optimization Strategies](#cost-optimization-strategies)
-9. [Architecture Scenarios](#architecture-scenarios)
-10. [Exam Tips & Strategies](#exam-tips--strategies)
+7. [Cost Optimization Strategies](#cost-optimization-strategies)
+8. [Architecture Scenarios](#architecture-scenarios)
+9. [Exam Tips & Strategies](#exam-tips--strategies)
 
 ---
 

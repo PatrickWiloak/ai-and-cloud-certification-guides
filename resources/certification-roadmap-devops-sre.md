@@ -15,7 +15,7 @@ This comprehensive roadmap guides DevOps Engineers and Site Reliability Engineer
 2. [Foundational Knowledge](#foundational-knowledge)
 3. [Essential Tools & Technologies](#essential-tools--technologies)
 4. [Certification Paths](#certification-paths)
-5. [Learning Resources](#learning-resources)
+5. [Learning Path Recommendations](#learning-path-recommendations)
 6. [Career Progression](#career-progression)
 
 ---

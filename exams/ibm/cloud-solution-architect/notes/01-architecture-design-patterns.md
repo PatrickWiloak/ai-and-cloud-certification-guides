@@ -7,10 +7,7 @@
 - [Event-Driven Architecture](#event-driven-architecture)
 - [Multi-Cloud and Hybrid Cloud](#multi-cloud-and-hybrid-cloud)
 - [High Availability Architecture](#high-availability-architecture)
-- [Disaster Recovery Patterns](#disaster-recovery-patterns)
-- [Serverless Architecture](#serverless-architecture)
-- [Data Architecture Patterns](#data-architecture-patterns)
-- [API Gateway and Management](#api-gateway-and-management)
+- [Exam Tips](#exam-tips)
 
 ---
 

@@ -6,7 +6,6 @@
 - [Logging and Log Analysis](#logging-and-log-analysis)
 - [Distributed Tracing](#distributed-tracing)
 - [Alerting and Notifications](#alerting-and-notifications)
-- [Dashboards and Visualization](#dashboards-and-visualization)
 - [SLIs, SLOs, and SLAs](#slis-slos-and-slas)
 
 ---

@@ -7,10 +7,6 @@
 4. [Practice Testing Strategies](#practice-testing-strategies)
 5. [Time Management](#time-management)
 6. [Note-Taking Methods](#note-taking-methods)
-7. [Memory Techniques](#memory-techniques)
-8. [Avoiding Burnout](#avoiding-burnout)
-9. [Creating Study Plans](#creating-study-plans)
-10. [Environment Optimization](#environment-optimization)
 
 ---
 

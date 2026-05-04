@@ -8,10 +8,10 @@
 >
 > 🎥 [@patrickwiloak](https://youtube.com/@patrickwiloak) | 💼 [LinkedIn](https://www.linkedin.com/in/patricklukewilson/)
 
-[![Certifications](https://img.shields.io/badge/Certifications-122+-blue.svg)]()
-[![Documentation Links](https://img.shields.io/badge/Documentation%20Links-12000+-green.svg)]()
-[![Providers](https://img.shields.io/badge/Providers-22-orange.svg)]()
-[![Free to Use](https://img.shields.io/badge/Free%20to%20Use-Educational-green.svg)]()
+![Certifications](https://img.shields.io/badge/Certifications-122+-blue.svg)
+![Documentation Links](https://img.shields.io/badge/Documentation%20Links-12000+-green.svg)
+![Providers](https://img.shields.io/badge/Providers-22-orange.svg)
+![Free to Use](https://img.shields.io/badge/Free%20to%20Use-Educational-green.svg)
 
 ---
 
@@ -40,7 +40,7 @@ Cross-pillar **[topic index](./topics/)** ties Learn + Build + Reference + Certi
 | 📺 Learn from videos | **[Curated YouTube playlist](./learn/youtube.md)** |
 | 🔍 Compare AWS vs Azure vs GCP for a service | **[Service comparisons](./resources/)** |
 | 🎯 Pick the right certification | **[Study Hub decision tree](./STUDY-HUB.md#-decision-tree-find-your-cert)** |
-| 🚀 Follow a career path | **[Roadmaps](#-certification-roadmaps)** |
+| 🚀 Follow a career path | **[Roadmaps](#certification-roadmaps)** |
 | 📚 Browse all 122+ cert guides | **[STUDY-HUB.md](./STUDY-HUB.md)** |
 
 ---

@@ -19,11 +19,10 @@ A comprehensive guide to designing and implementing scalable Extract, Transform,
 7. [Data Pipeline Patterns](#data-pipeline-patterns)
 8. [Security Considerations](#security-considerations)
 9. [Performance and Scalability](#performance-and-scalability)
-10. [Cost Estimates](#cost-estimates)
-11. [Monitoring and Data Quality](#monitoring-and-data-quality)
-12. [Best Practices](#best-practices)
-13. [Common Use Cases](#common-use-cases)
-14. [Common Pitfalls](#common-pitfalls)
+10. [Monitoring and Data Quality](#monitoring-and-data-quality)
+11. [Best Practices](#best-practices)
+12. [Common Use Cases](#common-use-cases)
+13. [Common Pitfalls](#common-pitfalls)
 
 ---
 

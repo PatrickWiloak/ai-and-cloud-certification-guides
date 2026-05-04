@@ -154,9 +154,9 @@ When you're ready to deploy this somewhere real:
 - **`--gpu-memory-utilization`** - cap memory used. Drop to 0.85 if the GPU is shared.
 - **`--tensor-parallel-size`** - split across N GPUs. Only worth it for big models.
 - **`--enable-prefix-caching`** - cache attention state for repeated prompt prefixes (e.g. system prompts). Big win.
-- [**Authentication**](../../learn/glossary.md#security-identity): vLLM has no auth by default. Put it behind nginx, an API gateway, or a tiny reverse proxy that validates a header.
+- [**Authentication**](../../learn/glossary.md#term-authentication-authn): vLLM has no auth by default. Put it behind nginx, an API gateway, or a tiny reverse proxy that validates a header.
 - **Health endpoint**: `/health`. Wire to your load balancer.
-- [**Container**](../../learn/glossary.md#containers-kubernetes): `vllm/vllm-openai:latest` Docker image is the standard production deploy.
+- [**Container**](../../learn/glossary.md#term-container): `vllm/vllm-openai:latest` Docker image is the standard production deploy.
 
 ## Verification
 

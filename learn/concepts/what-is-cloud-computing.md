@@ -54,7 +54,7 @@ A "cloud provider" is a company that:
 3. Charges by the hour, second, or per request.
 
 The big three:
-- [**AWS**](../glossary.md#aws) (Amazon Web Services) - largest, oldest, widest service catalog
+- [**AWS**](../glossary.md#term-aws) (Amazon Web Services) - largest, oldest, widest service catalog
 - **Microsoft Azure** - strong with enterprises, Office 365 / Active Directory tie-ins
 - **Google Cloud (GCP)** - strong in data, AI/ML, Kubernetes
 

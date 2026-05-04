@@ -10,9 +10,9 @@ last-updated: 2026-05-03
 
 Three flavors of cloud service, sorted by how much the provider does for you:
 
-- [**IaaS**](../glossary.md#cloud-fundamentals) - rent the building blocks (servers, disks, networks). You set everything up.
-- [**PaaS**](../glossary.md#cloud-fundamentals) - rent the platform. You bring code; the provider runs it.
-- [**SaaS**](../glossary.md#cloud-fundamentals) - rent the finished software. You just log in and use it.
+- [**IaaS**](../glossary.md#term-iaas-infrastructure-as-a-service) - rent the building blocks (servers, disks, networks). You set everything up.
+- [**PaaS**](../glossary.md#term-paas-platform-as-a-service) - rent the platform. You bring code; the provider runs it.
+- [**SaaS**](../glossary.md#term-saas-software-as-a-service) - rent the finished software. You just log in and use it.
 
 ## The pizza analogy
 

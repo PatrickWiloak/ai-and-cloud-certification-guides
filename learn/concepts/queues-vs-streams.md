@@ -44,7 +44,7 @@ Queues fit naturally for "do this work, exactly once":
 - **Retry and DLQ semantics** - if a consumer fails, the message returns to the queue or to a dead-letter queue.
 
 Common services:
-- **AWS SQS** (Standard or FIFO), **Azure Service Bus** queues, **GCP Cloud Tasks** / [**Pub/Sub**](../glossary.md#google-cloud-gcp) in queue mode.
+- **AWS SQS** (Standard or FIFO), **Azure Service Bus** queues, **GCP Cloud Tasks** / [**Pub/Sub**](../glossary.md#term-pubsub) in queue mode.
 - For ordered, exactly-once: SQS FIFO, Service Bus with sessions.
 
 ## When to use a stream

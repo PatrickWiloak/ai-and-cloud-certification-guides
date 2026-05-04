@@ -39,8 +39,24 @@ def slugify(s: str) -> str:
     return s
 
 
+def slugify_term(term: str) -> str:
+    """Match the slug logic used by glossary-add-anchors.py for per-term anchors."""
+    s = term.lower()
+    s = re.sub(r"[^\w\s-]", "", s)
+    s = re.sub(r"\s+", "-", s.strip())
+    s = re.sub(r"-+", "-", s)
+    return s
+
+
+# Match lines like:
+#   <a id="term-foo"></a>**Term** -
+# or just:
+#   **Term** -
+ANCHOR_PREFIX_RE = re.compile(r'^<a id="(term-[^"]+)"></a>')
+
+
 def parse_glossary():
-    """Returns dict: term -> section_anchor. Term is the bolded text (may include parens)."""
+    """Returns dict: term -> anchor. Prefers per-term anchor (term-...) over section anchor."""
     terms = {}
     current_section = None
     for line in GLOSSARY.read_text().splitlines():
@@ -49,18 +65,24 @@ def parse_glossary():
             section = m.group(1)
             current_section = slugify(section)
             continue
+        # Strip a leading per-term anchor if present, capturing the anchor id.
+        anchor_id = None
+        a = ANCHOR_PREFIX_RE.match(line)
+        if a:
+            anchor_id = a.group(1)
+            line = line[a.end():]
         m = TERM_RE.match(line)
         if m and current_section:
             term = m.group(1).strip()
-            # Term may have aliases in parens. Use the primary form before "(".
+            # Pick the strongest available anchor: per-term anchor > section anchor.
+            chosen = anchor_id if anchor_id else current_section
             primary = term.split(" (")[0].strip()
             if primary not in terms and len(primary) >= 3:
-                terms[primary] = current_section
-            # Also map the parenthetical alias if present.
+                terms[primary] = chosen
             if " (" in term and ")" in term:
                 alias = term.split(" (", 1)[1].rstrip(")")
                 if alias not in terms and len(alias) >= 3:
-                    terms[alias] = current_section
+                    terms[alias] = chosen
     return terms
 
 

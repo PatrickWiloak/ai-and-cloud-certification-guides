@@ -8,7 +8,7 @@ last-updated: 2026-05-03
 
 ## The one-line answer
 
-[**TLS**](../glossary.md#networking) (Transport Layer Security) is a cryptographic protocol that gives you three things: confidentiality (no eavesdropping), integrity (no tampering), and authenticity (you really are talking to the right server).
+[**TLS**](../glossary.md#term-tls-transport-layer-security) (Transport Layer Security) is a cryptographic protocol that gives you three things: confidentiality (no eavesdropping), integrity (no tampering), and authenticity (you really are talking to the right server).
 
 **HTTPS** is just HTTP running inside TLS. The lock icon in your browser means TLS handled the connection successfully.
 

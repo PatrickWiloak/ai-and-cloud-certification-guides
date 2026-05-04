@@ -250,7 +250,7 @@ The pipeline above is the 70% solution. Real wins come from iterating:
 - **Reranking**: retrieve top-20, rerank with Cohere or a cross-encoder, keep top-5
 - **Query rewriting**: have Claude paraphrase the user's query into 2-3 search variants
 - **Citations**: track chunk IDs through generation, surface to user with deeplinks
-- [**Prompt caching**](../../learn/glossary.md#llms-generative-ai): cache the system prompt + retrieved-context prefix for repeated questions on the same docs ([Prompt caching](../../learn/concepts/prompt-caching.md))
+- [**Prompt caching**](../../learn/glossary.md#term-prompt-caching): cache the system prompt + retrieved-context prefix for repeated questions on the same docs ([Prompt caching](../../learn/concepts/prompt-caching.md))
 
 ## Verification
 

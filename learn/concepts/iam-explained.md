@@ -16,8 +16,8 @@ IAM (Identity and Access Management) is how you answer two questions for every r
 
 Two different things. People mix them up. They're separate.
 
-- [**Authentication (authn)**](../glossary.md#security-identity): prove you are who you say you are. Username/password, MFA, OAuth, certificates, IAM roles. Result: a verified identity.
-- [**Authorization (authz)**](../glossary.md#security-identity): given a verified identity, decide what it's allowed to do. Result: yes / no for a specific action on a specific resource.
+- [**Authentication (authn)**](../glossary.md#term-authentication-authn): prove you are who you say you are. Username/password, MFA, OAuth, certificates, IAM roles. Result: a verified identity.
+- [**Authorization (authz)**](../glossary.md#term-authorization-authz): given a verified identity, decide what it's allowed to do. Result: yes / no for a specific action on a specific resource.
 
 ```mermaid
 flowchart LR

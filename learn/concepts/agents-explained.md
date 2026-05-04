@@ -117,7 +117,7 @@ There are real cases - parallel exploration, separation of concerns where contex
 | **Hallucinated tool calls** | Model invents tool names that don't exist | Strict schema validation; reject and re-prompt with the valid tool list |
 | **Wrong arguments** | Calls a real tool with garbage args | Validate args; surface error back to model so it can correct |
 | **Misinterpretation of tool output** | Tool returns "0 results"; model says "Found 1 result" | Stronger formatting in tool responses; explicit "if result is empty, X" instructions |
-| [**Drift**](../glossary.md#devops-infrastructure-as-code) | After 8 steps the model has forgotten the original goal | Periodic re-injection of original request; summarize-and-restart |
+| [**Drift**](../glossary.md#term-drift) | After 8 steps the model has forgotten the original goal | Periodic re-injection of original request; summarize-and-restart |
 | **Permission escalation** | User says "summarize my emails," agent decides to also delete some | Whitelist allowed actions; require human-in-the-loop for irreversible actions |
 
 ## Real-world agent design rules

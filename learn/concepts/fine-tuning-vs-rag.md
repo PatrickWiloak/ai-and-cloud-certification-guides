@@ -8,7 +8,7 @@ last-updated: 2026-05-03
 
 ## The one-line answer
 
-[**Fine-tuning**](../glossary.md#llms-generative-ai) changes how the model behaves by retraining it on your examples. [**RAG**](../glossary.md#llms-generative-ai) changes what the model knows by giving it your data at query time. They solve different problems. Most teams reach for fine-tuning when they should reach for RAG.
+[**Fine-tuning**](../glossary.md#term-fine-tuning) changes how the model behaves by retraining it on your examples. [**RAG**](../glossary.md#term-rag-retrieval-augmented-generation) changes what the model knows by giving it your data at query time. They solve different problems. Most teams reach for fine-tuning when they should reach for RAG.
 
 ## The default answer for most teams: RAG
 

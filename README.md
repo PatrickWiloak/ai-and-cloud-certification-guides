@@ -2,7 +2,7 @@
 
 <a href="https://noblerworks.com/"><img src="https://raw.githubusercontent.com/Noblerworks/IRONSIGHT/main/nobler-works-banner.JPG" alt="Nobler Works" width="400"></a>
 
-### Built by [Nobler Works](https://noblerworks.com/)
+### Built by [Patrick Wiloak](https://patrickwiloak.com) at [Nobler Works](https://noblerworks.com/)
 
 We build cloud + AI training resources, internal developer platforms, and custom software for teams that need to skill up fast.<br>
 If you want training, integrations, or tooling built for your team, [get in touch](https://noblerworks.com/).
@@ -23,7 +23,7 @@ If you want training, integrations, or tooling built for your team, [get in touc
 >
 > Whether you've never opened a terminal or you're chasing your fifth cert, start here.
 >
-> Created by [Patrick Wiloak](https://patrickwiloak.com) - Ex-AWS Solutions Architect | 10 Years in Tech | 46 Certifications
+> Patrick: Ex-AWS Solutions Architect | 10 Years in Tech | 46 Certifications
 >
 > 🎥 [@patrickwiloak](https://youtube.com/@patrickwiloak) | 💼 [LinkedIn](https://www.linkedin.com/in/patricklukewilson/)
 

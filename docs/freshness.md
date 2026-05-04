@@ -127,6 +127,7 @@ Each row shows when a page was last verified against its source of truth.
 | nvidia/multimodal-genai-associate | 2026-05-03 | [exams/nvidia/multimodal-genai-associate](exams/nvidia/multimodal-genai-associate/) |
 | nvidia/networking-professional | 2026-05-03 | [exams/nvidia/networking-professional](exams/nvidia/networking-professional/) |
 | nvidia/openusd-professional | 2026-05-03 | [exams/nvidia/openusd-professional](exams/nvidia/openusd-professional/) |
+| offensive-security/oscp-pen-200 | 2026-05-03 | [exams/offensive-security/oscp-pen-200](exams/offensive-security/oscp-pen-200/) |
 | oracle/oci-architect-associate | 2026-05-03 | [exams/oracle/oci-architect-associate](exams/oracle/oci-architect-associate/) |
 | oracle/oci-architect-professional | 2026-05-03 | [exams/oracle/oci-architect-professional](exams/oracle/oci-architect-professional/) |
 | oracle/oci-developer-associate | 2026-05-03 | [exams/oracle/oci-developer-associate](exams/oracle/oci-developer-associate/) |
@@ -144,7 +145,6 @@ Each row shows when a page was last verified against its source of truth.
 | snowflake/snowpro-advanced-data-engineer | 2026-05-03 | [exams/snowflake/snowpro-advanced-data-engineer](exams/snowflake/snowpro-advanced-data-engineer/) |
 | snowflake/snowpro-core | 2026-05-03 | [exams/snowflake/snowpro-core](exams/snowflake/snowpro-core/) |
 | vmware/vcp-dcv-2v0-21-23 | 2026-05-03 | [exams/vmware/vcp-dcv-2v0-21-23](exams/vmware/vcp-dcv-2v0-21-23/) |
-| offensive-security/oscp-pen-200 | missing fact-sheet | [exams/offensive-security/oscp-pen-200](exams/offensive-security/oscp-pen-200/) |
 
 ## Concept pages
 

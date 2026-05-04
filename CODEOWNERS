@@ -1,0 +1,13 @@
+# Default owner for everything not explicitly matched below.
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+* @PatrickWiloak
+
+# Repo-level docs
+/README.md @PatrickWiloak
+/STUDY-HUB.md @PatrickWiloak
+/CONTRIBUTING.md @PatrickWiloak
+/CLAUDE.md @PatrickWiloak
+
+# Automation
+/.github/ @PatrickWiloak

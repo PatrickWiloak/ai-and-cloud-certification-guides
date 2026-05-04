@@ -6,6 +6,28 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 ---
 
+## [2026-05-03] - Senior-tier scenarios + strategy, 20 architecture/networking diagrams, 4 new topic indexes, glossary autolink, orphan-checker fix, tier-aware structure validator, repo governance scaffolding
+
+A large day of structural quality work. Six themed batches, all on `main`.
+
+### Added
+
+- **Scenarios + strategy on all 47 senior-tier certs.** Every cert classified senior (AWS Pro / Specialty, Azure Expert / Specialty, GCP Professional, Kubernetes CKS, ISC2 / ISACA, CompTIA mid-senior, Cisco CCNP+, HashiCorp / Databricks / Snowflake "professional" / "advanced", FinOps Professional, VMware VCP, Anthropic Architect Advanced, OSCP, IBM Cloud Security Engineer) now has both `scenarios.md` (6-8 worked exam-style scenarios with options + analysis + takeaway) and `strategy.md` (cert-specific traps, time math, day-of logistics, pattern map). 49 new files, ~50,000 words of original cert-content. Scenarios are illustrative patterns based on each exam's published blueprint - not real exam questions. Files committed in 5 provider-grouped batches (AWS, Azure, GCP, security, other).
+- **20 new Mermaid diagrams** across 16 architecture-pattern files (microservices, event-driven, serverless API, multi-region active-active, CQRS / event sourcing, data pipeline ETL, lakehouse, data mesh, ai-ml-pipeline, disaster recovery, hybrid cloud connectivity, zero trust, cell-based, chaos engineering, strangler fig, api gateway) and all 4 networking-deep-dives (DNS hierarchy, hybrid connectivity options, L4 vs L7 load balancing, multi-cloud networking).
+- **4 new topic indexes**: `topics/ai-ml-systems.md`, `topics/serverless.md`, `topics/sre-and-reliability.md`, `topics/finops.md`. Each follows the established Learn / Compare / Reference / Build / Certify pattern. `topics/README.md` updated to list all 11 topics.
+- **Glossary auto-link script** at `.github/scripts/glossary-autolink.py`. Parses `learn/glossary.md` for bolded terms (335 found) and links the first occurrence in concept + hands-on pages. Caps at 5 links per file; skips code blocks, headings, existing links. Applied: 38 links across 18 files.
+- **Repo governance scaffolding**: `.github/PULL_REQUEST_TEMPLATE.md` (matches CONTRIBUTING.md "in scope / out of scope" framing), `.github/ISSUE_TEMPLATE/{bug_report,content_suggestion,cert_request}.md`, root-level `CODEOWNERS`, root-level `.editorconfig`.
+
+### Changed
+
+- **Tier-aware cert-structure validator.** `validate-cert-structure.sh` now classifies each cert as `senior` or `junior` and only recommends `scenarios.md` + `strategy.md` for senior tiers. Senior = path contains `/professional/`, `/specialty/`, `/expert/`, OR matches a curated cert-basename list (GCP professional certs, Azure expert / specialty, K8s pro, ISC2 / ISACA / OSCP, Cisco CCNP+, HashiCorp / Databricks / Snowflake "professional" / "advanced", FinOps Certified Professional, VMware VCP, Anthropic Architect Advanced, CompTIA mid-senior). Cuts validator warnings from 70 → 0 once senior-cert content was authored.
+- **Orphan-link checker root-cause fix.** Two bugs: root-level markdown (README.md, STUDY-HUB.md, CHANGELOG.md, CONTRIBUTING.md, CLAUDE.md) wasn't in the haystack so anything they linked appeared orphan. Cert `notes/*.md` files were considered orphan even when their parent cert directory was referenced. Result: 310 false-positive orphans → 0 true orphans, 289 covered-by-subtree.
+- **Glossary autolink + orphan checker** wired up. Test scripts pass cleanly against the current tree.
+- **`assets/diagrams/_src/` placeholder cleanup.** Removed `test.drawio` and `test.png` left from initial setup.
+- **Three thin certs filled to baseline structure**: `servicenow/csa/practice-plan.md`, `palo-alto-networks/pcnsa/practice-plan.md`, `offensive-security/oscp-pen-200/{fact-sheet,practice-plan,scenarios,strategy}.md`. Real content based on each exam's existing README / blueprint, not boilerplate.
+
+---
+
 ## [2026-05-03] - 100% concept-page diagram coverage
 
 ### Changed

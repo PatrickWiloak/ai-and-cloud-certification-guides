@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Containers vs VMs
 
 > **5-minute read.**
@@ -28,6 +32,40 @@ Containers solved this by:
 VMs = each tenant gets their own apartment building (with foundations, plumbing, electricity duplicated).
 
 Containers = each tenant gets a unit in a shared building. Same plumbing/electricity/foundation, isolated rooms.
+
+```mermaid
+flowchart TB
+  subgraph VMS[VMs - one OS per app]
+    HW1[Hardware]
+    HV[Hypervisor]
+    OS1[Guest OS 1]
+    OS2[Guest OS 2]
+    OS3[Guest OS 3]
+    A1[App 1]
+    A2[App 2]
+    A3[App 3]
+    HW1 --> HV
+    HV --> OS1 --> A1
+    HV --> OS2 --> A2
+    HV --> OS3 --> A3
+  end
+  subgraph CTR[Containers - shared kernel]
+    HW2[Hardware]
+    HOS[Host OS / kernel]
+    R[Container runtime]
+    C1[App 1]
+    C2[App 2]
+    C3[App 3]
+    C4[App 4]
+    C5[App 5]
+    HW2 --> HOS --> R
+    R --> C1
+    R --> C2
+    R --> C3
+    R --> C4
+    R --> C5
+  end
+```
 
 You can run more containers per host than VMs. Way more. A single mid-size VM can comfortably run dozens of containers.
 

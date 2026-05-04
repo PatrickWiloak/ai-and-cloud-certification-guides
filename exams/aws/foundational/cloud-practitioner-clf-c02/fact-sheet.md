@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # AWS Certified Cloud Practitioner (CLF-C02) - Fact Sheet
 
 ## Quick Reference

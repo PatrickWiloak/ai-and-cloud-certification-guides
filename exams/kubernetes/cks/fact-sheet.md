@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Certified Kubernetes Security Specialist (CKS) Fact Sheet
 
 ## Exam Overview

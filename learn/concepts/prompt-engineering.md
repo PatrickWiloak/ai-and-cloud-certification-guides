@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Prompt Engineering
 
 > **8-minute read.**

@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # ☁️ Cloud From Scratch
 
 > **A non-cert learning path for understanding cloud computing.**

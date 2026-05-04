@@ -9,7 +9,7 @@ This document explains the structure and conventions of the cloud certification 
 This repo is a **markdown knowledge base** for cloud + AI learning - certifications, hands-on patterns, plain-English concepts, and a beginner on-ramp. There is no build step, no test suite, no deployment - it is a content repository served as Markdown via GitHub.
 
 ```
-cloud-certification-study-guides/
+cloud-data-ai-security-zero-to-hero/
 ├── README.md           # Top-level overview + pillars + provider table
 ├── STUDY-HUB.md        # Navigation hub: decision tree, career tracks, full provider table
 ├── CLAUDE.md           # Project context for Claude Code / AI tools

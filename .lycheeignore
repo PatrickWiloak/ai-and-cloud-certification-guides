@@ -1,0 +1,25 @@
+# Vendor URLs that frequently rate-limit or block headless checkers.
+# These are valid but flake under automated checks; skipping reduces noise.
+
+# LinkedIn frequently 999s automated requests
+linkedin\.com
+
+# Reddit blocks non-browser User-Agents
+^https://(www\.)?reddit\.com/
+
+# Some vendor docs serve a JS challenge to bots
+^https://learn\.microsoft\.com/.*\?.*$
+
+# Local file URLs
+^file://
+
+# Mailto and tel
+^mailto:
+^tel:
+
+# YouTube channel and video URLs occasionally flake; spot-check manually
+^https://(www\.)?youtube\.com/
+^https://youtu\.be/
+
+# Internal anchors that reference auto-generated headers (lychee can be picky)
+#chapter-

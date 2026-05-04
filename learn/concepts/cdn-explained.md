@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # CDN Explained
 
 > **5-minute read.**

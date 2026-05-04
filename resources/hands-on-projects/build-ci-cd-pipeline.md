@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Hands-On Project: Build a CI/CD Pipeline
 
 Build a complete continuous integration and continuous deployment pipeline using GitHub Actions.

@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Kubernetes in 10 Minutes
 
 > **8-minute read.**
@@ -28,6 +32,38 @@ You don't tell Kubernetes "run this container on machine 3." You tell it "I want
 This is the **declarative** model: describe the desired state, not the steps to get there.
 
 ## The pieces
+
+```mermaid
+flowchart TB
+  subgraph CP[Control plane]
+    API[API server]
+    SCH[Scheduler]
+    CM[Controller manager]
+    ETCD[(etcd)]
+    API <--> ETCD
+    SCH --> API
+    CM --> API
+  end
+  subgraph N1[Worker node 1]
+    K1[kubelet]
+    P1[Pod A]
+    P2[Pod B]
+    K1 --- P1
+    K1 --- P2
+  end
+  subgraph N2[Worker node 2]
+    K2[kubelet]
+    P3[Pod C]
+    K2 --- P3
+  end
+  USER[kubectl / CI / GitOps] --> API
+  API <--> K1
+  API <--> K2
+  SVC[Service] -.routes traffic.-> P1
+  SVC -.routes traffic.-> P3
+```
+
+The control plane is the brain. Worker nodes run your pods. `kubectl` talks to the API server; everything else flows through it.
 
 ### Cluster
 A collection of machines (called **nodes**) that run your containers. A cluster has a **control plane** (the brain) and **worker nodes** (where containers actually run).

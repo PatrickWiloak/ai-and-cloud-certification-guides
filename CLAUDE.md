@@ -5,7 +5,7 @@ A learning resource for cloud and AI - concepts, hands-on builds, deep reference
 
 ## Structure
 ```
-cloud-certification-study-guides/
+cloud-data-ai-security-zero-to-hero/
 ├── exams/              # Cert-specific study guides (the certify pillar)
 ├── learn/              # Plain-English learning content (the learn pillar)
 │   ├── concepts/       # Bite-size topic pages (5-10 min): cloud + AI primitives
@@ -56,3 +56,9 @@ Backfill is opportunistic. Don't add frontmatter to thousands of files in one PR
 - Plain English, short sentences. Avoid emoji in body text (section markers OK).
 - Cite vendor docs, don't paraphrase. Use the `**[📖 Title](URL)** - description` link format.
 - No verbatim vendor exam questions.
+
+## Automation
+- `.github/workflows/` - link-check (lychee, weekly + on PR), markdown-lint (markdownlint-cli2), structure-validate (custom script).
+- `.github/scripts/validate-cert-structure.sh` - confirm every cert dir has a README; warn on missing fact-sheet, practice-plan, scenarios, strategy.
+- `.github/scripts/build-freshness-ledger.sh` - regenerate `docs/freshness.md` from `last-updated` frontmatter. Run after meaningful content updates.
+- See [docs/freshness.md](./docs/freshness.md) for the per-cert verification ledger.

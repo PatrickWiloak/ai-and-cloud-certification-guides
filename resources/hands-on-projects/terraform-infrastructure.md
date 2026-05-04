@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Hands-On Project: Build Infrastructure with Terraform
 
 Define and deploy cloud infrastructure using Terraform with remote state and modules.

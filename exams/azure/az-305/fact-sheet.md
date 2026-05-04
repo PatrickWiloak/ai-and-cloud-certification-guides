@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Azure AZ-305: Designing Microsoft Azure Infrastructure Solutions - Fact Sheet
 
 ## Quick Reference

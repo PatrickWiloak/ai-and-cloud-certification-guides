@@ -1,0 +1,39 @@
+name: Structure and frontmatter validate
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'exams/**'
+      - 'learn/**'
+      - 'resources/hands-on-projects/**'
+      - '.github/scripts/validate-cert-structure.sh'
+      - '.github/scripts/validate-frontmatter.sh'
+      - '.github/scripts/build-freshness-ledger.sh'
+  pull_request:
+    paths:
+      - 'exams/**'
+      - 'learn/**'
+      - 'resources/hands-on-projects/**'
+      - '.github/scripts/validate-cert-structure.sh'
+      - '.github/scripts/validate-frontmatter.sh'
+      - '.github/scripts/build-freshness-ledger.sh'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run structure validator
+        run: bash .github/scripts/validate-cert-structure.sh
+
+      - name: Run frontmatter validator
+        run: bash .github/scripts/validate-frontmatter.sh
+
+      - name: Build freshness ledger (preview)
+        run: bash .github/scripts/build-freshness-ledger.sh > /tmp/freshness.preview.md && head -40 /tmp/freshness.preview.md

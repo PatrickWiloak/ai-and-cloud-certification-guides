@@ -34,7 +34,8 @@
 | I Want To... | Go To... |
 |--------------|----------|
 | 🌅 Start from absolute zero (terminal, git, HTTP) | [Day One](./learn/day-one/) |
-| 💡 Look up a concept (RAG, VPC, K8s, agents) | [Concepts](./learn/concepts/) |
+| 💡 Look up a concept (RAG, MCP, agents, VPC, K8s) | [Concepts](./learn/concepts/) |
+| 🗂️ Browse by topic across pillars | [Topic indexes](./topics/) |
 | 🎓 Learn cloud without an exam | [Cloud from Scratch](./learn/cloud-from-scratch.md) |
 | 🤖 Learn AI/LLMs without an exam | [AI from Scratch](./learn/ai-from-scratch.md) |
 | 🆕 Start my cloud cert journey | [Beginner Fundamentals](#beginner-fundamentals) |
@@ -45,6 +46,7 @@
 | 💰 Specialize in FinOps | [FinOps Track](#finops-track) |
 | ☸️ Specialize in Kubernetes | [Kubernetes Track](#kubernetes-track) |
 | 📚 Browse all materials | [Resource Library](#-resource-library) |
+| 📅 Per-cert last-verified dates | [Freshness ledger](./docs/freshness.md) |
 
 ---
 
@@ -229,7 +231,9 @@ First-cert path with no cloud background:
 ## 📚 Resource Library
 
 ### Service Comparisons (cross-cloud)
-[Compute](./resources/service-comparison-compute.md) · [Storage](./resources/service-comparison-storage.md) · [Databases](./resources/service-comparison-databases.md) · [Networking](./resources/service-comparison-networking.md) · [AI/ML](./resources/service-comparison-ai-ml.md) · [Containers/K8s](./resources/service-comparison-containers-kubernetes.md) · [Security](./resources/service-comparison-security-tools.md) · [DevOps/CI/CD](./resources/service-comparison-devops-cicd.md) · [Observability](./resources/service-comparison-observability-monitoring.md) · [Serverless](./resources/service-comparison-serverless.md) · [Identity/IAM](./resources/service-comparison-identity-iam.md) · [Messaging](./resources/service-comparison-messaging-queues.md)
+**Cloud:** [Compute](./resources/service-comparison-compute.md) · [Storage](./resources/service-comparison-storage.md) · [Databases](./resources/service-comparison-databases.md) · [Networking](./resources/service-comparison-networking.md) · [AI/ML](./resources/service-comparison-ai-ml.md) · [Containers/K8s](./resources/service-comparison-containers-kubernetes.md) · [Security](./resources/service-comparison-security-tools.md) · [DevOps/CI/CD](./resources/service-comparison-devops-cicd.md) · [Observability](./resources/service-comparison-observability-monitoring.md) · [Serverless](./resources/service-comparison-serverless.md) · [Identity/IAM](./resources/service-comparison-identity-iam.md) · [Messaging](./resources/service-comparison-messaging-queues.md)
+
+**AI:** [Vector databases](./resources/service-comparison-vector-databases.md) · [GenAI platforms](./resources/service-comparison-genai-platforms.md) · [Agent frameworks](./resources/service-comparison-agent-frameworks.md) · [LLM observability](./resources/service-comparison-llm-observability.md)
 
 ### CLI Cheat Sheets
 [AWS](./resources/cli-cheat-sheet-aws.md) · [Azure](./resources/cli-cheat-sheet-azure.md) · [GCP](./resources/cli-cheat-sheet-gcp.md) · [Multi-cloud](./resources/cli-cheat-sheet-comparison.md) · [kubectl](./resources/cli-cheat-sheet-kubectl.md) · [Terraform](./resources/cli-cheat-sheet-terraform.md) · [Docker](./resources/cli-cheat-sheet-docker.md) · [Helm](./resources/cli-cheat-sheet-helm.md) · [GitHub CLI](./resources/cli-cheat-sheet-github-cli.md)
@@ -247,7 +251,7 @@ First-cert path with no cloud background:
 - **Cost Optimization:** Per-cloud playbooks + FinOps principles - [resources/cost-optimization/](./resources/cost-optimization/)
 - **Troubleshooting:** AWS, Azure, GCP, Kubernetes - [resources/troubleshooting/](./resources/troubleshooting/)
 - **Networking Deep Dives:** Hybrid connectivity, multi-cloud, DNS, load balancing - [resources/networking-deep-dives/](./resources/networking-deep-dives/)
-- **Hands-on Projects:** 10 guided builds (3-tier app, CI/CD, monitoring, zero trust, ML model, K8s cluster, Terraform infra, serverless, DR drill) - [resources/hands-on-projects/](./resources/hands-on-projects/)
+- **Hands-on Projects:** 15 guided builds. Cloud: 3-tier app, CI/CD, monitoring, zero trust, ML model, K8s cluster, Terraform infra, serverless, DR drill, data pipeline. AI: RAG pipeline, Claude agent with MCP, run Llama on a single GPU, eval harness, LoRA fine-tune. - [resources/hands-on-projects/](./resources/hands-on-projects/)
 - **Interview Prep:** SA, DevOps, Cloud Engineer, Data Engineer, Security, SRE - [resources/interview-prep/](./resources/interview-prep/)
 
 ### Practice & Strategy

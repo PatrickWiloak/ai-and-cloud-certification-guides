@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # CKAD Fact Sheet - Certified Kubernetes Application Developer
 
 ## Exam Overview

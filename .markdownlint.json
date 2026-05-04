@@ -1,0 +1,13 @@
+{
+  "default": true,
+  "MD013": false,
+  "MD024": { "siblings_only": true },
+  "MD033": { "allowed_elements": ["details", "summary", "br", "div", "p", "img", "a"] },
+  "MD041": false,
+  "MD025": { "front_matter_title": "" },
+  "MD026": { "punctuation": ".,;:!" },
+  "MD036": false,
+  "MD040": false,
+  "MD046": false,
+  "MD034": false
+}

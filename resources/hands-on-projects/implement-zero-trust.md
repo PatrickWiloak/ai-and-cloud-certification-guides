@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Hands-On Project: Implement Zero Trust Security
 
 Implement identity-based access with no implicit network trust.

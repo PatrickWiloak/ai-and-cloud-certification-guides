@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Azure AZ-900 Fundamentals - Comprehensive Fact Sheet
 
 ## Table of Contents

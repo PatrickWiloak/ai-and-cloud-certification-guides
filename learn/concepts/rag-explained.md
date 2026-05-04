@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # RAG Explained
 
 > **8-minute read. Assumes you've read [Embeddings and vector search](./embeddings-and-vector-search.md).**

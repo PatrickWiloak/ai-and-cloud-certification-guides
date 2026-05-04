@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Hands-On Project: Build a Data Pipeline
 
 Build an end-to-end ETL/ELT pipeline from data ingestion to warehouse.

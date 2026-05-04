@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Hands-On Project: Build a Serverless Application
 
 Build a serverless REST API with authentication and a static frontend.

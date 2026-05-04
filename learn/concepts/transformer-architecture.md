@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Transformer Architecture
 
 > **10-minute read. Assumes you've read [LLM basics](./llm-basics.md).**

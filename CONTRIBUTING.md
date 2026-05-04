@@ -142,10 +142,20 @@ When a vendor retires a cert:
 4. Remove the cert from active counts in `README.md` and `STUDY-HUB.md`.
 5. Update any roadmap docs that reference the retired cert.
 
+## Local validation
+
+Two scripts live under `.github/scripts/` and run in CI on every PR:
+
+- `validate-cert-structure.sh` - confirms every `exams/<provider>/<cert>/` has a `README.md`. Surfaces anything missing `fact-sheet.md`, `practice-plan.md`, `scenarios.md`, or `strategy.md` as warnings (not failures). Run locally with `bash .github/scripts/validate-cert-structure.sh`.
+- `build-freshness-ledger.sh` - regenerates [docs/freshness.md](./docs/freshness.md) from each cert's `last-updated:` frontmatter. Run locally with `bash .github/scripts/build-freshness-ledger.sh > docs/freshness.md`.
+
+CI also runs `markdownlint-cli2` against the project's `.markdownlint.json` and a weekly `lychee` link check. The link check posts an issue automatically when broken links appear.
+
 ## Submitting a change
 
 1. Fork the repo and make your changes on a branch.
 2. **Run a spot-check before opening a PR**:
+   - `bash .github/scripts/validate-cert-structure.sh` to confirm structure is intact.
    - `find exams -name "*.md" | xargs -I {} grep -l "broken-pattern" {}` for any cleanup you're doing.
    - Open the affected cert dir and visually confirm that links resolve to existing files.
    - Verify any updated counts (e.g. provider totals) match what's actually on disk.

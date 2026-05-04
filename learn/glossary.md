@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # 📖 Cloud + AI Glossary
 
 > **200+ terms across cloud, AI/ML, DevOps, networking, and security - in plain English.**

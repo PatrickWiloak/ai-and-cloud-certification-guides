@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Hands-On Project: Disaster Recovery Drill
 
 Plan and execute a disaster recovery drill to validate backup and recovery procedures.

@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # 🎥 YouTube - Channels and Videos Worth Your Time
 
 > **A filtered list of YouTube content for learning cloud and AI/ML. No algorithmic slop, no engagement-bait thumbnails - just channels and individual videos that actually teach.**

@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Hands-On Project: Deploy a Machine Learning Model
 
 Train a simple model and deploy it to a production inference endpoint.

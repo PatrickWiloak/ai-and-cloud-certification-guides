@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Embeddings and Vector Search
 
 > **7-minute read.**

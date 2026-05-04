@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # LLM Basics
 
 > **8-minute read.**
@@ -7,6 +11,17 @@
 A large language model (LLM) is a neural network trained on a huge pile of text. Given some text as input, it predicts the next token, then the next, then the next. That's the entire trick. Everything else - chat, code, agents, RAG - is built on top of that one capability.
 
 ## What's actually happening
+
+```mermaid
+flowchart LR
+  T[Your text] --> Tok[Tokenize]
+  Tok --> NN[Transformer]
+  NN --> P[Probability distribution<br/>over vocab]
+  P --> S[Sample one token]
+  S --> A[Append to input]
+  A --> NN
+  S -->|stop token<br/>or length cap| O[Output]
+```
 
 When you "ask ChatGPT a question," here's the sequence:
 

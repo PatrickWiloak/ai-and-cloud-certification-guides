@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Hands-On Project: Deploy a 3-Tier Application
 
 Deploy a production-like three-tier web application with frontend, backend, and database layers.

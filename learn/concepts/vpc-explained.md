@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # VPC Explained
 
 > **6-minute read.**
@@ -37,6 +41,17 @@ The most important VPC concept:
 - **Private subnet** - no route to an internet gateway. Resources here can't be reached from the internet directly.
 
 Typical pattern: web servers in public subnet, DB servers in private subnet. The DB never exposes itself.
+
+```mermaid
+flowchart LR
+  I[Internet] <--> IGW[Internet Gateway]
+  IGW <--> WEB[Public subnet<br/>web servers]
+  WEB --> NAT[NAT Gateway]
+  WEB <--> DB[Private subnet<br/>databases]
+  NAT --> IGW
+```
+
+Inbound traffic stops at the IGW unless explicitly routed to a public subnet. Private subnets reach out via the NAT for things like package updates without ever being inbound-reachable.
 
 ```
                         Internet

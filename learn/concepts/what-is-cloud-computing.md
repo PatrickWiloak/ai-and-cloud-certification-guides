@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # What is Cloud Computing?
 
 > **5-minute read. Plain English.**

@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Hands-On Project: Set Up a Production-Like Kubernetes Cluster
 
 Build a Kubernetes cluster with essential add-ons and deploy a sample application.

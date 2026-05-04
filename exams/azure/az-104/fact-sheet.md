@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Microsoft Azure Administrator (AZ-104) - Fact Sheet
 
 ## Quick Reference

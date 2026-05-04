@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Hands-On Project: Set Up a Monitoring Stack
 
 Deploy Prometheus and Grafana on Kubernetes for comprehensive monitoring and alerting.

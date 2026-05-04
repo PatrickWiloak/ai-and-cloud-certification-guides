@@ -6,6 +6,55 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 ---
 
+## [2026-05-03] - Freshness backfill, hands-on index, automation guards
+
+### Added
+
+- **`resources/hands-on-projects/README.md`** - index for all 15 builds with time estimates, "what you'll have at the end" summaries, and a "how to pick" guide. Closes the discoverability gap where projects were only browsable via directory listing.
+- **`.github/scripts/validate-frontmatter.sh`** - validates YAML frontmatter on concept pages, top-level learn pages, hands-on projects, and cert fact-sheets. Fails on malformed YAML or bad date format; warns on missing or stale (>180d) `last-updated`. Wired into `structure-validate.yml`.
+- **`.github/scripts/check-orphan-links.sh`** - lists `.md` files with no inbound links from other markdown. Manual one-shot, not a workflow gate.
+- **Mermaid diagrams** added to `kubernetes-in-10-minutes.md` (control plane + workers + service routing), `iam-explained.md` (authn/authz request flow), `containers-vs-vms.md` (VM vs container layering).
+
+### Changed
+
+- **`last-updated: 2026-05-03` frontmatter backfilled** on the 21 concept pages, 10 hands-on builds, and 12 high-traffic cert fact-sheets (AWS SAA-C03, SAP-C02, CLF-C02, DVA-C02; Azure AZ-104, AZ-900, AZ-305; GCP Cloud Architect, Cloud Engineer; K8s CKA, CKAD, CKS) plus 4 top-level learn pages (ai-from-scratch, cloud-from-scratch, glossary, youtube) that previously had none.
+- **`build-freshness-ledger.sh`** now scans concept pages, top-level learn pages, and hands-on projects in addition to cert fact-sheets. Output split into four sections.
+- **`docs/freshness.md`** regenerated. Concepts and hands-on sections now show real dates (not "unknown"); cert section still partially "unknown" by design (only top-traffic backfilled this pass).
+- **`structure-validate.yml`** workflow renamed to "Structure and frontmatter validate", expanded to trigger on `learn/**` and `resources/hands-on-projects/**`, and now runs the new frontmatter validator.
+- **`README.md`** - "I'm here to..." table now points to the new hands-on index (with a "with time estimates" hint) and adds a row for `learn/youtube.md` ("Learn from videos").
+
+---
+
+## [2026-05-03] - Round out the four-pillar repo
+
+Major build-out across all four pillars (Learn / Build / Certify / Reference) to bring the AI side to parity with the cloud side, plus CI automation and a topic-based cross-pillar index.
+
+### Added
+
+- **15 new concept pages** in `learn/concepts/`. AI: tool-use-and-function-calling, mcp-explained, agentic-loops, context-windows-and-management, structured-outputs, multimodal-models, quantization-and-distillation, inference-servers, prompt-caching, guardrails-and-safety. Cloud: iam-explained, queues-vs-streams, observability-basics, eventual-consistency, idempotency-explained. Each is 5-10 min, frontmatter, Mermaid where it adds clarity, cross-links to comparisons / topics / certs.
+- **4 AI service comparisons** in `resources/`: vector-databases (Pinecone, Weaviate, Qdrant, Milvus, pgvector, OpenSearch, Azure AI Search, Vertex Vector Search, Bedrock Knowledge Bases, Chroma), genai-platforms (Anthropic, OpenAI, Bedrock, Azure OpenAI, Vertex, Together, Fireworks, Groq), agent-frameworks (Claude Agent SDK, LangGraph, CrewAI, Autogen, OpenAI Agents SDK, Mastra, Semantic Kernel), llm-observability (LangSmith, Langfuse, Helicone, Phoenix, Braintrust, OpenLLMetry, Datadog).
+- **5 AI hands-on builds** in `resources/hands-on-projects/`: build-rag-pipeline (pgvector + Anthropic), build-claude-agent-with-mcp (Claude + filesystem MCP + custom sqlite MCP), run-llama-on-single-gpu (vLLM, OpenAI-compatible endpoint), set-up-eval-harness (golden set, regression detection, CI integration), fine-tune-with-lora (Llama 3.2 3B + peft).
+- **`topics/` cross-pillar index** - 8 pages (README + iam, networking, databases, llms-and-genai, observability, security, kubernetes). Each topic links across Learn + Compare + Reference + Build + Certify so a non-cert visitor can navigate by subject.
+- **CI automation** under `.github/`:
+  - `link-check.yml` - lychee link checker (PR, push, weekly Mondays). Opens an issue automatically on weekly failure.
+  - `markdown-lint.yml` - markdownlint-cli2 against `.markdownlint.json`.
+  - `structure-validate.yml` - runs `validate-cert-structure.sh`. Fails on missing README.md; warns on missing fact-sheet, practice-plan, scenarios, strategy.
+  - Local-runnable scripts: `validate-cert-structure.sh`, `build-freshness-ledger.sh`.
+- **`docs/freshness.md`** - per-cert "last verified" ledger generated from `last-updated` frontmatter. Initial state: 136 cert dirs, all "unknown" pending opportunistic backfill.
+- **Mermaid diagrams** added to `learn/concepts/llm-basics.md` and `learn/concepts/vpc-explained.md` (the prior pages without one).
+
+### Changed
+
+- **README.md front-door reframe** - four-pillar grid promoted above the cert tables. New "I'm here to..." quick-nav with explicit non-cert paths. Per-provider deep-dive sections cut (now in STUDY-HUB only) since they were duplicated. "What's new" callout linking CHANGELOG. Stat counts updated for new concepts, comparisons, builds, topics.
+- **STUDY-HUB.md** - quick-nav adds `topics/` and the freshness ledger. Service comparisons split Cloud / AI. Hands-on Projects line updated to 15 builds.
+- **`learn/concepts/README.md`** - all 15 new pages indexed across new sub-categories (AI foundations / building / operations; cloud now has IAM, observability, eventual consistency, idempotency, queues vs streams sections).
+- **`assets/diagrams/README.md`** - documents that `_src/` is tracked in git (was untracked).
+- **`CONTRIBUTING.md`** - documents the local validator scripts and CI workflows.
+- **`CLAUDE.md`** - adds an Automation section pointing to the validator scripts and freshness ledger.
+- **`.markdownlint.json`** + **`.lycheeignore`** - new config files at repo root.
+
+---
+
 ## [2026-05-03] - Scope expansion: cloud + AI learning, not just certs
 
 ### Added

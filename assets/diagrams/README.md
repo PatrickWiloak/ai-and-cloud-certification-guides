@@ -22,6 +22,10 @@ assets/diagrams/
 - Keep file size under ~200 KB for inline use.
 - Save the source `.drawio` file alongside the PNG when feasible (so others can edit).
 
+## Source files
+
+`_src/` is tracked in git so editable draw.io sources stay alongside the exported PNGs. When you add a new diagram, commit both the `.drawio` source and the rendered `.png`.
+
 ## Embedding
 
 ```markdown

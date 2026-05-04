@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Shared Responsibility Model
 
 > **4-minute read.**

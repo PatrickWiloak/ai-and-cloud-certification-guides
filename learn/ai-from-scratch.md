@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # 🤖 AI From Scratch
 
 > **A non-cert learning path for understanding modern AI - LLMs, RAG, agents, and shipping production AI apps.**

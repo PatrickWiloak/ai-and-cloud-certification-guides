@@ -1,3 +1,7 @@
+---
+last-updated: 2026-05-03
+---
+
 # Google Cloud Associate Cloud Engineer - Fact Sheet
 
 ## Quick Reference

@@ -93,7 +93,7 @@ For a /N subnet:
 Network: `192.168.10.0/26`
 
 - /26 = 26 mask bits, 6 host bits
-- # Hosts = 2^6 - 2 = 62
+- Hosts = 2^6 - 2 = 62
 - Block size = 256 - 192 = 64
 - Subnets in 192.168.10.0/24:
   - 192.168.10.0/26   (network), .1-.62 (hosts), .63 (broadcast)

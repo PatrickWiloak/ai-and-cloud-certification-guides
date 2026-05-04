@@ -1649,11 +1649,11 @@ Fully managed NoSQL document database designed for mobile and web applications.
 ### Firestore vs Datastore
 | Feature | Firestore (Native) | Datastore |
 |---------|-------------------|-----------|
-| **Real-time**: Yes | No |
-| **Mobile SDKs**: Yes | No |
-| **ACID Transactions**: Yes | Limited |
-| **Queries**: More flexible | Basic |
-| **Status**: Current | Legacy |
+| **Real-time** | Yes | No |
+| **Mobile SDKs** | Yes | No |
+| **ACID Transactions** | Yes | Limited |
+| **Queries** | More flexible | Basic |
+| **Status** | Current | Legacy |
 
 ### Data Model
 - **Documents**: JSON-like records

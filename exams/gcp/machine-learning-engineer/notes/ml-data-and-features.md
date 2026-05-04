@@ -1503,7 +1503,7 @@ def preprocessing_fn(inputs):
     }
 ```
 
-### Feature Selection
+### Feature Selection (model-based)
 ```python
 # Feature importance from model
 import matplotlib.pyplot as plt

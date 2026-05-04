@@ -79,7 +79,7 @@ Amazon S3 is object storage built to store and retrieve any amount of data from 
 - **Minimum**: 180-day minimum storage duration
 - **Use Cases**: Compliance archives, digital preservation
 
-### Key Features
+### Advanced Features
 
 #### Versioning
 - **Definition**: Keep multiple versions of an object

@@ -280,7 +280,7 @@ last-updated: 2026-05-03
 | **Join** | Join strings with delimiter | `!Join ['/', [a, b, c]]` |
 | **Select** | Select item from list | `!Select [0, !GetAZs '']` |
 | **ImportValue** | Import cross-stack export | `!ImportValue NetworkStackVPC` |
-| **Split** | Split string into list | `!Split ['|', 'a|b|c']` |
+| **Split** | Split string into list | `!Split ['\|', 'a\|b\|c']` |
 | **GetAZs** | List of AZs in region | `!GetAZs ''` |
 | **FindInMap** | Find value in mappings | `!FindInMap [RegionMap, !Ref AWS::Region, AMI]` |
 | **If** | Conditional value | `!If [CreateProd, t3.large, t3.micro]` |

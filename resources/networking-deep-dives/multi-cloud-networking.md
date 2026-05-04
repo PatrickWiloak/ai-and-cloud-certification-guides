@@ -6,6 +6,31 @@ Strategies and patterns for connecting workloads across multiple cloud providers
 
 ## Cross-Cloud Connectivity Options
 
+```mermaid
+flowchart LR
+  subgraph AWS[AWS]
+    AVPC[VPC us-east-1]
+    ATGW[Transit gateway]
+    ATGW --- AVPC
+  end
+  subgraph AZ[Azure]
+    ZVNET[VNet eastus]
+    ZHUB[vWAN hub]
+    ZHUB --- ZVNET
+  end
+  subgraph GCP[GCP]
+    GVPC[VPC us-central1]
+    GROUTER[Cloud Router]
+    GROUTER --- GVPC
+  end
+  ATGW <-. IPsec VPN .-> ZHUB
+  ZHUB <-. IPsec VPN .-> GROUTER
+  ATGW <-. IPsec VPN .-> GROUTER
+  SDWAN[Or: SD-WAN overlay<br/>Aviatrix, Megaport, Equinix] -. unifies all three .- ATGW
+  SDWAN -. .- ZHUB
+  SDWAN -. .- GROUTER
+```
+
 ### VPN Mesh
 
 The simplest approach - create IPsec VPN tunnels between cloud providers.

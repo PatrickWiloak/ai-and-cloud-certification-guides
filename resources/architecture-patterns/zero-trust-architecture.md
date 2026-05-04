@@ -69,6 +69,22 @@ Zero trust is a security model based on the principle of "never trust, always ve
 
 ### High-Level Architecture
 
+```mermaid
+flowchart LR
+  U[User + device] --> IDP[Identity provider<br/>MFA, device posture]
+  IDP --> CTX[Context:<br/>identity, device, location, risk]
+  CTX --> PE[Policy engine]
+  PE --> PDP[Policy decision point]
+  PDP -- allow --> AG[API gateway]
+  PDP -- allow --> AP[App proxy]
+  PDP -- allow --> ZT[ZTNA tunnel]
+  PDP -- deny --> X[Block]
+  AG --> R1[Microservice]
+  AP --> R2[Internal app]
+  ZT --> R3[Legacy app]
+  PE -. continuous re-eval .-> PDP
+```
+
 ```
 [User/Device] --> [Identity Provider] --> [Policy Engine]
                                               |

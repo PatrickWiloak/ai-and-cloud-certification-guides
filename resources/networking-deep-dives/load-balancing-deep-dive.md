@@ -6,6 +6,21 @@ Comprehensive guide to load balancing concepts and cloud services.
 
 ## Layer 4 vs Layer 7 Load Balancing
 
+```mermaid
+flowchart TB
+  C[Clients] --> LB{Load balancer}
+  LB -- "L4: TCP/UDP only<br/>fast, protocol-agnostic" --> L4[L4 routing<br/>by IP + port]
+  LB -- "L7: inspects HTTP<br/>headers, cookies, URL" --> L7[L7 routing<br/>by host / path / header]
+  L4 --> B1[Backend pool A]
+  L7 -- "/api/* path" --> B2[API service]
+  L7 -- "/static/* path" --> B3[Static content]
+  L7 -- "Host: admin.* " --> B4[Admin app]
+  HC[Health checks:<br/>TCP for L4, HTTP for L7] -. probes .-> B1
+  HC -. probes .-> B2
+  HC -. probes .-> B3
+  HC -. probes .-> B4
+```
+
 ### Layer 4 (Transport Layer)
 
 Operates at the TCP/UDP level. Routes traffic based on IP address and port number without inspecting the application payload.

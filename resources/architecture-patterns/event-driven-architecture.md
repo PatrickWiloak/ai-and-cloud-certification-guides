@@ -98,6 +98,23 @@ Event-driven architecture (EDA) is a software design pattern where:
 
 ### High-Level Architecture
 
+```mermaid
+flowchart LR
+  subgraph PROD[Producers]
+    P1[Order service]
+    P2[User service]
+    P3[Payment service]
+  end
+  P1 --> EB[Event broker<br/>Kafka / Kinesis / EventBridge]
+  P2 --> EB
+  P3 --> EB
+  EB --> C1[Inventory consumer]
+  EB --> C2[Notification consumer]
+  EB --> C3[Analytics consumer]
+  EB --> C4[Audit / archive consumer]
+  EB --> DLQ[(Dead-letter queue:<br/>failed deliveries)]
+```
+
 ```
                         [Event Producers]
            ┌─────────────────┼─────────────────┐

@@ -8,6 +8,17 @@ Chaos engineering is the discipline of experimenting on a system to build confid
 
 ## Core Principles
 
+```mermaid
+flowchart LR
+  H[Form hypothesis<br/>steady-state metric] --> SS[Measure steady state]
+  SS --> INJ[Inject failure<br/>start with smallest blast radius]
+  INJ --> OBS[Observe:<br/>did the system hold?]
+  OBS -- yes --> EXP[Expand blast radius<br/>or move to next experiment]
+  OBS -- no --> FIX[Fix the weakness<br/>add to runbook]
+  FIX --> H
+  EXP --> H
+```
+
 ### The Chaos Engineering Manifesto
 
 1. **Build a hypothesis around steady state** - Define what "normal" looks like using measurable metrics

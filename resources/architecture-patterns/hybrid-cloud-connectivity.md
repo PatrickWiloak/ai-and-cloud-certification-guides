@@ -23,6 +23,31 @@ Establish secure, reliable network connectivity between on-premises infrastructu
 - Identity federation for seamless authentication
 - Consistent network addressing and routing
 
+```mermaid
+flowchart LR
+  subgraph ONP[On-prem datacenter]
+    APP[Apps + DBs]
+    DC[Domain controller / IdP]
+    CGW[Customer gateway / router]
+  end
+  subgraph CONN[Connectivity options]
+    DX[Direct Connect /<br/>ExpressRoute /<br/>Cloud Interconnect<br/>dedicated, low-latency]
+    VPN[Site-to-site VPN<br/>IPsec over internet<br/>fast to set up]
+  end
+  subgraph CLD[Cloud]
+    TGW[Transit gateway<br/>or hub VPC]
+    V1[(VPC / VNet 1)]
+    V2[(VPC / VNet 2)]
+    V3[(VPC / VNet 3)]
+    TGW --> V1
+    TGW --> V2
+    TGW --> V3
+  end
+  CGW --> DX --> TGW
+  CGW --> VPN --> TGW
+  DC -. federation .- CLD
+```
+
 ---
 
 ## Connectivity Options

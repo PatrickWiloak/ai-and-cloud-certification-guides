@@ -77,6 +77,23 @@ Data mesh is a decentralized data architecture that organizes data by business d
 
 ### High-Level Architecture
 
+```mermaid
+flowchart TB
+  subgraph SD[Sales domain]
+    SS[Source systems] --> SI[Ingestion] --> SP[Data product:<br/>orders, revenue]
+  end
+  subgraph PD[Product domain]
+    PS[Source systems] --> PI[Ingestion] --> PP[Data product:<br/>catalog, inventory]
+  end
+  subgraph CD[Customer domain]
+    CS[Source systems] --> CI[Ingestion] --> CP[Data product:<br/>customer 360, segments]
+  end
+  SP --> CAT[Federated catalog<br/>+ governance]
+  PP --> CAT
+  CP --> CAT
+  CAT --> CON[Cross-domain consumers:<br/>analytics, ML, BI]
+```
+
 ```
 +------------------+    +------------------+    +------------------+
 |   Sales Domain   |    |  Product Domain  |    | Customer Domain  |

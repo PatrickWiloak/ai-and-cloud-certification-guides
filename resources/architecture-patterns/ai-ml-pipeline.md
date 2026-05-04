@@ -68,6 +68,18 @@ An ML pipeline is an automated workflow that covers the full machine learning li
 
 ### High-Level Architecture
 
+```mermaid
+flowchart LR
+  D[Data sources] --> ING[Ingestion + validation]
+  ING --> FS[Feature store]
+  FS --> TR[Training]
+  TR --> EVAL[Eval / metrics]
+  EVAL --> REG[Model registry]
+  REG --> DEPLOY[Deploy:<br/>online / batch / edge]
+  DEPLOY --> MON[Monitoring:<br/>quality + drift]
+  MON -. retrain trigger .-> TR
+```
+
 ```
 [Data Sources] --> [Data Ingestion] --> [Feature Store]
                                               |

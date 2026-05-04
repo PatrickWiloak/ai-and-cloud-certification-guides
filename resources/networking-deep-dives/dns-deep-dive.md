@@ -12,14 +12,27 @@ The Domain Name System translates human-readable domain names (like `example.com
 
 ### DNS Hierarchy
 
-```
-Root (.)
-  |
-  +-- Top-Level Domains (.com, .org, .net, .io)
-        |
-        +-- Second-Level Domains (example.com)
-              |
-              +-- Subdomains (api.example.com, www.example.com)
+```mermaid
+flowchart TB
+  ROOT[Root .<br/>13 root server clusters]
+  TLD1[.com TLD servers]
+  TLD2[.org TLD servers]
+  TLD3[.io TLD servers]
+  TLD4[.net TLD servers]
+  AUTH1[example.com<br/>authoritative NS]
+  AUTH2[other-domain.com<br/>authoritative NS]
+  SUB1[www.example.com]
+  SUB2[api.example.com]
+  SUB3[mail.example.com]
+  ROOT --> TLD1
+  ROOT --> TLD2
+  ROOT --> TLD3
+  ROOT --> TLD4
+  TLD1 --> AUTH1
+  TLD1 --> AUTH2
+  AUTH1 --> SUB1
+  AUTH1 --> SUB2
+  AUTH1 --> SUB3
 ```
 
 ---

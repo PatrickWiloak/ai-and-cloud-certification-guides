@@ -103,6 +103,17 @@ Event sourcing stores state as a sequence of immutable events rather than curren
 
 ### CQRS Architecture
 
+```mermaid
+flowchart LR
+  C[Client] -- command --> CH[Command handler]
+  CH -- validate + persist --> WM[(Write model)]
+  WM --> ES[(Event store)]
+  ES --> PB[Projection builder]
+  PB --> RM[(Read model)]
+  C -- query --> QH[Query handler]
+  QH --> RM
+```
+
 ```
 [Client] --commands--> [Command Handler] --> [Write Model/DB]
                                                    |

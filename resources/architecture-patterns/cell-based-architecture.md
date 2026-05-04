@@ -23,6 +23,29 @@ Partition the system into independent cells where:
 - Failures in one cell do not propagate to others
 - Cells can be deployed, scaled, and updated independently
 
+```mermaid
+flowchart TB
+  U[Users / tenants] --> CR[Cell router<br/>maps tenant to cell]
+  CR --> C1
+  CR --> C2
+  CR --> C3
+  subgraph C1[Cell 1]
+    A1[App tier] --> D1[(DB)]
+    Q1[Queue]
+    A1 --> Q1
+  end
+  subgraph C2[Cell 2 - failure isolated]
+    A2[App tier] --> D2[(DB)]
+    Q2[Queue]
+    A2 --> Q2
+  end
+  subgraph C3[Cell 3]
+    A3[App tier] --> D3[(DB)]
+    Q3[Queue]
+    A3 --> Q3
+  end
+```
+
 ### When to Use
 - Large-scale SaaS platforms with millions of users
 - Systems requiring fault isolation and blast radius reduction

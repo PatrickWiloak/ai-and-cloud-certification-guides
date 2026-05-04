@@ -73,6 +73,24 @@ ETL is a data integration process that:
 
 ### Batch Processing Pipeline
 
+```mermaid
+flowchart LR
+  subgraph SRC[Sources]
+    DB[(Relational DBs)]
+    NOSQL[(NoSQL)]
+    API[APIs]
+    FILES[Files: S3 / GCS / Blob]
+    SAAS[SaaS: Salesforce, HubSpot]
+  end
+  SRC --> EXT[Extract<br/>scheduled or CDC]
+  EXT --> RAW[(Raw / staging)]
+  RAW --> XF[Transform<br/>Spark / dbt / SQL]
+  XF --> DQ[Data quality checks]
+  DQ --> DW[(Data warehouse<br/>Snowflake / BigQuery / Redshift)]
+  DW --> BI[BI / dashboards]
+  DW --> ML[ML / feature store]
+```
+
 ```
 [Data Sources]
     |

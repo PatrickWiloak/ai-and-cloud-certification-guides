@@ -69,6 +69,20 @@ Lakehouse architecture combines the flexibility of data lakes with the performan
 
 ### High-Level Architecture
 
+```mermaid
+flowchart LR
+  S[Sources:<br/>logs, DBs, APIs, streams] --> ING[Ingestion]
+  ING --> B[(Bronze: raw / append-only)]
+  B --> SIL[(Silver: cleaned, deduped, joined)]
+  SIL --> G[(Gold: aggregated / business-ready)]
+  G --> SQL[SQL / BI]
+  G --> ML[ML / feature store]
+  G --> APP[Apps / APIs]
+  META[Open table format<br/>Delta / Iceberg / Hudi] -.- B
+  META -.- SIL
+  META -.- G
+```
+
 ```
 [Data Sources] --> [Ingestion Layer] --> [Raw/Bronze Zone]
                                               |

@@ -107,7 +107,29 @@ Last Backup    Disaster    Recovery Complete
 
 ## Architecture Diagram Description
 
-### Backup & Restore
+### The four DR patterns by RTO / RPO
+
+```mermaid
+flowchart LR
+  subgraph BR[Backup + Restore<br/>RTO: hours, RPO: hours<br/>Cheapest]
+    BR1[Primary] --> BR2[(Backups)]
+    BR2 -. restore on disaster .-> BR3[Standby spun up<br/>from backup]
+  end
+  subgraph PL[Pilot Light<br/>RTO: 10s of min, RPO: minutes]
+    PL1[Primary] --> PL2[(Replicated DB)]
+    PL3[Stopped app servers<br/>start on disaster]
+    PL2 -. always replicating .-> PL3
+  end
+  subgraph WS[Warm Standby<br/>RTO: minutes, RPO: seconds]
+    WS1[Primary] --> WS2[Scaled-down<br/>secondary always running]
+    WS1 -. continuous sync .-> WS2
+  end
+  subgraph AA[Multi-site Active-Active<br/>RTO: ~0, RPO: ~0<br/>Most expensive]
+    AA1[Region A active] <-. bidirectional<br/>sync .-> AA2[Region B active]
+    LB[Global LB] --> AA1
+    LB --> AA2
+  end
+```
 
 ```
 Normal Operation:                    Disaster Recovery:

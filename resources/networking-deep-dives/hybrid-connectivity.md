@@ -6,6 +6,30 @@ Connecting on-premises networks to cloud environments.
 
 ## VPN Types
 
+```mermaid
+flowchart LR
+  subgraph ONP[On-prem]
+    HOST[Workloads]
+    GW[Customer gateway<br/>router / firewall]
+  end
+  subgraph OPTIONS[Connectivity choices]
+    S2S[Site-to-site VPN<br/>IPsec over internet<br/>~1-1.25 Gbps per tunnel]
+    CV[Client VPN<br/>per-user remote access]
+    DX[Direct Connect /<br/>ExpressRoute /<br/>Interconnect<br/>1-100 Gbps dedicated]
+  end
+  subgraph CLD[Cloud]
+    VPN_GW[VPN gateway /<br/>VPN concentrator]
+    DX_GW[DX gateway /<br/>ER circuit termination]
+    VPC[(VPC / VNet)]
+    VPN_GW --> VPC
+    DX_GW --> VPC
+  end
+  GW --> S2S --> VPN_GW
+  CV --> VPN_GW
+  GW --> DX --> DX_GW
+  HOST --> GW
+```
+
 ### Site-to-Site VPN
 
 A persistent, encrypted tunnel between your on-premises network and a cloud VPC/VNet.

@@ -23,6 +23,19 @@ Place an API Gateway between clients and backend services that:
 - Transforms protocols and data formats
 - Provides a stable API contract regardless of backend changes
 
+```mermaid
+flowchart LR
+  W[Web client] --> AG
+  M[Mobile client] --> AG
+  P[Partner / B2B] --> AG
+  AG[API gateway<br/>auth, throttle, route, transform]
+  AG --> S1[Order service<br/>REST]
+  AG --> S2[User service<br/>gRPC]
+  AG --> S3[Catalog service<br/>GraphQL]
+  AG --> S4[Search service]
+  AG -. emits .-> LOG[Logs / metrics / traces]
+```
+
 ### When to Use
 - Microservices architectures with multiple backend services
 - Mobile/web applications needing optimized API responses

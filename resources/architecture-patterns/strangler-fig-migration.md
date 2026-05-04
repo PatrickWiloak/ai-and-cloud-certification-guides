@@ -24,6 +24,19 @@ Incrementally replace parts of the legacy system with new services:
 5. Decommission legacy components as they are replaced
 6. Continue until the legacy system is fully replaced or sufficiently modernized
 
+```mermaid
+flowchart LR
+  C[Clients] --> F[Strangler facade<br/>routing rules]
+  F -- /orders/* --> NEW1[New: orders service]
+  F -- /users/* --> NEW2[New: users service]
+  F -- "everything else (legacy paths)" --> MONO[Legacy monolith<br/>shrinks over time]
+  NEW1 --> DB1[(Orders DB)]
+  NEW2 --> DB2[(Users DB)]
+  MONO --> DBL[(Legacy DB)]
+  NEW1 -. backfill / sync .-> DBL
+  NEW2 -. backfill / sync .-> DBL
+```
+
 ### When to Use
 - Migrating monoliths to microservices
 - Moving from on-premises to cloud

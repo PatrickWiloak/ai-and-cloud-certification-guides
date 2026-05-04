@@ -86,6 +86,22 @@ Serverless API architecture is a cloud-native approach to building APIs where:
 
 ### High-Level Architecture
 
+```mermaid
+flowchart LR
+  C[Clients] --> CDN[CDN<br/>optional]
+  CDN --> AG[API gateway<br/>auth, rate limit, throttle]
+  AG --> F1[Function: GET /orders]
+  AG --> F2[Function: POST /orders]
+  AG --> F3[Function: webhook handler]
+  F1 --> DB[(Managed DB:<br/>DynamoDB / Cosmos / Firestore)]
+  F2 --> DB
+  F2 --> Q[Queue]
+  Q --> WORKER[Worker function:<br/>async processing]
+  WORKER --> DB
+  WORKER --> S3[(Object storage)]
+  F3 --> EB[Event bus]
+```
+
 ```
                          [Clients/Users]
                                 |

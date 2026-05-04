@@ -78,6 +78,29 @@ Active-active architecture runs identical workloads in multiple regions simultan
 
 ### High-Level Architecture
 
+```mermaid
+flowchart TB
+  U[Global users] --> GLB[Global DNS / load balancer<br/>geo-routing + health checks]
+  GLB --> RA
+  GLB --> RB
+  GLB --> RC
+  subgraph RA[Region A: us-east]
+    LBA[Regional LB] --> APPA[Multi-AZ app tier]
+    APPA --> DBA[(Multi-AZ DB)]
+  end
+  subgraph RB[Region B: eu-west]
+    LBB[Regional LB] --> APPB[Multi-AZ app tier]
+    APPB --> DBB[(Multi-AZ DB)]
+  end
+  subgraph RC[Region C: ap-southeast]
+    LBC[Regional LB] --> APPC[Multi-AZ app tier]
+    APPC --> DBC[(Multi-AZ DB)]
+  end
+  DBA <-. cross-region<br/>replication .-> DBB
+  DBB <-. cross-region<br/>replication .-> DBC
+  DBA <-. cross-region<br/>replication .-> DBC
+```
+
 ```
                     [Global DNS / Load Balancer]
                               |

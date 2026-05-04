@@ -96,6 +96,26 @@ Microservices architecture is a software design approach where:
 
 ### High-Level Architecture
 
+```mermaid
+flowchart TB
+  C[Clients: web, mobile, partners] --> CDN[CDN]
+  CDN --> LB[Global load balancer]
+  LB --> AG[API gateway:<br/>auth, rate limit, route]
+  AG --> SM[Service mesh<br/>mTLS, observability]
+  SM --> S1[Order service]
+  SM --> S2[User service]
+  SM --> S3[Payment service]
+  SM --> S4[Inventory service]
+  S1 --> D1[(Order DB)]
+  S2 --> D2[(User DB)]
+  S3 --> D3[(Payment DB)]
+  S4 --> D4[(Inventory DB)]
+  S1 -. async events .-> EB[Event bus]
+  S3 -. async events .-> EB
+  EB -. fan-out .-> S2
+  EB -. fan-out .-> S4
+```
+
 ```
                            [Internet]
                                |

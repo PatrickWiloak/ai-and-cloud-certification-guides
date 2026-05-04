@@ -44,14 +44,18 @@ resources/
     cli-cheat-sheet-*.md        # tool quick references
     compliance-guides/          # SOC 2, HIPAA, PCI DSS, GDPR, FedRAMP
     cost-optimization/          # per-cloud cost playbooks
+    decision-matrix-*.md        # score-driven product picks (vector DB, IaC, LLM serving)
     hands-on-projects/          # guided builds
     interview-prep/             # role-based interview prep
     migration-guides/           # cloud migration playbooks
     networking-deep-dives/      # hybrid, multi-cloud, DNS, load balancing
+    playlist-*.md               # persona reading sequences (AI engineer, SRE, etc.)
+    postmortem-*.md             # real-incident study guides mapped to cert domains
     practice-questions/         # per-cert question banks
     service-comparison-*.md     # cross-cloud service comparisons
     troubleshooting/            # per-platform troubleshooting
     well-architected/           # AWS, Azure, GCP frameworks
+topics/                 # cross-pillar topic indexes (one per major subject area)
 assets/diagrams/        # PNG diagrams (draw.io exports), organized by topic
 README.md           # top-level overview and provider table
 STUDY-HUB.md        # navigation hub with decision tree and roadmaps
@@ -70,6 +74,15 @@ When scaffolding a new cert, use this structure:
 - `strategy.md` (optional, recommended for Professional/Specialty) - exam-day timing, common traps, how to pace.
 
 Keep early files (`README.md`, `fact-sheet.md`) compact and accurate. Depth lives in `notes/`.
+
+## New content shapes
+
+The repo has a few specialized content shapes beyond the core cert dirs and concept pages. Each follows a stable template - if you author a new one, match the existing pattern.
+
+- **`resources/decision-matrix-*.md`** - score-driven product picks. Lead paragraph (when you'd reach for this matrix), criteria-by-product table, per-product strengths / limitations, default pick, alternatives by use case. Examples: `decision-matrix-vector-database.md`, `decision-matrix-iac-tool.md`, `decision-matrix-llm-serving.md`.
+- **`resources/postmortem-*.md`** - real-incident study guides. Lead paragraph (incident summary in one sentence), timeline, root cause, what would have caught it, mapped cert exam domains, lessons cross-linked to repo concepts. Examples: `postmortem-aws-s3-2017.md`, `postmortem-cloudflare-regex-2019.md`, `postmortem-gcp-networking-2019.md`.
+- **`resources/playlist-*.md`** - persona reading sequences. Frontmatter with `persona` + `time-budget`, ordered list of repo links with one-sentence justifications, "what you'll be able to do at the end" summary. Examples: `playlist-ai-engineer-30min.md`, `playlist-sre-1hour.md`.
+- **`topics/<topic>.md`** - cross-pillar topic index. Mermaid "topic at a glance" diagram, then sections linking Learn / Compare / Reference / Build / Certify pages relevant to that topic. Existing topics: ai-ml-systems, databases, finops, iam, kubernetes, llms-and-genai, networking, observability, security, serverless, sre-and-reliability.
 
 ## Documentation link format
 
@@ -144,12 +157,29 @@ When a vendor retires a cert:
 
 ## Local validation
 
-Two scripts live under `.github/scripts/` and run in CI on every PR:
+Several scripts live under `.github/scripts/`. The validators run in CI on every PR; the autolink helpers are run by a maintainer when content changes warrant it.
 
-- `validate-cert-structure.sh` - confirms every `exams/<provider>/<cert>/` has a `README.md`. Surfaces anything missing `fact-sheet.md`, `practice-plan.md`, `scenarios.md`, or `strategy.md` as warnings (not failures). Run locally with `bash .github/scripts/validate-cert-structure.sh`.
-- `build-freshness-ledger.sh` - regenerates [docs/freshness.md](./docs/freshness.md) from each cert's `last-updated:` frontmatter. Run locally with `bash .github/scripts/build-freshness-ledger.sh > docs/freshness.md`.
+**Validators (CI gates):**
 
-CI also runs `markdownlint-cli2` against the project's `.markdownlint.json` and a weekly `lychee` link check. The link check posts an issue automatically when broken links appear.
+- `validate-cert-structure.sh` - confirms every `exams/<provider>/<cert>/` has a `README.md`. Tier-aware: senior-tier certs (Pro / Specialty / Expert and a curated cert list) also get warnings for missing `scenarios.md` and `strategy.md`. Run locally with `bash .github/scripts/validate-cert-structure.sh`.
+- `validate-frontmatter.sh` - validates YAML frontmatter on concept pages, top-level learn pages, day-one pages, hands-on projects, cert fact-sheets, topic indexes, architecture patterns, networking deep dives, and decision-matrix / postmortem / playlist files. Fails on malformed YAML or bad date format; warns on missing or stale (>180d) `last-updated`. Run with `bash .github/scripts/validate-frontmatter.sh`.
+- `build-freshness-ledger.sh` - regenerates [docs/freshness.md](./docs/freshness.md) from each file's `last-updated:` frontmatter. Run locally with `bash .github/scripts/build-freshness-ledger.sh > docs/freshness.md`.
+- `check-orphan-links.sh` - lists `.md` files with no inbound links from other markdown. Manual one-shot, not a workflow gate. Useful before retiring or moving a file.
+
+**Glossary autolink (one-shot maintenance scripts):**
+
+- `glossary-autolink.py` - parses `learn/glossary.md` for bolded terms and links the first occurrence in scoped pages. Caps at 5 links per file; skips code blocks, headings, and existing links. Currently scopes: `learn/concepts/`, `topics/`, `resources/hands-on-projects/`, `resources/architecture-patterns/`, `resources/networking-deep-dives/`, plus decision-matrix / postmortem / playlist files.
+- `glossary-add-anchors.py` - prepends `<a id="term-slug"></a>` to each bolded term in the glossary so links can target individual terms (not just sections). Idempotent. Run when the glossary gains new terms.
+- `glossary-upgrade-existing-links.py` - upgrades old section-level glossary links to per-term anchors when an anchor is available.
+
+**CI workflows under `.github/workflows/`:**
+
+- `link-check.yml` - lychee link checker on PR, push, and weekly Mondays. Opens an issue automatically on weekly failure.
+- `markdown-lint.yml` - markdownlint-cli2 against `.markdownlint.json`.
+- `structure-validate.yml` - runs the cert-structure and frontmatter validators.
+- `cspell.yml` - spell-checks markdown changes against `.cspell.json`. Currently non-strict (won't fail builds while the dictionary tunes); will flip to strict once noise is acceptable.
+
+See [.github/README.md](./.github/README.md) for a one-page map of every script and workflow.
 
 ## Submitting a change
 

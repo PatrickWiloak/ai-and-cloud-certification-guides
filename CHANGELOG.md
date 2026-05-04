@@ -6,12 +6,19 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 ---
 
-## [2026-05-03] - Senior-tier scenarios + strategy, 20 architecture/networking diagrams, 4 new topic indexes, glossary autolink, orphan-checker fix, tier-aware structure validator, repo governance scaffolding
+## [2026-05-03] - Senior-tier scenarios + strategy, 20 architecture/networking diagrams, 4 new topic indexes, glossary autolink, orphan-checker fix, tier-aware structure validator, repo governance scaffolding, decision matrices + postmortems + persona playlists, Day-One expansion, cspell, practice-question expansion
 
-A large day of structural quality work. Six themed batches, all on `main`.
+A large day of structural quality work. Eight themed batches, all on `main`.
 
 ### Added
 
+- **Three decision matrices** in `resources/`: `decision-matrix-vector-database.md` (Pinecone / Weaviate / Qdrant / Milvus / pgvector / OpenSearch / Bedrock KB / Vertex Vector Search), `decision-matrix-iac-tool.md` (Terraform / OpenTofu / Pulumi / CloudFormation / Bicep / CDK), `decision-matrix-llm-serving.md` (vLLM / TGI / SGLang / llama.cpp / TensorRT-LLM / hosted). Each scores criteria, names a default pick, and explains when to pick something else.
+- **Three postmortem study guides** in `resources/`: `postmortem-aws-s3-2017.md`, `postmortem-cloudflare-regex-2019.md`, `postmortem-gcp-networking-2019.md`. Each maps a real incident to relevant cert exam domains.
+- **Four persona playlists** in `resources/`: `playlist-ai-engineer-30min.md`, `playlist-cloud-security-1hour.md`, `playlist-data-engineer-1hour.md`, `playlist-sre-1hour.md`. Reading sequences across existing concept / comparison / reference pages.
+- **Four new Day-One beginner pages**: `learn/day-one/ssh-basics.md`, `package-managers.md`, `networking-troubleshooting.md`, `what-is-an-api-call.md`. Day-One went from 5 to 9 pages.
+- **Per-topic Mermaid diagrams** added to 6 of 11 topic indexes (databases, iam, kubernetes, networking, observability, security). 10 of 11 topics now have a "topic at a glance" diagram.
+- **Per-term glossary anchors** via new `.github/scripts/glossary-add-anchors.py`: 278 `<a id="term-slug"></a>` anchors added to `learn/glossary.md`. New `.github/scripts/glossary-upgrade-existing-links.py` upgraded 38 prior section-level links to per-term anchors. Autolink now prefers per-term anchors when available.
+- **cspell workflow** at `.github/workflows/cspell.yml` (non-strict initial run while the dictionary tunes) plus `.cspell.json` with a 150+ word custom dictionary covering cloud + AI proper nouns (Anthropic, vLLM, Pinecone, ExpressRoute, Kerberoasting, etc.).
 - **Scenarios + strategy on all 47 senior-tier certs.** Every cert classified senior (AWS Pro / Specialty, Azure Expert / Specialty, GCP Professional, Kubernetes CKS, ISC2 / ISACA, CompTIA mid-senior, Cisco CCNP+, HashiCorp / Databricks / Snowflake "professional" / "advanced", FinOps Professional, VMware VCP, Anthropic Architect Advanced, OSCP, IBM Cloud Security Engineer) now has both `scenarios.md` (6-8 worked exam-style scenarios with options + analysis + takeaway) and `strategy.md` (cert-specific traps, time math, day-of logistics, pattern map). 49 new files, ~50,000 words of original cert-content. Scenarios are illustrative patterns based on each exam's published blueprint - not real exam questions. Files committed in 5 provider-grouped batches (AWS, Azure, GCP, security, other).
 - **20 new Mermaid diagrams** across 16 architecture-pattern files (microservices, event-driven, serverless API, multi-region active-active, CQRS / event sourcing, data pipeline ETL, lakehouse, data mesh, ai-ml-pipeline, disaster recovery, hybrid cloud connectivity, zero trust, cell-based, chaos engineering, strangler fig, api gateway) and all 4 networking-deep-dives (DNS hierarchy, hybrid connectivity options, L4 vs L7 load balancing, multi-cloud networking).
 - **4 new topic indexes**: `topics/ai-ml-systems.md`, `topics/serverless.md`, `topics/sre-and-reliability.md`, `topics/finops.md`. Each follows the established Learn / Compare / Reference / Build / Certify pattern. `topics/README.md` updated to list all 11 topics.
@@ -20,6 +27,9 @@ A large day of structural quality work. Six themed batches, all on `main`.
 
 ### Changed
 
+- **Practice-question banks expanded** for 4 sparse certs from 15 to 25 questions: `kubernetes-cka.md`, `aws-ai-practitioner.md`, `hashicorp-terraform-associate.md`, `isc2-cissp.md`. Same scenario / four-option / analysis / takeaway shape as existing banks.
+- **`validate-frontmatter.sh` scope expanded** to also scan `learn/day-one/`, `topics/`, `resources/architecture-patterns/`, `resources/networking-deep-dives/`, decision-matrix / postmortem / playlist files. Backfilled `last-updated` on those file groups.
+- **README.md surfaces new content shapes** - decision matrices, postmortem study guides, persona playlists each get a section in the resource navigation; freshness ledger linked from the front door.
 - **Tier-aware cert-structure validator.** `validate-cert-structure.sh` now classifies each cert as `senior` or `junior` and only recommends `scenarios.md` + `strategy.md` for senior tiers. Senior = path contains `/professional/`, `/specialty/`, `/expert/`, OR matches a curated cert-basename list (GCP professional certs, Azure expert / specialty, K8s pro, ISC2 / ISACA / OSCP, Cisco CCNP+, HashiCorp / Databricks / Snowflake "professional" / "advanced", FinOps Certified Professional, VMware VCP, Anthropic Architect Advanced, CompTIA mid-senior). Cuts validator warnings from 70 → 0 once senior-cert content was authored.
 - **Orphan-link checker root-cause fix.** Two bugs: root-level markdown (README.md, STUDY-HUB.md, CHANGELOG.md, CONTRIBUTING.md, CLAUDE.md) wasn't in the haystack so anything they linked appeared orphan. Cert `notes/*.md` files were considered orphan even when their parent cert directory was referenced. Result: 310 false-positive orphans → 0 true orphans, 289 covered-by-subtree.
 - **Glossary autolink + orphan checker** wired up. Test scripts pass cleanly against the current tree.

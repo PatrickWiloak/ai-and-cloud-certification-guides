@@ -75,20 +75,32 @@ exams/<provider>/<cert>/
 └── cheat-sheets/       # (Optional) Decision trees, service comparisons
 ```
 
-**Required:** README.md, fact-sheet.md, practice-plan.md, notes/
+**Required (validator fails on missing):** README.md
 
-**Recommended for Associate+ tiers:** scenarios.md, strategy.md
+**Recommended for all certs (validator warns on missing):** fact-sheet.md, practice-plan.md
 
-**Optional, used selectively:** cram-1p.md, cheat-sheets/, labs/, flashcards.md
+**Recommended for senior-tier certs only (validator warns on missing):** scenarios.md, strategy.md
+
+**Optional, used selectively (validator silent):** notes/, cram-1p.md, cheat-sheets/, labs/, flashcards.md
+
+### Tier classification
+
+`validate-cert-structure.sh` classifies each cert as `senior` or `junior` and adjusts its checks accordingly.
+
+**Senior tier** (gets scenarios.md + strategy.md as recommended):
+- Path contains `/professional/`, `/specialty/`, or `/expert/` (AWS, etc.)
+- Curated cert basenames: GCP professional certs (cloud-architect, data-engineer, machine-learning-engineer, cloud-network/security/devops/database engineer, workspace-administrator), Azure expert/specialty (az-305, az-400, az-500, az-700, az-800, sc-100, sc-200), Kubernetes pro/specialty (cks, pca, ica), security senior certs (cissp, ccsp, cism, cisa, oscp), Cisco ccnp/ccie, HashiCorp/Databricks/Snowflake "professional"/"advanced" basenames, FinOps Certified Professional, VMware VCP, Anthropic claude-certified-architect-advanced, CompTIA cysa-plus / pentest-plus / casp-plus.
+
+**Junior tier** (everything else - foundational and associate-grade certs).
 
 ### Scaffold tiers
 
 The repo has two informal tiers of cert guide depth:
 
-- **Light scaffold** (LFCA-tier): README + fact-sheet + practice-plan + ~5 notes files + scenarios. Used for Foundational and most cross-vendor / multi-cloud certs.
-- **Full scaffold** (MLA-C01 / DEA-C01-tier): everything in light, plus strategy.md, cram-1p.md (optional), cheat-sheets/, more detailed scenarios. Used for high-value Associate / Professional certs.
+- **Light scaffold**: README + fact-sheet + practice-plan + ~5 notes files. Used for Foundational and most Associate certs.
+- **Full scaffold**: everything in light, plus scenarios.md + strategy.md, cram-1p.md (optional), cheat-sheets/, more detailed scenarios. Used for senior-tier certs (see classification above) and high-traffic Associates (AWS SAA-C03, Azure AZ-104, K8s CKA).
 
-When scaffolding a new cert, decide tier based on cert demand and student need.
+When scaffolding a new cert, the validator's tier classification is the default; override only with intent.
 
 ---
 

@@ -85,9 +85,9 @@ The state file:
 
 In production, store state remotely:
 
-- **AWS** - S3 bucket + DynamoDB table for locking
-- **Azure** - Blob Storage container
-- **GCP** - GCS bucket
+- [**AWS**](../glossary.md#aws) - S3 bucket + DynamoDB table for locking
+- [**Azure**](../glossary.md#microsoft-azure) - Blob Storage container
+- [**GCP**](../glossary.md#google-cloud-gcp) - GCS bucket
 - **Terraform Cloud / HCP Terraform** - hosted state
 
 The lock prevents two engineers from running `apply` simultaneously and corrupting state.
@@ -160,7 +160,7 @@ Don't use the same state for prod and dev. Don't.
 
 ## Common pitfalls
 
-- **Drift** - someone clicked something in the console. Now reality doesn't match state. Run `terraform plan` regularly to detect.
+- [**Drift**](../glossary.md#devops-infrastructure-as-code) - someone clicked something in the console. Now reality doesn't match state. Run `terraform plan` regularly to detect.
 - **Manual edits to state** - eventually destroys you. Use `terraform import` to bring existing resources under management.
 - **Storing secrets in `.tf` files** - they end up in git. Use a secret manager or `sensitive` variables sourced from elsewhere.
 - **Massive monolithic state** - one apply takes 10 minutes, blast radius is huge. Split into smaller stacks.
@@ -168,7 +168,7 @@ Don't use the same state for prod and dev. Don't.
 
 ## Terraform vs the alternatives
 
-- **CloudFormation** (AWS-only) - native, JSON/YAML, slower iteration than Terraform.
+- [**CloudFormation**](../glossary.md#aws) (AWS-only) - native, JSON/YAML, slower iteration than Terraform.
 - **Pulumi** - Terraform-like but in real programming languages (TypeScript, Python, Go). Same state model.
 - **CDK** (AWS Cloud Development Kit) - write CloudFormation in TypeScript/Python. AWS-native.
 - **Ansible** - configuration management. Sometimes used for infra; not its sweet spot.

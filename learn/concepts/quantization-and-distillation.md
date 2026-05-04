@@ -10,7 +10,7 @@ reading-time: 8 min
 
 ## The one-line answer
 
-Quantization and distillation are two ways to make a model smaller and faster, with two different mechanisms. **Quantization** keeps the same model but stores its weights at lower precision. **Distillation** trains a smaller "student" model to mimic a larger "teacher" model. Both trade some quality for less memory, lower cost, and faster inference.
+Quantization and distillation are two ways to make a model smaller and faster, with two different mechanisms. **Quantization** keeps the same model but stores its weights at lower precision. [**Distillation**](../glossary.md#llms-generative-ai) trains a smaller "student" model to mimic a larger "teacher" model. Both trade some quality for less memory, lower cost, and faster inference.
 
 You'll meet both in three contexts: open-source local inference, edge deployment, and production cost-cutting on hosted models.
 

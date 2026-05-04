@@ -41,7 +41,7 @@ Common occurrences:
 - **Read replicas in RDS / Cloud SQL / Azure SQL** - replication lag is normal.
 - **ElastiCache / Memorystore** - cluster modes have replication lag.
 - **CloudFront / CDN caches** - serve old content until the TTL expires.
-- **DNS** - the original eventually-consistent system; record changes propagate over hours.
+- [**DNS**](../glossary.md#networking) - the original eventually-consistent system; record changes propagate over hours.
 - **GCS Object metadata after delete/recreate** - has historically had subtle eventual consistency.
 
 ## When EC is fine
@@ -95,8 +95,8 @@ The tradeoff is latency, throughput ceiling, or both. Use it where you need it; 
 
 Many modern systems let you pick per-operation:
 
-- **DynamoDB**: pass `ConsistentRead=true` for strong reads. 2x read units cost.
-- **Cosmos DB**: 5 levels (Strong, Bounded Staleness, Session, Consistent Prefix, Eventual). Configure per workload.
+- [**DynamoDB**](../glossary.md#aws): pass `ConsistentRead=true` for strong reads. 2x read units cost.
+- [**Cosmos DB**](../glossary.md#microsoft-azure): 5 levels (Strong, Bounded Staleness, Session, Consistent Prefix, Eventual). Configure per workload.
 - **Cassandra / Scylla**: read/write quorum levels (ONE, QUORUM, ALL) per query.
 
 Knowing which level you need per call is part of design. Cassandra's defaults aren't AWS RDS's defaults; don't assume.

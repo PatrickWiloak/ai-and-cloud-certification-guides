@@ -96,7 +96,7 @@ If you're starting fresh, default to OTel.
 
 From the [Google SRE book](https://sre.google/sre-book/monitoring-distributed-systems/), the metrics that matter for any user-facing service:
 
-1. **Latency** - how long requests take. Watch p50/p95/p99, not just average.
+1. [**Latency**](../glossary.md#networking) - how long requests take. Watch p50/p95/p99, not just average.
 2. **Traffic** - how many requests per second. Or per minute, or any sensible time unit.
 3. **Errors** - rate of failed requests. Includes anything that gives the user a worse experience than success.
 4. **Saturation** - how full the system is. CPU, memory, disk, queue depth, connection pool utilization. Usually tracked toward a known limit.
@@ -128,8 +128,8 @@ Use both. RED at the service edge, USE at every layer underneath.
 When ad-hoc monitoring isn't enough:
 
 - **SLI (Service Level Indicator)** - a measurable property: "% of requests served < 200ms."
-- **SLO (Service Level Objective)** - a target: "99.5% of requests should be under 200ms over 30 days."
-- **Error budget** - the gap. If your SLO is 99.5%, you have 0.5% to spend (downtime, slow responses) per period.
+- [**SLO (Service Level Objective)**](../glossary.md#observability) - a target: "99.5% of requests should be under 200ms over 30 days."
+- [**Error budget**](../glossary.md#observability) - the gap. If your SLO is 99.5%, you have 0.5% to spend (downtime, slow responses) per period.
 
 Operationalize: when you've burned 50% of your budget, slow risky deploys. When you've burned 100%, freeze non-critical changes. This converts vague "reliability matters" into actionable policy.
 

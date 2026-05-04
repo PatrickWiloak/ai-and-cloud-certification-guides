@@ -25,7 +25,7 @@ VPCs give you a configurable, software-defined network with the same primitives 
 
 Picture an empty office building you rent inside a cloud provider's headquarters:
 
-- **VPC** = the floor you rented. Has its own address (a CIDR block like `10.0.0.0/16`).
+- [**VPC**](../glossary.md#aws) = the floor you rented. Has its own address (a CIDR block like `10.0.0.0/16`).
 - **Subnets** = rooms on that floor. Each subnet is in one AZ, with its own smaller CIDR (`10.0.1.0/24`).
 - **Route tables** = the floorplan that says where doors lead.
 - **Internet gateway** = the front door to the public internet.
@@ -102,9 +102,9 @@ Day to day: configure security groups. NACLs are the rarely-used outer layer.
 
 Common VPC connectivity patterns:
 
-- **VPC peering** - direct connection between two VPCs (same or different accounts)
+- [**VPC peering**](../glossary.md#networking) - direct connection between two VPCs (same or different accounts)
 - **Transit Gateway** - hub for connecting many VPCs (and on-prem) together
-- **VPN** - encrypted tunnel from on-prem to VPC over the internet
+- [**VPN**](../glossary.md#networking) - encrypted tunnel from on-prem to VPC over the internet
 - **Direct Connect (AWS) / ExpressRoute (Azure) / Interconnect (GCP)** - dedicated fiber from your office/datacenter to the cloud
 - **VPC endpoints / Private Link** - reach AWS services (S3, DynamoDB, etc.) without traversing the public internet
 

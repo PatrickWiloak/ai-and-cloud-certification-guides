@@ -168,8 +168,8 @@ The cloud provider runs the control plane. You bring nodes (or use serverless no
 ## Tooling you'll meet
 
 - **kubectl** - the CLI for talking to a cluster
-- **Helm** - package manager for K8s YAML ("charts")
-- **Kustomize** - templating for K8s YAML, built into kubectl
+- [**Helm**](../glossary.md#containers-kubernetes) - package manager for K8s YAML ("charts")
+- [**Kustomize**](../glossary.md#containers-kubernetes) - templating for K8s YAML, built into kubectl
 - **ArgoCD / Flux** - GitOps continuous deployment
 - **Istio / Linkerd** - service mesh (mTLS, traffic management, observability)
 - **Prometheus + Grafana** - metrics and dashboards

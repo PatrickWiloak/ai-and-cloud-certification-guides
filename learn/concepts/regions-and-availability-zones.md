@@ -104,9 +104,9 @@ For most early-stage apps: multi-AZ in one region is plenty. Move to multi-regio
 
 Each provider has its own naming convention:
 
-- **AWS** - `us-east-1`, `eu-west-2`, `ap-southeast-1`. Numbers are arbitrary, not "best to worst."
-- **Azure** - `eastus`, `westus2`, `centralus`. Also: `southcentralus`, `northeurope`. No standard.
-- **GCP** - `us-central1`, `europe-west2`, `asia-southeast1`. More consistent.
+- [**AWS**](../glossary.md#aws) - `us-east-1`, `eu-west-2`, `ap-southeast-1`. Numbers are arbitrary, not "best to worst."
+- [**Azure**](../glossary.md#microsoft-azure) - `eastus`, `westus2`, `centralus`. Also: `southcentralus`, `northeurope`. No standard.
+- [**GCP**](../glossary.md#google-cloud-gcp) - `us-central1`, `europe-west2`, `asia-southeast1`. More consistent.
 
 You'll memorize the ones you use.
 

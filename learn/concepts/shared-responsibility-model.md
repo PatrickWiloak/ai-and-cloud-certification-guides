@@ -121,9 +121,9 @@ For each new service, the answers shift slightly. Get used to checking.
 
 ## Provider-specific docs
 
-- **AWS**: [shared responsibility model](https://aws.amazon.com/compliance/shared-responsibility-model/)
-- **Azure**: [shared responsibility in the cloud](https://learn.microsoft.com/en-us/azure/security/fundamentals/shared-responsibility)
-- **GCP**: [shared responsibilities](https://cloud.google.com/architecture/framework/security/shared-responsibility-shared-fate)
+- [**AWS**](../glossary.md#aws): [shared responsibility model](https://aws.amazon.com/compliance/shared-responsibility-model/)
+- [**Azure**](../glossary.md#microsoft-azure): [shared responsibility in the cloud](https://learn.microsoft.com/en-us/azure/security/fundamentals/shared-responsibility)
+- [**GCP**](../glossary.md#google-cloud-gcp): [shared responsibilities](https://cloud.google.com/architecture/framework/security/shared-responsibility-shared-fate)
 
 All three say roughly the same thing. The diagrams differ.
 

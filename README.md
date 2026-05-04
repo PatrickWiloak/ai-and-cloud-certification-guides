@@ -23,7 +23,7 @@ If you want training, integrations, or tooling built for your team, [get in touc
 >
 > Whether you've never opened a terminal or you're chasing your fifth cert, start here.
 >
-> Created by [Patrick Wiloak](https://patrickwiloak.com) - Ex-AWS Solutions Architect | 10 Years in Tech | 16 Cloud Certifications
+> Created by [Patrick Wiloak](https://patrickwiloak.com) - Ex-AWS Solutions Architect | 10 Years in Tech | 46 Certifications
 >
 > 🎥 [@patrickwiloak](https://youtube.com/@patrickwiloak) | 💼 [LinkedIn](https://www.linkedin.com/in/patricklukewilson/)
 
